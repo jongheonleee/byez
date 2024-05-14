@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias alias="TestDto" type="com.neo.byez.domain.TestDto"/>
+        <!-- 고객 관련 : 수인 - 시작 -->
+        <typeAlias alias="UserDto" type="com.neo.byez.domain.UserDto"/>
+        <typeAlias alias="UserInfoHistDto" type="com.neo.byez.domain.UserInfoHistDto"/>
+        <!-- 고객 관련 : 수인 - 끝 -->
+
     </typeAliases>
 </configuration>

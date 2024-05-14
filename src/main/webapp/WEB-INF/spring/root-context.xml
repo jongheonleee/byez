@@ -30,7 +30,7 @@
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"/>
 		<property name="configLocation"  value="classpath:mybatis-config.xml"/>
-		<property name="mapperLocations" value="classpath:mapper/*Mapper.xml"/>
+		<property name="mapperLocations" value="classpath:mapper/**/*Mapper.xml"/>
 	</bean>
 
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
@@ -40,19 +40,35 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
-	<tx:annotation-driven proxy-target-class="true"/>
+
+	<!-- 수인 추가 - 시작 -->
+	<!-- email 인증 위한 JavaMailSenderImpl 클래스 Bean 등록 -->
+	<!-- username, password 본인 정보로 업데이트 필요 -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="parksuuuun@gmail.com"/>
+		<property name="password" value="dudchqlyseefklew" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+				<prop key="mail.smtp.ssl.trust">smtp.gmail.com</prop>
+				<prop key="mail.smtp.ssl.protocols">TLSv1.2</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 수인 추가 - 끝 -->
+
+	<tx:annotation-driven/>
 
 <!--	<tx:annotation-driven/>-->
 <!--	<context:component-scan base-package="com.neo.byez.dao"/>-->
 <!--	<context:component-scan base-package="com.neo.byez.service"/>-->
 
-	<context:component-scan base-package="com.neo.byez.dao">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-	</context:component-scan>
-	<context:component-scan base-package="com.neo.byez.service">
-		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
-	</context:component-scan>
-
+	<context:component-scan base-package="com.neo.byez"/>
 
 	<mybatis-spring:scan base-package="com.neo.byez.dao"/>
 	<context:annotation-config/>

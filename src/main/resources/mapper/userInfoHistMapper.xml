@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.UserInfoHistDao">
+
+    <!-- 테스트용 쿼리문 -->
+    <!-- 전체 데이터 삭제 -->
+    <delete id="deleteAllUserInfoHist">
+        DELETE FROM cust_hist
+    </delete>
+
+    <!-- 전체(회원, 탈퇴 모두 포함) 고객정보 변경이력 조회 시 사용하는 쿼리문 -->
+    <select id="selectAllUserInfoHist" resultType="UserInfoHistDto">
+        SELECT ch.chg_seq, ch.id, code.chg_code, code.changed_element, ch.bef_info, ch.af_info, ch.chg_date
+        FROM cust_hist AS ch
+                 JOIN cust_changed_info_code_tb AS code
+                      ON ch.chg_code = code.chg_code
+        ORDER BY ch.chg_seq
+    </select>
+
+    <!-- 현재 가입상태의 전체 고객정보 변경이력 조회 시 사용하는 쿼리문 -->
+    <select id="selectAllActiveUserInfoHist" resultType="UserInfoHistDto">
+        SELECT ch.chg_seq, ch.id, code.chg_code, code.changed_element, ch.bef_info, ch.af_info, ch.chg_date
+        FROM cust_hist AS ch
+                 JOIN cust_changed_info_code_tb AS code
+                      ON ch.chg_code = code.chg_code
+        WHERE join_state = 'Y'
+        ORDER BY ch.chg_seq
+    </select>
+
+    <!-- 특정 고객정보 변경이력 조회 시 사용하는 쿼리문 -->
+    <select id="selectUserInfoHist" parameterType="String" resultType="UserInfoHistDto">
+        SELECT ch.chg_seq, ch.id, code.chg_code, code.changed_element, ch.bef_info, ch.af_info, ch.chg_date
+        FROM cust_hist AS ch
+                 JOIN cust_changed_info_code_tb AS code
+                      ON ch.chg_code = code.chg_code
+        WHERE id = #{id}
+        ORDER BY ch.chg_seq
+    </select>
+
+    <!-- DB에 고객정보 변경이력 저장 시 사용하는 쿼리문  -->
+    <insert id="insertUserInfoHist" parameterType="UserInfoHistDto">
+        INSERT INTO cust_hist (id, chg_code, bef_info, af_info, chg_date, reg_date, reg_id, up_date, up_id)
+        VALUES (#{id}, #{chg_code}, #{bef_info}, #{af_info}, NOW(), NOW(), #{id}, NOW(), #{id})
+    </insert>
+
+</mapper>
