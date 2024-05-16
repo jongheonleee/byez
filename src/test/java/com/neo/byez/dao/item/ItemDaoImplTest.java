@@ -1,7 +1,7 @@
 package com.neo.byez.dao.item;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -639,6 +639,64 @@ class ItemDaoImplTest {
 //
 //        pstmt.executeBatch();
 //        conn.commit();
+//    }
+
+
+
+
+
+
+
+
+
+//    도연
+    //1. 여성 top8 선택
+    //성공 : dto 8개 이하
+    //실패 : null or 9개 이상
+    //예외 :
+//    @DisplayName("여성 top8 선택")
+//    @ParameterizedTest(name="[{index}]. 수량 -> {0}")
+//    @ValueSource(ints = {8})
+//    public void test1_1(int n) throws Exception {
+//        for(int i=0; i<=n; i++){
+//            insertData(i);
+//        }
+//        System.out.println(dao.count());
+//    }
+//
+//
+//
+//
+//    //2. 남성 top8 선택
+//    //성공 : dto 8개 이하
+//    //실패 : null or 9개 이상
+//    //예외 :
+//    @DisplayName("남성 top8 선택")
+//    @ParameterizedTest(name="[{index}]. 수량 -> {0}")
+//    @ValueSource(ints = {1, 20, 50, 100})
+//    public void test2_1(int n) throws Exception {
+//        for(int i=0; i<n; i++){
+//            ItemDto dto = createItem(i+1);
+//            dao.insert(dto);
+//        }
+//        assertTrue(dao.count()==n);
+//    }
+//
+//
+//
+//    //2. 혼성 top8 선택
+//    //성공 : dto 8개 이하
+//    //실패 : null or 9개 이상
+//    //예외 :
+//    @DisplayName("혼성 top8 선택")
+//    @ParameterizedTest(name="[{index}]. 수량 -> {0}")
+//    @ValueSource(ints = {1, 20, 50, 100})
+//    public void test3_1(int n) throws Exception {
+//        for(int i=0; i<n; i++){
+//            ItemDto dto = createItem(i+1);
+//            dao.insert(dto);
+//        }
+//        assertTrue(dao.count()==n);
 //    }
 
 

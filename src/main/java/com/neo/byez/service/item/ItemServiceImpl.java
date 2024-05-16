@@ -176,4 +176,25 @@ public class ItemServiceImpl {
     }
 
 
+
+
+    //     메인 페이지 여성 top 8 보주기
+    public List<ItemDto> showWTop8(ItemDto dto) throws Exception {
+        dto.setItem_type("02");
+        return dao.selectWTop8(dto);
+    }
+
+    //     메인 페이지 남성 top 8 보주기
+    public List<ItemDto> showMTop8(ItemDto dto) throws Exception {
+        dto.setItem_type("01");
+        return dao.selectWTop8(dto);
+    }
+
+    //     메인 페이지 혼성 top 8 보주기git commit -m [feat] 상품파트 service 2차 구현"
+    public List<ItemDto> showUTop8(ItemDto dto) throws Exception {
+        dto.setItem_type("03");
+        return dao.selectWTop8(dto);
+    }
+
+
 }

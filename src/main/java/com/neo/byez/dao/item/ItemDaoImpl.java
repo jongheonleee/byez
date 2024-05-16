@@ -69,4 +69,20 @@ public class ItemDaoImpl implements ItemDao {
 //        return session.insert(namespace + "insertItemPrice", dto);
 //    }
 
+
+    //    메인페이지 여성 top 8개 상품 띄우기
+    public List<ItemDto> selectWTop8(ItemDto dto) throws Exception {
+        return session.selectList(namespace+"selectWTop8", dto);
+    }
+
+    //    메인페이지 남성 top 8개 상품 띄우기
+    public List<ItemDto> selectMTop8(ItemDto dto) throws Exception {
+        return session.selectList(namespace+"selectMTop8", dto);
+    }
+
+    //    메인페이지 혼성 top 8개 상품 띄우기
+    public List<ItemDto> selectUTop8(ItemDto dto) throws Exception {
+        return session.selectList(namespace+"selectUTop8", dto);
+    }
+
 }

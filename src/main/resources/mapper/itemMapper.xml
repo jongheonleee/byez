@@ -69,4 +69,36 @@
 <!--    insert into item_price( num, disc_rate, start_date, end_date, remark, reg_date, reg_id, up_date, up_id ) -->
 <!--    value( #{num}, #{disc_rate}, now(), date_add(now(), interval #{period} month), #{remark}, now(), 'manager', now(), 'manager' )-->
 <!--  </insert>-->
+
+  <!--    메인페이지에 성별 별 top 8 띄우기-->
+
+  <select id="selectWTop8" resultType="ItemDto">
+    select
+    i.*,
+    row_number() over (order by s.sales_qty desc) as rankk
+    from item i, item_state s
+    where i.num = s.num
+    and i.item_type=#{item_type}
+    limit 8;
+  </select>
+
+  <select id="selectMTop8" resultType="ItemDto">
+    select
+    i.*,
+    row_number() over (order by s.sales_qty desc) as rankk
+    from item i, item_state s
+    where i.num = s.num
+    and i.item_type=#{item_type}
+    limit 8;
+  </select>
+
+  <select id="selectUTop8" resultType="ItemDto">
+    select
+    i.*,
+    row_number() over (order by s.sales_qty desc) as rankk
+    from item i, item_state s
+    where i.num = s.num
+    and i.item_type=#{item_type}
+    limit 8;
+  </select>
 </mapper>

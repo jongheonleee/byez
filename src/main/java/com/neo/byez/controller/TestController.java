@@ -11,14 +11,14 @@ public class TestController {
     @Autowired
     TestServiceImpl testService;
 
-    @RequestMapping("/")
-    public String now(Model m){
-        String result = "";
-        result = testService.now();
-        if (result.equals("")){
-            m.addAttribute("msg", "Error");
-        }
-        m.addAttribute("now", result);
-        return "index";
-    }
+//    @RequestMapping("/")
+//    public String now(Model m){
+//        String result = "";
+//        result = testService.now();
+//        if (result.equals("")){
+//            m.addAttribute("msg", "Error");
+//        }
+//        m.addAttribute("now", result);
+//        return "index";
+//    }
 }
