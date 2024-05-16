@@ -14,16 +14,8 @@ import java.util.List;
 public class HomeController {
     @Autowired
     ItemServiceImpl itemService;
-//    @GetMapping("/")
-//    public String main() {
-//        return "main";
-//    }
-
-
-
-
-    @RequestMapping("/")
-    public String index(Model model) {
+//    @RequestMapping("/")
+//    public String index(Model model) {
 //        ItemDto dto =new ItemDto();
 //        try {
 //            List<ItemDto> boardList;
@@ -44,6 +36,6 @@ public class HomeController {
 //            e.printStackTrace();
 //            return "error";
 //        }
-        return "index2";
-    }
+//        return "index2";
+//    }
 }
