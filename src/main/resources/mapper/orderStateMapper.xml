@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neo.byez.dao.order.OrderStateDao">
+
+    <!-- Count 문 (주문번호로 카운트) -->
+    <select id="count" resultType="int" parameterType="string">
+        SELECT COUNT(*)
+        FROM ord_state
+        WHERE ord_num = #{ord_num}
+    </select>
+
+    <!-- CountAll 문 -->
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*)
+        FROM ord_state
+    </select>
+
+    <!-- Insert 문 -->
+    <insert id="insert" parameterType="OrderStateDto">
+        INSERT INTO ord_state (ord_num, seq, state_code, chg_date, reg_date, reg_id, up_date, up_id)
+        VALUES (#{ord_num}, #{seq}, #{state_code}, now(), now(), #{reg_id}, now(), #{up_id})
+    </insert>
+
+    <!-- Select 문 (주문번호로 전체 진행상태 조회) -->
+    <select id="select" parameterType="string" resultType="OrderStateDto">
+        SELECT *
+        FROM ord_state
+        WHERE ord_num = #{ord_num}
+    </select>
+
+    <!-- Select 문 (모든 데이터 조회) -->
+    <select id="selectAll" resultType="OrderStateDto">
+        SELECT *
+        FROM ord_state
+    </select>
+
+    <!-- Update 문 -->
+    <update id="update" parameterType="OrderStateDto">
+        UPDATE ord_state
+        SET state_code = #{state_code},
+            chg_date = now(),
+            up_date = now(),
+            up_id = #{up_id}
+        WHERE ord_num = #{ord_num}
+        AND seq = #{seq}
+    </update>
+
+    <!-- Delete 문 (주문번호로 삭제) -->
+    <delete id="delete" parameterType="string">
+        DELETE
+        FROM ord_state
+        WHERE ord_num = #{ord_num}
+    </delete>
+
+    <!-- DeleteAll 문 -->
+    <delete id="deleteAll">
+        DELETE
+        FROM ord_state
+    </delete>
+</mapper>

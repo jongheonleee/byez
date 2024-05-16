@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neo.byez.dao.order.DeliveryDao">
+    <!-- Count 문 -->
+    <select id="count" resultType="int">
+        SELECT COUNT(*)
+        FROM dlv
+    </select>
+
+    <!-- Insert 문 -->
+    <insert id="insert" parameterType="DeliveryDto">
+        INSERT INTO dlv (dlv_num, ord_num, waybill_num, dlv_corp, rcpr, rcpr_mobile, pickup_chk, zpcd, main_addr, detail_addr, msg, start_date, end_date, state, remark, reg_date, reg_id, up_date, up_id)
+        VALUES (#{dlv_num}, #{ord_num}, #{waybill_num}, #{dlv_corp}, #{rcpr}, #{rcpr_mobile}, #{pickup_chk}, #{zpcd}, #{main_addr}, #{detail_addr}, #{msg}, #{start_date}, #{end_date}, #{state}, #{remark}, now(), #{reg_id}, now(), #{up_id})
+    </insert>
+
+    <!-- Select 문 (배송번호로 조회) -->
+    <select id="select" parameterType="string" resultType="DeliveryDto">
+        SELECT *
+        FROM dlv
+        WHERE dlv_num = #{dlv_num}
+    </select>
+
+    <!-- Update 문 -->
+    <update id="update" parameterType="DeliveryDto">
+        UPDATE dlv
+        SET waybill_num = #{waybill_num},
+            dlv_corp = #{dlv_corp},
+            rcpr = #{rcpr},
+            rcpr_mobile = #{rcpr_mobile},
+            pickup_chk = #{pickup_chk},
+            zpcd = #{zpcd},
+            main_addr = #{main_addr},
+            detail_addr = #{detail_addr},
+            msg = #{msg},
+            start_date = #{start_date},
+            end_date = #{end_date},
+            state = #{state},
+            remark = #{remark},
+            up_date = now(),
+            up_id = #{up_id}
+        WHERE dlv_num = #{dlv_num}
+    </update>
+
+    <!-- Delete 문 (배송번호로 삭제) -->
+    <delete id="delete" parameterType="string">
+        DELETE FROM dlv
+        WHERE dlv_num = #{dlv_num}
+    </delete>
+
+    <!-- DeleteAll 문 -->
+    <delete id="deleteAll">
+        DELETE FROM dlv
+    </delete>
+</mapper>

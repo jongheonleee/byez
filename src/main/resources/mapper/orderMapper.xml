@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neo.byez.dao.order.OrderDao">
+    <!-- Count 문 (한명의 고객이 주문한 개수) -->
+    <select id="count" resultType="int" parameterType="string">
+        SELECT COUNT(*)
+        FROM ord
+        WHERE id = #{id}
+    </select>
+
+    <!-- CountAll 문 (모든 주문내역)-->
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*)
+        FROM ord
+    </select>
+
+    <!-- Insert 문 -->
+    <insert id="insert" parameterType="OrderDto">
+        INSERT INTO ord (ord_num, id, total_item_qty, total_price, total_dlv_price, total_disc_price, total_pay_price, ord_date, ord_state, reg_date, reg_id, up_date, up_id)
+        VALUES (#{ord_num}, #{id}, #{total_item_qty}, #{total_price}, #{total_dlv_price}, #{total_disc_price}, #{total_pay_price}, now(), #{ord_state}, now(), #{id}, now(), #{id})
+    </insert>
+
+    <!-- Select 문 (주문번호로 조회) -->
+    <select id="select" parameterType="string" resultType="OrderDto">
+        SELECT *
+        FROM ord
+        WHERE ord_num = #{ord_num}
+    </select>
+
+    <!-- Select 문 (ID로  조회) -->
+    <select id="selectAll" parameterType="string" resultType="OrderDto">
+        SELECT *
+        FROM ord
+        WHERE id = #{id}
+    </select>
+
+    <!-- Select문 주문상세 정보 (주문번호로 조회) -->
+    <select id="selectOrderResult" resultType="OrderResultInfo" parameterType="string">
+        select *
+        from ord ord, dlv dlv
+        where ord.ord_num = dlv.ord_num
+          and ord.ord_num = #{ord_num};
+    </select>
+
+    <!-- Update 문 (하나의 주문 수정)-->
+    <update id="update" parameterType="OrderDto">
+        UPDATE ord
+        SET total_item_qty = #{total_item_qty},
+            total_price = #{total_price},
+            total_dlv_price = #{total_dlv_price},
+            total_disc_price = #{total_disc_price},
+            total_pay_price = #{total_pay_price},
+            ord_date = #{ord_date},
+            ord_state = #{ord_state},
+            up_date = now(),
+            up_id = #{up_id}
+        WHERE ord_num = #{ord_num}
+    </update>
+
+    <!-- Delete 문 (주문번호로 삭제) -->
+    <delete id="delete" parameterType="string">
+        DELETE FROM ord
+        WHERE ord_num = #{ord_num}
+    </delete>
+
+    <!-- 추가 할 것 -->
+    <!-- ############## DeleteById (ID에 해당하는 주문 삭제) -->
+
+    <!-- DeleteAll 문 (테이블 전체 삭제) -->
+    <delete id="deleteAll">
+        DELETE
+        FROM ord
+    </delete>
+</mapper>

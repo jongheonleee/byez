@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neo.byez.dao.order.OrderDetailDao">
+
+    <!-- Count 문 (주문번호로 카운트) -->
+    <select id="count" resultType="int" parameterType="string">
+        SELECT COUNT(*)
+        FROM ord_detail
+        WHERE ord_num = #{ord_num}
+    </select>
+
+    <!-- CountAll 문 -->
+    <select id="countAll" resultType="int">
+        SELECT COUNT(*)
+        FROM ord_detail
+    </select>
+
+    <!-- Insert 문 -->
+    <insert id="insert" parameterType="OrderDetailDto">
+        INSERT INTO ord_detail (ord_num, seq, item_num, id, item_name, price, item_comt, item_qty, item_price, ord_date, opt1, opt2, opt3, opt4, opt5, reg_date, reg_id, up_date, up_id)
+        VALUES (#{ord_num}, #{seq}, #{item_num}, #{id}, #{item_name}, #{price}, #{item_comt}, #{item_qty}, #{item_price}, now(), #{opt1}, #{opt2}, #{opt3}, #{opt4}, #{opt5}, now(), #{id}, now(), #{id});
+    </insert>
+
+    <!-- Select 문 (주문번호로 조회) -->
+    <select id="select" parameterType="string" resultType="OrderDetailDto">
+        SELECT *
+        FROM ord_detail
+        WHERE ord_num = #{ord_num}
+    </select>
+
+    <!-- Select 문 (ID로 조회) -->
+    <select id="selectAll" parameterType="string" resultType="OrderDetailDto">
+        SELECT *
+        FROM ord_detail
+        WHERE id = #{id}
+    </select>
+
+    <!-- Update 문 -->
+    <update id="update" parameterType="OrderDetailDto">
+        UPDATE ord_detail
+        SET item_num = #{item_num},
+            item_name = #{item_name},
+            price = #{price},
+            item_comt = #{item_comt},
+            item_qty = #{item_qty},
+            item_price = #{item_price},
+            ord_date = #{ord_date},
+            opt1 = #{opt1},
+            opt2 = #{opt2},
+            opt3 = #{opt3},
+            opt4 = #{opt4},
+            opt5 = #{opt5},
+            up_date = now(),
+            up_id = #{up_id}
+        WHERE ord_num = #{ord_num}
+        AND seq = #{seq}
+    </update>
+
+    <!-- Delete 문 (주문번호로 삭제) -->
+    <delete id="delete" parameterType="string">
+        DELETE
+        FROM ord_detail
+        WHERE ord_num = #{ord_num}
+    </delete>
+
+    <!-- DeleteAll 문 -->
+    <delete id="deleteAll">
+        DELETE
+        FROM ord_detail
+    </delete>
+</mapper>

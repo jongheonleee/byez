@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neo.byez.dao.order.PayHistoryDao">
+    <!-- Count 문 -->
+    <select id="count" resultType="int">
+        SELECT COUNT(*)
+        FROM pay_hist
+    </select>
+
+    <!-- Insert 문 -->
+    <insert id="insert" parameterType="PayHistoryDto">
+        INSERT INTO pay_hist (pay_num, seq, price, state, rec_date, reg_date, reg_id, up_date, up_id)
+        VALUES (#{pay_num}, #{seq}, #{price}, #{state}, now(), now(), #{reg_id}, now(), #{up_id})
+    </insert>
+
+    <!-- Select 문 (결제번호로 조회) -->
+    <select id="select" parameterType="string" resultType="PayHistoryDto">
+        SELECT *
+        FROM pay_hist
+        WHERE pay_num = #{pay_num}
+    </select>
+
+    <!-- Update 문 -->
+    <update id="update" parameterType="PayHistoryDto">
+        UPDATE pay_hist
+        SET price = #{price},
+            state = #{state},
+            rec_date = now(),
+            up_date = now(),
+            up_id = #{up_id}
+        WHERE pay_num = #{pay_num}
+        AND seq = #{seq}
+    </update>
+
+    <!-- Delete 문 (결제번호로 삭제) -->
+    <delete id="delete" parameterType="string">
+        DELETE
+        FROM pay_hist
+        WHERE pay_num = #{pay_num}
+    </delete>
+
+    <!-- DeleteAll 문 -->
+    <delete id="deleteAll">
+        DELETE
+        FROM pay_hist
+    </delete>
+</mapper>

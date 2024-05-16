@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neo.byez.dao.order.PayStateDao">
+    <!-- Count 문 -->
+    <select id="count" resultType="int">
+        SELECT COUNT(*)
+        FROM pay_state
+    </select>
+
+    <!-- Insert 문 -->
+    <insert id="insert" parameterType="PayStateDto">
+        INSERT INTO pay_state (pay_num, seq, state_code, state_chg_date, reg_date, reg_id, up_date, up_id)
+        VALUES (#{pay_num}, #{seq}, #{state_code}, now(), now(), #{reg_id}, now(), #{up_id})
+    </insert>
+
+    <!-- Select 문 (결제번호로 조회) -->
+    <select id="select" parameterType="string" resultType="PayStateDto">
+        SELECT *
+        FROM pay_state
+        WHERE pay_num = #{pay_num}
+    </select>
+
+    <!-- Update 문 -->
+    <update id="update" parameterType="PayStateDto">
+        UPDATE pay_state
+        SET state_code = #{state_code},
+            state_chg_date = now(),
+            up_date = now(),
+            up_id = #{up_id}
+        WHERE pay_num = #{pay_num}
+        AND seq = #{seq};
+    </update>
+
+    <!-- Delete 문 (결제번호로 삭제) -->
+    <delete id="delete" parameterType="string">
+        DELETE
+        FROM pay_state
+        WHERE pay_num = #{pay_num}
+    </delete>
+
+    <!-- DeleteAll 문 -->
+    <delete id="deleteAll">
+        DELETE
+        FROM pay_state
+    </delete>
+</mapper>
