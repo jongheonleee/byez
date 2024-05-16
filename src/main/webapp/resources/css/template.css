@@ -1,0 +1,10 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+section {width: 100%; min-width: 1200px; height: fit-content; padding: 50px 0; box-sizing: border-box; margin-top: 90px;}
+
+section .wrapper {background-color: rgba(0, 255, 0, 0.1);}
+
+section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}

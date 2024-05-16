@@ -5,7 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import static com.neo.byez.constant.ValidatorMessage.*;
+import static com.neo.byez.common.message.ValidatorMessage.*;
 
 public class LoginValidator implements Validator {
     // 검증하려는 객체가 UserDto 타입인지 확인

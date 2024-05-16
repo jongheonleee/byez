@@ -1,0 +1,8 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+footer {width: 100%; min-width: 1200px; height: 90px; background-color: rgba(0, 0, 255, 0.1); float: left;}
+
+footer .wrapper {display: flex; align-items: center;}

@@ -1,6 +1,6 @@
 package com.neo.byez.controller;
 
-import com.neo.byez.constant.ValidatorMessage;
+
 import com.neo.byez.domain.UserDto;
 import com.neo.byez.service.MailService;
 import com.neo.byez.service.UserServiceImpl;
@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+
+import static com.neo.byez.common.message.ValidatorMessage.*;
 
 @Controller
 @RequestMapping("/register")
@@ -97,7 +99,7 @@ public class SignUpController {
 
         // PWD : 아이디 값 포함 불가
         if (pwd1.contains(userDto.getId())) {
-            model.addAttribute("errorMsg", ValidatorMessage.PASSWORD_CONTAINS_ID.getMessage());
+            model.addAttribute("errorMsg", PASSWORD_CONTAINS_ID.getMessage());
             return "register";
         }
 
@@ -114,7 +116,7 @@ public class SignUpController {
         // 3.3. 회원가입 실패 시
         // 3.3.1. 회원가입 페이지(register)로 이동
         else {
-            model.addAttribute("errorMsg", ValidatorMessage.DUPLICATED_ID.getMessage());
+            model.addAttribute("errorMsg", DUPLICATED_ID.getMessage());
             return "register";
         }
     }

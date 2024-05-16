@@ -5,7 +5,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import static com.neo.byez.constant.ValidatorMessage.*;
+import static com.neo.byez.common.message.ValidatorMessage.*;
 
 public class SignUpValidator implements Validator {
 

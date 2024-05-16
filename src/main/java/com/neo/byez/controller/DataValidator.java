@@ -1,9 +1,10 @@
 package com.neo.byez.controller;
 
 
+import static com.neo.byez.common.message.ValidatorMessage.*;
+
 import org.springframework.stereotype.Component;
 
-import static com.neo.byez.constant.ValidatorMessage.*;
 
 @Component
 public class DataValidator {

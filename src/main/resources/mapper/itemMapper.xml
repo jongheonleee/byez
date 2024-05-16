@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.neo.byez.dao.item.ItemDao">
+  <select id="count" resultType="Integer">
+    select count(*)
+    from item
+  </select>
+
+  <select id="selectAll" resultType="ItemDto">
+    select *
+    from item
+  </select>
+
+  <select id="select" parameterType="string" resultType="ItemDto">
+    select *
+    from item
+    where num = #{num}
+  </select>
+
+  <insert id="insert" parameterType="ItemDto">
+    insert into item( num, name, price, disc_price, main_img, review_cnt, like_cnt, review_rate, col, reg_date, reg_id, up_date, up_id, item_type, cust_type)
+    values( #{num}, #{name}, #{price}, #{disc_price}, #{main_img}, #{review_cnt}, #{like_cnt}, #{review_rate}, #{col}, now(), 'manager', now(), 'manager', #{item_type}, #{cust_type})
+  </insert>
+
+  <update id="update" parameterType="ItemDto">
+    update item
+    set name = #{name}, price = #{price}, disc_price = #{disc_price}, main_img = #{main_img}, review_cnt = #{review_cnt}, like_cnt = #{like_cnt}, review_rate = #{review_rate}, col = #{col}, reg_date = now(), reg_id = 'manage', up_date = now(), up_id = 'manager', item_type = #{item_type}, cust_type = #{cust_type}
+    where num = #{num};
+  </update>
+
+  <delete id="delete" parameterType="ItemDto">
+    delete
+    from item
+    where num = #{num}
+  </delete>
+
+  <delete id="deleteAll">
+    delete
+    from item
+  </delete>
+  <!--  카테고리 상품 조회  -->
+  <!--  대분류  -->
+  <!--  판매량, 리뷰수, 좋아요수 순으로 정렬  -->
+  <!--  중분류  -->
+  <!--  판매량, 리뷰수, 좋아요수 순으로 정렬  -->
+  <!--  소분류  -->
+  <!--  판매량, 리뷰수, 좋아요수 순으로 정렬  -->
+  <!--  자바 객체에서 % 붙여서 넣어주기 -->
+  <select id="selectItemType" parameterType="Category" resultType="ItemDto">
+    select *
+    from item i
+    inner join item_state s
+    on i.num = s.num
+    where i.item_type like #{item_type_format}
+    order by s.sales_qty desc, i.review_cnt desc, i.like_cnt desc
+  </select>
+
+<!--  &lt;!&ndash;  상품 상태 등록  &ndash;&gt;-->
+<!--  <insert id="insertItemState" parameterType="ItemStateDto">-->
+<!--    insert into item_state( num, sales_qty, view_cnt, stock_qty, state_code, reg_date, reg_id, up_date, up_id ) -->
+<!--    value( #{num}, #{sales_qty}, #{view_cnt}, #{stock_qty}, #{state_code}, now(), 'manager', now(), 'manager' )-->
+<!--  </insert>-->
+<!--  -->
+<!--  &lt;!&ndash;  상품 가격 등록  &ndash;&gt;-->
+<!--  <insert id="insertItemPrice" parameterType="ItemPriceDto">-->
+<!--    insert into item_price( num, disc_rate, start_date, end_date, remark, reg_date, reg_id, up_date, up_id ) -->
+<!--    value( #{num}, #{disc_rate}, now(), date_add(now(), interval #{period} month), #{remark}, now(), 'manager', now(), 'manager' )-->
+<!--  </insert>-->
+</mapper>

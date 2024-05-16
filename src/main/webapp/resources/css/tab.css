@@ -1,0 +1,25 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+/* 탭 메뉴 영역 */
+.tab_menu {box-sizing: border-box; width: 240px; height: 50px; display: flex; box-sizing: border-box; position: relative; z-index: 1; margin:50px auto 0;}
+.tab_menu li {width: calc(100%/3); height: 100%; box-sizing: border-box;}
+.tab_menu li a {width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; font-weight: bold; box-sizing: border-box; font-size: 20px; font-weight: normal;}
+.tab_menu li a.tab_active {
+    border-bottom: 2px solid black;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+/* 탭 콘텐츠 영역 */
+.tab_container {width: 100%; height: 100%; position: relative;}
+.tab_content {width: 100%; display: flex; justify-content: center; align-items: center;}
+.tab_c_arti {width: 100%; height: 100%;}
+.char {width: 90%; height: 50%; background-color: black; margin: auto; display: flex; justify-content: center; overflow-x:hidden;}
+.char img {height: 100%;}
+.tab_content h6 {font-size: 1.2vw; text-align: center; margin: 10px 0;}
+.tab_c_arti h6 {text-align: justify;}
+#char_name {text-align: center;}
+
+.tab_content img {width: 100%;}

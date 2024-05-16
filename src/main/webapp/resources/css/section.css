@@ -1,0 +1,13 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+section {width: 100%; min-width: 1200px; height: fit-content; background-color: rgba(0, 255, 0, 0.1);  margin-top: 90px; float: left; padding: 50px 0;}
+
+section>.wrapper {background-color: rgba(0, 255, 0, .1);}
+
+
+
+section>.wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
+section>.wrapper>p:nth-of-type(2) {font-size: 42px; font-weight: bold; text-align: center;}

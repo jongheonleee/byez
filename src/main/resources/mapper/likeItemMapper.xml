@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.item.LikeItemDao">
+  <select id="count" parameterType="string" resultType="Integer">
+    select count(*)
+    from item_like
+    where id = #{id}
+  </select>
+
+  <select id="selectAll" parameterType="string" resultType="LikeItemDto">
+    select *
+    from item_like
+    where id = #{id}
+  </select>
+
+  <select id="select" parameterType="LikeItemDto" resultType="LikeItemDto">
+    select *
+    from item_like
+    where id = #{id}
+    and num = #{num}
+  </select>
+
+  <insert id="insert" parameterType="LikeItemDto">
+    insert into item_like(id, num, name, type, price, disc_price, item_comt,
+                          main_img, review_cnt, like_cnt, state_code, comt,
+                          reg_date, reg_id, up_date, up_id)
+    values(#{id}, #{num}, #{name}, #{type}, #{price}, #{disc_price}, #{item_comt},
+           #{main_img}, #{review_cnt}, #{like_cnt}, #{state_code}, #{comt},
+           now(), "manager1", now(), "manager1");
+ </insert>
+
+  <update id="update" parameterType="LikeItemDto">
+    update item_like
+    set name = #{name}, type = #{type}, price = #{price}, disc_price = #{disc_price}, item_comt = #{item_comt},
+        main_img = #{main_img}, review_cnt = #{review_cnt}, like_cnt = #{like_cnt}, state_code = #{state_code},
+        comt = #{comt}, reg_date = now(), reg_id = "manager", up_date = now(), up_id = "manger"
+    where id = #{id}
+    and num = #{num}
+  </update>
+
+  <delete id="delete" parameterType="LikeItemDto">
+    delete
+    from item_like
+    where id = #{id}
+    and num = #{num}
+  </delete>
+
+
+  <delete id="deleteAll" parameterType="string">
+    delete
+    from item_like
+    where id = #{id}
+  </delete>
+</mapper>

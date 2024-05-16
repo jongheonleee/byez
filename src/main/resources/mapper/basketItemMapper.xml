@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.item.BasketItemDao">
+  <select id="count" parameterType="BasketItemDto" resultType="Integer">
+    select count(*)
+    from basket b
+    inner join item_basket ib
+    on b.id = ib.id
+    where b.id = #{id};
+  </select>
+
+  <select id="selectAll" parameterType="BasketItemDto" resultType="BasketItemDto">
+    select *
+    from basket b
+    inner join item_basket ib on b.id = ib.id
+    where b.id = #{id}
+  </select>
+
+  <select id="select" parameterType="BasketItemDto" resultType="BasketItemDto">
+    select *
+    from basket b
+    inner join item_basket ib on b.id = ib.id
+    where b.id = #{id}
+    and ib.seq = #{seq}
+  </select>
+
+  <insert id="insert" parameterType="BasketItemDto">
+    insert into
+    item_basket(id, num, name, price, qty, opt1, opt2, opt3, coupon_chk, reg_date, reg_id, up_date, up_id)
+    values(#{id}, #{num}, #{name}, #{price}, #{qty}, #{opt1}, #{opt2}, #{opt3}, #{coupon_chk}, now(), "manager1", now(), "manager1")
+  </insert>
+
+  <update id="update" parameterType="BasketItemDto">
+    update item_basket
+    set qty = #{qty}, opt1 = #{opt1}, opt2 = #{opt2}, opt3 = #{opt3}, coupon_chk = #{coupon_chk}
+    where id = #{id} and seq = #{seq};
+  </update>
+
+  <delete id="delete" parameterType="BasketItemDto">
+    delete
+    from item_basket
+    where id = #{id}
+    and seq = #{seq};
+  </delete>
+
+  <delete id="deleteByContent" parameterType="BasketItemDto">
+    delete
+    from item_basket
+    where id = #{id}
+    and num = #{num}
+    and name = #{name}
+    and opt1 = #{opt1}
+    and opt2 = #{opt2}
+    and opt3 = #{opt3}
+  </delete>
+
+  <delete id="deleteAll" parameterType="BasketItemDto">
+    delete
+    from item_basket
+    where id = #{id};
+  </delete>
+</mapper>

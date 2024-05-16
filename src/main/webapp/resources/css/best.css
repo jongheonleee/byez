@@ -1,0 +1,47 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+
+section {width: 100%; min-width: 1200px; height: fit-content; padding: 50px 0;  margin-top: 90px;}
+section .wrapper {width: 70%; max-width: 1165px;
+    min-width: 1005px;}
+
+section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
+section .wrapper>p:nth-of-type(2) {font-size: 20px; font-weight: bold;}
+
+.category {width: 100%; height: 60px; margin: 10px 0 50px 0; border: 1px solid lightgray; box-sizing: border-box;}
+.category>ul:first-of-type {width: fit-content; height: 100%; display: flex; align-items: center; justify-content: space-around; float: left; padding-left: 30px;}
+.category>ul:first-of-type li {margin-right: 50px;}
+.category>div:first-of-type {width: fit-content; height: 100%; float: right;}
+.item_num {width: 140px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid lightgray; box-sizing: border-box;}
+.sort {width: 140px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid lightgray; box-sizing: border-box; position: relative;}
+.order {position: absolute; top:100%; width: 100%; height: 350px;border: 1px solid lightgray; display: none;
+    z-index: 5; 
+}
+.order>li {display: flex; justify-content: center; align-items: center; width: 100%; height: calc(100%/9); background-color: white;}
+
+
+.weekly_best {width: 100%; height: fit-content; margin-top: 50px; display: flex; flex-wrap: wrap; justify-content: flex-start; align-content: space-between;}
+.weekly_best li {width: calc(100%/3); height: 690px; padding: 0 5px; box-sizing: border-box; position: relative;}
+.weekly_best li img {width: 100%; height: 400px; object-fit:cover; object-position: top;}
+.item_name {width: 100%; height: fit-content; display: flex; justify-content: space-between; margin: 10px 0;}
+.item_name span {overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 400px;
+ font-size: 17px;}
+ .item_name i {font-size: 22px; color: gray;}
+.sales_price {text-decoration:line-through; font-size: 17px;}
+.discounted_price {font-weight: bold; font-size: 25px;}
+.col {width: fit-content; height: 14px; margin: 15px 0;}
+.col li {width: 14px; height: 100%; border: 1px solid lightgray; box-sizing: border-box; float: left; margin-right: 3px;}
+
+.stars {margin-bottom: 5px;}
+.review_cnt {margin: 5px 0;}
+
+.sex {padding: 3px; background-color: black; width: fit-content; color: white;}
+.rank {width: 45px; height: 45px; background-color: black; display: flex; justify-content: center; align-items: center; color: white; position: absolute; top:0; left: 5px; font-size: 18px; font-weight: bold;}
+
+
+
+
+

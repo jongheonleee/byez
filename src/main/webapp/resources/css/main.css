@@ -1,0 +1,26 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+section {width: 100%; min-width: 1200px; height: fit-content; padding: 50px 0; box-sizing: border-box; margin-top: 90px;}
+
+section .wrapper>p {font-size: 42px; text-align: center; font-weight: bold;}
+
+.weekly_best {width: 100%; height: fit-content; margin-top: 50px; display: flex; flex-wrap: wrap; justify-content: flex-start; align-content: space-between;}
+.weekly_best li {width: 25%; height: 690px; padding: 0 5px; box-sizing: border-box; position: relative;}
+.weekly_best li img {width: 100%; height: 400px; object-fit:cover; object-position: top;}
+.item_name {width: 100%; height: fit-content; display: flex; justify-content: space-between; margin: 10px 0;}
+.item_name span {overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 400px;
+ font-size: 17px;}
+ .item_name i {font-size: 22px; color: gray;}
+.sales_price {text-decoration:line-through; font-size: 17px;}
+.discounted_price {font-weight: bold; font-size: 25px;}
+.col {width: fit-content; height: 14px; margin: 15px 0;}
+.col li {width: 14px; height: 100%; border: 1px solid lightgray; box-sizing: border-box; float: left; margin-right: 3px;}
+
+.stars {margin-bottom: 5px;}
+.review_cnt {margin: 5px 0;}
+
+.sex {padding: 3px; background-color: black; width: fit-content; color: white;}
+.rank {width: 45px; height: 45px; background-color: black; display: flex; justify-content: center; align-items: center; color: white; position: absolute; top:0; left: 5px; font-size: 18px; font-weight: bold;}

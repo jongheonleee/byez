@@ -9,5 +9,15 @@
         <typeAlias alias="UserInfoHistDto" type="com.neo.byez.domain.UserInfoHistDto"/>
         <!-- 고객 관련 : 수인 - 끝 -->
 
+        <!-- 상품 관련 : 종헌 - 시작 -->
+        <typeAlias alias="ItemDto" type="com.neo.byez.domain.item.ItemDto"/>
+        <typeAlias alias="Category" type="com.neo.byez.domain.item.Category"/>
+        <typeAlias alias="BasketItemDto" type="com.neo.byez.domain.item.BasketItemDto"/>
+        <typeAlias alias="BasketDto" type="com.neo.byez.domain.item.BasketDto"/>
+        <typeAlias alias="LikeItemDto" type="com.neo.byez.domain.item.LikeItemDto"/>
+        <typeAlias alias="ItemPriceDto" type="com.neo.byez.domain.item.ItemPriceDto"/>
+        <typeAlias alias="ItemStateDto" type="com.neo.byez.domain.item.ItemStateDto"/>
+        <!-- 상품 관련 : 종헌 - 끝 -->
+
     </typeAliases>
 </configuration>
