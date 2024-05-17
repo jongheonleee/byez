@@ -31,5 +31,12 @@
         <!-- 주문 관련 : 진우 - 끝 -->
         <typeAlias alias="OrdEtcReqDto" type="com.neo.byez.domain.order.OrdEtcReqDto"/>
         <typeAlias alias="ItemOptionDto" type="com.neo.byez.domain.order.ItemOptionDto"/>
+
+        <!-- 쿠폰 배송지 목록 관련 : 제법 - 시작 -->
+        <typeAlias alias="CouponDto" type="com.neo.byez.domain.CouponDto"/>
+        <typeAlias alias="CustCouponsDto" type="com.neo.byez.domain.CustCouponsDto"/>
+        <typeAlias alias="AddressEntryDto" type="com.neo.byez.domain.AddressEntryDto"/>
+        <!-- 쿠폰 배송지 목록 관련 : 제법 - 끝 -->
+
     </typeAliases>
 </configuration>

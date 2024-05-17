@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.CustCouponsMapper">
+
+    <resultMap id="CustCouponsDtoResultMap" type="CustCouponsDto">
+        <id property="seq" column="seq"/>
+        <id property="id" column="id"/>
+        <result property="couponSeq" column="coupon_seq"/>
+        <result property="issueDate" column="issue_date"/>
+        <result property="expDate" column="exp_date"/>
+        <result property="couponState" column="coupon_state"/>
+        <result property="regDate" column="reg_date"/>
+        <result property="regId" column="reg_id"/>
+        <result property="upDate" column="up_date"/>
+        <result property="upId" column="up_id"/>
+    </resultMap>
+
+    <select id="count" resultType="int">
+        SELECT count(*) FROM cust_coupons;
+    </select>
+
+    <select id="select" parameterType="String" resultMap="CustCouponsDtoResultMap">
+        SELECT * FROM cust_coupons
+        WHERE id = #{id}
+        AND coupon_state = 'AV';
+    </select>
+
+    <select id="selectAll" resultMap="CustCouponsDtoResultMap">
+        SELECT * FROM cust_coupons;
+    </select>
+
+    <insert id="insert" parameterType="map">
+        INSERT INTO cust_coupons (id, coupon_seq, issue_date, exp_date, coupon_state, reg_date, reg_id, up_date, up_id)
+        SELECT
+            #{id},
+            c.seq,
+            CURDATE(),
+            DATE_ADD(CURRENT_DATE, INTERVAL c.valid_day DAY),
+            'AV',
+            CURDATE(),
+            'sys',
+            CURDATE(),
+            'sys'
+        FROM
+            coupon c
+        WHERE
+            c.name = #{couponName};
+    </insert>
+
+    <delete id="deleteAll">
+        DELETE FROM cust_coupons;
+    </delete>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM cust_coupons
+        WHERE seq = #{seq};
+    </delete>
+
+    <update id="update" parameterType="int">
+        UPDATE cust_coupons
+        SET coupon_state = 'US'
+        WHERE seq = #{seq};
+    </update>
+
+
+</mapper>
+

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.AddrListMapper">
+    
+    <resultMap id="AddressEntryDtoResultMap" type="AddressEntryDto">
+        <id property="id" column="id"/>
+        <id property="seq" column="seq"/>
+        <result property="recipient" column="rcpr"/>
+        <result property="nick" column="nick"/>
+        <result property="zpcd" column="zpcd"/>
+        <result property="mainAddr" column="main_addr"/>
+        <result property="detailAddr" column="detail_addr"/>
+        <result property="telNum" column="tel_num"/>
+        <result property="mobileNum" column="mobile_num"/>
+        <result property="addrRegDate" column="addr_reg_date"/>
+        <result property="regDate" column="reg_date"/>
+        <result property="regId" column="reg_id"/>
+        <result property="upDate" column="up_date"/>
+        <result property="upId" column="up_id"/>
+    </resultMap>
+
+    <!-- 모든 유저의 총 주소록 개수 -->
+    <select id="count" resultType="int">
+        SELECT count(*) FROM addr_list;
+    </select>
+
+    <!-- 모든 유저의 총 주소록들 조회 -->
+    <select id="selectAll" resultMap="AddressEntryDtoResultMap">
+        SELECT * FROM addr_list;
+    </select>
+
+    <!-- 유저의 id에 해당하는 주소록들 조회 -->
+    <select id="selectById" parameterType="String" resultMap="AddressEntryDtoResultMap">
+        SELECT * FROM addr_list
+        WHERE id = #{id};
+    </select>
+
+    <select id="selectBySeq" parameterType="int" resultMap="AddressEntryDtoResultMap">
+        SELECT * FROM addr_list
+        WHERE seq = #{seq};
+    </select>
+
+    <!-- 유저의 배송지 추가 -->
+    <insert id="insert" parameterType="AddressEntryDto">
+        INSERT INTO addr_list (id, rcpr, nick, zpcd, main_addr, detail_addr, tel_num, mobile_num, addr_reg_date, reg_date, reg_id, up_date, up_id)
+        VALUES (#{id}, #{recipient}, #{nick}, #{zpcd}, #{mainAddr}, #{detailAddr}, #{telNum}, #{mobileNum}, CURDATE(), CURDATE(), #{id}, CURDATE(), #{id});
+    </insert>
+
+    <!-- 모든 배송지 삭제 -->
+    <delete id="deleteAll">
+        DELETE FROM addr_list;
+    </delete>
+
+    <!-- 특정 배송지 삭제 -->
+    <delete id="delete" parameterType="int">
+        DELETE FROM addr_list
+        WHERE seq = #{seq};
+    </delete>
+
+    <!-- 배송지 정보 변경 -->
+    <update id="update" parameterType="AddressEntryDto">
+        UPDATE addr_list
+        SET rcpr = #{recipient}, nick = #{nick}, zpcd = #{zpcd}, main_addr = #{mainAddr},
+            detail_addr = #{detailAddr}, tel_num = #{telNum}, mobile_num = #{mobileNum}, addr_reg_date = CURDATE()
+        WHERE seq = #{seq};
+    </update>
+
+</mapper>

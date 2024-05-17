@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.CouponMapper">
+
+    <resultMap id="CouponDtoResultMap" type="CouponDto">
+        <id property="seq" column="seq"/>
+        <result property="name" column="name"/>
+        <result property="prmo" column="prmo"/>
+        <result property="validDay" column="valid_day"/>
+        <result property="minPayPrice" column="min_pay_price"/>
+        <result property="maxDiscPrice" column="max_disc_price"/>
+        <result property="ableChk" column="able_chk"/>
+        <result property="discType" column="disc_type"/>
+        <result property="comt" column="comt"/>
+        <result property="remark" column="remark"/>
+        <result property="regDate" column="reg_date"/>
+        <result property="regId" column="reg_id"/>
+        <result property="upDate" column="up_date"/>
+        <result property="upId" column="up_id"/>
+    </resultMap>
+
+    <select id="count" resultType="int">
+        SELECT count(*) FROM coupon;
+    </select>
+
+    <select id="selectAll" resultMap="CouponDtoResultMap">
+        SELECT * FROM coupon;
+    </select>
+
+    <select id="selectByName" parameterType="String" resultMap="CouponDtoResultMap">
+        SELECT * FROM coupon
+        WHERE name = #{name};
+    </select>
+
+    <select id="selectBySeq" parameterType="int" resultMap="CouponDtoResultMap">
+        SELECT * FROM coupon
+        WHERE seq = #{seq};
+    </select>
+
+    <insert id="insert" parameterType="CouponDto">
+        INSERT INTO coupon (name, prmo, valid_day, min_pay_price, max_disc_price,
+                disc_type, comt, remark, reg_date, reg_id, up_date, up_id)
+        VALUES (#{name}, #{prmo}, #{validDay}, #{minPayPrice}, #{maxDiscPrice},
+                #{discType}, #{comt}, #{remark}, NOW(), 'sys', NOW(), 'sys');
+
+    </insert>
+
+    <delete id="deleteAll">
+        DELETE FROM coupon;
+    </delete>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM coupon
+        WHERE name = #{name};
+    </delete>
+
+    <update id="update" parameterType="CouponDto">
+        UPDATE coupon
+        SET name = #{name}, prmo = #{prmo}, valid_day = #{validDay}, min_pay_price = #{minPayPrice},
+            max_disc_price = #{maxDiscPrice}, able_chk = #{ableChk}, disc_type = #{discType},
+            comt = #{comt}, remark = #{remark}, up_id = 'sys', up_date = now()
+        WHERE name = #{name};
+    </update>
+
+</mapper>
