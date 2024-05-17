@@ -5,7 +5,7 @@ import java.util.Objects;
 public class OrderDetailDto {
     private String ord_num;
     private Integer seq;
-    private Integer item_num;
+    private String item_num;
     private String id;
     private String item_name;
     private Integer price;
@@ -18,10 +18,28 @@ public class OrderDetailDto {
     private String opt3;
     private String opt4;
     private String opt5;
+    private String ord_state;
     private String reg_date;
     private String reg_id;
     private String up_date;
     private String up_id;
+
+    public OrderDetailDto(){
+
+    }
+
+    public OrderDetailDto(String ord_num, String item_num, String id, String item_name, Integer price, Integer item_qty, Integer item_price, String opt1, String opt2, String ord_state) {
+        this.ord_num = ord_num;
+        this.item_num = item_num;
+        this.id = id;
+        this.item_name = item_name;
+        this.price = price;
+        this.item_qty = item_qty;
+        this.item_price = item_price;
+        this.opt1 = opt1;
+        this.opt2 = opt2;
+        this.ord_state = ord_state;
+    }
 
     public String getOrd_num() {
         return ord_num;
@@ -39,11 +57,11 @@ public class OrderDetailDto {
         this.seq = seq;
     }
 
-    public Integer getItem_num() {
+    public String getItem_num() {
         return item_num;
     }
 
-    public void setItem_num(Integer item_num) {
+    public void setItem_num(String item_num) {
         this.item_num = item_num;
     }
 
@@ -141,6 +159,14 @@ public class OrderDetailDto {
 
     public void setOpt5(String opt5) {
         this.opt5 = opt5;
+    }
+
+    public String getOrd_state() {
+        return ord_state;
+    }
+
+    public void setOrd_state(String ord_state) {
+        this.ord_state = ord_state;
     }
 
     public String getReg_date() {

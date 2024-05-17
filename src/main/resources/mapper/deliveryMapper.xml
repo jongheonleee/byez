@@ -8,6 +8,12 @@
         FROM dlv
     </select>
 
+<!--  유경  -->
+    <select id = "countByOrdNum" resultType="int" parameterType="string">
+        select  count(*) from dlv
+        where ord_num = #{ord_num}
+    </select>
+
     <!-- Insert 문 -->
     <insert id="insert" parameterType="DeliveryDto">
         INSERT INTO dlv (dlv_num, ord_num, waybill_num, dlv_corp, rcpr, rcpr_mobile, pickup_chk, zpcd, main_addr, detail_addr, msg, start_date, end_date, state, remark, reg_date, reg_id, up_date, up_id)
@@ -52,4 +58,24 @@
     <delete id="deleteAll">
         DELETE FROM dlv
     </delete>
+
+    <!-- 유경추가-->
+    <!-- select문(ID로 조회))-->
+    <select id = "selectByOrdNum" parameterType="string" resultType="DeliveryDto">
+        select * from dlv
+        where ord_num = #{ord_num}
+    </select>
+
+    <!-- insert문-->
+    <insert id="insertRefundDlvInfo" parameterType="DeliveryDto">
+        insert into dlv(ord_num,waybill_num,dlv_corp,rcpr,rcpr_mobile,zpcd,main_addr,detail_addr)
+        values (#{ord_num},  #{waybill_num}, #{dlv_corp},  #{rcpr},
+                #{rcpr_mobile}, #{zpcd},  #{main_addr},  #{detail_addr})
+    </insert>
+
+    <!--전체선택-->
+    <select id = "selectAll" resultType="DeliveryDto">
+        select * from dlv
+    </select>
+
 </mapper>

@@ -14,6 +14,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
@@ -699,4 +700,24 @@ public class OrderDaoImplTest {
             assertTrue(orderDao.select(ord_num) == null);
         }
     }
+
+    //유경추가
+    //orderState 업데이트
+    @Test
+    public void updateStateCode() throws Exception {
+        System.out.println(orderDao);
+        OrderDto orderDto = orderDao.select("20240402-0001242");
+        System.out.println(orderDto);
+
+        orderDto.setOrd_state("취소테스트");
+        int rowCnt = orderDao.updateStateCode(orderDto);
+        assertTrue(rowCnt == 1);
+
+
+        //업데이트된 정보 확인
+        String updated_state = orderDao.select("20240402-0001242").getOrd_state();
+        assertEquals(updated_state, "취소테스트");
+
+    }
+
 }

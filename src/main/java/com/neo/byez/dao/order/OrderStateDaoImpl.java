@@ -53,4 +53,9 @@ public class OrderStateDaoImpl implements OrderStateDao {
     public int deleteAll() throws Exception {
         return session.delete(namespace + "deleteAll");
     }
+
+    @Override
+    public int insertOrderState(OrderStateDto orderStateDto) throws Exception {
+        return session.insert(namespace + "insertOrderState", orderStateDto);
+    }
 }

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.order.OrdEtcReqDao">
+
+    <select id ="count"  resultType = "int">
+        select count(*) from ord_etc_req
+    </select>
+
+    <insert id = "insertEtc" parameterType="OrdEtcReqDto" >
+        INSERT INTO ord_etc_req (ord_num, type_code, reason_code, reason_detail, start_date, end_date, req_chk, chg_chk, appcn_name, appcn_mobile, zpcd, main_addr, detail_addr)
+        VALUES (#{ord_num}, #{type_code}, #{reason_code}, #{reason_detail}, #{start_date}, #{end_date},
+                #{req_chk}, #{chg_chk}, #{appcn_name}, #{appcn_mobile},#{zpcd}, #{main_addr},#{detail_addr});
+    </insert>
+
+<!--    취소정보입력-->
+    <insert id="insertCancel" parameterType="OrdEtcReqDto">
+        insert into ord_etc_req(ord_num, type_code, reason_code, reason_detail, start_date, end_date)
+        values(#{ord_num}, #{type_code}, #{reason_code}, #{reason_detail}, now(), now())
+    </insert>
+
+<!--    반품정보입력-->
+    <insert id = "insertRefund" parameterType="OrdEtcReqDto">
+        insert into ord_etc_req(ord_num,type_code,reason_code,reason_detail,
+                                req_chk,chg_chk,appcn_name,appcn_mobile,zpcd,main_addr,detail_addr,start_date,end_date)
+        values(#{ord_num}, #{type_code}, #{reason_code}, #{reason_detail},
+               #{req_chk}, #{chg_chk}, #{appcn_name}, #{appcn_mobile}, #{zpcd}, #{main_addr}, #{detail_addr}, now(),now())
+    </insert>
+
+<!--    반품정보입력 : 직접발송시-->
+    <insert id = "insertRefundSendDirect" parameterType="OrdEtcReqDto">
+        insert into ord_etc_req(ord_num,type_code,reason_code,reason_detail,
+                                req_chk,start_date,end_date)
+        values(#{ord_num}, #{type_code}, #{reason_code}, #{reason_detail},
+               #{req_chk}, now(),now())
+    </insert>
+
+    <delete id="deleteAll">
+        delete
+        from ord_etc_req
+    </delete>
+
+
+<!--    <select id = "select" parameterType="string" resultType="com.neo.byez.domain.OrdEtcReqDto">-->
+<!--        -->
+<!--    </select>-->
+</mapper>

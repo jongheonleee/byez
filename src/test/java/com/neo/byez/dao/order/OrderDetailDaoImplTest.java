@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -156,7 +158,7 @@ public class OrderDetailDaoImplTest {
         OrderDetailDto dto = new OrderDetailDto();
         dto.setOrd_num("TestOrd_num" + num);
         dto.setSeq(num);
-        dto.setItem_num(num);
+        dto.setItem_num(""+num);
         dto.setId("TestID" + num);
         dto.setItem_name("TestItem" + num);
         dto.setPrice(10000 + num);
@@ -169,5 +171,123 @@ public class OrderDetailDaoImplTest {
         dto.setUp_id("TestID");
         return dto;
     }
+
+
+    //유경추가
+    //취소반품교환내역 select
+//    @Test
+//    public void selectAllEtc() throws Exception{
+//        List<OrderDetailDto> list = orderDetailDao.selectAll("aaa");
+//        List<OrderDetailDto> list1 = orderDetailDao.selectAllEtc("aaa");
+//        assertTrue(list.size() != list1.size());
+//    }
+    @Test
+    public void updateOption() throws Exception {
+
+        cleanDB();
+        assertTrue(orderDetailDao.getCount() == 0);
+        insertData(1);
+
+        //1. 데이터 1개 수정 후 업데이트된 값확인
+        OrderDetailDto ordDetailDto = orderDetailDao.selectByOrdNum("20240503-0001").get(0);
+        ordDetailDto.setOpt1("white");
+        ordDetailDto.setOpt2("small");
+
+        orderDetailDao.updateOption(ordDetailDto);
+
+        assertTrue(ordDetailDto.getOpt1() == "white");
+        assertTrue(ordDetailDto.getOpt2() == "small");
+
+        //2. 옵션 2가지 중 1가지만 업뎃 가능여부 확인
+
+        OrderDetailDto ordDetailDto1 = orderDetailDao.selectByOrdNum("20240503-0001").get(0);
+        ordDetailDto1.setOpt1("blue");
+        ordDetailDto1.setOpt2("small");
+
+        orderDetailDao.updateOption(ordDetailDto1);
+        assertTrue(ordDetailDto1.getOpt1() == "blue");
+        assertTrue(ordDetailDto1.getOpt2() == "small");
+
+
+        //3. 옵션 2가지 중 업데이트 된 사항이 없으면 예외발생 테스트
+        // 둘중 한가지라도 변경이 되었어야 update 진행하는 부분은 service 단에서 처리
+        OrderDetailDto ordDetailDto2 = orderDetailDao.selectByOrdNum("20240503-0001").get(0);
+        ordDetailDto2.setOpt1("blue");
+        ordDetailDto2.setOpt2("small");
+
+        orderDetailDao.updateOption(ordDetailDto2);
+        assertTrue(ordDetailDto2.getOpt1() == "blue");
+        assertTrue(ordDetailDto2.getOpt2() == "small");
+        System.out.println(ordDetailDto2.getOpt1());
+        System.out.println(ordDetailDto2.getOpt2());
+
+    }
+
+    //1. 존재하는 값 select
+    //2. 존재하지않는 seq select 시 예외처리
+    //3. 존재하지않는 주문번호 select 시 예외처리
+    @Test(expected = NullPointerException.class)
+//    @Test
+    public void selectNumAndSeq() throws Exception {
+        //1. 존재하는 값 select
+        OrderDetailDto ordDetailDto= orderDetailDao.selectNumAndSeq("20240503-0001", 2);
+        assertTrue(ordDetailDto.getSeq() == 2);
+
+        //2. 존재하지않는 seq select 시 예외처리(nullPointException)
+        OrderDetailDto ordDetailDto1 = orderDetailDao.selectNumAndSeq("20240503-0001", 11);
+        assertTrue(ordDetailDto1.getSeq() == 11);
+        System.out.println(ordDetailDto1.getSeq());
+
+        //3. 존재하지않는 주문번호 select 시 예외처리
+        OrderDetailDto ordDetailDto2 = orderDetailDao.selectNumAndSeq("20240503-0002", 1);
+        assertTrue(ordDetailDto2.getSeq() == 1);
+        assertTrue(ordDetailDto2.getOrd_num() == "20240503-0002");
+    }
+
+//    @Test
+//    public void updateOrdState() throws  Exception{
+//        List<OrderDetailDto> list = orderDetailDao.selectByOrdNum("20240503-0001");
+//        System.out.println(list.size());
+//        list.get(0).setOrd_state("반품완료");
+//        int rowCnt = orderDetailDao.updateOrdState(list.get(0));
+//        assertTrue(rowCnt == 1);
+////        assertTrue(ordDetailDao.selectNumAndSeq("20240503-0001", 1).getOrd_state() == "배송완료");
+//        assertTrue(list.get(0).getOrd_state()=="반품완료");
+//    }
+    //-->mapper의 쿼리문이 주석처리되어 있어서 주석처리함
+
+
+    //1. 존재하는 주문번호&시퀀스로 조회한 객체의 주문상태를 변경했을 경우
+    //2. 존재하지 않는 주문번호&시퀀스로 조회하고 주문상태 변경 시도하는 경우
+    @Test(expected = NullPointerException.class)
+    public void updateEachOrdState() throws Exception {
+
+        //1. 존재하는 주문번호&시퀀스로 조회한 객체의 주문상태를 변경했을 경우
+        OrderDetailDto ordDetailDto = orderDetailDao.selectNumAndSeq("20240503-0002", 1);
+        ordDetailDto.setOrd_state("교환신청");
+        int rowCnt = orderDetailDao.updateEachOrdState(ordDetailDto);
+        assertTrue(rowCnt == 1);
+
+        //2. 존재하지 않는 주문번호&시퀀스로 조회하고 주문상태 변경 시도하는 경우
+        //--> NullPointerException
+        OrderDetailDto ordDetailDto1 = orderDetailDao.selectNumAndSeq("20240503-0002", 10);
+        ordDetailDto1.setOrd_state("교환신청");
+        int rowCnt1 = orderDetailDao.updateEachOrdState(ordDetailDto1);
+        assertTrue(rowCnt1 == 0);
+    }
+
+    // 2. 보조메서드
+    public void cleanDB() throws Exception {
+        orderDetailDao.deleteAll();
+    }
+
+    public void insertData(int size) throws Exception {
+        for (int i = 0; i < size; i++) {
+            OrderDetailDto expectedDto = new OrderDetailDto("20240503-0001", "1001", "aaa", "스퀘어넥 골지 반팔니트", 29900, 1, 29900, "black", "free","주문완료");
+            orderDetailDao.insert(expectedDto);
+        }
+    }
+
+
 
 }

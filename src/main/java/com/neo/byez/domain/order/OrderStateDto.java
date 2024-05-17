@@ -22,6 +22,11 @@ public class OrderStateDto {
         this.up_id = id;
     }
 
+    public OrderStateDto(String ord_num, String state_code){
+        this.ord_num = ord_num;
+        this.state_code = state_code;
+    }
+
     public String getOrd_num() {
         return ord_num;
     }

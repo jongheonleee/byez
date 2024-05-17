@@ -72,4 +72,11 @@
         DELETE
         FROM ord
     </delete>
+
+    <!--유경추가-->
+    <update id = "updateStateCode" parameterType="OrderDto">
+        update ord
+        set ord_state = #{ord_state}
+        where ord_num = #{ord_num}
+    </update>
 </mapper>

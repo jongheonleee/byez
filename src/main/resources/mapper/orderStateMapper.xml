@@ -58,4 +58,10 @@
         DELETE
         FROM ord_state
     </delete>
+
+    <!--유경추가 insert문 -->
+    <insert id = "insertOrderState" parameterType="OrderStateDto">
+        INSERT INTO ord_state(ord_num,state_code,chg_date)
+        VALUES(#{ord_num}, #{state_code}, now())
+    </insert>
 </mapper>

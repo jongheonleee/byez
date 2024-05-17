@@ -29,5 +29,7 @@
         <typeAlias alias="DeliveryDto" type="com.neo.byez.domain.order.DeliveryDto"/>
         <typeAlias alias="OrderResultInfo" type="com.neo.byez.domain.order.OrderResultInfo"/>
         <!-- 주문 관련 : 진우 - 끝 -->
+        <typeAlias alias="OrdEtcReqDto" type="com.neo.byez.domain.order.OrdEtcReqDto"/>
+        <typeAlias alias="ItemOptionDto" type="com.neo.byez.domain.order.ItemOptionDto"/>
     </typeAliases>
 </configuration>

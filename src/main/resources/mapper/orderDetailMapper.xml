@@ -34,6 +34,7 @@
         SELECT *
         FROM ord_detail
         WHERE id = #{id}
+        order by ord_num desc
     </select>
 
     <!-- Update 문 -->
@@ -69,4 +70,48 @@
         DELETE
         FROM ord_detail
     </delete>
+
+<!--    유경추가-->
+<!--주문번호로 조회-->
+    <select id="selectByOrdNum" parameterType="string" resultType="OrderDetailDto">
+        select *
+        from ord_detail
+        where ord_num = #{ord_num}
+    </select>
+
+<!--취소/반품/교환내역 select문-->
+    <select id="selectAllEtc" parameterType="string"  resultType="OrderDetailDto">
+        select *
+        from ord_detail
+        WHERE id = #{id}
+          AND ord_state NOT IN ('구매완료', '배송완료', '주문완료');
+    </select>
+
+    <update id = "updateOption" parameterType="OrderDetailDto">
+        update ord_detail
+        set opt1 = #{opt1},  opt2 = #{opt2}
+        where ord_num = #{ord_num} and seq = #{seq}
+    </update>
+
+<!-- 주문번호와 시퀀스로 주문내역조회(부분교환을 위함)-->
+    <select id = "selectNumAndSeq" parameterType="map" resultType="OrderDetailDto">
+        select *
+        from ord_detail
+        where ord_num = #{ord_num} and seq = #{seq}
+    </select>
+
+    <select id = "selectPage" parameterType="map" resultType="OrderDetailDto">
+        SELECT *
+        FROM ord_detail
+        ORDER BY ord_num DESC
+            LIMIT #{offset},#{pageSize}
+    </select>
+
+    <!--교환은 부분교환이 가능하도록 구현했기 때문에
+주문번호/시퀀스로 찾은 하나의 주문상태만 교환 -->
+    <update id="updateEachOrdState" parameterType="OrderDetailDto">
+        update ord_detail
+        set ord_state = #{ord_state}
+        where ord_num = #{ord_num} and seq = #{seq}
+    </update>
 </mapper>

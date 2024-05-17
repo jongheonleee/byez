@@ -5,6 +5,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class DeliveryDaoImpl implements DeliveryDao {
     @Autowired
@@ -40,5 +42,21 @@ public class DeliveryDaoImpl implements DeliveryDao {
     @Override
     public int deleteAll() throws Exception {
         return session.delete(namespace + "deleteAll");
+    }
+
+    @Override
+    public int insertRefundDlvInfo(DeliveryDto deliveryDto) {
+       return session.insert(namespace + "insertRefundDlvInfo", deliveryDto);
+    }
+
+
+    @Override
+    public List<DeliveryDto> selectByOrdNum(String ord_num) {
+        return session.selectList(namespace + "selectByOrdNum", ord_num);
+    }
+
+    @Override
+    public List<DeliveryDto> selectAll() {
+        return session.selectList(namespace + "selectAll");
     }
 }

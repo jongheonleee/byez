@@ -23,6 +23,20 @@ public class DeliveryDto {
     private String up_date;
     private String up_id;
 
+    public DeliveryDto(){
+
+    }
+
+    public DeliveryDto(String ord_num, String pickup_chk, String rcpr, String rcpr_mobile, String zpcd, String main_addr, String detail_addr) {
+        this.ord_num = ord_num;
+        this.pickup_chk = pickup_chk;
+        this.rcpr = rcpr;
+        this.rcpr_mobile = rcpr_mobile;
+        this.zpcd = zpcd;
+        this.main_addr = main_addr;
+        this.detail_addr = detail_addr;
+    }
+
     public String getDlv_num() {
         return dlv_num;
     }

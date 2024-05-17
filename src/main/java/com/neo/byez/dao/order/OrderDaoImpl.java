@@ -70,4 +70,9 @@ public class OrderDaoImpl implements OrderDao {
     public int deleteAll() throws Exception {
         return session.delete(namespace + "deleteAll");
     }
+
+    @Override
+    public int updateStateCode(OrderDto orderDto) throws Exception {
+        return session.update(namespace + "updateStateCode", orderDto);
+    }
 }

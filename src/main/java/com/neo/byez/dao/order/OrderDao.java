@@ -17,4 +17,6 @@ public interface OrderDao {
     int update(OrderDto orderDto) throws Exception;
     int delete(String ord_num) throws Exception;
     int deleteAll() throws Exception;
+    int updateStateCode(OrderDto orderDto) throws Exception;
+
 }

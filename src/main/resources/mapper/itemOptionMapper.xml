@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.order.itemOptionMapper">
+<!-- 특정상품의 색상옵션을 가져옴-->
+    <select id = "selectColor" parameterType="string" resultType="ItemOptionDto">
+        select i.num, i.name, c.code color
+        from item i , item_color c
+        where i.num = #{num} and  c.num = #{num};
+    </select>
+
+<!-- 특정상품의 사이즈옵션을 가져옴  -->
+    <select id = "selectSize" parameterType="string" resultType="ItemOptionDto">
+        select i.num, i.name, s.code size
+        from item i , item_size s
+        where i.num = #{num} and  s.num = #{num};
+    </select>
+
+    <select id = "getCountSize" parameterType="string" resultType = "int">
+        select count(*)
+        from item_size
+        where num = #{num}
+    </select>
+
+    <select id = "getCountColor" parameterType="string" resultType="int">
+        select count(*)
+        from item_color
+        where num = #{num}
+    </select>
+</mapper>
