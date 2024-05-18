@@ -1,5 +1,6 @@
 package com.neo.byez.dao.order;
 
+import com.neo.byez.domain.ReviewDto;
 import com.neo.byez.domain.order.OrderDetailDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,5 +98,26 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
     @Override
     public List<OrderDetailDto> selectPage(Map map) throws Exception {
         return session.selectList(namespace + "selectPage", map);
+    }
+   //찬빈 추가
+    @Override
+    public List<OrderDetailDto> selectById(String id) {
+        Map map = new HashMap();
+        map.put("id", id);
+        return session.selectList(namespace + "selectById", map);
+    }
+
+    @Override
+    public OrderDetailDto selectOrdItem(String ord_num, String item_num, String id) {
+        Map map = new HashMap<>();
+        map.put("ord_num", ord_num);
+        map.put("item_num", item_num);
+        map.put("id",id);
+        return session.selectOne(namespace + "selectOrdItem", map);
+    }
+
+    @Override
+    public int updateReviewState(ReviewDto reviewDto) {
+        return session.update(namespace+"updateReviewState",reviewDto);
     }
 }

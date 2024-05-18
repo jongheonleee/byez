@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neo.byez.dao.QnaDao">
+
+    <select id="count" resultType="int">
+        SELECT count(*) FROM qna
+    </select>
+
+    <insert id="insert" parameterType="QnaDto">
+        INSERT INTO qna(cust_id,cate_num,qna_writer,qna_title,qna_content)
+        VALUES (#{cust_id},#{cate_num},#{qna_writer},#{qna_title},#{qna_content})
+    </insert>
+
+    <select id="selectAll" parameterType="String" resultType="QnaDto">
+        SELECT *
+        FROM qna
+        WHERE cust_id=#{cust_id}
+        ORDER BY seq_num
+    </select>
+
+    <select id="select" parameterType="Integer" resultType="QnaDto">
+        SELECT *
+        FROM qna
+        WHERE seq_num=#{seq_num}
+    </select>
+
+    <delete id="delete" parameterType="Integer">
+        DELETE FROM qna
+        WHERE seq_num = #{seq_num}
+    </delete>
+    <delete id="deleteAll" parameterType="Integer">
+        DELETE FROM qna
+    </delete>
+
+    <update id="update" parameterType="QnaDto">
+        UPDATE qna
+        SET qna_title =#{qna_title},
+            qna_content =#{qna_content},
+            cate_num=#{cate_num},
+            up_date=now()
+        WHERE seq_num=#{seq_num}
+    </update>
+
+    <update id="answer" parameterType="QnaDto">
+        UPDATE qna
+        SET res_title=#{res_title},
+            res_writer=#{res_writer},
+            res_content=#{res_content},
+            res_state='Y'
+        WHERE seq_num=#{seq_num}
+    </update>
+
+    <select id="selectPage" parameterType="Map" resultType="QnaDto">
+        SELECT *
+        FROM qna
+        WHERE cust_id=#{cust_id}
+        ORDER BY seq_num asc
+            LIMIT #{startCnt},#{pageSize}
+    </select>
+
+    <select id="selectCount" parameterType="String" resultType="Integer">
+        SELECT count(cust_id) FROM qna
+        WHERE cust_id=#{cust_id}
+    </select>
+
+    <select id="searchCondition" parameterType="map" resultType="QnaDto">
+        SELECT * FROM qna
+        <where>
+            <if test="cate_num!=null">
+                AND cate_num=${cate_num}
+            </if>
+            <if test="qna_title!=null">
+                AND qna_title LIKE '${qna_title}'
+            </if>
+            <if test="res_state!=null">
+                AND res_state LIKE '${res_state}'
+            </if>
+        </where>
+    </select>
+
+    <select id="searchAllCondition" parameterType="map" resultType="QnaDto">
+        SELECT * FROM qna
+        <where>
+            cust_id=#{cust_id}
+            <if test="cate_num!=null">
+                AND cate_num=${cate_num}
+            </if>
+            <if test="qna_content!=null">
+                AND qna_content LIKE CONCAT('%', #{qna_content}, '%')
+            </if>
+            <if test="qna_title!=null">
+                AND qna_title LIKE CONCAT('%', #{qna_title}, '%')
+            </if>
+            <if test="res_state!=null">
+                AND res_state LIKE CONCAT('%', #{res_state}, '%')
+            </if>
+        </where>
+    </select>
+
+    <select id = "CateNumOption" parameterType="int" resultType="String">
+        SELECT cate_state
+        FROM qna_cate_code_tb
+        WHERE cate_num=#{cate_num}
+    </select>
+
+
+    <select id="getSearchAllOpt" parameterType="map" resultType="com.neo.byez.domain.QnaCateJoinDto">
+        SELECT *
+        FROM qna
+        INNER JOIN qna_cate_code_tb ON qna.cate_num=qna_cate_code_tb.cate_num
+        <where>
+            cust_id=#{cust_id}
+            <if test="cate_num!=null">
+                AND qna.cate_num=${cate_num}
+            </if>
+            <if test="qna_content!=null">
+                AND qna_content LIKE CONCAT('%', #{qna_content}, '%')
+            </if>
+            <if test="qna_title!=null">
+                AND qna_title LIKE CONCAT('%', #{qna_title}, '%')
+            </if>
+            <if test="res_state!=null">
+                AND res_state LIKE CONCAT('%', #{res_state}, '%')
+            </if>
+        </where>
+        ORDER BY seq_num asc
+        LIMIT #{startCnt},#{pageSize}
+    </select>
+</mapper>

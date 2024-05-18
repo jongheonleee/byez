@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neo.byez.dao.ReviewDao">
+    <select id="count" resultType="int">
+        SELECT count(*)
+        FROM review
+    </select>
+
+    <insert id="insert" parameterType="ReviewDto">
+        INSERT INTO review(ord_num, id, item_num, title, writer, content, score, reg_id, up_id)
+        VALUES (#{ord_num}, #{id}, #{item_num}, #{title}, #{writer}, #{content}, #{score}, #{reg_id}, #{up_id})
+    </insert>
+
+    <delete id="delete" parameterType="map">
+        DELETE
+        FROM review
+        WHERE review_num = #{review_num}
+          AND id = #{id}
+
+    </delete>
+    <delete id="deleteAll">
+        DELETE
+        FROM review
+    </delete>
+
+    <update id="update" parameterType="ReviewDto">
+        UPDATE review
+        SET title=#{title},
+            content=#{content},
+            score=#{score},
+            up_date=now()
+        WHERE review_num = #{review_num}
+    </update>
+
+    <select id="selectById" parameterType="String" resultType="ReviewDto">
+        SELECT *
+        FROM review
+        WHERE id = #{id}
+    </select>
+
+    <select id="selectAll" resultType="ReviewDto">
+        SELECT *
+        FROM review
+        order by review_num
+    </select>
+
+    <select id="selectJoinItem" parameterType="String" resultType="com.neo.byez.domain.ReviewItemJoinDto">
+        SELECT r.*, o.*,i.main_img
+        FROM review r
+                 INNER JOIN ord_detail o ON r.item_num = o.item_num AND r.ord_num = o.ord_num
+                 INNER JOIN item i ON r.item_num = i.num
+        WHERE r.id = #{id}
+        order by review_num
+    </select>
+    <select id="selectByReviewNum" parameterType="Integer" resultType="ReviewDto">
+        SELECT *
+        FROM review
+        WHERE review_num=#{review_num}
+    </select>
+</mapper>

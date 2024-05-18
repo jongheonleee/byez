@@ -2,6 +2,7 @@ package com.neo.byez.service.order;
 
 import com.neo.byez.dao.order.ItemOptionDaoImpl;
 import com.neo.byez.dao.order.OrderDetailDaoImpl;
+import com.neo.byez.domain.ReviewDto;
 import com.neo.byez.domain.order.ItemOptionDto;
 import com.neo.byez.domain.order.OrderDetailDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -92,5 +93,20 @@ public class OrderDetailServiceImpl implements  OrderDetailService{
             ordDetailDao.updateOption(OrderDetailDto);
             return 1;
         }return 0;
+    }
+    //--------------------------찬빈추가
+    @Override
+    public List<OrderDetailDto> searchById(String id) {
+        return ordDetailDao.selectById(id);
+    }
+
+    @Override
+    public OrderDetailDto searchOrdItem(String ord_num, String item_num, String id) {
+        return ordDetailDao.selectOrdItem(ord_num,item_num,id);
+    }
+
+    @Override
+    public int changeReviewState(ReviewDto reviewDto) {
+        return ordDetailDao.updateReviewState(reviewDto);
     }
 }

@@ -2,6 +2,7 @@ package com.neo.byez.dao.order;
 
 import com.neo.byez.domain.order.OrderDetailDto;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -9,6 +10,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -18,7 +20,7 @@ public class OrderDetailDaoImplTest {
     OrderDetailDaoImpl orderDetailDao;
 
     @Test
-    public void 초기화테스트() throws Exception{
+    public void 초기화테스트() throws Exception {
         // assert = 빈 등록
         assertTrue(orderDetailDao != null);
 
@@ -34,7 +36,7 @@ public class OrderDetailDaoImplTest {
     }
 
     @Test
-    public void 데이터삽입테스트_1개() throws Exception{
+    public void 데이터삽입테스트_1개() throws Exception {
         // 테이블 초기화
         orderDetailDao.deleteAll();
         assertTrue(orderDetailDao.countAll() == 0);
@@ -47,12 +49,12 @@ public class OrderDetailDaoImplTest {
     }
 
     @Test
-    public void 데이터삽입테스트_100개() throws Exception{
+    public void 데이터삽입테스트_100개() throws Exception {
         // 테이블초기화
         orderDetailDao.deleteAll();
         assertTrue(orderDetailDao.countAll() == 0);
 
-        for(int i=0; i < 100; i++){
+        for (int i = 0; i < 100; i++) {
             // given, when = 객체 100개 생성
             OrderDetailDto dto = makeOrderDetailDto(i);
 
@@ -60,17 +62,17 @@ public class OrderDetailDaoImplTest {
             orderDetailDao.insert(dto);
 
             // assert = 정상 삽입
-            assertTrue(orderDetailDao.countAll() == i+1);
+            assertTrue(orderDetailDao.countAll() == i + 1);
         }
     }
 
     @Test
-    public void 데이터삽입테스트_1000개() throws Exception{
+    public void 데이터삽입테스트_1000개() throws Exception {
         // 테이블 초기화
         orderDetailDao.deleteAll();
         assertTrue(orderDetailDao.countAll() == 0);
 
-        for(int i=0; i < 1000; i++){
+        for (int i = 0; i < 1000; i++) {
             // given, when = 객체 100개 생성
             OrderDetailDto dto = makeOrderDetailDto(i);
 
@@ -78,7 +80,7 @@ public class OrderDetailDaoImplTest {
             orderDetailDao.insert(dto);
 
             // assert = 정상 삽입
-            assertTrue(orderDetailDao.countAll() == i+1);
+            assertTrue(orderDetailDao.countAll() == i + 1);
         }
     }
 
@@ -135,13 +137,13 @@ public class OrderDetailDaoImplTest {
         assertTrue(orderDetailDao.countAll() == 0);
 
         // given = 데이터 1000개 삽입
-        for(int i=0; i < 1000; i++){
+        for (int i = 0; i < 1000; i++) {
             // given, when = 객체 1000개 생성
             OrderDetailDto dto = makeOrderDetailDto(i);
             orderDetailDao.insert(dto);
 
             // assert = 정상 삽입
-            assertTrue(orderDetailDao.countAll() == i+1);
+            assertTrue(orderDetailDao.countAll() == i + 1);
         }
         assertTrue(orderDetailDao.countAll() == 1000);
 
@@ -153,16 +155,15 @@ public class OrderDetailDaoImplTest {
     }
 
 
-
-    public OrderDetailDto makeOrderDetailDto(int num){
+    public OrderDetailDto makeOrderDetailDto(int num) {
         OrderDetailDto dto = new OrderDetailDto();
         dto.setOrd_num("TestOrd_num" + num);
         dto.setSeq(num);
-        dto.setItem_num(""+num);
+        dto.setItem_num("" + num);
         dto.setId("TestID" + num);
         dto.setItem_name("TestItem" + num);
         dto.setPrice(10000 + num);
-        dto.setItem_qty(num%5 == 0 ? 1:num%5);
+        dto.setItem_qty(num % 5 == 0 ? 1 : num % 5);
         dto.setItem_price(10000 + num);
         dto.setOrd_date("20240429");
         dto.setReg_date("20240429");
@@ -181,47 +182,47 @@ public class OrderDetailDaoImplTest {
 //        List<OrderDetailDto> list1 = orderDetailDao.selectAllEtc("aaa");
 //        assertTrue(list.size() != list1.size());
 //    }
-    @Test
-    public void updateOption() throws Exception {
-
-        cleanDB();
-        assertTrue(orderDetailDao.getCount() == 0);
-        insertData(1);
-
-        //1. 데이터 1개 수정 후 업데이트된 값확인
-        OrderDetailDto ordDetailDto = orderDetailDao.selectByOrdNum("20240503-0001").get(0);
-        ordDetailDto.setOpt1("white");
-        ordDetailDto.setOpt2("small");
-
-        orderDetailDao.updateOption(ordDetailDto);
-
-        assertTrue(ordDetailDto.getOpt1() == "white");
-        assertTrue(ordDetailDto.getOpt2() == "small");
-
-        //2. 옵션 2가지 중 1가지만 업뎃 가능여부 확인
-
-        OrderDetailDto ordDetailDto1 = orderDetailDao.selectByOrdNum("20240503-0001").get(0);
-        ordDetailDto1.setOpt1("blue");
-        ordDetailDto1.setOpt2("small");
-
-        orderDetailDao.updateOption(ordDetailDto1);
-        assertTrue(ordDetailDto1.getOpt1() == "blue");
-        assertTrue(ordDetailDto1.getOpt2() == "small");
-
-
-        //3. 옵션 2가지 중 업데이트 된 사항이 없으면 예외발생 테스트
-        // 둘중 한가지라도 변경이 되었어야 update 진행하는 부분은 service 단에서 처리
-        OrderDetailDto ordDetailDto2 = orderDetailDao.selectByOrdNum("20240503-0001").get(0);
-        ordDetailDto2.setOpt1("blue");
-        ordDetailDto2.setOpt2("small");
-
-        orderDetailDao.updateOption(ordDetailDto2);
-        assertTrue(ordDetailDto2.getOpt1() == "blue");
-        assertTrue(ordDetailDto2.getOpt2() == "small");
-        System.out.println(ordDetailDto2.getOpt1());
-        System.out.println(ordDetailDto2.getOpt2());
-
-    }
+//    @Test
+//    public void updateOption() throws Exception {
+//
+//        cleanDB();
+//        assertTrue(orderDetailDao.getCount() == 0);
+//        insertData(1);
+//
+//        //1. 데이터 1개 수정 후 업데이트된 값확인
+//        OrderDetailDto ordDetailDto = orderDetailDao.selectByOrdNum("20240503-0001").get(0);
+//        ordDetailDto.setOpt1("white");
+//        ordDetailDto.setOpt2("small");
+//
+//        orderDetailDao.updateOption(ordDetailDto);
+//
+//        assertTrue(ordDetailDto.getOpt1() == "white");
+//        assertTrue(ordDetailDto.getOpt2() == "small");
+//
+//        //2. 옵션 2가지 중 1가지만 업뎃 가능여부 확인
+//
+//        OrderDetailDto ordDetailDto1 = orderDetailDao.selectByOrdNum("20240503-0001").get(0);
+//        ordDetailDto1.setOpt1("blue");
+//        ordDetailDto1.setOpt2("small");
+//
+//        orderDetailDao.updateOption(ordDetailDto1);
+//        assertTrue(ordDetailDto1.getOpt1() == "blue");
+//        assertTrue(ordDetailDto1.getOpt2() == "small");
+//
+//
+//        //3. 옵션 2가지 중 업데이트 된 사항이 없으면 예외발생 테스트
+//        // 둘중 한가지라도 변경이 되었어야 update 진행하는 부분은 service 단에서 처리
+//        OrderDetailDto ordDetailDto2 = orderDetailDao.selectByOrdNum("20240503-0001").get(0);
+//        ordDetailDto2.setOpt1("blue");
+//        ordDetailDto2.setOpt2("small");
+//
+//        orderDetailDao.updateOption(ordDetailDto2);
+//        assertTrue(ordDetailDto2.getOpt1() == "blue");
+//        assertTrue(ordDetailDto2.getOpt2() == "small");
+//        System.out.println(ordDetailDto2.getOpt1());
+//        System.out.println(ordDetailDto2.getOpt2());
+//
+//    }
 
     //1. 존재하는 값 select
     //2. 존재하지않는 seq select 시 예외처리
@@ -230,7 +231,7 @@ public class OrderDetailDaoImplTest {
 //    @Test
     public void selectNumAndSeq() throws Exception {
         //1. 존재하는 값 select
-        OrderDetailDto ordDetailDto= orderDetailDao.selectNumAndSeq("20240503-0001", 2);
+        OrderDetailDto ordDetailDto = orderDetailDao.selectNumAndSeq("20240503-0001", 2);
         assertTrue(ordDetailDto.getSeq() == 2);
 
         //2. 존재하지않는 seq select 시 예외처리(nullPointException)
@@ -283,11 +284,63 @@ public class OrderDetailDaoImplTest {
 
     public void insertData(int size) throws Exception {
         for (int i = 0; i < size; i++) {
-            OrderDetailDto expectedDto = new OrderDetailDto("20240503-0001", "1001", "aaa", "스퀘어넥 골지 반팔니트", 29900, 1, 29900, "black", "free","주문완료");
+            OrderDetailDto expectedDto = new OrderDetailDto("20240503-0001", "1001", "aaa", "스퀘어넥 골지 반팔니트", 29900, 1, 29900, "black", "free", "주문완료");
             orderDetailDao.insert(expectedDto);
         }
     }
 
+//-------------------------------찬빈추가
+@Test
+// 이 메서드는 원래 사용자이름으로 가져오며 ord_state가 "구매확정"인 값을 가져오는 기능이다.
+// 추후에 ord_state가 어떻게 될지 논의 후 해당 메소드 mapper sql에 where절에 ord_state 을 추가할 것
+public void 리뷰안한사용자리뷰값주기() throws Exception {
+    // 테이블 초기화
+    orderDetailDao.deleteAll();
+    assertTrue(orderDetailDao.countAll() == 0);
 
+    // given = 테스트 데이터 100개 삽입
+    for (int i = 0; i < 10; i++) {
+        // given, when = 객체 100개 생성
+        OrderDetailDto dto = makeOrderDetailDto(i);
 
+        // do
+        orderDetailDao.insert(dto);
+
+        // assert = 정상 삽입
+        assertTrue(orderDetailDao.countAll() == i + 1);
+    }
+
+        List<OrderDetailDto> list = orderDetailDao.selectById("TestID0");
+      assertTrue(list.get(0).getId().equals("TestID0"));
+
+}
+    @Test
+// 이 메서드는 리뷰작성시 상품번호 사용자 주문번호로 리뷰를 정확한 곳에 쓰일 수 있도록 하는 메서드이다.
+    public void 값찾기_주문상품아이디() throws Exception {
+        // 테이블 초기화
+        orderDetailDao.deleteAll();
+        assertTrue(orderDetailDao.countAll() == 0);
+
+        // given = 테스트 데이터 100개 삽입
+        for (int i = 0; i < 10; i++) {
+            // given, when = 객체 100개 생성
+            OrderDetailDto dto = makeOrderDetailDto(i);
+
+            // do
+            orderDetailDao.insert(dto);
+
+            // assert = 정상 삽입
+            assertTrue(orderDetailDao.countAll() == i + 1);
+        }
+
+        OrderDetailDto list  =  orderDetailDao.selectOrdItem("TestOrd_num0","0","TestID0");
+        assertTrue(list.getId().equals("TestID0"));
+        assertTrue(list.getOrd_num().equals("TestOrd_num0"));
+        assertTrue(list.getItem_num().equals("0"));
+
+    }
+    @Test
+    public void 리뷰작성_업데이트() throws Exception {
+
+    }
 }

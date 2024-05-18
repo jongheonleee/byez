@@ -1,6 +1,7 @@
 package com.neo.byez.dao.order;
 
 
+import com.neo.byez.domain.ReviewDto;
 import com.neo.byez.domain.order.OrderDetailDto;
 
 import java.util.List;
@@ -26,6 +27,8 @@ public  interface OrderDetailDao {
     //부분교환시 사용되는 주문상태 업데이트 dao
      int updateEachOrdState(OrderDetailDto OrderDetailDto);
     List<OrderDetailDto> selectPage(Map map) throws Exception;
-
-
+    //찬빈 추가
+    List<OrderDetailDto> selectById(String id);
+    OrderDetailDto selectOrdItem(String ord_num,String item_num,String id);
+    int updateReviewState(ReviewDto reviewDto);
 }

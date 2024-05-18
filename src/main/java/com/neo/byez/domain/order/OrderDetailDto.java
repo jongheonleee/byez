@@ -23,7 +23,8 @@ public class OrderDetailDto {
     private String reg_id;
     private String up_date;
     private String up_id;
-
+    // 찬빈 추가 : 리뷰 가능/완료 상태를 파악하기 위한 칼럼
+    private String review;
     public OrderDetailDto(){
 
     }

@@ -38,5 +38,11 @@
         <typeAlias alias="AddressEntryDto" type="com.neo.byez.domain.AddressEntryDto"/>
         <!-- 쿠폰 배송지 목록 관련 : 제법 - 끝 -->
 
+        <!-- 게시물 관련 : 찬빈 - 시작 -->
+        <typeAlias alias="QnaDto" type="com.neo.byez.domain.QnaDto"/>
+        <typeAlias alias="ReviewDto" type="com.neo.byez.domain.ReviewDto"/>
+        <!-- 게시물 관련 : 찬빈 - 끝 -->
+
+
     </typeAliases>
 </configuration>

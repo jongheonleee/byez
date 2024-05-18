@@ -3,7 +3,6 @@ package com.neo.byez.service.order;
 import com.neo.byez.dao.order.OrderDetailDaoImpl;
 import com.neo.byez.domain.order.ItemOptionDto;
 import com.neo.byez.domain.order.OrderDetailDto;
-import com.neo.byez.domain.order.OrderDetailDto;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
@@ -14,10 +13,11 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class) //ac 생성
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/root-context.xml"}) //설정파일 찾기
-public class OrdDetailServiceImplTest {
+public class OrderDetailServiceImplTest {
 
     @Autowired
     OrderDetailService orderDetailService;
@@ -148,4 +148,19 @@ public class OrdDetailServiceImplTest {
         currentOption.setOrd_state("배송완료");
         orderDetailService.updateIfChanged(currentOption);
     }
+
+    //------------------------------찬빈추가
+    @Test
+    public void 작성안한리뷰아이디로찾기() {
+        assertEquals(orderDetailService.searchById("TestID0").size(),1);
+    }
+
+    @Test
+    public void 값찾기_상품주문ID() {
+        OrderDetailDto ordDetailDto = orderDetailService.searchOrdItem("TestOrd_num0","0","TestID0");
+       assertEquals(ordDetailDto.getOrd_num(),"TestOrd_num0");
+        assertEquals(ordDetailDto.getItem_num(),"0");
+        assertEquals(ordDetailDto.getId(),"TestID0");
+    }
+
 }
