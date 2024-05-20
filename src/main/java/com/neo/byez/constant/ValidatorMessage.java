@@ -1,4 +1,4 @@
-package com.neo.byez.common.message;
+package com.neo.byez.constant;
 
 public enum ValidatorMessage {
     // 아이디

@@ -1,0 +1,145 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+section {width: 100%; min-width: 1200px; height: fit-content; padding: 50px 0; box-sizing: border-box; margin-top: 90px;}
+
+/* section .wrapper {background-color: rgba(0, 255, 0, 0.1);} */
+section .wrapper>p:first-of-type {text-align: right;}
+
+.withdrawal-form {
+    width: 600px;
+    height: 550px;
+    border: 3px solid grey;
+    margin: 0 auto;
+    padding: 0;
+}
+
+section .withdrawal-form .title {
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+section .withdrawal-form>p:nth-of-type(2) {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding: 30px;
+}
+
+section .wrapper .submit-pwd-agree {
+    /* background-color: rgba(0, 0, 255, 0.1); */
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+section .wrapper .submit-pwd-agree li {
+    /*background-color: aquamarine;*/
+    padding: 5px;
+    width: 300px;
+}
+
+section .wrapper .submit-pwd-agree li.check-pwd {
+    /*background-color: rgb(193, 217, 120, .5);*/
+    height: 60px;
+    display: flex;
+    align-items: end;
+    font-size: 18px;
+}
+
+.withdrawal-form input[type="password"] {
+    width: 170px;
+    height: 25px;
+    border: 1px solid grey;
+    padding: 3px;
+    margin-left: 10px;
+}
+
+section .wrapper .submit-pwd-agree li.pwd-length-error-msg {
+    /*background-color: rgba(104, 154, 172, 0.5);*/
+    height: 20px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center
+}
+
+.notice {
+    padding: 10px 0 0 10px;
+    margin: 20px 0;
+    width: 520px;
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    top: 100px;
+}
+
+.notice p:last-of-type {
+    font-weight: normal;
+    margin: 10px 0;
+}
+
+section .wrapper .submit-pwd-agree li.check-agree {
+    /*background-color: rgb(193, 100, 220, .5);*/
+    height: 50px;
+    width: 350px;
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    font-weight: normal;
+}
+
+section .wrapper .submit-button {
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button a {
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+button, input[type="submit"] {
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+    background-color: white;
+    color: black;
+    border: 1px solid gray;
+    font-weight: bold;
+    margin: 0 20px;
+    transition: .3s;
+}
+
+input[type="submit"]:hover {
+    color: white;
+    font-size: 15px;
+    background-color: black;
+}
+
+input[type="submit"]:disabled {
+    font-size: 15px;
+    background-color: dimgray;
+    color: white;
+}
+
+#pwd-length-error-msg, .error-msg {
+    color: red;
+    font-size: 13px;
+    font-weight: normal;
+}

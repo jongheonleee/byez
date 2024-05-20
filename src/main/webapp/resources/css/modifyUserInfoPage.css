@@ -1,0 +1,97 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px; float: left; padding: 50px 0;}
+
+.title {width: 100%; height: fit-content; margin-bottom: 50px;}
+.title>p:first-of-type {text-align: right; margin-bottom: 50px;}
+.title>p:nth-of-type(2) {font-size: 42px; font-weight: bold; text-align: center;}
+
+
+.mside {width: 22%; height: 100%; float: left;}
+.content {width: 78%; height: 100%; float: left; }
+
+.mside_wrapper {width: 90%; min-width: 215px; height: 100%; margin: auto;}
+.mside_wrapper>p {font-size: 20px; font-weight: bold; margin-bottom: 15px;}
+.mside_content {width: 100%; height: fit-content; border-top: 2px solid black;}
+.mside_content ul {margin-top: 50px;}
+.mside_content ul>li {margin-top: 15px;}
+.mside_content ul>li:first-of-type {font-size: 18px; font-weight: bold;}
+
+.table_title {font-size: 20px; font-weight: bold; margin-bottom:15px;}
+.table_title>span {color: gray; font-size: 16px; font-weight: normal;}
+
+.content>table {width: 100%; height: 100px; border-top: 2px solid black; border-collapse: collapse;}
+
+tr {
+    border-bottom: 1px solid lightgray;
+    height: 53px;
+}
+
+tr td:first-of-type {
+    font-weight: bold;
+    width: 30%;
+}
+
+table button {
+    border: black 1px solid;
+    width: 110px;
+    padding: 10px 0;
+    background-color: black;
+    color: whitesmoke;
+    font-weight: bold;
+}
+
+table button:hover {
+    font-size: 13px;
+}
+
+.content > button {
+    width: 120px;
+    padding: 10px 0;
+    background-color: black;
+    color: whitesmoke;
+    font-weight: bold;
+    float: right;
+    margin-top: 30px;
+}
+
+table button:disabled {
+    background-color: gray;
+    color: white;
+    border: 1px solid gray;
+    font-size: 13px;
+}
+
+.hidden {
+     display: none;
+}
+
+.no-bottom {
+    border-bottom: 0;
+}
+
+.content tr:nth-of-type(7) {
+    border-top: 1px solid lightgray;
+}
+
+.content tr:nth-of-type(11) {
+    border-top: 1px solid lightgray;
+}
+
+table {
+    border-bottom: 1px solid lightgray;
+}
+
+.content input {
+    border: 1px solid lightgray;
+    width: 200px;
+    height: 30px;
+}
+
+#pwd-length-error-msg, #match-error-msg, #wrong-pwd-format-msg, #birth-error-msg, #mobile-number-error-msg, #email-error-msg {
+    font-size: 13px;
+    color: red;
+}

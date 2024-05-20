@@ -5,8 +5,8 @@
 <configuration>
     <typeAliases>
         <!-- 고객 관련 : 수인 - 시작 -->
-        <typeAlias alias="UserDto" type="com.neo.byez.domain.UserDto"/>
-        <typeAlias alias="UserInfoHistDto" type="com.neo.byez.domain.UserInfoHistDto"/>
+        <typeAlias alias="UserDto" type="com.neo.byez.domain.user.UserDto"/>
+        <typeAlias alias="UserInfoHistDto" type="com.neo.byez.domain.user.UserInfoHistDto"/>
         <!-- 고객 관련 : 수인 - 끝 -->
 
         <!-- 상품 관련 : 종헌 - 시작 -->

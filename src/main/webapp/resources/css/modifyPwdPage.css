@@ -1,0 +1,91 @@
+@charset "utf-8";
+
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+section {width: 100%; min-width: 1200px; height: fit-content; padding: 50px 0; box-sizing: border-box; margin-top: 90px;}
+/*section .wrapper {background-color: rgba(0, 255, 0, 0.1);}*/
+section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
+
+section .wrapper .input-new-pwd {
+    width: 600px;
+    height: 280px;
+    border: 3px solid grey;
+    margin: 0 auto;
+    padding: 0;
+}
+
+h1 {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: whitesmoke;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    /*background-color: rgb(255, 0, 10, .2);*/
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+section .wrapper .input-id-pwd {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+section .wrapper .input-id-pwd li:first-of-type {
+    margin-right: 75px;
+    margin-bottom: 10px;
+}
+
+section .wrapper .error-msg {
+    font-size: 14px;
+    font-weight: normal;
+    color: red;
+}
+
+input[type="text"], input[type="text"]:focus {
+    width: 170px;
+    height: 25px;
+    border-style: none;
+    outline: none;
+    /*background-color: rgb(255, 255, 255, 0);*/
+    padding: 3px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+input[type="password"] {
+    width: 170px;
+    height: 25px;
+    border: 1px solid grey;
+    padding: 3px;
+    margin-left: 10px;
+}
+
+input[type="submit"] {
+    width: 110px;
+    height: 40px;
+    border: 1px solid gray;
+    border-radius: 2px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    margin: 20px;
+    transition: .3s;
+}
+
+input[type="submit"]:hover { font-size: 15px; font-weight: bold; color: white; background-color: black }

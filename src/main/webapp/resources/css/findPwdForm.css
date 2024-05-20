@@ -1,0 +1,92 @@
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+section {width: 100%; min-width: 1200px; height: fit-content; padding: 50px 0; box-sizing: border-box; margin-top: 90px;}
+
+/*section .wrapper {background-color: rgba(0, 255, 0, 0.1);}*/
+
+section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
+
+section .wrapper .find-pwd-input {
+    /*background-color: rgb(255, 0, 0, .1);*/
+    width: 600px;
+    height: 300px;
+    border: 3px solid grey;
+    margin: 0 auto;
+    padding: 0;
+}
+
+h1 {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: whitesmoke;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+h3 {
+    /*background-color: rgb(255, 0, 10, .2);*/
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+section .wrapper .submit-email {
+    /*background-color: rgba(100, 0, 100, 0.1);*/
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+section .wrapper .verify-email {
+    /*background-color: rgba(0, 0, 255, 0.1);*/
+    height: 80px;
+    display: flex;
+    align-content: center;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="email"] {
+    width: 170px;
+    height: 25px;
+    border: 1px solid grey;
+    padding: 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+li { margin: 5px; }
+
+button {
+    width: 70px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 14px;
+    color: black;
+    background-color: white;
+    transition: .3s;
+}
+
+button:hover { font-weight: bold; color: white; background-color: black}
+
+#verificationDiv {
+    display: none;
+}
+
+#id-format-error-msg, #email-format-error-msg {
+    color: red;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 5px;
+}

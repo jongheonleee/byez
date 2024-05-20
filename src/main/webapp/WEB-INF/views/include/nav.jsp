@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <nav>
     <div class="wrapper">
         <div class="nav_logo">
             <a href="/">
-                <img src="img/logo3.png" alt="">
+                <img src="/img/logo3.png" alt="">
             </a>
         </div>
         <ul class="nav_menu">
@@ -16,21 +16,34 @@
         <ul class="nav_member">
             <li class="hover">
                 <a href="#">
-                    <img src="img/top_mypage.png">
+                    <img src="/img/top_mypage.png">
                 </a>
                 <ul class="sub_menu">
-                    <li><a href="/logout">LOGOUT</a>
-                    </li>
-                    <li><a href="mypage.html">MYPAGE</a>
-                    </li>
-                    <li><a href="/order">ORDER</a>
-                    </li>
+
+                    <%-- 로그인 상태 --%>
+                    <c:if test="${sessionScope.loginState != null}">
+                        <li><a href="/login/out">LOGOUT</a>
+                        </li>
+<%--                        <li><a href="mypage.html">MYPAGE</a>--%>
+                        <%-- 수인 테스트용 MYPAGE INDEX --%>
+                        <li><a href="/mypage/index">MYPAGE</a>
+                        </li>
+                        <li><a href="/order">ORDER</a>
+                        </li>
+                    </c:if>
+                    <%-- 로그아웃 상태 --%>
+                    <c:if test="${sessionScope.loginState == null}">
+                        <li><a href="/login/form">LOGIN</a>
+                        </li>
+                        <li><a href="/order">ORDER</a>
+                        </li>
+                    </c:if>
                 </ul>
             </li>
-            <li><a><img src="img/top_search.png"></a></li>
-            <li><a href="/like"><img src="img/top_wish.png"></a></li>
+            <li><a><img src="/img/top_search.png"></a></li>
+            <li><a href="/like"><img src="/img/top_wish.png"></a></li>
             <li><a href="/basket" class="cart_cnt">
-                <img src="img/top_cart_pc.png">
+                <img src="/img/top_cart_pc.png">
                 <div>
                     <span>${cnt}</span>
                 </div>
@@ -218,7 +231,7 @@
         <div>
             <p>
                 고객님<br>무엇을 찾으시나요?
-                <img src="img/top_search_close.png" alt="">
+                <img src="/img/top_search_close.png" alt="">
             </p>
             <form action="">
                 <input type="text" placeholder="상품을 찾아보세요">
