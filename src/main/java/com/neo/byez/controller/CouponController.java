@@ -21,15 +21,15 @@ public class CouponController {
     @Autowired
     CustCouponsService custCouponsService;
 
-    @RequestMapping("/goGrantCouponForm")
-    public String goGrantCouponForm() throws Exception {
+    @RequestMapping("/grantCouponForm")
+    public String grantCouponForm() throws Exception {
         return "grantCouponForm";
     }
 
 
 
-    @RequestMapping("/goManageCoupons")
-    public String goManageCoupons(Model model) throws Exception {
+    @RequestMapping("/manageCoupons")
+    public String manageCoupons(Model model) throws Exception {
 
         List<CouponDto> couponList = couponService.getAllCouponInfo();
 
@@ -37,7 +37,7 @@ public class CouponController {
         return "manageCoupons";
     }
 
-    @RequestMapping("/goCreateCoupon")
+    @RequestMapping("/createCoupon")
     public String goCreateCoupon() throws Exception {
 
         return "createCoupon";
@@ -54,7 +54,7 @@ public class CouponController {
 
         couponService.createCouponType(couponDto);
 
-        return "redirect: /goManageCoupons";
+        return "redirect: /manageCoupons";
     }
 
     @RequestMapping("/deleteCouponType")
@@ -62,7 +62,7 @@ public class CouponController {
 
         couponService.removeCouponTypeByName(name);
 
-        return "redirect: /goManageCoupons";
+        return "redirect: /manageCoupons";
     }
 
 }

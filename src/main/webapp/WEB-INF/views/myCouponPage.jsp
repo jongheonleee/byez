@@ -262,9 +262,9 @@
     <div class="wrapper">
         <div class="title">
             <p>
-                <a href="main.html"><span>home</span></a>
+                <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="mypage.html"><span>마이쿠폰</span></a>
+                <a href="myCouponPage"><span>마이쿠폰</span></a>
             </p>
             <p>마이쿠폰</p>
         </div>
@@ -290,7 +290,7 @@
                         <ul>
                             <li>나의 활동 정보</li>
                             <li><a href="#">회원정보 수정</a></li>
-                            <li><a href="/goMyAddrList">배송 주소록 관리</a></li>
+                            <li><a href="/myAddrList">배송 주소록 관리</a></li>
                             <li><a href="#">나의 게시물 관리</a></li>
                             <li><a href="#">나의 문의</a></li>
                             <li><a href="#">위시리스트</a></li>
@@ -311,8 +311,8 @@
                 <tr>
                     <th scope="col">번호</th>
                     <th scope="col">쿠폰명</th>
+                    <th scope="col">쿠폰 혜택</th>
                     <th scope="col">최소주문금액</th>
-                    <th scope="col">혜택</th>
                     <th scope="col">만료일</th>
                 </tr>
                 </thead>
@@ -321,14 +321,23 @@
                     <tr>
                         <td>${loop.index + 1}</td>
                         <td>${coupon.couponDto.name}</td>
-                        <td>${coupon.couponDto.minPayPrice}</td>
                         <td>
                             <c:choose>
                                 <c:when test="${coupon.couponDto.discType eq 'PER'}">
-                                    ${coupon.couponDto.prmo}%
+                                    ${coupon.couponDto.prmo}% (최대 ${coupon.couponDto.maxDiscPrice}원 할인)
                                 </c:when>
                                 <c:otherwise>
-                                    -${coupon.couponDto.prmo}
+                                    -${coupon.couponDto.prmo} (최대 ${coupon.couponDto.maxDiscPrice}원 할인)
+                                </c:otherwise>
+                            </c:choose>
+                        </td>
+                        <td>
+                            <c:choose>
+                                <c:when test="${coupon.couponDto.minPayPrice == 0 or empty coupon.couponDto.minPayPrice}">
+                                    제한 없음
+                                </c:when>
+                                <c:otherwise>
+                                    ${coupon.couponDto.minPayPrice}
                                 </c:otherwise>
                             </c:choose>
                         </td>

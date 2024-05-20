@@ -17,11 +17,11 @@ public interface CustCouponsService {
 
     void grantCouponToUser(String userId, String couponName) throws Exception;
 
-    boolean deleteCouponHistory(Integer seq) throws Exception;
+    int deleteCouponHistory(Integer seq) throws Exception;
 
     int deleteAllCouponHistory() throws Exception;
 
-    boolean useCoupon(Integer seq) throws Exception;
+    int useCoupon(Integer seq) throws Exception;
 
     // 유저의 id로 쿠폰발행정보와 그 쿠폰들의 상세정보를 얻어옴
     List<UserCouponDetails> getUserCouponDetailsByUserId(String userId) throws Exception;

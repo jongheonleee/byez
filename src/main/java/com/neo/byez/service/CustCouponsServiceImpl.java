@@ -48,6 +48,7 @@ public class CustCouponsServiceImpl implements CustCouponsService {
 
         if (couponDto.getAbleChk().equals("N")) {
             throw new CouponNotGrantedException("지급 불가한 쿠폰입니다.");
+            // GlobalExceptionHandler로 처리합니다.
         }
 
         int affectedRow = custCouponsDao.insert(userId, couponName);
@@ -60,8 +61,8 @@ public class CustCouponsServiceImpl implements CustCouponsService {
     }
 
     @Override
-    public boolean deleteCouponHistory(Integer seq) throws Exception {
-        return custCouponsDao.delete(seq) == 1;
+    public int deleteCouponHistory(Integer seq) throws Exception {
+        return custCouponsDao.delete(seq);
     }
 
     @Override
@@ -70,8 +71,8 @@ public class CustCouponsServiceImpl implements CustCouponsService {
     }
 
     @Override
-    public boolean useCoupon(Integer seq) throws Exception {
-        return custCouponsDao.update(seq) == 1;
+    public int useCoupon(Integer seq) throws Exception {
+        return custCouponsDao.update(seq);
     }
 
     // 유저의 id로 쿠폰발행정보와 그 쿠폰들의 상세정보를 얻어옴

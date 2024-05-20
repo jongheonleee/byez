@@ -18,8 +18,8 @@ public class CustCouponsController {
     CustCouponsService custCouponsService;
 
     // 마이페이지 쿠폰함
-    @RequestMapping("/goMyCouponPage")
-    public String goMyCouponPage(HttpServletRequest request, Model model) throws Exception {
+    @RequestMapping("/myCouponPage")
+    public String myCouponPage(HttpServletRequest request, Model model) throws Exception {
 
         // 현재 접속 고객의 id정보를 가져옴
 //        HttpSession session = request.getSession();
