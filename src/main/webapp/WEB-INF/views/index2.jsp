@@ -135,7 +135,7 @@
 <%@include file="../views/include/footer.jsp"%>
 <%@include file="../views/include/quick.jsp"%>
 <script src="/js/jquery-3.6.4.min.js"></script>
-<script src="/js/nav.js"></script>
+<script src="/js/nav.js?after"></script>
 <script src="/js/tab.js"></script>
 </body>
 </html>

@@ -14,28 +14,28 @@ import java.util.List;
 public class HomeController {
     @Autowired
     ItemServiceImpl itemService;
-//    @RequestMapping("/")
-//    public String index(Model model) {
-//        ItemDto dto =new ItemDto();
-//        try {
-//            List<ItemDto> boardList;
-//            List<ItemDto> boardList2;
-//            List<ItemDto> boardList3;
-//
-//            boardList = itemService.showWTop8(dto);
-//            boardList2 = itemService.showMTop8(dto);
-//            boardList3 = itemService.showUTop8(dto);
-//
-//            model.addAttribute("boardList", boardList);
-//            model.addAttribute("boardList2", boardList2);
-//            model.addAttribute("boardList3", boardList3);
-//
-//            System.out.println(boardList2);
-//        } catch (Exception e) {
-//            // 예외 처리
-//            e.printStackTrace();
-//            return "error";
-//        }
-//        return "index2";
-//    }
+    @RequestMapping("/")
+    public String index(Model model) {
+        ItemDto dto =new ItemDto();
+        try {
+            List<ItemDto> boardList;
+            List<ItemDto> boardList2;
+            List<ItemDto> boardList3;
+
+            boardList = itemService.showWTop8(dto);
+            boardList2 = itemService.showMTop8(dto);
+            boardList3 = itemService.showUTop8(dto);
+
+            model.addAttribute("boardList", boardList);
+            model.addAttribute("boardList2", boardList2);
+            model.addAttribute("boardList3", boardList3);
+
+            System.out.println(boardList2);
+        } catch (Exception e) {
+            // 예외 처리
+            e.printStackTrace();
+            return "error";
+        }
+        return "index2";
+    }
 }
