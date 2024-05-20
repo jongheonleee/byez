@@ -63,4 +63,8 @@ public class ReviewDaoImpl implements ReviewDao {
     public ReviewDto selectByReviewNum(Integer review_num) {
         return sqlSession.selectOne(namespace+"selectByReviewNum",review_num);
     }
+    @Override
+    public List<ReviewDto> selectByItem(String item_num){
+        return sqlSession.selectList(namespace+"selectByItem",item_num);
+    }
 }

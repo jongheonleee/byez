@@ -52,4 +52,6 @@ public class ReviewServiceImpl implements ReviewService{
     public ReviewDto searchByReviewNum(Integer review_num) {
         return reviewDao.selectByReviewNum(review_num);
     }
+    @Override
+    public List<ReviewDto> searchByItem(String item_num){return reviewDao.selectByItem(item_num);}
 }

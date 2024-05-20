@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/mypage.css">
+    <link rel="stylesheet" href="../css/qnaList.css?after">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -263,7 +263,9 @@
             <p>
                 <a href="main.html"><span>home</span></a>
                 <span>></span>
-                <a href="mypage.html"><span>나의 문의</span></a>
+                <a href="mypage.html"><span>마이페이지</span></a>
+                <span>></span>
+                <a href="/qna/list"><span>나의문의</span></a>
             </p>
             <p>나의 문의</p>
         </div>
@@ -319,8 +321,8 @@
                 </c:forEach>
             </table>
             <div class="search">
-                <form action="/qna/list" method="get">
-                    <label>
+                <form class="searchArea" action="/qna/list" method="get">
+                    <div class="searchArea">
                         <select name="cate_num">
                             <option value=null >전체</option>
                             <option value="100" ${cate_num == '100' ? 'selected' : ''}>교환</option>
@@ -334,17 +336,17 @@
                             <option value="900" ${cate_num == '900' ? 'selected' : ''}>기타</option>
                             <option value="1000" ${cate_num == '1000' ? 'selected' : ''}>신고</option>
                         </select>
-                    </label>
-                    <select  name="search">
-                        <%--                        class="search"--%>
-                        <option value="title"  ${search == 'title' ? 'selected' : ''}>제목</option>
-                        <option value="content" ${search == 'content' ? 'selected' : ''}>내용</option>
-                    </select>
-                    <input type="text" name="searchContent" value="${searchContent}">
-                    <input type="checkbox" value="Y" name="res_state">답변 완료
-                    <input type="hidden" name="mode" value="search">
-                    <button type="submit">검색하기</button>
-                    <a href="/qna/write">글쓰기</a>
+                        <select   name="search">
+                            <%--                        class="search"--%>
+                            <option value="title"  ${search == 'title' ? 'selected' : ''}>제목</option>
+                            <option value="content" ${search == 'content' ? 'selected' : ''}>내용</option>
+                        </select>
+                        <input type="text" name="searchContent" value="${searchContent}">
+                        <input type="checkbox" value="Y" name="res_state">답변 완료
+                        <input type="hidden" name="mode" value="search">
+                        <button type="submit">검색하기</button>
+                        <a href="/qna/write">글쓰기</a>
+                    </div>
                 </form>
             </div>
             <div class="page" style="text-align: center">

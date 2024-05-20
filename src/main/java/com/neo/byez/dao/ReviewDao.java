@@ -18,4 +18,5 @@ public interface ReviewDao {
     List<ReviewDto> selectAll();
     List<ReviewItemJoinDto> selectJoinItem(String id);
     ReviewDto selectByReviewNum(Integer review_num);
+    List<ReviewDto> selectByItem(String item_num);
 }

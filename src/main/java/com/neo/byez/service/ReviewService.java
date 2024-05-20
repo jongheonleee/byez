@@ -17,4 +17,5 @@ public interface ReviewService {
     public List<ReviewItemJoinDto> searchJoinItem(String id);
 
     public ReviewDto searchByReviewNum(Integer review_num);
+    public List<ReviewDto> searchByItem(String item_num);
 }

@@ -75,7 +75,6 @@ public class ReviewController {
 
     @PostMapping("/modify")
     public String modifyEnd(ReviewDto reviewDto) {
-        System.out.println(reviewDto.toString());
         reviewServiceimpl.modify(reviewDto);
         return "redirect:/review/list";
     }

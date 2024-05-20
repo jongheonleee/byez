@@ -32,7 +32,11 @@
             up_date=now()
         WHERE review_num = #{review_num}
     </update>
-
+<select id="selectByItem" parameterType="String" resultType="ReviewDto">
+SELECT *
+FROM reveiw
+    WHERE item_num=#{item_num}
+</select>
     <select id="selectById" parameterType="String" resultType="ReviewDto">
         SELECT *
         FROM review
