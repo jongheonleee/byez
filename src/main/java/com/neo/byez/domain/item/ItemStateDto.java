@@ -1,8 +1,28 @@
 package com.neo.byez.domain.item;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class ItemStateDto {
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ItemStateDto that = (ItemStateDto) o;
+        return sales_qty == that.sales_qty && view_cnt == that.view_cnt
+                && stock_qty == that.stock_qty
+                && num.equals(that.num) && Objects.equals(state_code, that.state_code);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(num, sales_qty, view_cnt, stock_qty, state_code);
+    }
 
     private String num;
     private int sales_qty;

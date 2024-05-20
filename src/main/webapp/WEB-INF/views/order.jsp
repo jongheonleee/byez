@@ -19,10 +19,7 @@
         <tbody>
         <c:forEach var="orderItemDto" items="${list}">
             <tr>
-                <td>${orderItemDto.num}</td>
-                <td>${orderItemDto.name}</td>
-                <td>${orderItemDto.qty}</td>
-                <td>${orderItemDto.price * orderItemDto.qty}</td>
+                <td>${orderItemDto.seq}</td>
             </tr>
         </c:forEach>
         </tbody>

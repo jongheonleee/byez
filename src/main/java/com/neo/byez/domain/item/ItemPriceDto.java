@@ -1,12 +1,12 @@
 package com.neo.byez.domain.item;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class ItemPriceDto {
 
     private String num;
     private double disc_rate;
-
     private int period;
     private Date start_date;
     private Date end_date;
@@ -110,5 +110,38 @@ public class ItemPriceDto {
 
     public void setPeriod(int period) {
         this.period = period;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ItemPriceDto that = (ItemPriceDto) o;
+        return Double.compare(that.disc_rate, disc_rate) == 0 && num.equals(that.num);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(num, disc_rate);
+    }
+
+    @Override
+    public String toString() {
+        return "ItemPriceDto{" +
+                "num='" + num + '\'' +
+                ", disc_rate=" + disc_rate +
+                ", period=" + period +
+                ", start_date=" + start_date +
+                ", end_date=" + end_date +
+                ", remark='" + remark + '\'' +
+                ", reg_date=" + reg_date +
+                ", reg_id='" + reg_id + '\'' +
+                ", up_date=" + up_date +
+                ", up_id='" + up_id + '\'' +
+                '}';
     }
 }

@@ -245,5 +245,3 @@ public class BasketItemServiceImpl implements BasketItemService {
         }
     }
 }
-
-// 1 <= rowCnt && rowCnt <= 5

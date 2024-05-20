@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.item.ItemColorDao">
+  <insert id="insert" parameterType="ItemOptDto" >
+    insert into item_color(num, code, reg_date, reg_id, up_date, up_id)
+    values( #{num}, #{code}, now(), 'manager', now(), 'manager')
+  </insert>
+
+  <select id="select" parameterType="string" resultType="ItemOptDto">
+    select *
+    from item_color
+    where num = #{num}
+  </select>
+
+  <select id="count" parameterType="string" resultType="Integer">
+    select count(*)
+    from item_color
+    where num = #{num}
+  </select>
+
+  <select id="selectAll" resultType="ItemOptDto">
+    select *
+    from item_color
+  </select>
+
+  <select id="countAll" resultType="Integer">
+    select count(*)
+    from item_color
+  </select>
+
+  <update id="update" parameterType="ItemOptDto">
+    update item_color
+    set code = #{new_code}
+    where num = #{num}
+      and code = #{code}
+  </update>
+
+  <delete id="delete" parameterType="ItemOptDto">
+    delete from item_color
+    where num = #{num}
+      and code = #{code}
+  </delete>
+
+  <delete id="deleteAll">
+    delete from item_color
+  </delete>
+
+  <delete id="deleteAllColor" parameterType="string">
+    delete from item_color
+    where num = #{num}
+  </delete>
+</mapper>

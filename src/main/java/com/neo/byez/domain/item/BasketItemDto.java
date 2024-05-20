@@ -11,8 +11,8 @@ public class BasketItemDto {
     private String name;
     private int price;
     private int qty;
-    private String opt1;
-    private String opt2;
+    private String opt1; // 사이즈
+    private String opt2; // 색상
     private String opt3;
     private String opt4;
     private String opt5;
@@ -201,6 +201,7 @@ public class BasketItemDto {
         StringBuilder sb = new StringBuilder();
 
         sb.append("[").append("seq : ").append(seq)
+                .append(", num : ").append(num)
                 .append(", id : ").append(id)
                 .append(", name : ").append(name)
                 .append(", price : ").append(price)

@@ -23,8 +23,22 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 class ItemDaoImplTest {
 
     @Autowired
-    ItemDao itemDao;
+    ItemDaoImpl itemDao;
 
+    @Autowired
+    ItemStateDaoImpl itemStateDao;
+
+    @Autowired
+    ItemDetailDaoImpl itemDetailDao;
+
+    @Autowired
+    ItemPriceDaoImpl itemPriceDao;
+
+    @Autowired
+    ItemColorDaoImpl itemColorDao;
+
+    @Autowired
+    ItemSizeDaoImpl itemSizeDao;
 
     @BeforeEach
     public void init() throws Exception {

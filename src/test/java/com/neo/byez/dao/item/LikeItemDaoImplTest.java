@@ -1,10 +1,17 @@
 package com.neo.byez.dao.item;
 
 
-import javax.sql.DataSource;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+import com.neo.byez.dao.UserDaoImpl;
+import com.neo.byez.domain.UserDto;
+import com.neo.byez.domain.item.ItemDto;
+import com.neo.byez.domain.item.LikeItemDto;
+import java.util.Date;
+import java.util.List;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -12,17 +19,82 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @ExtendWith(SpringExtension.class)
-class LikeItemDaoImpTest {
+class LikeItemDaoImplTest {
+
 
     @Autowired
-    LikeItemDao dao;
+    UserDaoImpl userDao;
 
     @Autowired
-    DataSource ds;
+    ItemDaoImpl itemDao;
+
+    @Autowired
+    LikeItemDaoImpl likeDao;
+
+
+    @Before
+    public void 주입_테스트() {
+        assertNotNull(userDao);
+        assertNotNull(itemDao);
+        assertNotNull(likeDao);
+    }
 
     @BeforeEach
     public void init() throws Exception {
         // 각 테스트가 종료된 이후 목업 데이터 추가
+    }
+
+    @Test
+    public void 더미_데이터_생성() throws Exception {
+        // 페이징 처리 확인
+            // 유저 1명, 상품 200개, 좋아요 상품 200개
+            // 페이징 < 1 2 ... 10 >
+            // 마지막 17
+
+        // 데이터 비우기
+        List<UserDto> users = userDao.selectUserAll();
+        for (UserDto user : users) {
+            likeDao.deleteAll(user.getId());
+        }
+
+        userDao.deleteAllTestUser();
+        itemDao.deleteAll();
+
+        // 유저 1명 생성
+        for (int i = 1; i <= 1; i++) {
+            UserDto user = new UserDto("user" + i, "password" + i, "name" + i, 999999, 1, "M", 12345678, 1012345678, "test"+i+"@example.com", "user" + i, "user" + i);
+            userDao.insertUser(user);
+        }
+
+        // 상품 200개 생성
+        for (int i = 1; i <= 200; i++) {
+            ItemDto item = createItem(i);
+            itemDao.insert(item);
+        }
+
+        // 좋아요 상품 200개 등록
+        UserDto user = userDao.selectUser("user1");
+        for (int i = 1; i <= 200; i++) {
+            LikeItemDto likeItem = createLikeItem(i);
+            likeItem.setId(user.getId());
+            likeDao.insert(likeItem);
+        }
+
+    }
+
+    @Test
+    public void 유저_상품_페이지_조회() throws Exception {
+        // 유저 1, 상품 200, 좋아요 상품 200
+        // offSet : 48, pageSize : 12
+        // 12개 들고오는지 확인
+//        List<LikeItemDto> likeItems = likeDao.selectPage(48, 12);
+//        assertEquals(12, likeItems.size());
+
+        int num = 152;
+//        for (LikeItemDto likeItem : likeItems) {
+//            assertEquals(String.valueOf(num), likeItem.getNum());
+//            num--;
+//        }
     }
 
 
@@ -763,23 +835,23 @@ class LikeItemDaoImpTest {
 //        pstmt.executeUpdate();
 //    }
 //
-//    private ItemDto createItem(int i) {
-//        String num = String.valueOf(i);
-//        String name = "item" + String.valueOf(i);
-//        String itemType = "item-type" + String.valueOf(i);
-//        String custType = "cust-type" + String.valueOf(i);
-//        int price = i * 10000;
-//        int discPrice = i * 7000;
-//        String mainImg = "...";
-//        int reviewCnt = i * 500;
-//        double reviewRate = 3.5;
-//        int likeCnt = i * 50;
-//        String col = "#1234";
-//
-//        return new ItemDto(num, name, itemType, custType, price,
-//                discPrice, mainImg, reviewCnt, reviewRate, likeCnt, col,
-//                null, "manager1", null, "manager1");
-//    }
+    private ItemDto createItem(int i) {
+        String num = String.valueOf(i);
+        String name = "item" + String.valueOf(i);
+        String itemType = "item-type" + String.valueOf(i);
+        String custType = "cust-type" + String.valueOf(i);
+        int price = i * 10000;
+        int discPrice = i * 7000;
+        String mainImg = "...";
+        int reviewCnt = i * 500;
+        double reviewRate = 3.5;
+        int likeCnt = i * 50;
+        String col = "#1234";
+
+        return new ItemDto(num, name, itemType, custType, price,
+                discPrice, mainImg, reviewCnt, reviewRate, likeCnt, col,
+                null, "manager1", null, "manager1");
+    }
 //
 //    private UserDto createUser(int i) {
 //        return new UserDto(String.valueOf(i), "1234", "cust"+i, 1, i, (i % 2 == 0 ? "M" : "W"),
@@ -855,28 +927,28 @@ class LikeItemDaoImpTest {
 //        conn.commit();
 //    }
 //
-//    private LikeItemDto createLikeItem(int i) {
-//        String id = String.valueOf(i);
-//        String num = String.valueOf(i);
-//        String name = "item" + String.valueOf(i);
-//        String type = "type" + String.valueOf(i);
-//        int price = i * 10000;
-//        int discPrice = i * 7000;
-//        String itemComt = "this item is ...";
-//        String mainImg = "...";
-//        int reviewCnt = i * 500;
-//        int likeCnt = i * 50;
-//        String stateCode = "SLA" + String.valueOf(i);
-//        String comt = ".....";
-//        Date regDate = null;
-//        String regId = "manager";
-//        Date upDate = null;
-//        String upId = "manager";
-//
-//        return new LikeItemDto(id, num, name, type, price,
-//                discPrice, itemComt, mainImg, reviewCnt, likeCnt,
-//                stateCode, comt, regDate, regId, upDate, upId);
-//    }
+    private LikeItemDto createLikeItem(int i) {
+        String id = String.valueOf(i);
+        String num = String.valueOf(i);
+        String name = "item" + String.valueOf(i);
+        String type = "type" + String.valueOf(i);
+        int price = i * 10000;
+        int discPrice = i * 7000;
+        String itemComt = "this item is ...";
+        String mainImg = "...";
+        int reviewCnt = i * 500;
+        int likeCnt = i * 50;
+        String stateCode = "SLA" + String.valueOf(i);
+        String comt = ".....";
+        Date regDate = null;
+        String regId = "manager";
+        Date upDate = null;
+        String upId = "manager";
+
+        return new LikeItemDto(id, num, name, type, price,
+                discPrice, itemComt, mainImg, reviewCnt, likeCnt,
+                stateCode, comt, regDate, regId, upDate, upId);
+    }
 //
 
 

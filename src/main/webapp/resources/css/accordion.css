@@ -1,0 +1,19 @@
+body {background-color: black;}
+
+.accordion {
+  background-color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  transition: 0.4s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  overflow: hidden;
+}

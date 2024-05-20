@@ -6,6 +6,7 @@ import com.neo.byez.dao.UserDaoImpl;
 import com.neo.byez.domain.UserDto;
 import com.neo.byez.domain.item.BasketDto;
 import com.neo.byez.domain.item.BasketItemDto;
+import com.neo.byez.domain.item.ItemDto;
 import java.util.List;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
@@ -140,15 +141,15 @@ public class BasketItemDaoImplTest {
 
     @DisplayName(" 카운트 성공 - 사용자의 장바구니 상품 개수 카운트")
     @ParameterizedTest(name="[{index}]. 사용자가 등록한 상품 수량 -> {0}")
-    @ValueSource(ints = {1, 10, 100, 1000})
-    public void test1(int n) {
-
+    @ValueSource(ints = {10})
+    public void test1(int n) throws Exception {
+        insertData(n);
     }
 
     private void insertData(int amount) throws Exception {
         for (int i=1; i<=10; i++) {
             // 유저
-            UserDto user = new UserDto("user" + i, "password" + i, "name" + i, 999999, 1, "M", 12345678, 1012345678, "test"+i+"@example.com", "user" + i, "user" + i);
+            UserDto user = new UserDto(""+ i, "password" + i, "name" + i, 999999, 1, "M", 12345678, 1012345678, "test"+i+"@example.com", "user" + i, "user" + i);
             userDao.insertUser(user);
 
             // 장바구니
@@ -159,8 +160,26 @@ public class BasketItemDaoImplTest {
 
         for (int i=1; i<=amount; i++) {
             // 상품
+            String num = String.valueOf(i);
+            String name = "item" + String.valueOf(i);
+            String itemType = "item-type" + String.valueOf(i);
+            String custType = "cust-type" + String.valueOf(i);
+            int price = i * 10000;
+            int discPrice = i * 7000;
+            String mainImg = "...";
+            int reviewCnt = i * 500;
+            double reviewRate = 3.5;
+            int likeCnt = i * 50;
+            String col = "#1234";
+            ItemDto itemDto = new ItemDto(num, name, itemType, custType, price,
+                    discPrice, mainImg, reviewCnt, reviewRate, likeCnt, col,
+                    null, "manager1", null, "manager1");
+            itemDao.insert(itemDto);
 
             // 장바구니 상품
+            BasketItemDto basketItemDto = new BasketItemDto(0, "1", itemDto.getNum(), itemDto.getName(),
+                    5000000, 5, "XL", "COL1", "M", null, null, "Y", null, null, null, null);
+            basketItemDao.insert(basketItemDto);
 
         }
 

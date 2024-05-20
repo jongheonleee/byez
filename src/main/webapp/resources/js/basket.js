@@ -190,30 +190,18 @@
   let orderNumber = 0;
 
   $('.basketItemInfo').each(function(i, e) {
-  if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
-  // 값 조회
-  let num = $(e).find(".eachBasketItemNum").val();
-  let name = $(e).find(".eachBasketItemName").val();
-  let price = $(e).find(".eachBasketItemPrice").val();
-  let qty = $(e).find(".eachBasketItemQty").val();
+      if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
+          // 값 조회
+          const seq = parseInt($(e).find(".eachBasketItemSeq").val());
 
+          // input 태그 생성
+          // form에 추가
+          formContents += "<input name='orders[" + orderNumber + "].seq' type='hidden' value='" + seq + "'>";
 
-  // input 태그 생성
-  let inputItemNum = "<input name='orders[" + orderNumber + "].num' type='hidden' value='" + num + "'>";
-  let inputItemName = "<input name='orders[" + orderNumber + "].name' type='hidden' value='" + name + "'>";
-  let inputItemPrice = "<input name='orders[" + orderNumber + "].price' type='hidden' value='" + price + "'>";
-  let inputItemQty = "<input name='orders[" + orderNumber + "].qty' type='hidden' value='" + qty + "'>";
-
-  // form에 추가
-  formContents += inputItemNum;
-  formContents += inputItemName;
-  formContents += inputItemPrice;
-  formContents += inputItemQty;
-
-  // 주문 번호 증가
-  orderNumber += 1;
-}
-});
+          // 주문 번호 증가
+          orderNumber += 1;
+      }
+  });
 
   // form 전송
   $(".orderCheckedBasketItemForm").html(formContents);
@@ -279,14 +267,10 @@
         const minCnt = 1;
         const maxCnt = 1000;
 
-        if($(this).hasClass('minus')){
-          if(currCnt>minCnt){
-            currCnt--;
-          }
-        }else{
-          if(currCnt<maxCnt){
-            currCnt++;
-          }
+        if ($(this).hasClass('minus') && currCnt>minCnt){
+          currCnt--;
+        } else if (!$(this).hasClass('minus') && currCnt<maxCnt){
+          currCnt++;
         }
 
         $cnt.val(currCnt);

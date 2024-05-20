@@ -37,9 +37,9 @@
 })
 
   $(".cancelBtn").on("click", function (e) {
-  $(".modifyBtn").css("display", "flex");
-  $(".deleteBtn").css("display", "none");
-  $(this).css("display", "none");
+    $(".modifyBtn").css("display", "flex");
+    $(".deleteBtn").css("display", "none");
+    $(this).css("display", "none");
 
   $(".likeItemInfo").find(".checkBox").css("display", "none");
 })

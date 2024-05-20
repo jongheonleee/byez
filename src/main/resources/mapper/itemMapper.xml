@@ -9,16 +9,213 @@
     from item
   </select>
 
-  <select id="selectAll" resultType="ItemDto">
-    select *
-    from item
-  </select>
-
   <select id="select" parameterType="string" resultType="ItemDto">
     select *
     from item
     where num = #{num}
   </select>
+
+  <select id="selectAll" parameterType="map" resultType="ItemDto">
+    select
+        i.num as num,
+        i.name as name,
+        i.item_type as item_type,
+        i.cust_type as cust_type,
+        i.price as price,
+        i.disc_price as disc_price,
+        i.main_img as main_img,
+        i.review_cnt as review_cnt,
+        i.review_rate as review_rate,
+        i.like_cnt as like_cnt,
+        i.col as col
+    from item i
+    inner join item_state s
+    on i.num = s.num
+    inner join item_detail d
+    on i.num = d.num
+    order by d.rel_date desc, s.sales_qty desc, i.review_cnt desc, i.like_cnt desc
+    limit #{offset}, #{pageSize}
+  </select>
+
+  <select id="selectBySearchCondition" parameterType="SearchCondition" resultType="ItemDto">
+    select
+      i.num as num,
+      i.name as name,
+      i.item_type as item_type,
+      i.cust_type as cust_type,
+      i.price as price,
+      i.disc_price as disc_price,
+      i.main_img as main_img,
+      i.review_cnt as review_cnt,
+      i.review_rate as review_rate,
+      i.like_cnt as like_cnt,
+      i.col as col
+    from item i
+    inner join item_state s
+    on i.num = s.num
+    inner join item_detail d
+    on i.num = d.num
+    where true
+      <choose>
+        <when test='option=="NT"'>
+          AND i.name LIKE concat('%', #{nameKeyword}, '%')
+          AND i.item_type LIKE concat('%', #{typeKeyword}, '%')
+        </when>
+        <when test='option=="NC"'>
+          AND i.name LIKE concat('%', #{nameKeyword}, '%')
+          AND i.cust_type =  #{custKeyword}
+        </when>
+        <when test='option=="TC"'>
+          AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+          AND i.cust_type =  #{custKeyword}
+        </when>
+        <otherwise>
+          AND i.name LIKE concat('%', #{nameKeyword}, '%')
+          AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+          AND i.cust_type =  #{custKeyword}
+        </otherwise>
+      </choose>
+    order by d.rel_date desc, s.sales_qty desc, i.review_cnt desc, i.like_cnt desc
+    limit #{offset}, #{pageSize}
+  </select>
+
+  <select id="countSearchResult" parameterType="SearchCondition" resultType="int">
+    select
+    count(*)
+    from item i
+    where true
+    <choose>
+      <when test='option=="NT"'>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.item_type LIKE concat('%', #{typeKeyword}, '%')
+      </when>
+      <when test='option=="NC"'>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </when>
+      <when test='option=="TC"'>
+        AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </when>
+      <otherwise>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </otherwise>
+    </choose>
+  </select>
+
+  <select id="selectDiscountItem" parameterType="SearchCondition" resultType="ItemDto">
+    select
+      i.num as num,
+      i.name as name,
+      i.item_type as item_type,
+      i.cust_type as cust_type,
+      i.price as price,
+      i.disc_price as disc_price,
+      i.main_img as main_img,
+      i.review_cnt as review_cnt,
+      i.review_rate as review_rate,
+      i.like_cnt as like_cnt,
+      i.col as col
+    from item i
+    inner join item_state s
+    on i.num = s.num
+    inner join item_detail d
+    on i.num = d.num
+    where true
+    <choose>
+      <when test='option=="NT"'>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.item_type LIKE concat('%', #{typeKeyword}, '%')
+      </when>
+      <when test='option=="NC"'>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </when>
+      <when test='option=="TC"'>
+        AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </when>
+      <when test='option=="T"'>
+        AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+      </when>
+      <otherwise>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </otherwise>
+    </choose>
+    and i.price > i.disc_price
+    order by d.rel_date desc, s.sales_qty desc, i.review_cnt desc, i.like_cnt desc
+    limit #{offset}, #{pageSize}
+  </select>
+
+
+  <select id="countDiscountItem" parameterType="SearchCondition" resultType="int">
+    select
+    count(*)
+    from item i
+    where true
+    <choose>
+      <when test='option=="NT"'>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.item_type LIKE concat('%', #{typeKeyword}, '%')
+      </when>
+      <when test='option=="NC"'>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </when>
+      <when test='option=="TC"'>
+        AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </when>
+      <when test='option=="T"'>
+        AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+      </when>
+      <otherwise>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </otherwise>
+    </choose>
+    and i.price > i.disc_price
+  </select>
+
+<!--  <select id="selectDiscountItem" parameterType="SearchCondition" resultType="ItemDto">-->
+<!--    select-->
+<!--     count(*)-->
+<!--    from item -->
+<!--    where item_type like concat(#{item_type}, '%')-->
+<!--    and i.price > i.disc_price-->
+<!--  </select>-->
+
+
+  <select id="selectDetailItem" parameterType="string" resultType="ItemDetailPageDto">
+    select
+      i.num as num,
+      i.name as name,
+      d.detail_name as detail_name,
+      i.cust_type as cust_type,
+      i.price as price,
+      i.disc_price as disc_price,
+      p.disc_rate as disc_rate,
+      d.detail_img as detail_img,
+      d.mfg_corp as mfg_corp,
+      d.mfg_name as mfg_name,
+      d.mfg_date as mfg_date,
+      d.model as model,
+      d.origin as origin,
+      d.matr as matr,
+      d.caut as caut
+    from item i
+    inner join item_detail d
+    on i.num = d.num
+    inner join item_price p
+    on i.num = p.num
+    where i.num = #{num}
+  </select>
+
 
   <insert id="insert" parameterType="ItemDto">
     insert into item( num, name, price, disc_price, main_img, review_cnt, like_cnt, review_rate, col, reg_date, reg_id, up_date, up_id, item_type, cust_type)
@@ -49,15 +246,23 @@
   <!--  소분류  -->
   <!--  판매량, 리뷰수, 좋아요수 순으로 정렬  -->
   <!--  자바 객체에서 % 붙여서 넣어주기 -->
-  <select id="selectItemType" parameterType="Category" resultType="ItemDto">
-    select *
-    from item i
-    inner join item_state s
-    on i.num = s.num
-    where i.item_type like #{item_type_format}
-    order by s.sales_qty desc, i.review_cnt desc, i.like_cnt desc
-  </select>
+<!--  <select id="selectItemType" parameterType="Category" resultType="ItemDto">-->
+<!--    select *-->
+<!--    from item i-->
+<!--    inner join item_state s-->
+<!--    on i.num = s.num-->
+<!--    where i.item_type like #{item_type_format}-->
+<!--    order by s.sales_qty desc, i.review_cnt desc, i.like_cnt desc-->
+<!--  </select>-->
 
+<!--    <select id="selectItemType" parameterType="Category" resultType="ItemDto">-->
+<!--      select *-->
+<!--      from item i-->
+<!--      inner join item_state s-->
+<!--      on i.num = s.num-->
+<!--      where i.item_type like #{item_type_format}-->
+<!--      order by s.sales_qty desc, i.review_cnt desc, i.like_cnt desc-->
+<!--    </select>-->
 <!--  &lt;!&ndash;  상품 상태 등록  &ndash;&gt;-->
 <!--  <insert id="insertItemState" parameterType="ItemStateDto">-->
 <!--    insert into item_state( num, sales_qty, view_cnt, stock_qty, state_code, reg_date, reg_id, up_date, up_id ) -->
@@ -81,6 +286,11 @@
     and i.item_type=#{item_type}
     limit 8;
   </select>
+<!--  &lt;!&ndash;  상품 상태  &ndash;&gt;-->
+<!--  <insert id="insertItemState" parameterType="ItemStateDto">-->
+<!--    insert into item_state( num, sales_qty, view_cnt, stock_qty, state_code, reg_date, reg_id, up_date, up_id )-->
+<!--    value( #{num}, #{sales_qty}, #{view_cnt}, #{stock_qty}, #{state_code}, now(), 'manager', now(), 'manager' )-->
+<!--  </insert>-->
 
   <select id="selectMTop8" resultType="ItemDto">
     select
@@ -91,6 +301,11 @@
     and i.item_type=#{item_type}
     limit 8;
   </select>
+<!--  <select id="selectItemState" parameterType="string" resultType="ItemStateDto">-->
+<!--    select *-->
+<!--    from item_state-->
+<!--    where num = #{num}-->
+<!--  </select>-->
 
   <select id="selectUTop8" resultType="ItemDto">
     select
@@ -101,4 +316,57 @@
     and i.item_type=#{item_type}
     limit 8;
   </select>
+<!--  <select id="selectAllItemState" resultType="ItemStateDto">-->
+<!--    select *-->
+<!--    from item_state-->
+<!--  </select>-->
+
+<!--  <update id="increaseSalesQty" parameterType="ItemStateDto">-->
+<!--    update item_state-->
+<!--    set-->
+<!--      sales_qty = sales_qty + #{qty},-->
+<!--      stock_qty = stock_qty - #{qty},-->
+<!--      up_date = now(),-->
+<!--      up_id = 'manager'-->
+<!--    where num = #{num}-->
+<!--  </update>-->
+
+<!--  <update id="increaseStockQty" parameterType="ItemStateDto">-->
+<!--    update item_state-->
+<!--    set-->
+<!--      stock_qty = stock_qty + #{qty},-->
+<!--      up_date = now(),-->
+<!--      up_id = 'manager'-->
+<!--    where num = #{num}-->
+<!--  </update>-->
+
+<!--  <update id="increaseViewCnt" parameterType="ItemStateDto">-->
+<!--    update item_state-->
+<!--    set-->
+<!--      view_cnt = view_cnt + 1,-->
+<!--      up_date = now(),-->
+<!--      up_id = 'manager'-->
+<!--    where num = #{num}-->
+<!--  </update>-->
+
+<!--  <update id="updateStateCode" parameterType="ItemStateDto">-->
+<!--    update item_state-->
+<!--    set-->
+<!--      state_code = #{code},-->
+<!--      up_date = now(),-->
+<!--      up_id = 'manager'-->
+<!--    where num = #{num}-->
+<!--  </update>-->
+
+<!--  <delete id="deleteItemState" parameterType="string">-->
+<!--    delete-->
+<!--    from item_state-->
+<!--    where num = #{num}-->
+<!--  </delete>-->
+
+<!--  <delete id="deleteAllItemState">-->
+<!--    delete-->
+<!--    from item_state-->
+<!--  </delete>-->
+
 </mapper>

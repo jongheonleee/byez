@@ -4,6 +4,8 @@ package com.neo.byez.controller.item;
 import com.neo.byez.common.validator.BasketItemValidator;
 import com.neo.byez.domain.item.BasketItemDto;
 import com.neo.byez.domain.item.BasketItemDtos;
+import com.neo.byez.domain.item.OrderItemDto;
+import com.neo.byez.domain.item.OrderItemDtos;
 import com.neo.byez.service.item.BasketItemService;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import static com.neo.byez.common.config.BasketItemConstant.*;
@@ -70,10 +73,11 @@ public class BasketItemController {
     // 유저의 장바구니 상품을 추가함
     @PostMapping("/basket/add")
     @ResponseBody
-    public ResponseEntity<String> add(@Valid BasketItemDto dto, RedirectAttributes ratt, HttpSession session) {
+    public ResponseEntity<String> add(@RequestBody BasketItemDto dto, RedirectAttributes ratt, HttpSession session) {
         String id = (String) session.getAttribute("id");
         id = "1";
         dto.setId(id);
+        System.out.println(dto);
         if (!service.register(dto)) {
             return new ResponseEntity<>("장바구니 상품을 등록하지 지못했습니다.", HttpStatus.BAD_REQUEST);
         }
@@ -146,6 +150,17 @@ public class BasketItemController {
         // 기존 상품 페이지로 이동
         return "redirect:/basket";
     }
+
+//    @PostMapping("/order")
+//    public String order(OrderItemDtos opd, Model model) {
+//        List<OrderItemDto> list = opd.getOrders();
+//        for (OrderItemDto dto : list) {
+//            System.out.println(dto);
+//        }
+//
+//        model.addAttribute("list", list);
+//        return "order";
+//    }
 
 
 }

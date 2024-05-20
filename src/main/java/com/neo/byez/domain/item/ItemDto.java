@@ -1,5 +1,7 @@
 package com.neo.byez.domain.item;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -17,9 +19,7 @@ public class ItemDto {
     private int review_cnt;
     private double review_rate;
     private int like_cnt;
-    private String col;
-
-
+    private String col; // red,blue,black ,,, 
     private Date reg_date;
     private String reg_id;
     private Date up_date;
@@ -169,6 +169,12 @@ public class ItemDto {
         this.up_id = up_id;
     }
 
+    public List<String> getColors() {
+        // 파싱 
+        String[] colors = col.split(",");
+        // 반환
+        return Arrays.asList(colors);
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) {

@@ -53,4 +53,30 @@
     from item_like
     where id = #{id}
   </delete>
+
+  <select id="selectPage" parameterType="map" resultType="LikeItemDto">
+    select
+      l.id as id,
+      l.num as num,
+      l.name as name,
+      l.type as item_type,
+      l.price as price,
+      l.disc_price as disc_price,
+      l.main_img as main_img,
+      l.item_comt as item_comt,
+      l.review_cnt as review_cnt,
+      l.like_cnt as like_cnt,
+      l.state_code as state_code,
+      l.comt as comt,
+      l.reg_date as reg_date,
+      l.reg_id as reg_id,
+      l.up_date as up_date,
+      l.up_id as up_id
+    from item_like l
+    inner join cust c
+    on l.id = c.id
+    where c.id = #{id}
+    order by reg_date desc, like_cnt desc, review_cnt desc
+    limit #{offset}, #{pageSize};
+  </select>
 </mapper>

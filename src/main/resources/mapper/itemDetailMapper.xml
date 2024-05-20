@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.item.ItemDetailDao">
+  <insert id="insert" parameterType="ItemDetailDto">
+    insert into item_detail(
+      num, detail_name, comt, detail_img, price,
+      rel_date, gr_date, mfg_corp, mfg_name, mfg_date,
+      model, origin, matr, caut, reg_date, reg_id, up_date, up_id
+    )
+    values(
+      #{num}, #{detail_name}, #{comt}, #{detail_img}, #{price},
+      now(), now(), #{mfg_corp}, #{mfg_name}, now(),
+      #{model}, #{origin}, #{matr}, #{caut}, now(), 'manager', now(), 'manager'
+    )
+  </insert>
+
+  <select id="select" parameterType="string" resultType="ItemDetailDto">
+    select *
+    from item_detail
+    where num = #{num}
+  </select>
+
+  <select id="selectAll" resultType="ItemDetailDto">
+    select *
+    from item_detail
+  </select>
+
+  <select id="count" resultType="int">
+    select count(*)
+    from item_detail
+  </select>
+
+  <update id="update" parameterType="ItemDetailDto">
+    update item_detail
+    set
+      detail_name = #{detail_name},
+      comt = #{comt},
+      detail_img = #{detail_img},
+      price = #{price},
+      rel_date = now(),
+      gr_date = now(),
+      mfg_corp = #{mfg_corp},
+      mfg_name = #{mfg_name},
+      mfg_date = now(),
+      model = #{model},
+      origin = #{origin},
+      matr = #{matr},
+      caut = #{caut},
+      reg_date = now(),
+      reg_id = 'manager',
+      up_date = now(),
+      up_id = 'manager'
+    where num = #{num}
+  </update>
+
+  <delete id="delete" parameterType="string">
+    delete
+    from item_detail
+    where num = #{num}
+  </delete>
+
+  <delete id="deleteAll">
+    delete
+    from item_detail
+  </delete>
+</mapper>

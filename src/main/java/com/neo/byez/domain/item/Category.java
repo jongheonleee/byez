@@ -24,7 +24,7 @@ public class Category {
     }
 
     private String generateFormat() {
-        item_type_format = "%" + item_type;
+        item_type_format = item_type + "%";
         return item_type_format;
     }
 }

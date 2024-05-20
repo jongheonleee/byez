@@ -249,13 +249,13 @@
 </form>
 
 <!-- 주문 form -->
-<form action="order" method="get" class="orderCheckedBasketItemForm">
+<form action="order" method="post" class="orderCheckedBasketItemForm">
 </form>
 <%@include file="../views/include/quick.jsp"%>
 <%@include file="../views/include/footer.jsp"%>
 <!-- 4. 자스 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="js/nav.js"></script>
+<script src="/js/nav.js?after"></script>
 <script src="js/basket.js"></script>
 </body>
 </html>

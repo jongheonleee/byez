@@ -7,8 +7,8 @@
             </a>
         </div>
         <ul class="nav_menu">
-            <li><a href="/item/categories/discount">할인 상품</a></li>
-            <li><a href="/item/categories/best">베스트</a></li>
+            <li><a href="/item/discount">할인 상품</a></li>
+            <li><a href="/item/best">베스트</a></li>
             <li><a href="/item/categories/02">여성</a></li>
             <li><a href="/item/categories/01">남성</a></li>
             <li><a href="/item/categories/03">혼성</a></li>
@@ -56,56 +56,54 @@
             <li>
                 <ul>
                     <li>여성</li>
-
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="category">상의</a></li>
-                    <li><a href="category">맨투맨/스웨트셔츠</a></li>
-                    <li><a href="category">후드/집업</a></li>
-                    <li><a href="category">니트/스웨터</a></li>
-                    <li><a href="category">셔츠/블라우스</a></li>
-                    <li><a href="category">긴팔 티셔츠</a></li>
-                    <li><a href="category">반팔 티셔츠</a></li>
-                    <li><a href="category">슬리브리스</a></li>
+                    <li><a href="/item/category/0201">상의</a></li>
+                    <li><a href="/item/category/020101">맨투맨/스웨트셔츠</a></li>
+                    <li><a href="/item/category/020102">후드/집업</a></li>
+                    <li><a href="/item/category/020103">니트/스웨터</a></li>
+                    <li><a href="/item/category/020104">셔츠/블라우스</a></li>
+                    <li><a href="/item/category/020105">긴팔 티셔츠</a></li>
+                    <li><a href="/item/category/020106">반팔 티셔츠</a></li>
+                    <li><a href="/item/category/020107">슬리브리스</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="category">아우터</a></li>
-                    <li><a href="category">패딩/다운</a></li>
-                    <li><a href="category">폴리스/덤블</a></li>
-                    <li><a href="category">자켓/점퍼</a></li>
-                    <li><a href="category">블레이저</a></li>
-                    <li><a href="category">가디건</a></li>
-                    <li><a href="category">바람막이</a></li>
+                    <li><a href="/item/category/0202">아우터</a></li>
+                    <li><a href="/item/category/020201">패딩/다운</a></li>
+                    <li><a href="/item/category/020202">폴리스/덤블</a></li>
+                    <li><a href="/item/category/020203">자켓/점퍼</a></li>
+                    <li><a href="/item/category/020204">블레이저</a></li>
+                    <li><a href="/item/category/020205">가디건</a></li>
+                    <li><a href="/item/category/020206">바람막이</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="category">슬랙스</a></li>
-                    <li><a href="category">트레이닝/스웨트셔츠</a></li>
-                    <li><a href="category">팬츠</a></li>
-                    <li><a href="category">숏츠</a></li>
-                    <li><a href="category">스커트</a></li>
+                    <li><a href="/item/category/0203">하의</a></li>
+                    <li><a href="/item/category/020301">슬랙스</a></li>
+                    <li><a href="/item/category/020302">트레이닝/스웨트셔츠</a></li>
+                    <li><a href="/item/category/020303">팬츠</a></li>
+                    <li><a href="/item/category/020304">숏츠</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="category">신발</a></li>
-                    <li><a href="category">운동화</a></li>
-                    <li><a href="category">구두</a></li>
-                    <li><a href="category">로퍼</a></li>
-                    <li><a href="category">힐</a></li>
-                    <li><a href="category">부츠</a></li>
-                    <li><a href="category">슬리퍼</a></li>
-                    <li><a href="category">샌달</a></li>
+                    <li><a href="/item/category/0204">신발</a></li>
+                    <li><a href="/item/category/020101">운동화</a></li>
+                    <li><a href="/item/category/020102">구두</a></li>
+                    <li><a href="/item/category/020103">로퍼</a></li>
+                    <li><a href="/item/category/020105">부츠</a></li>
+                    <li><a href="/item/category/020106">슬리퍼</a></li>
+                    <li><a href="/item/category/020107">샌달</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="category">기타</a></li>
+                    <li><a href="/item/category/99">기타</a></li>
                 </ul>
             </li>
         </ul>
@@ -233,8 +231,8 @@
                 고객님<br>무엇을 찾으시나요?
                 <img src="/img/top_search_close.png" alt="">
             </p>
-            <form action="">
-                <input type="text" placeholder="상품을 찾아보세요">
+            <form id="searchForm">
+                <input type="text" id="searchInput" placeholder="상품을 찾아보세요">
                 <button type="submit">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
