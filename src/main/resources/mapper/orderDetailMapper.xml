@@ -84,7 +84,7 @@
         select *
         from ord_detail
         WHERE id = #{id}
-          AND ord_state NOT IN ('구매완료', '배송완료', '주문완료');
+          AND ord_state NOT IN ('구매확정', '배송완료', '주문완료');
     </select>
 
     <update id = "updateOption" parameterType="OrderDetailDto">
@@ -132,5 +132,11 @@
         UPDATE ord_detail
         SET review = 'Y'
         WHERE ord_num =#{ord_num} AND item_num=#{item_num}
+    </update>
+
+    <update id="updateOrdState" parameterType="OrderDetailDto">
+        update ord_detail
+        set ord_state = #{ord_state}
+        where ord_num = #{ord_num}
     </update>
 </mapper>

@@ -9,7 +9,7 @@ public interface ItemOptionDao {
     List<ItemOptionDto> selectColor(String num);
 
     List<ItemOptionDto> selectSize(String num);
-
+    
     int getCountSize(String num);
     int getCountColor(String num);
 }

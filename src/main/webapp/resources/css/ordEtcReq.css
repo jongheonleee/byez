@@ -1,0 +1,198 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+section {width: 100%; min-width: 1200px; height: fit-content;
+    /*background-color: rgba(0, 255, 0, 0.1);*/
+    margin-top: 90px; float: left; padding: 50px 0;}
+
+.title {width: 100%; height: fit-content;
+    /*background-color: rgba(255, 0, 0, .1);*/
+    margin-bottom: 50px;}
+.title>p:first-of-type {text-align: right; margin-bottom: 50px;}
+.title>p:nth-of-type(2) {font-size: 42px; font-weight: bold; text-align: center;}
+
+
+.mside {width: 22%; height: 100%;
+    /*background-color: rgba(0, 0, 255, .1);*/
+    float: left;}
+
+.content {width: 78%; height: 100%;
+    /*background-color: rgba(255, 0, 0, 0.2);*/
+    float: left;
+    margin-top: -30px;}
+
+.mside_wrapper {width: 90%; min-width: 215px; height: 100%;
+    /*background-color: rgba(255, 0, 0, .1);*/
+    margin: auto;}
+.mside_wrapper>p {font-size: 20px; font-weight: bold; margin-bottom: 15px;}
+.mside_content {width: 100%; height: fit-content; border-top: 2px solid black;} 
+.mside_content ul {margin-top: 50px;}
+.mside_content ul>li {margin-top: 15px;}
+.mside_content ul>li:first-of-type {font-size: 18px; font-weight: bold;}
+
+.table_title {font-size: 20px; font-weight: bold; margin-bottom:15px;}
+.table_title>span {color: gray; font-size: 16px; font-weight: normal;}
+
+.content>table {width: 100%; height: fit-content;
+    /*background-color: rgba(255, 0, 0, 0.1);*/
+    border-top: 2px solid black; border-collapse: collapse;}
+.content .table_title{margin-top : 30px}
+.content .table{margin-bottom:  30px}
+
+.content>table th,.content>table td {border-bottom: 1px solid lightgray;}
+
+/* 주문상품테이블 제목셀의 높이와 내용셀의 패딩처리+가운데정렬*/
+.ordProduct td {padding: 15px; text-align: center; }
+.ordProduct th{height: 40px;}
+
+/* 주문상품정보 중 상품정보 */
+.ordProductTitle {width:40%}
+.ordProductTitle p{text-align: left;}
+.ordProductTitle p:last-of-type {color: gray;}
+
+.reason td{height:50px;}
+table td{text-align: left; padding: 10px 20px;}
+
+/* 각테이블의 왼쪽항목 길이 */
+.reasonChoice{width:15%}
+.pickup{width:15%}
+.pickupSpot {width: 15%;}
+.dlvCost{width:15%}
+
+/* 주문일자는 굵게/주문번호는 회색글씨 */
+.orderNum p:first-of-type {font-weight: bold;}
+.orderNum p:last-of-type {color: gray;}
+
+
+/* 교환신청/이전페이지 버튼 */
+#exchangeBtn, #refundBtn, #cancelBtn, .back{
+    width: 25%;
+    height: 53px;
+    font-size: 18px; }
+#exchangeBtn{border: 1px solid lightgray; background-color: white; margin-right: 5px;}
+#refundBtn{border: 1px solid lightgray; background-color: white; margin-right: 5px;}
+#cancelBtn{border: 1px solid lightgray; background-color: white; margin-right: 5px; }
+.back {border: 1px solid black; color: white; background-color: black;}
+#buttons{text-align: center; margin-top: 60px;}
+
+/*라디오버튼 간격띄우기 */
+.pickupChoice :last-of-type{margin-left:20px}
+.pickupSpotChoice :last-of-type{margin-left:20px}
+.pickupChoice p {
+    color : gray;
+    text-align: left;
+    float: right;
+    }
+
+
+/* 옵션변경버튼 왼쪽으로 정렬(아이디:changeOptionBtn) */
+#changeOptionBtn {
+    float: left; /* 버튼을 왼쪽으로 정렬 */
+    margin-top: 10px; /* 위쪽 여백 */
+    padding: 5px 10px; /* 내부 패딩을 좀 더 넉넉하게 조절 */
+    border: 1px solid #ccc;
+    background-color : white;
+    color: black;
+    cursor: pointer; /* 커서를 손가락 모양으로 변경 */
+    transition: background-color 0.3s, box-shadow 0.3s; /* 배경색과 그림자 변화에 애니메이션 효과 적용 */
+}
+
+#changeOptionBtn:hover {
+    background-color: lightgray;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 효과 추가 */
+}
+
+/*모달창*/
+.dialog {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    /*background: rgba(0, 0, 0, 0.4);*/
+}
+
+.dialog>.tb {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/*.dialog>.tb .inner {*/
+/*    width: 30%;*/
+/*    max-width: 100px;*/
+/*    padding: 20px;*/
+/*    background: #fff;*/
+/*    border-radius: 16px;*/
+/*}*/
+
+.dialog>.tb .inner {
+    width: 20%;
+    max-width: 100px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid gray;
+    height: 30vh; /* 높이를 화면 높이의 30%로 설정 */
+}
+
+.dialog .top {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.dialog .title {
+    font-weight: bold;
+    font-size: 18px; /* 글씨 크기 조정 */
+}
+
+/*.dialog .ct {*/
+/*    max-height: 30vh; !* 최대 높이를 40vh로 조정 *!*/
+/*    height: 30vh; !* 높이를 40vh로 조정 *!*/
+/*    overflow-y: auto;*/
+/*    border-bottom-left-radius: 10px;*/
+/*    border-bottom-right-radius: 10px;*/
+/*    background-color: #fff;*/
+/*}*/
+
+.dialog .ct {
+    max-height: 20vh; /* 컨텐츠 부분의 최대 높이를 25vh로 조정 */
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤바 생성 */
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #fff;
+}
+/*여기까지 모달창*/
+
+
+#changedOption{display: none; text-align: left; color: gray}
+
+.addressText  input[type="text"], textarea[name="reason_detail"] {
+    width: 100%; /* 너비 조정 */
+    padding: 5px; /* 패딩 추가 */
+    margin-top: 10px; /* 위쪽 여백 추가 */
+    border: 1px solid lightgray; /* 테두리 스타일 설정 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* 내부 그림자 효과 */
+    border-radius: 4px; /* 테두리 둥글게 */
+}
+
+.addressText input[type="text"]:focus , textarea[name="reason_detail"]:focus {
+    /*border-color: #66afe9;*/
+    outline: none; /* 기본 윤곽선 제거 */
+    /*box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(102, 175, 233, 0.6); !* 포커스 시 그림자 효과 *!*/
+}
+
+/*수거지 placeholder*/
+input::placeholder {
+    color: grey; /* 플레이스홀더 텍스트의 색상 */
+}

@@ -27,6 +27,9 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
     OrderDetailServiceImpl orderDetailService;
 
     @Autowired
+    OrderServiceImpl orderService;
+
+    @Autowired
     public OrdEtcReqServiceImpl(OrdEtcReqDaoImpl ordEtcReqDao, OrderDetailDaoImpl orderDetailDao, OrderDaoImpl orderDao, OrderStateDaoImpl orderStateDao, DeliveryDaoImpl deliveryDao) {
         this.ordEtcReqDao = ordEtcReqDao;
         this.orderDetailDao = orderDetailDao;
@@ -58,9 +61,19 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
         int rowCnt = 0;
 
         try {
+            String id = "asdf1234";
+            // 주문상태, 배송번호 초기화
+            setOrderStateSeq(orderStateDto);
+            orderStateDto.setReg_id(id);
+            orderStateDto.setUp_id(id);
+            ordEtcReqDto.setReg_id(id);
+            ordEtcReqDto.setUp_id(id);
+            System.out.println(orderDetailDto);
+            System.out.println(orderStateDto);
+
             rowCnt += ordEtcReqDao.insertCancel(ordEtcReqDto);
             rowCnt += orderDao.updateStateCode(orderDto);
-            rowCnt += orderStateDao.insertOrderState(orderStateDto);
+            rowCnt += orderStateDao.insert(orderStateDto);
             int updateCnt = orderDetailDao.updateOrdState(orderDetailDto);
 
             List<OrderDetailDto> list = orderDetailDao.selectByOrdNum(orderDetailDto.getOrd_num());
@@ -99,17 +112,26 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
      */
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public boolean insertRefundInfo(OrdEtcReqDto ordEtcReqDto, OrderDetailDto ordDetailDto, OrderDto orderDto, OrderStateDto orderStateDto, DeliveryDto deliveryDto) throws Exception {
+    public boolean insertRefundInfo(OrdEtcReqDto ordEtcReqDto, OrderDetailDto orderDetailDto, OrderDto orderDto, OrderStateDto orderStateDto, DeliveryDto deliveryDto) throws Exception {
         int rowCnt = 0;
 
         try {
+
+            String id = "asdf1234";
+            String ord_num = orderDto.getOrd_num();
+            orderStateDto.setSaveReadyInfo(id,0, ord_num,orderStateDto.getState_code() );
+            deliveryDto.setSaveReadyInfo(ord_num,  id);
+            // 주문상태, 배송번호 초기화
+            setOrderStateSeq(orderStateDto);
+            setDlvNum(deliveryDto);
+
             rowCnt += ordEtcReqDao.insertRefund(ordEtcReqDto);
             rowCnt += orderDao.updateStateCode(orderDto);
-            rowCnt += orderStateDao.insertOrderState(orderStateDto);
-            rowCnt += deliveryDao.insertRefundDlvInfo(deliveryDto);
-            int updateCnt = orderDetailDao.updateOrdState(ordDetailDto);
+            rowCnt += orderStateDao.insert(orderStateDto);
+            rowCnt += deliveryDao.insert(deliveryDto);
+            int updateCnt = orderDetailDao.updateOrdState(orderDetailDto);
 
-            List list = orderDetailDao.selectByOrdNum(ordDetailDto.getOrd_num());
+            List list = orderDetailDao.selectByOrdNum(orderDetailDto.getOrd_num());
             int DBCnt = list.size();
 
             if (updateCnt == DBCnt) {
@@ -126,15 +148,22 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
         }
     }
 
-    public boolean confirmPurchase(OrderDto orderDto, OrderDetailDto ordDetailDto, OrderStateDto orderStateDto) throws Exception {
+    public boolean confirmPurchase(OrderDto orderDto, OrderDetailDto orderDetailDto, OrderStateDto orderStateDto) throws Exception {
         int rowCnt = 0;
 
         try {
-            rowCnt += orderDao.updateStateCode(orderDto);
-            rowCnt += orderStateDao.insertOrderState(orderStateDto);
-            int updateCnt = orderDetailDao.updateOrdState(ordDetailDto);
 
-            List list = orderDetailDao.selectByOrdNum(ordDetailDto.getOrd_num());
+            String id = "asdf1234";
+            String ord_num = orderDto.getOrd_num();
+            orderStateDto.setSaveReadyInfo(id,0, ord_num,orderStateDto.getState_code() );
+            // 주문상태, 배송번호 초기화
+            setOrderStateSeq(orderStateDto);
+
+            rowCnt += orderDao.updateStateCode(orderDto);
+            rowCnt += orderStateDao.insert(orderStateDto);
+            int updateCnt = orderDetailDao.updateOrdState(orderDetailDto);
+
+            List list = orderDetailDao.selectByOrdNum(orderDetailDto.getOrd_num());
             int DBCnt = list.size();
 
             if (updateCnt == DBCnt) {
@@ -179,18 +208,27 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public boolean insertExchangeInfo(OrdEtcReqDto ordEtcReqDto, OrderDetailDto ordDetailDto, OrderDto orderDto, OrderStateDto orderStateDto, DeliveryDto deliveryDto) throws Exception {
+    public boolean insertExchangeInfo(OrdEtcReqDto ordEtcReqDto, OrderDetailDto orderDetailDto, OrderDto orderDto, OrderStateDto orderStateDto, DeliveryDto deliveryDto) throws Exception {
         int rowCnt = 0;
 
         try {
+            String id = "asdf1234";
+            String ord_num = orderDto.getOrd_num();
+            orderStateDto.setSaveReadyInfo(id,0, ord_num,orderStateDto.getState_code() );
+            deliveryDto.setSaveReadyInfo(ord_num,  id);
+            // 주문상태, 배송번호 초기화
+            setOrderStateSeq(orderStateDto);
+            setDlvNum(deliveryDto);
+
+            // 데이터 추가 및 수정
             rowCnt += ordEtcReqDao.insertRefund(ordEtcReqDto);
             rowCnt += orderDao.updateStateCode(orderDto);
-            rowCnt += orderStateDao.insertOrderState(orderStateDto);
-            rowCnt += deliveryDao.insertRefundDlvInfo(deliveryDto);
-            rowCnt += orderDetailService.updateIfChanged(ordDetailDto);
-            System.out.println("옵션업데이트 이전 카운트"+ rowCnt);
-            rowCnt += orderDetailDao.updateEachOrdState(ordDetailDto);
-            System.out.println("업데이트될 dto? : " + ordDetailDto);
+            rowCnt += orderStateDao.insert(orderStateDto);
+            rowCnt += deliveryDao.insert(deliveryDto);
+            rowCnt += orderDetailService.updateIfChanged(orderDetailDto);
+            System.out.println(" 이전 카운트"+ rowCnt);
+            rowCnt += orderDetailDao.updateEachOrdState(orderDetailDto);
+            System.out.println("업데이트될 dto? : " + orderDetailDto);
             System.out.println(rowCnt);
             if (rowCnt != 6) {
                 throw new Exception("insertExchange ERROR rowCnt에러");
@@ -227,17 +265,36 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
     }
 
     @Override
-    public int updateOrdState(OrderDetailDto ordDetailDto) throws Exception {
-        return orderDetailDao.updateOrdState(ordDetailDto);
+    public int updateOrdState(OrderDetailDto orderDetailDto) throws Exception {
+        return orderDetailDao.updateOrdState(orderDetailDto);
     }
 
     @Override
-    public List<DeliveryDto> selectByOrdNum(String ord_num) {
+    public DeliveryDto selectByOrdNum(String ord_num) {
         return deliveryDao.selectByOrdNum(ord_num);
     }
 
     @Override
     public int insertRefundDlvInfo(DeliveryDto deliveryDto) {
         return deliveryDao.insertRefundDlvInfo(deliveryDto);
+    }
+
+    // 주문상태(OrderState) Dto SetSeq
+    // 객체를 받는다.
+    public void setOrderStateSeq(OrderStateDto orderStateDto) throws Exception {
+        // 주문번호 조회
+        String ord_num = orderStateDto.getOrd_num();
+        // 해당 주문번호의 주문상태가 몇개인가
+        int count = orderStateDao.count(ord_num);
+        // count + 1 해서 Seq 저장
+        orderStateDto.setSeq(count+1);
+    }
+
+    //배송(deliveryDto) Dto Set dlv_num
+    public void setDlvNum(DeliveryDto deliveryDto){
+        // 배송번호 생성
+        String dlv_num = "D" + orderService.orderNumGenerator();
+        // 배송번호 Set
+        deliveryDto.setDlv_num(dlv_num);
     }
 }

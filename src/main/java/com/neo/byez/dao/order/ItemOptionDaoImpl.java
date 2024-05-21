@@ -24,6 +24,7 @@ public class ItemOptionDaoImpl implements ItemOptionDao {
         return session.selectList(namespace + "selectSize", num);
     }
 
+
     @Override
     public int getCountSize(String num) {
         return session.selectOne(namespace + "getCountSize", num);

@@ -15,7 +15,7 @@ public class OrdEtcReqDto {
     String req_chk;
     String chg_chk;
     String appcn_name;
-    Integer appcn_mobile;
+    String appcn_mobile;
     String zpcd;
     String main_addr;
     String detail_addr;
@@ -34,7 +34,7 @@ public class OrdEtcReqDto {
         this.reason_detail = reason_detail;
     }
 
-    public OrdEtcReqDto(String ord_num, String type_code, String reason_code, String reason_detail, String req_chk, String chg_chk, String appcn_name, Integer appcn_mobile, String zpcd, String main_addr, String detail_addr) {
+    public OrdEtcReqDto(String ord_num, String type_code, String reason_code, String reason_detail, String req_chk, String chg_chk, String appcn_name, String appcn_mobile, String zpcd, String main_addr, String detail_addr) {
         this.ord_num = ord_num;
         this.type_code = type_code;
         this.reason_code = reason_code;
@@ -128,11 +128,11 @@ public class OrdEtcReqDto {
         this.appcn_name = appcn_name;
     }
 
-    public Integer getAppcn_mobile() {
+    public String getAppcn_mobile() {
         return appcn_mobile;
     }
 
-    public void setAppcn_mobile(Integer appcn_mobile) {
+    public void setAppcn_mobile(String appcn_mobile) {
         this.appcn_mobile = appcn_mobile;
     }
 

@@ -73,8 +73,8 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
 
     //옵션변경
     @Override
-    public int updateOption(OrderDetailDto OrderDetailDto ) throws Exception {
-        return session.update(namespace + "updateOption", OrderDetailDto);
+    public int updateOption(OrderDetailDto orderDetailDto) throws Exception {
+        return session.update(namespace + "updateOption", orderDetailDto);
     }
 
     @Override
@@ -86,13 +86,13 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
     }
 
     @Override
-    public int updateOrdState(OrderDetailDto OrderDetailDto ) throws Exception {
-        return session.update(namespace + "updateOrdState", OrderDetailDto);
+    public int updateOrdState(OrderDetailDto orderDetailDto) throws Exception {
+        return session.update(namespace + "updateOrdState", orderDetailDto);
     }
 
     @Override
-    public int updateEachOrdState(OrderDetailDto OrderDetailDto) {
-        return session.update(namespace + "updateEachOrdState", OrderDetailDto);
+    public int updateEachOrdState(OrderDetailDto orderDetailDto) {
+        return session.update(namespace + "updateEachOrdState", orderDetailDto);
     }
 
     @Override

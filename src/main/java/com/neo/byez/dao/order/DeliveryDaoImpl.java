@@ -49,14 +49,20 @@ public class DeliveryDaoImpl implements DeliveryDao {
        return session.insert(namespace + "insertRefundDlvInfo", deliveryDto);
     }
 
-
     @Override
-    public List<DeliveryDto> selectByOrdNum(String ord_num) {
-        return session.selectList(namespace + "selectByOrdNum", ord_num);
+    public DeliveryDto selectByOrdNum(String ord_num) {
+        return session.selectOne(namespace + "selectByOrdNum", ord_num);
     }
 
     @Override
     public List<DeliveryDto> selectAll() {
         return session.selectList(namespace + "selectAll");
     }
+
+    @Override
+    public int countByOrdNum(String ord_num) {
+        return session.selectOne(namespace + "countByOrdNum");
+    }
 }
+
+

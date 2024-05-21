@@ -1,6 +1,5 @@
 package com.neo.byez.dao.order;
 
-
 import com.neo.byez.domain.order.DeliveryDto;
 
 import java.util.List;
@@ -13,7 +12,8 @@ public interface DeliveryDao {
     int delete(String dlv_num) throws Exception;
     int deleteAll() throws Exception;
      int insertRefundDlvInfo(DeliveryDto deliveryDto);
-    List<DeliveryDto> selectByOrdNum(String ord_num);
+    DeliveryDto selectByOrdNum(String ord_num);
     List<DeliveryDto> selectAll();
+    int countByOrdNum(String ord_num);
 
 }

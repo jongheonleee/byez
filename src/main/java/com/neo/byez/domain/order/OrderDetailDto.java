@@ -42,6 +42,23 @@ public class OrderDetailDto {
         this.ord_state = ord_state;
     }
 
+    public OrderDetailDto(){
+
+    }
+
+    public OrderDetailDto(String ord_num, String item_num, String id, String item_name, Integer price, Integer item_qty, Integer item_price, String opt1, String opt2, String ord_state) {
+        this.ord_num = ord_num;
+        this.item_num = item_num;
+        this.id = id;
+        this.item_name = item_name;
+        this.price = price;
+        this.item_qty = item_qty;
+        this.item_price = item_price;
+        this.opt1 = opt1;
+        this.opt2 = opt2;
+        this.ord_state = ord_state;
+    }
+
     public String getOrd_num() {
         return ord_num;
     }
@@ -224,10 +241,10 @@ public class OrderDetailDto {
 
     @Override
     public String toString() {
-        return "{" +
+        return "OrderDetailDto{" +
                 "ord_num='" + ord_num + '\'' +
                 ", seq=" + seq +
-                ", item_num=" + item_num +
+                ", item_num='" + item_num + '\'' +
                 ", id='" + id + '\'' +
                 ", item_name='" + item_name + '\'' +
                 ", price=" + price +
@@ -240,6 +257,7 @@ public class OrderDetailDto {
                 ", opt3='" + opt3 + '\'' +
                 ", opt4='" + opt4 + '\'' +
                 ", opt5='" + opt5 + '\'' +
+                ", ord_state='" + ord_state + '\'' +
                 ", reg_date='" + reg_date + '\'' +
                 ", reg_id='" + reg_id + '\'' +
                 ", up_date='" + up_date + '\'' +
