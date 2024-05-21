@@ -24,31 +24,29 @@ public class OrderReadyInfo {
     // 주문정보 초기화
     public void initOrderReadyInfo(String id, String ord_state, String pay_state){
         // 주문 초기화
-        orderDto.setSaveReadyInfo(id);
+        this.orderDto.setSaveReadyInfo(id);
         // 주문번호
-        String ord_num = orderDto.getOrd_num();
+        String ord_num = this.orderDto.getOrd_num();
 
         // 주문상품목록 초기화
         for(OrderDetailDto orderDetailDto : this.orderDetailDtoList){
-            orderDetailDto.setSaveReadyInfo(ord_num, id);
+            orderDetailDto.setSaveReadyInfo(ord_num, id, ord_state);
         }
         // 주문 상태 초기화
-        orderStateDto.setSaveReadyInfo(id, 1, ord_num, ord_state);
+        this.orderStateDto.setSaveReadyInfo(id, 1, ord_num, ord_state);
 
         // 결제 초기화
-        payDto.setSaveReadyInfo(ord_num, id);
+        this.payDto.setSaveReadyInfo(ord_num, id, pay_state);
         // 결제번호
-        String pay_num = payDto.getPay_num();
+        String pay_num = this.payDto.getPay_num();
 
         // 결제 상태 초기화
-        payStateDto.setSaveReadyInfo(id, 1, pay_num, pay_state);
+        this.payStateDto.setSaveReadyInfo(id, 1, pay_num, pay_state);
         // 배송 초기화
-        deliveryDto.setSaveReadyInfo(ord_num, id);
+        this.deliveryDto.setSaveReadyInfo(ord_num, id);
     }
 
-    public OrderReadyInfo(){
-
-    }
+    public OrderReadyInfo(){}
 
     public OrderReadyInfo(OrderDto orderDto, List<OrderDetailDto> orderDetailDtoList, OrderStateDto orderStateDto, PayDto payDto, PayStateDto payStateDto, DeliveryDto deliveryDto) {
         this.orderDto = orderDto;

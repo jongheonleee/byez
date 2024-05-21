@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neo.byez.dao.order.OrderResultInfoDao">
+
+    <!-- 주문내역 조회 SELECT 문 -->
+    <!-- 주문번호, 주문일자, 주문금액, 배송비, 배송정보, 배송지 정보(ALL), 최종 결제 정보(ALL) -->
+    <select id="selectOrderInfo" resultType="OrderResultInfoDto" parameterType="string">
+        SELECT
+            o.ord_num, o.total_price, o.total_dlv_price, o.total_disc_price, o.total_pay_price, o.ord_date,
+            d.waybill_num, d.dlv_corp, d.state AS dlv_state, d.rcpr, d.rcpr_mobile, d.main_addr, d.detail_addr, d.msg,
+            p.pay_num, p.state AS pay_state, p.card_appv_num, p.card_cncl_num, p.mtd_code
+        FROM neo.ord o
+        JOIN neo.dlv d ON o.ord_num = d.ord_num
+        JOIN neo.pay p ON o.ord_num = p.ord_num
+        WHERE o.ord_num = #{ord_num}
+    </select>
+
+    <!-- 주문내역 조회 SELECT 문-->
+    <!-- ord_detail & ord 테이블 JOIN(+) - 상품정보(상품명, 옵션1: 사이즈, 옵션2: 색상), 수량, 주문금액, 주문상태 -->
+    <!-- List 로 저장-->
+    <select id="selectOrderedItemInfo" resultType="OrderResultInfoDto" parameterType="string">
+        --      SELECT od.ord_num, od.ord_date, od.item_name, od.opt1, od.opt2, od.item_qty, od.item_price, od.ord_state
+        SELECT o.ord_num, o.ord_date, o.ord_state, od.item_name, od.opt1, od.opt2, od.item_qty, od.item_price
+        FROM neo.ord_detail od
+        JOIN neo.ord o ON o.ord_num = od.ord_num
+        WHERE o.ord_num = #{ord_num}
+    </select>
+
+</mapper>

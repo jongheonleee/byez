@@ -12,7 +12,7 @@ public class PaymentInfo {
     public PaymentInfo(OrderReadyInfo orderReadyInfo, String email, String name, String mobile){
 //    public PaymentInfo(OrderDto orderDto, UserDto userDto){
 //        this(orderDto.getOrd_num(), orderDto.getOrd_name(), "/success", "/fail", userDto.getEmail(), userDto.getName(), userDto.getMobile())
-        this(orderReadyInfo.getOrderDto().getOrd_num(), orderReadyInfo.makeOrderName(), "/success", "/fail", email, name, mobile);
+        this(orderReadyInfo.getOrderDto().getOrd_num(), orderReadyInfo.makeOrderName(), "/order/orderComplete", "/fail", email, name, mobile);
     }
 
     public PaymentInfo() {}

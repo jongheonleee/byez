@@ -1,0 +1,39 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+section {width: 100%; min-width: 1200px; height: fit-content; padding: 50px 0; box-sizing: border-box; margin-top: 90px;}
+
+/* section .wrapper {background-color: rgba(0, 255, 0, 0.1);} */
+
+section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
+
+
+.orderWrapper {width: 586px; height: fit-content;  
+    /* background-color: rgba(255, 0, 0, 0.1);  */
+    margin: 100px auto; text-align: center;}
+
+
+.orderNum {color: gray;}
+.orderWrapper>p:nth-of-type(2) {font-size: 40px; margin-top: 10px;}
+
+.payInfo {
+    width: 100%;
+    height: 100px;
+    background-color: aliceblue;
+    margin: 30px 0;
+    padding: 20px 50px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.payInfo span {margin-left: 20px; font-weight: bold;}
+
+.orderWrapper button {width: 40%; height: 70px; font-size: 20px; }
+
+.orderWrapper button:first-of-type {border: 1px solid lightgray; background-color: white; margin-right: 15px;}
+.orderWrapper button:last-of-type {border: 1px solid black; color: white; background-color: black;}

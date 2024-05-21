@@ -1,0 +1,967 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+section {
+    width: 100%;
+    min-width: 1200px;
+    height: fit-content;
+    padding: 50px 0;
+    box-sizing: border-box;
+    margin-top: 90px;
+}
+
+/* 배송요청사항 메시지 직접 입력 */
+textarea {
+    resize: vertical;
+}
+
+section .wrapper {
+    /* background-color: rgba(0, 255, 0, 0.1); */
+}
+
+/* .orderForm_header > p:first-of-type {
+    text-align: right;
+    margin-bottom: 50px;
+} */
+
+.table_title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.table_title > span {
+    color: gray;
+    font-size: 16px;
+    font-weight: normal;
+}
+.content > table {
+    width: 100%;
+    height: 100px;
+    /* background-color: rgba(255, 0, 0, 0.1); */
+    border-top: 2px solid black;
+    border-collapse: collapse;
+}
+
+/* 주문서_제목 */
+.orderForm_header {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    /* background-color: rgba(255, 0, 0, 0.1); */
+    border: 1px solid lightgray;
+    justify-content: space-between;
+}
+
+.wrapper_info {
+    width: 100%;
+    height: fit-content;
+    /* background-color: rgba(0, 0, 255, 0.1); */
+    padding: 15px;
+    box-sizing: border-box;
+    border-right: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+.info_style {
+    border: 1px solid lightgray;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+/* 주문서_배송정보 */
+.orderForm_delivery {
+    width: 100%;
+    /* height: 25%; */
+    /* background-color: rgba(255, 255, 0, 0.1); */
+}
+
+/* 주문서_상품정보 */
+.orderForm_products {
+    width: 100%;
+    /* height: 25%; */
+    /* background-color: rgba(0, 255, 0, 0.1); */
+}
+
+/* 주문서_쿠폰정보 */
+.orderForm_coupon {
+    display: none;
+    width: 100%;
+    height: 50px;
+    /* background-color: rgba(0, 0, 255, 0.1); */
+}
+
+/* 주문서_결제정보 */
+.orderForm_payment {
+    width: 100%;
+    height: auto;
+    /* background-color: rgba(255, 0, 255, 0.1); */
+    margin: 15px 0;
+}
+
+/* 소제목(배송정보, 상품정보, 결제정보) */
+.orderForm_title {
+    font-size: large;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.orderdetailInfo th,
+.orderdetailInfo td {
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.textLeft {
+    text-align: left;
+}
+
+/* 정보목록_배송지*/
+.info_list_delivery {
+    /* background-color: rgba(255, 0, 0, 0.1); */
+    border-bottom: 0;
+}
+.info_list_delivery > li {
+    border-bottom: 1px solid lightgray;
+}
+
+/* 정보목록 요소 */
+.list_item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0 10px 15px;
+}
+
+/* 정보목록 요소_라벨 */
+.list_item_label {
+    width: 140px;
+}
+
+/* 정보목록 요소_내용 */
+.list_item_area > ul {
+    display: flex;
+}
+
+/* 정보목록 요소_내용 간격 조절(2번째 요소부터) */
+.list_item_area li + li {
+    margin-left: 16px;
+}
+
+/* 배송지 변경 버튼 */
+.order_button {
+    margin-left: 16px;
+    display: inline-block;
+    padding: 6px 10px;
+    border: 1px solid lightgray;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: white;
+}
+
+/* 배송요청사항 래퍼(선택창, 직접 입력창) */
+.list_item_area_column {
+    flex-direction: column;
+}
+
+/* 배송요청사항 직접 입력창 크기 조절 때문에 추가 */
+.orderForm_item_orverflow {
+    height: auto;
+    padding: 10px 0;
+}
+
+/* 배송 메시지 선택 */
+.orderForm_select {
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 434px;
+    height: 25px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* 배송메시지 직접 입력창 */
+.order_textarea {
+    padding: 6px 10px;
+    width: 434px;
+    min-height: 40px;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 12px;
+}
+
+/* 상품정보 */
+
+/* 테이블 기본 스타일 */
+table {
+    width: 100%;
+    height: 100px;
+    border-collapse: collapse;
+    border-top: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+}
+
+table th,
+table td {
+    border-bottom: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+}
+
+/* 도연 추가 */
+.paymentInfo tr > td:first-of-type {
+    font-weight: bold;
+    width: 20%;
+    border-right: 0;
+    text-align: left;
+}
+.paymentInfo tr > td:last-of-type {
+    width: 20%;
+    text-align: right;
+}
+
+#getCouponList {
+    padding: 6px 10px;
+    border: 1px solid lightgray;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: white;
+    position: absolute;
+    left: 0;
+    bottom: 6px;
+}
+
+.relative {
+    position: relative;
+}
+
+.couponModalShadow {
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.75);
+    z-index: 300;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: none;
+}
+.couponModal {
+    width: 900px;
+    height: 500px;
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    box-sizing: border-box;
+}
+.couponModal > p:first-of-type {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.couponModal > p:nth-of-type(2) {
+    margin-bottom: 15px;
+}
+.xBtn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    background-color: white;
+}
+
+.modalScroll {
+    width: 100%;
+    height: 300px;
+    /* background-color: rgba(255, 0, 0, 0.1); */
+    overflow-y: scroll;
+    margin-bottom: 20px;
+}
+
+.modalTable td:first-of-type {
+    text-align: left;
+}
+.modalTable input[type='radio'] {
+    margin-right: 10px;
+}
+
+#couponModalCancel,
+#couponModalSelect {
+    width: 100px;
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+#couponModalSelect {
+    background-color: black;
+    color: white;
+    margin-left: 15px;
+}
+
+.couponModal > div:last-of-type {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+.tossApi {
+    width: 600px;
+    height: fit-content;
+    /* background-color: rgba(255, 0, 0, 0.1); */
+    margin: auto;
+}
+
+/* 탭 메뉴 영역 */
+.tab_menu {
+    box-sizing: border-box;
+    width: 240px;
+    height: 50px;
+    display: flex;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    /* background-color: rgba(255, 0, 0, 0.1); */
+}
+.tab_menu li {
+    width: calc(100% / 2);
+    height: 100%;
+    box-sizing: border-box;
+    /* background-color: rgba(255, 0, 0, 0.1); */
+}
+.tab_menu li a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-weight: normal;
+}
+.tab_menu li a.tab_active {
+    border-bottom: 2px solid black;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+/* 탭 콘텐츠 영역 */
+.tab_container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+.tab_content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgba(255, 0, 0, 0.1); */
+}
+.tab_c_arti {
+    width: 100%;
+    height: 100%;
+    /* background-color: rgba(255, 0, 0, 0.1); */
+    margin-bottom: -15px;
+}
+
+#searchAddressBtn {
+    padding: 6px 10px;
+    border: 1px solid lightgray;
+    font-size: 12px;
+    font-weight: bold;
+    background-color: white;
+    margin-left: 10px;
+}
+
+#tab1-2 input {
+    width: 434px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 3px;
+    text-indent: 5px;
+}
+
+.list_item_area input:nth-of-type(2) {
+    margin: 10px 0;
+}
+
+#tab1-2 .list_item_area input:first-of-type {
+    width: 347px;
+}
+
+#tab1-2 .list_item_area input {
+    border: 1px solid lightgray;
+}
+
+/* 배송지 직접 입력 우편번호, 메인주소*/
+#delivery_form_zpcd:focus, #delivery_form_main_addr:focus{
+    outline: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+/* 제법 추가 */
+button {
+    cursor: pointer; /* 마우스를 올려놓으면 커서가 손가락 모양으로 변경 */
+}
+
+/* Toss API CSS */
+
+.title {
+    margin: 0 0 4px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #4e5968;
+}
+.box_section {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgb(0 0 0 / 1%), 0 6px 6px rgb(0 0 0 / 6%);
+    padding: 50px 50px 50px 50px;
+    margin-top: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    color: #333d4b;
+    align-items: center;
+    text-align: center;
+    overflow-x: auto; /* Add this property for horizontal scrolling */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+:root {
+    --inverseGrey50: #202027;
+    --inverseGrey100: #2c2c35;
+    --inverseGrey200: #3c3c47;
+    --inverseGrey300: #4d4d59;
+    --inverseGrey400: #62626d;
+    --inverseGrey500: #7e7e87;
+    --inverseGrey600: #9e9ea4;
+    --inverseGrey700: #c3c3c6;
+    --inverseGrey800: #e4e4e5;
+    --inverseGrey900: #fff;
+    --background: #fff;
+    --darkBackground: #17171c;
+    --greyBackground: #f2f4f6;
+    --darkGreyBackground: #101013;
+    --layeredBackground: #fff;
+    --darkLayeredBackground: #202027;
+    --floatBackground: #fff;
+    --darkFloatBackground: #2c2c35;
+    --black: #000;
+    --grey50: #f9fafb;
+    --grey100: #f2f4f6;
+    --grey200: #e5e8eb;
+    --grey300: #d1d6db;
+    --grey400: #b0b8c1;
+    --grey500: #8b95a1;
+    --grey600: #6b7684;
+    --grey700: #4e5968;
+    --grey800: #333d4b;
+    --grey900: #191f28;
+    --greyOpacity50: rgba(0, 23, 51, 0.02);
+    --greyOpacity100: rgba(2, 32, 71, 0.05);
+    --greyOpacity200: rgba(0, 27, 55, 0.1);
+    --greyOpacity300: rgba(0, 29, 58, 0.18);
+    --greyOpacity400: rgba(0, 25, 54, 0.31);
+    --greyOpacity500: rgba(3, 24, 50, 0.46);
+    --greyOpacity600: rgba(0, 19, 43, 0.58);
+    --greyOpacity700: rgba(3, 18, 40, 0.7);
+    --greyOpacity800: rgba(0, 12, 30, 0.8);
+    --greyOpacity900: rgba(2, 9, 19, 0.91);
+    --white: #fff;
+    --blue50: #e8f3ff;
+    --blue100: #c9e2ff;
+    --blue200: #90c2ff;
+    --blue300: #64a8ff;
+    --blue400: #4593fc;
+    --blue500: #3182f6;
+    --blue600: #2272eb;
+    --blue700: #1b64da;
+    --blue800: #1957c2;
+    --blue900: #194aa6;
+}
+
+body,
+html {
+    font-family: Toss Product Sans, Tossface, -apple-system, BlinkMacSystemFont, Bazier Square, Noto Sans KR, Segoe UI,
+        Apple SD Gothic Neo, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+        Segoe UI Symbol, Noto Color Emoji;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    word-wrap: break-word;
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+.button {
+    color: #f9fafb;
+    background-color: #3182f6;
+    margin: 30px 15px 0px 15px;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 18px;
+    white-space: nowrap;
+    text-align: center;
+    /* vertical-align: middle; */
+    cursor: pointer;
+    border: 0 solid transparent;
+    user-select: none;
+    transition: background 0.2s ease, color 0.1s ease;
+    text-decoration: none;
+    border-radius: 7px;
+    padding: 11px 16px;
+    width: 250px;
+}
+
+.button:hover {
+    color: #fff;
+    background-color: #1b64da;
+}
+
+button:disabled,
+input:disabled {
+    opacity: 80%;
+    cursor: not-allowed;
+}
+
+button,
+input,
+textarea {
+    font-family: Toss Product Sans, -apple-system, BlinkMacSystemFont, Bazier Square, Noto Sans KR, Segoe UI,
+        Apple SD Gothic Neo, Roboto, Helvetica Neue, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+        Segoe UI Symbol, Noto Color Emoji;
+}
+
+.color--grey800 {
+    color: #333d4b;
+    color: var(--grey800);
+}
+
+.color--grey700 {
+    color: #4e5968;
+    color: var(--grey700);
+}
+
+.color--grey600 {
+    color: #6b7684;
+    color: var(--grey600);
+}
+
+.color--grey500 {
+    color: #8b95a1;
+    color: var(--grey500);
+}
+
+.color--blue500 {
+    color: #3182f6;
+    color: var(--blue500);
+}
+
+.color--blue700 {
+    color: #1b64da;
+    color: var(--blue700);
+}
+
+.bg--white {
+    background-color: #fff;
+    background-color: var(--white);
+}
+
+.bg--grey100 {
+    background-color: #f2f4f6;
+    background-color: var(--grey100);
+}
+
+.bg--greyOpacity100 {
+    background-color: rgba(2, 32, 71, 0.05);
+    background-color: var(--greyOpacity100);
+}
+
+.bg--greyOpacity200 {
+    background-color: rgba(0, 27, 55, 0.1);
+    background-color: var(--greyOpacity200);
+}
+
+.bg--blue50 {
+    background-color: #e8f3ff;
+    background-color: var(--blue50);
+}
+
+:root {
+    --padding-base-vertical: 11px;
+    --padding-base-horizontal: 16px;
+    --padding-t-vertical: 4px;
+    --padding-t-horizontal: 8px;
+    --padding-s-vertical: 7px;
+    --padding-s-horizontal: 12px;
+    --padding-l-vertical: 11px;
+    --padding-l-horizontal: 22px;
+    --padding-xl-vertical: 18px;
+    --padding-xl-horizontal: 24px;
+    --padding-container-base: 48px;
+}
+
+.padding--base {
+    padding: 11px 16px;
+    padding: var(--padding-base-vertical) var(--padding-base-horizontal);
+}
+
+.padding--t {
+    padding: 4px 8px;
+    padding: var(--padding-t-vertical) var(--padding-t-horizontal);
+}
+
+.padding--s {
+    padding: 7px 12px;
+    padding: var(--padding-s-vertical) var(--padding-s-horizontal);
+}
+
+.padding--l {
+    padding: 11px 22px;
+    padding: var(--padding-l-vertical) var(--padding-l-horizontal);
+}
+
+.padding--xl {
+    padding: 18px 24px;
+    padding: var(--padding-xl-vertical) var(--padding-xl-horizontal);
+}
+
+.text--left {
+    text-align: left;
+}
+
+.text--right {
+    text-align: right;
+}
+
+.text--center {
+    text-align: center;
+}
+
+.text--justify {
+    text-align: justify;
+}
+
+:root {
+    --line-height-base: 1.6;
+    --line-height-adjust: 1.3;
+    --font-size-h1: 56px;
+    --font-size-h2: 48px;
+    --font-size-h3: 36px;
+    --font-size-h4: 32px;
+    --font-size-h5: 24px;
+    --font-size-h6: 20px;
+    --font-size-h7: 17px;
+    --font-size-p: 15px;
+    --font-size-sm: 13px;
+    --font-size-small: 13px;
+    --font-size-xsmall: 11px;
+    --font-weight-bold: bold;
+    --font-weight-semibold: 600;
+    --font-weight-medium: 500;
+    --font-weight-regular: normal;
+}
+
+.typography {
+    margin: 0;
+    padding: 0;
+}
+
+.typography--h1,
+.typography--h2,
+.typography--h3,
+.typography--h4 {
+    line-height: 1.3;
+    line-height: var(--line-height-adjust);
+}
+
+.typography--h1 {
+    font-size: 56px;
+    font-size: var(--font-size-h1);
+}
+
+.typography--h2 {
+    font-size: 48px;
+    font-size: var(--font-size-h2);
+}
+
+.typography--h3 {
+    font-size: 36px;
+    font-size: var(--font-size-h3);
+}
+
+.typography--h4 {
+    font-size: 32px;
+    font-size: var(--font-size-h4);
+}
+
+.typography--p {
+    line-height: 1.6;
+    line-height: var(--line-height-base);
+    font-size: 15px;
+    font-size: var(--font-size-p);
+}
+
+:root {
+    --checkable-size: 24px;
+    --checkable-input-top: 3px;
+    --checkable-input-left: 5px;
+    --checkable-input-width: 14px;
+    --checkable-input-height: 10px;
+    --checkable-input-svg: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.343 4.574l4.243 4.243 7.07-7.071' fill='transparent' stroke-width='2' stroke='%23FFF' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --checkable-label-text-padding: 8px;
+    --indeterminate-checkable-input-top: 7px;
+    --indeterminate-checkable-input-left: 5px;
+    --indeterminate-checkable-input-width: 14px;
+}
+
+:root .checkable--small {
+    --checkable-size: 20px;
+    --checkable-input-top: 2px;
+    --checkable-input-left: 4px;
+    --checkable-input-width: 12px;
+    --checkable-input-height: 9px;
+    --checkable-input-svg: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.286 3.645l3.536 3.536 5.892-5.893' fill='transparent' stroke-width='2' stroke='%23FFF' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    --indeterminate-checkable-input-top: 5px;
+    --indeterminate-checkable-input-left: 4px;
+    --indeterminate-checkable-input-width: 12px;
+}
+
+.checkable {
+    position: relative;
+    display: flex;
+}
+
+.checkable + .checkable {
+    margin-top: 12px;
+}
+
+.checkable--inline {
+    display: inline-block;
+}
+
+.checkable--inline + .checkable--inline {
+    margin-top: 0;
+    margin-left: 18px;
+}
+
+.checkable__label {
+    display: inline-block;
+    max-width: 100%;
+    min-height: 24px;
+    min-height: var(--checkable-size);
+    line-height: 1.6;
+    padding-left: 24px;
+    padding-left: var(--checkable-size);
+    margin-bottom: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    color: #4e5968;
+    color: var(--grey700);
+    cursor: pointer;
+}
+
+.checkable__input {
+    position: absolute;
+    margin: 0 0 0 -24px;
+    margin: 0 0 0 calc(var(--checkable-size) * -1);
+    top: 4px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+}
+
+.checkable__input:after,
+.checkable__input:before {
+    content: '';
+    position: absolute;
+}
+
+.checkable__input:before {
+    top: -4px;
+    left: 0;
+    width: 24px;
+    width: var(--checkable-size);
+    height: 24px;
+    height: var(--checkable-size);
+    border: 2px solid #d1d6db;
+    border: 2px solid var(--grey300);
+    background-color: #fff;
+    background-color: var(--white);
+    transition: border-color 0.1s ease, background-color 0.1s ease;
+}
+
+.checkable__input:after {
+    opacity: 0;
+    transition: opacity 0.1s ease;
+    top: 3px;
+    top: var(--checkable-input-top);
+    left: 5px;
+    left: var(--checkable-input-left);
+    width: 14px;
+    width: var(--checkable-input-width);
+    height: 10px;
+    height: var(--checkable-input-height);
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1.343 4.574l4.243 4.243 7.07-7.071' fill='transparent' stroke-width='2' stroke='%23FFF' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image: var(--checkable-input-svg);
+    background-repeat: no-repeat;
+}
+
+.checkable__input[type='checkbox']:indeterminate:after {
+    top: 7px;
+    top: var(--indeterminate-checkable-input-top);
+    left: 5px;
+    left: var(--indeterminate-checkable-input-left);
+    width: 14px;
+    width: var(--indeterminate-checkable-input-width);
+    height: 0;
+    border: 1px solid #fff;
+    border: 1px solid var(--white);
+    border-radius: 1px;
+    transform: rotate(0);
+}
+
+.checkable__input:focus {
+    outline: 0;
+}
+
+.checkable__input:focus:before,
+.checkable__input:hover:before {
+    background-color: #e8f3ff;
+    background-color: var(--blue50);
+    border-color: #3182f6;
+    border-color: var(--blue500);
+}
+
+.checkable__input:checked:before,
+.checkable__input[type='checkbox']:indeterminate:before {
+    border-color: #3182f6;
+    border-color: var(--blue500);
+    background-color: #3182f6;
+    background-color: var(--blue500);
+}
+
+.checkable__input:checked:after,
+.checkable__input[type='checkbox']:indeterminate:after {
+    opacity: 1;
+}
+
+.checkable__input:disabled:before {
+    background-color: #f2f4f6;
+    background-color: var(--grey100);
+    border-color: rgba(0, 23, 51, 0.02);
+    border-color: var(--greyOpacity50);
+}
+
+.checkable__input:disabled:checked:before,
+.checkable__input:disabled[type='checkbox']:indeterminate:before {
+    background-color: #e5e8eb;
+    background-color: var(--grey200);
+    border-color: #e5e8eb;
+    border-color: var(--grey200);
+}
+
+.checkable__input[type='checkbox']:before {
+    border-radius: 6px;
+}
+
+.checkable__input[type='radio']:before {
+    border-radius: 12px;
+}
+
+.checkable__label-text {
+    display: inline-block;
+    padding-left: 8px;
+    padding-left: var(--checkable-label-text-padding);
+}
+
+.checkable--disabled > .checkable__input {
+    cursor: not-allowed;
+}
+
+.checkable--disabled > .checkable__label {
+    color: #b0b8c1;
+    color: var(--grey400);
+    cursor: not-allowed;
+}
+
+.checkable--read-only {
+    pointer-events: none;
+}
+
+.p-flex {
+    display: flex;
+}
+
+:root {
+    --pGridGutter: 24px;
+}
+
+.p-grid {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -24px;
+    margin-right: calc(var(--pGridGutter) * -1);
+}
+
+.p-grid-col {
+    flex-grow: 1;
+    padding-right: 24px;
+    padding-right: var(--pGridGutter);
+}
+
+.p-grid-col1 {
+    flex: 0 0 8.33333%;
+    max-width: 8.33333%;
+}
+
+.p-grid-col2 {
+    flex: 0 0 16.66667%;
+    max-width: 16.66667%;
+}
+
+.p-grid-col3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.p-grid-col4 {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+}
+
+.p-grid-col5 {
+    flex: 0 0 41.66667%;
+    max-width: 41.66667%;
+}

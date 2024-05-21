@@ -96,7 +96,6 @@ public class WidgetController {
         Reader reader = new InputStreamReader(responseStream, StandardCharsets.UTF_8);
         JSONObject jsonObject = (JSONObject) parser.parse(reader);
         responseStream.close();
-        System.out.println("responseStream.close() : " + jsonObject);
 
         if(isSuccess){
             try {
@@ -134,6 +133,7 @@ public class WidgetController {
      * @return
      * @throws Exception
      */
+
     @RequestMapping(value = "/fail", method = RequestMethod.GET)
     public String failPayment(HttpServletRequest request, Model model) throws Exception {
         String failCode = request.getParameter("code");

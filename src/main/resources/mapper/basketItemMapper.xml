@@ -18,12 +18,19 @@
     where b.id = #{id}
   </select>
 
+<!--  <select id="select" parameterType="BasketItemDto" resultType="BasketItemDto">-->
+<!--    select *-->
+<!--    from basket b-->
+<!--    inner join item_basket ib on b.id = ib.id-->
+<!--    where b.id = #{id}-->
+<!--    and ib.seq = #{seq}-->
+<!--  </select>-->
+
   <select id="select" parameterType="BasketItemDto" resultType="BasketItemDto">
     select *
-    from basket b
-    inner join item_basket ib on b.id = ib.id
-    where b.id = #{id}
-    and ib.seq = #{seq}
+    from item_basket
+    where id = #{id}
+    and seq = #{seq}
   </select>
 
   <insert id="insert" parameterType="BasketItemDto">

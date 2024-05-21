@@ -3,22 +3,22 @@ package com.neo.byez.domain.order;
 import java.util.Objects;
 
 public class OrderDetailDto {
-    private String ord_num;
-    private Integer seq;
-    private String item_num;
-    private String id;
-    private String item_name;
-    private Integer price;
-    private String item_comt;
-    private Integer item_qty;
-    private Integer item_price;
-    private String  ord_date;
-    private String opt1;
+    private String ord_num;         // 주문번호
+    private Integer seq;            // 시퀀스
+    private String item_num;        // 상품번호
+    private String id;              // 주문자 id
+    private String item_name;       // 상품명
+    private Integer price;          // 상품금액
+    private String item_comt;       // 상품 설명
+    private Integer item_qty;       // 상품 수량
+    private Integer item_price;     // 주문상품금액
+    private String  ord_date;       // 주문일시
+    private String opt1;            // 옵션
     private String opt2;
     private String opt3;
     private String opt4;
     private String opt5;
-    private String ord_state;
+    private String ord_state;       // 주문상태
     private String reg_date;
     private String reg_id;
     private String up_date;
@@ -219,9 +219,10 @@ public class OrderDetailDto {
         this.up_id = up_id;
     }
 
-    public void setSaveReadyInfo(String ord_num, String id){
+    public void setSaveReadyInfo(String ord_num, String id, String ord_state){
         this.setOrd_num(ord_num);
         this.setId(id);
+        this.setOrd_state(ord_state);
         this.setReg_id(id);
         this.setUp_id(id);
     }

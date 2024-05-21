@@ -3,21 +3,21 @@ package com.neo.byez.domain.order;
 import java.util.Objects;
 
 public class DeliveryDto {
-    private String dlv_num;
-    private String ord_num;
-    private Integer waybill_num;
-    private String dlv_corp;
-    private String pickup_chk;
-    private String rcpr;
-    private String rcpr_mobile;
-    private String zpcd;
-    private String main_addr;
-    private String detail_addr;
-    private String msg;
-    private String start_date;
-    private String end_date;
-    private String state;
-    private String remark;
+    private String dlv_num;         // 배송번호
+    private String ord_num;         // 주문번호
+    private Integer waybill_num;    // 운송장번호
+    private String dlv_corp;        // 택배사
+    private String pickup_chk;      // 수거신청여부
+    private String rcpr;            // 수령인
+    private String rcpr_mobile;     // 수령인 전화번호
+    private String zpcd;            // 우편번호
+    private String main_addr;       // 기본주소
+    private String detail_addr;     // 상세주소
+    private String msg;             // 배송메시지
+    private String start_date;      // 배송시작일시
+    private String end_date;        // 배송완료일시
+    private String state;           // 배송상태
+    private String remark;          // 비고
     private String reg_date;
     private String reg_id;
     private String up_date;

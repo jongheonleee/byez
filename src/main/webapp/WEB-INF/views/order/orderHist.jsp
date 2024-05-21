@@ -1,5 +1,9 @@
+[orderHist.jsp]
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -7,14 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/orderComplete.css">
+    <link rel="stylesheet" href="/css/orderHist.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
-
 </head>
 <body>
 <nav>
@@ -43,11 +46,11 @@
                     </li>
                 </ul> -->
                 <ul class="sub_menu">
-                    <li><a href="#">LOGOUT</a>
+                    <li><a href="/login/out">LOGOUT</a>
                     </li>
-                    <li><a href="mypage.html">MYPAGE</a>
+                    <li><a href="/mypage/index">MYPAGE</a>
                     </li>
-                    <li><a href="#">ORDER</a>
+                    <li><a href="/order">ORDER</a>
                     </li>
                 </ul>
             </li>
@@ -257,16 +260,126 @@
 </nav>
 <section>
     <div class="wrapper">
-        <div class="orderWrapper">
-            <p class="orderNum">주문번호 <span id="orderId"></span></p>
-            <p>결제가 정상적으로 완료되었습니다.</p>
-            <div class="payInfo">
-                <p>결제금액<span id="amount"></span></p>
-                <p>결제수단<span>토스</span></p>
+        <div class="title">
+            <p>
+                <a href="main.html"><span>home</span></a>
+                <span>></span>
+                <a href="orderHist.html"><span>주문 상세 내역</span></a>
+            </p>
+            <p>주문 상세 내역</p>
+        </div>
+        <div class="mside">
+            <div class="mside_wrapper">
+                <p>마이페이지</p>
+                <ul class="mside_content">
+                    <li>
+                        <ul>
+                            <li>나의 쇼핑정보</li>
+                            <li><a href="#">주문/배송</a></li>
+                            <li><a href="#">취소/반품</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li>나의 혜택 정보</li>
+                            <li><a href="#">쿠폰</a></li>
+                            <li><a href="#">혜택 보기</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul>
+                            <li>나의 활동 정보</li>
+                            <li><a href="#">회원정보 수정</a></li>
+                            <li><a href="#">배송 주소록 관리</a></li>
+                            <li><a href="#">나의 게시물 관리</a></li>
+                            <li><a href="#">나의 문의</a></li>
+                            <li><a href="#">위시리스트</a></li>
+                            <li><a href="#">최근 본 상품</a></li>
+                            <li><a href="#">회원탈퇴</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
-            <button onClick="location.href='/order/orderHist?ord_num=${param.orderId}'">주문상세확인</button>
-            <button onClick="location.href='/'">홈으로 가기</button>
-            <div id="response" style="white-space: initial"></div>
+        </div>
+        <div class="content">
+            <p>주문번호 <span>${orderResultInfoDto.ord_num}</span></p>
+            <p>주문일자 <span>${orderResultInfoDto.ord_date}</span></p>
+            <table class="product">
+                <tr>
+                    <th scope="col">상품정보</th>
+                    <th scope="col">수량</th>
+                    <th scope="col">주문금액</th>
+                    <th scope="col">배송비</th>
+                    <th scope="col">배송정보</th>
+                    <th scope="col">주문상태</th>
+                </tr>
+                <c:forEach var="orderedItem" items="${orderResultInfoDtoList}">
+                    <tr>
+                        <td class="productTitle">
+                            <p>${orderedItem.item_name}</p>
+                            <p>옵션 :
+                                <span>${orderedItem.opt1}</span>
+                                /
+                                <span>${orderedItem.opt2}</span>
+                            </p>
+                        </td>
+                        <td>${orderedItem.item_qty}</td>
+                        <td class="price">${orderedItem.item_price}</td>
+                        <td>0</td>
+                        <td class="delivery">
+                            <p>${orderResultInfoDto.dlv_corp}</p>
+                            <p>${orderResultInfoDto.waybill_num}</p>
+                        </td>
+                        <td class="orderState">
+                            <p>${orderedItem.ord_state}</p>
+                            <button>주문 취소</button>
+                            <button>배송지 변경</button>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </table>
+            <p class="titleBold">배송지 정보</p>
+            <table class="dlvInfo">
+                <tr>
+                    <td class="dlvTitle">이름</td>
+                    <td>${orderResultInfoDto.rcpr}</td>
+                </tr>
+                <tr>
+                    <td class="dlvTitle">연락처</td>
+                    <td>${orderResultInfoDto.rcpr_mobile}</td>
+                </tr>
+                <tr>
+                    <td class="dlvTitle">배송지 주소</td>
+                    <td>${orderResultInfoDto.main_addr} ${orderResultInfoDto.detail_addr}</td>
+                </tr>
+                <tr>
+                    <td class="dlvTitle">배송 메시지</td>
+                    <td>${orderResultInfoDto.msg}</td>
+                </tr>
+            </table>
+            <p class="titleBold">최종 결제 정보</p>
+            <table class="dlvInfo">
+                <tr>
+                    <td class="dlvTitle">상품 합계</td>
+                    <td><span></span>${orderResultInfoDto.total_price}원</td>
+                </tr>
+                <tr>
+                    <td class="dlvTitle">배송비 합계</td>
+                    <td>${orderResultInfoDto.total_dlv_price}원</td>
+                </tr>
+                <tr>
+                    <td class="dlvTitle">할인 합계</td>
+                    <td class="blue"><span>${orderResultInfoDto.total_disc_price}</span>원</td>
+                </tr>
+                <tr>
+                    <td class="dlvTitle">최종 결제 금액</td>
+                    <td class="dlvTitleSize">${orderResultInfoDto.total_pay_price}원</td>
+                </tr>
+                <tr>
+                    <td class="dlvTitle">결제 수단</td>
+                    <td>${orderResultInfoDto.mtd_code}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </section>
@@ -285,50 +398,5 @@
 </div>
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
-<script>
-    // 쿼리 파라미터 값이 결제 요청할 때 보낸 데이터와 동일한지 반드시 확인하세요.
-    // 클라이언트에서 결제 금액을 조작하는 행위를 방지할 수 있습니다.
-    const urlParams = new URLSearchParams(window.location.search);
-
-    // 서버로 결제 승인에 필요한 결제 정보를 보내세요.
-    async function confirm() {
-        var requestData = {
-            paymentKey: urlParams.get("paymentKey"),
-            orderId: urlParams.get("orderId"),
-            amount: urlParams.get("amount"),
-        };
-
-        const response = await fetch("/confirm", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(requestData),
-        });
-
-        const json = await response.json();
-
-        if (!response.ok) {
-            // TODO: 결제 실패 비즈니스 로직을 구현하세요.
-            console.log(json);
-            window.location.href = `/fail?message=${json.message}&code=${json.code}`;
-        }
-
-        // TODO: 결제 성공 비즈니스 로직을 구현하세요.
-        console.log(json);
-        return json;
-    }
-    confirm().then(function (data) {
-        document.getElementById("response").innerHTML = `<pre>${JSON.stringify(data, null, 4)}</pre>`;
-    });
-
-    const paymentKeyElement = document.getElementById("paymentKey");
-    const orderIdElement = document.getElementById("orderId");
-    const amountElement = document.getElementById("amount");
-
-    orderIdElement.textContent = urlParams.get("orderId");
-    amountElement.textContent = urlParams.get("amount") + "원";
-    paymentKeyElement.textContent = urlParams.get("paymentKey");
-</script>
 </body>
 </html>

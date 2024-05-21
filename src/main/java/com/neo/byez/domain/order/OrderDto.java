@@ -3,13 +3,13 @@ package com.neo.byez.domain.order;
 import java.util.Objects;
 
 public class OrderDto {
-    private String ord_num;
-    private String id;
-    private Integer total_item_qty;
-    private Integer total_price;
-    private Integer total_dlv_price;
-    private Integer total_disc_price;
-    private Integer total_pay_price;
+    private String ord_num;             // 주문번호
+    private String id;                  // 고객 ID
+    private Integer total_item_qty;     // 총 주문상품수량
+    private Integer total_price;        // 총 주문금액
+    private Integer total_dlv_price;    // 총 배송비
+    private Integer total_disc_price;   // 총 할인금액
+    private Integer total_pay_price;    // 최종 결제금액
     private String ord_date;
     private String ord_state;
     private String reg_date;

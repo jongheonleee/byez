@@ -41,4 +41,12 @@ public class UserCouponDetails {
     public void setCouponDto(CouponDto couponDto) {
         this.couponDto = couponDto;
     }
+
+    @Override
+    public String toString() {
+        return "UserCouponDetails{" +
+                "custCouponsDto=" + custCouponsDto +
+                ", couponDto=" + couponDto +
+                '}';
+    }
 }

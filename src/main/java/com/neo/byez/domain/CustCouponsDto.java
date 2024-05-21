@@ -115,4 +115,20 @@ public class CustCouponsDto {
     public void setUpId(String upId) {
         this.upId = upId;
     }
+
+    @Override
+    public String toString() {
+        return "CustCouponsDto{" +
+                "seq=" + seq +
+                ", id='" + id + '\'' +
+                ", couponSeq=" + couponSeq +
+                ", issueDate='" + issueDate + '\'' +
+                ", expDate='" + expDate + '\'' +
+                ", couponState='" + couponState + '\'' +
+                ", regDate=" + regDate +
+                ", regId='" + regId + '\'' +
+                ", upDate=" + upDate +
+                ", upId='" + upId + '\'' +
+                '}';
+    }
 }

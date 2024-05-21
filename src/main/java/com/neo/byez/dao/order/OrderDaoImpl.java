@@ -1,7 +1,7 @@
 package com.neo.byez.dao.order;
 
 import com.neo.byez.domain.order.OrderDto;
-import com.neo.byez.domain.order.OrderResultInfo;
+import com.neo.byez.domain.order.OrderResultInfoDto;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,11 +14,6 @@ public class OrderDaoImpl implements OrderDao {
     SqlSession session;
 
     private static String namespace = "com.neo.byez.dao.order.OrderDao.";
-
-    @Override
-    public OrderResultInfo selectOrderResult(String ord_num) throws Exception {
-        return session.selectOne(namespace + "selectOrderResult", ord_num);
-    }
 
     // ID에 해당하는 전체 주문 개수
     @Override

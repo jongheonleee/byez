@@ -1,8 +1,10 @@
 package com.neo.byez.service.order;
 
 import com.neo.byez.dao.*;
+import com.neo.byez.dao.item.BasketItemDaoImpl;
 import com.neo.byez.dao.order.*;
 import com.neo.byez.domain.*;
+import com.neo.byez.domain.item.BasketItemDto;
 import com.neo.byez.domain.order.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -35,6 +39,47 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     DeliveryDaoImpl deliveryDao;
 
+    @Autowired
+    BasketItemDaoImpl basketItemDao;
+
+    @Autowired
+    AddrListDaoImpl addrListDao;
+
+    @Autowired
+    CustCouponsDaoImpl custCouponsDao;
+
+    // 주문 폼 페이지 정보 생성
+    public HashMap<String, Object> orderForm(String id, List<BasketItemDto> basketItemDtoList) throws Exception {
+        // HashMap 만들기
+        HashMap<String, Object> map = new HashMap<>();
+
+        // 총 상품수량, 총 주문상품금액 계산
+        OrderDto orderDto = makeOrderDto(basketItemDtoList);
+        // 배송지 목록 조회
+        List<AddressEntryDto> addressEntryDtoList = addrListDao.selectById(id);
+
+        map.put("orderDto", orderDto);
+        map.put("addressEntryDtoList", addressEntryDtoList);
+
+        return map;
+    }
+
+    public OrderDto makeOrderDto(List<BasketItemDto> basketItemDtoList){
+        OrderDto orderDto = new OrderDto();
+        int totalQty = 0;
+        int totalPrice = 0;
+        for (BasketItemDto basketItemDto : basketItemDtoList){
+            int qty = basketItemDto.getQty();
+            int price = basketItemDto.getPrice();
+            totalQty += qty;
+            totalPrice +=  (price * qty);
+        }
+        orderDto.setTotal_item_qty(totalQty);
+        orderDto.setTotal_price(totalPrice);
+
+        return orderDto;
+    }
+
     // 주문상세 페이지 정보 생성
     /*
         주문번호로 주문상세정보 조회
@@ -46,21 +91,21 @@ public class OrderServiceImpl implements OrderService {
                 2-2. 성공 :
             3. 주문 상세정보 반환
      */
-    public OrderResultInfo getOrderCompleteInfo(String ord_num) {
-        OrderResultInfo orderResultInfo = new OrderResultInfo();
-        try {
-            orderResultInfo = orderDao.selectOrderResult(ord_num);
-            orderResultInfo.setOrderDetailDtoList(orderDetailDao.select(ord_num));
-
-            if (orderResultInfo == null || orderResultInfo.getOrderDetailDtoList().size() == 0){
-                throw new Exception("Order Info or OrderDetail Info is Null");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-        return orderResultInfo;
-    }
+//    public OrderResultInfoDto getOrderCompleteInfo(String ord_num) {
+//        OrderResultInfoDto orderResultInfo = new OrderResultInfoDto();
+//        try {
+//            orderResultInfo = orderDao.selectOrderResult(ord_num);
+//            orderResultInfo.setOrderDetailDtoList(orderDetailDao.select(ord_num));
+//
+//            if (orderResultInfo == null || orderResultInfo.getOrderDetailDtoList().size() == 0){
+//                throw new Exception("Order Info or OrderDetail Info is Null");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return null;
+//        }
+//        return orderResultInfo;
+//    }
 
     // 주문번호 생성
     public synchronized String orderNumGenerator(){
@@ -93,9 +138,9 @@ public class OrderServiceImpl implements OrderService {
     @Transactional(rollbackFor = {Exception.class})
     public void saveOrderInfo(OrderReadyInfo orderReadyInfo, String id) throws Exception {
         // 주문 정보 검증
-        if(!validateOrderInfo(orderReadyInfo)){
-            throw new Exception("Failed Validate Order Info");
-        }
+//        if(!validateOrderInfo(orderReadyInfo)){
+//            throw new Exception("Failed Validate Order Info");
+//        }
 
         // 주문 정보 초기화
         orderReadyInfo.initOrderReadyInfo(id, "주문대기", "결제대기");

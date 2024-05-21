@@ -1,8 +1,15 @@
 package com.neo.byez.controller.order;
 
+import com.neo.byez.domain.UserCouponDetails;
+import com.neo.byez.domain.item.BasketItemDto;
+import com.neo.byez.domain.item.BasketItemDtos;
+import com.neo.byez.domain.order.OrderDto;
 import com.neo.byez.domain.order.OrderReadyInfo;
-import com.neo.byez.domain.order.OrderResultInfo;
+import com.neo.byez.domain.order.OrderResultInfoDto;
+import com.neo.byez.domain.order.OrderResultInfoDto;
 import com.neo.byez.domain.order.PaymentInfo;
+import com.neo.byez.service.CustCouponsServiceImpl;
+import com.neo.byez.service.order.OrderResultInfoServiceImpl;
 import com.neo.byez.service.order.OrderServiceImpl;
 import com.neo.byez.service.order.PayServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +21,10 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = {"/order"})
@@ -23,6 +34,12 @@ public class OrderController {
 
     @Autowired
     PayServiceImpl payService;
+
+    @Autowired
+    CustCouponsServiceImpl custCouponsService;
+
+    @Autowired
+    OrderResultInfoServiceImpl orderResultInfoService;
 
     /*
         OrderController
@@ -160,19 +177,19 @@ public class OrderController {
     @GetMapping("/orderComplete")
     public String orderComplete(Model m){
 
-        String ord_num = "202405141958127607";
+//        String ord_num = "202405141958127607";
 
         // 주문 상세 정보 조회
-        OrderResultInfo orderResultInfo = orderService.getOrderCompleteInfo(ord_num);
+//        OrderResultInfo orderResultInfo = orderService.getOrderCompleteInfo(ord_num);
 
         // 만약 결과가 null이면 에러페이지 이동
-        if (orderResultInfo == null){
-            m.addAttribute("msg", "주문 내역 조회 실패");
-            return "/order/error";
-        }
+//        if (orderResultInfo == null){
+//            m.addAttribute("msg", "주문 내역 조회 실패");
+//            return "/order/error";
+//        }
 
         // 주문 상세 정보 담기
-        m.addAttribute("orderResultInfo", orderResultInfo);
+//        m.addAttribute("orderResultInfo", orderResultInfo);
 
         // 주문 상세 페이지 이동
         return "/order/orderComplete";
@@ -204,8 +221,50 @@ public class OrderController {
                 .body(paymentInfo);
     }
 
+    /*
+        장바구니 상품 번호 리스트, id를 받는다.
+
+        장바구니 상품 목록, 배송지 목록, 쿠폰 목록 조회
+     */
     @GetMapping("/orderForm")
-    public String index(HttpServletRequest request, HttpSession session, Model model) throws Exception {
+//    public String index(HttpServletRequest request, HttpSession session, BasketItemDtos basketItemDtos, Model m) throws Exception {
+    public String index(HttpServletRequest request, HttpSession session, Model m) throws Exception {
+        // 더미데이터 생성
+        String id = "asdf";
+        List<BasketItemDto> tmp = new ArrayList<>();
+        BasketItemDto basketItemDto1 = new BasketItemDto(1, "asdf", "12345", "여름반팔", 10000, 2, "L", "white", "", "", "" , "" , new Date(), "asdf", new Date(), "asdf");
+        BasketItemDto basketItemDto2 = new BasketItemDto(2, "asdf", "54321", "가을자켓", 50000, 1, "L", "white", "", "", "" , "" , new Date(), "asdf", new Date(), "asdf");
+        tmp.add(basketItemDto1);
+        tmp.add(basketItemDto2);
+        BasketItemDtos basketItemDtos = new BasketItemDtos();
+        basketItemDtos.setOrders(tmp);
+
+        List<BasketItemDto> basketItemDtoList = basketItemDtos.getOrders();
+        HashMap<String,Object> map = orderService.orderForm(id, basketItemDtoList);
+        List<UserCouponDetails> coupons = custCouponsService.getUserCouponDetailsByUserId(id);
+
+        m.addAttribute("coupons", coupons);
+        m.addAttribute("orderDto", map.get("orderDto"));
+        m.addAttribute("basketItemDtoList", basketItemDtoList);
+        m.addAttribute("addressEntryDtoList", map.get("addressEntryDtoList"));
+
         return "/order/orderForm";
+    }
+
+    // 주문완료페이지 - 임시 생성
+    @GetMapping("/orderHist")
+    public String orderHist(String ord_num, Model m){
+        OrderResultInfoDto orderResultInfoDto = orderResultInfoService.getOrderResultInfo(ord_num);
+        List<OrderResultInfoDto> orderResultInfoDtoList = orderResultInfoService.getOrderedItemList(ord_num);
+
+        if(orderResultInfoDto == null || orderResultInfoDtoList.size() == 0){
+            m.addAttribute("msg", "주문상세 정보 조회 실패!!!");
+            return "/order/error";
+        }
+
+        m.addAttribute("orderResultInfoDto", orderResultInfoDto);
+        m.addAttribute("orderResultInfoDtoList", orderResultInfoDtoList);
+
+        return "/order/orderHist";
     }
 }

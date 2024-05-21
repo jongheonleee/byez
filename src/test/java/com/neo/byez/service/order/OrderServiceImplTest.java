@@ -1,6 +1,10 @@
 package com.neo.byez.service.order;
 
+import com.neo.byez.dao.AddrListDaoImpl;
+import com.neo.byez.dao.CustCouponsDaoImpl;
+import com.neo.byez.dao.item.BasketItemDaoImpl;
 import com.neo.byez.dao.order.*;
+import com.neo.byez.domain.item.BasketItemDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -27,6 +31,15 @@ public class OrderServiceImplTest {
     private final DeliveryDaoImpl deliveryDao;
     private final PayDaoImpl payDao;
     private final PayStateDaoImpl payStateDao;
+
+    @Autowired
+    BasketItemDaoImpl basketItemDao;
+
+    @Autowired
+    AddrListDaoImpl addrListDao;
+
+    @Autowired
+    CustCouponsDaoImpl custCouponsDao;
 
     @Autowired
     public OrderServiceImplTest(OrderServiceImpl orderService, OrderDaoImpl orderDao, OrderDetailDaoImpl orderDetailDao, OrderStateDaoImpl orderStateDao, DeliveryDaoImpl deliveryDao, PayDaoImpl payDao, PayStateDaoImpl payStateDao) {
@@ -59,6 +72,17 @@ public class OrderServiceImplTest {
         tableCountAll_num(0);
     }
 
+    @Test
+    public void test() throws Exception {
+//        System.out.println(orderService.orderForm("asdf", new int[]{1,2,3}));
+//        System.out.println(addrListDao.selectById("asdf"));
+
+        BasketItemDto basketItemDto = new BasketItemDto();
+        basketItemDto.setId("asdf");
+        basketItemDto.setSeq(1);
+        System.out.println(basketItemDao.get(basketItemDto));
+    }
+
     /*
         주문상세 페이지 정보
         SELECT 테스트
@@ -68,14 +92,6 @@ public class OrderServiceImplTest {
             2. 결과가 여러개인 경우 - 없을 거 같음 why. where 조건에 주문번호가 일치하는 것을 조회
      */
 
-    @DisplayName("주문상세페이지 정보 SELECT 테스트")
-    @Test
-    public void orderResultInfoSelectTest() throws Exception {
-        // 테이블 초기화
-
-        String ord_num = "202405141958127607";
-        System.out.println(orderService.getOrderCompleteInfo(ord_num));
-    }
 
     /*
         주문 서비스 테스트

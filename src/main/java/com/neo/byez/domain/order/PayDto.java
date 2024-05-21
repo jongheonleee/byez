@@ -3,15 +3,15 @@ package com.neo.byez.domain.order;
 import java.util.Objects;
 
 public class PayDto {
-    private String pay_num;
-    private String ord_num;
-    private Integer price;
-    private String mtd_code;
-    private Integer card_appv_num;
-    private Integer card_cncl_num;
-    private String pay_date;
-    private String state;
-    private String remark;
+    private String pay_num;             // 결제번호
+    private String ord_num;             // 주문번호
+    private Integer price;              // 결제금액
+    private String mtd_code;            // 결제수단
+    private Integer card_appv_num;      // 카드승인번호
+    private Integer card_cncl_num;      // 카드취소번호
+    private String pay_date;            // 결제일시
+    private String state;               // 결제상태
+    private String remark;              // 비고
     private String reg_date;
     private String reg_id;
     private String up_date;
@@ -121,8 +121,9 @@ public class PayDto {
         this.up_id = up_id;
     }
 
-    public void setSaveReadyInfo(String ord_num, String id){
+    public void setSaveReadyInfo(String ord_num, String id, String pay_state){
         this.setOrd_num(ord_num);
+        this.setState(pay_state);
         this.setReg_id(id);
         this.setUp_id(id);
     }

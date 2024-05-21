@@ -35,14 +35,6 @@
         WHERE id = #{id}
     </select>
 
-    <!-- Select문 주문상세 정보 (주문번호로 조회) -->
-    <select id="selectOrderResult" resultType="OrderResultInfo" parameterType="string">
-        select *
-        from ord ord, dlv dlv
-        where ord.ord_num = dlv.ord_num
-          and ord.ord_num = #{ord_num};
-    </select>
-
     <!-- Update 문 (하나의 주문 수정)-->
     <update id="update" parameterType="OrderDto">
         UPDATE ord
