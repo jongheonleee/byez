@@ -54,7 +54,6 @@ public class OrdEtcReqController {
     @RequestMapping(value = "/cancel")
     public String cancelForm(String ord_num,  Model m) throws Exception {
 
-        System.out.println(ord_num);
         List<OrderDetailDto> cancelList = orderDetailService.selectOneOrdDetail(ord_num);
         m.addAttribute("ord_num",ord_num);
         m.addAttribute("cancelList",cancelList);
@@ -64,7 +63,6 @@ public class OrdEtcReqController {
     @RequestMapping(value = "/cancelOrder")
     public String cancelOrder(Model m, OrdEtcReqDto ordEtcReqDto, OrderStateDto orderStateDto, OrderDetailDto orderDetailDto, OrderDto orderDto, String ord_state) throws Exception {
 
-        System.out.println("/cancelOrder");
         /*
             -확인-
             값이 잘 넘어왔는지 확인할것(ord_num이 빈문자열임..)
@@ -100,8 +98,6 @@ public class OrdEtcReqController {
         ordEtcReqService.updateOrdState(ordDetailDto);
 
         */
-        System.out.println("ordEtc" + ordEtcReqDto);
-        System.out.println("ordDetail" + orderDetailDto);
             ordEtcReqService.insertCancelInfo(ordEtcReqDto , orderDetailDto, orderDto, orderStateDto);
 
         return "redirect:/order/list";
@@ -200,9 +196,6 @@ public class OrdEtcReqController {
         m.addAttribute("list", list);
         //주문내역을 불러올때 주문번호가 ordDetailDto에 담기기 때문에
         m.addAttribute("orderDetailDto", orderDetailDto);
-        System.out.println(ordEtcReqDto);
-        System.out.println(deliveryDto.getDetail_addr());
-        System.out.println(deliveryDto.getMain_addr());
 
         ordEtcReqService.insertRefundInfo(ordEtcReqDto , orderDetailDto, orderDto, orderStateDto, deliveryDto);
 
@@ -220,7 +213,6 @@ public class OrdEtcReqController {
      @RequestMapping("/confirmPurchase")
      public String confirmPurchase(OrderDto orderDto, OrderDetailDto orderDetailDto, OrderStateDto orderStateDto) throws Exception {
 
-         System.out.println(orderDetailDto.getOrd_state());
          ordEtcReqService.confirmPurchase(orderDto, orderDetailDto, orderStateDto);
             return "redirect:/order/list";
      }
@@ -295,8 +287,6 @@ public class OrdEtcReqController {
 
         //주문내역을 불러올때 주문번호가 ordDetailDto에 담기기 때문에
         m.addAttribute("orderDetailDto", orderDetailDto);
-
-        System.out.println("옵션변경선택후 : " + orderDetailDto);
 
         ordEtcReqService.insertExchangeInfo(ordEtcReqDto , orderDetailDto, orderDto, orderStateDto, deliveryDto);
         return "redirect:/order/list";

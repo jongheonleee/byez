@@ -20,33 +20,33 @@ import java.util.List;
 @Service
 public class OrderServiceImpl implements OrderService {
     // 주문관련 Dao
-    @Autowired
-    OrderDaoImpl orderDao;
-    @Autowired
-    OrderDetailDaoImpl orderDetailDao;
-    @Autowired
-    OrderStateDaoImpl orderStateDao;
-
+    private OrderDaoImpl orderDao;
+    private OrderDetailDaoImpl orderDetailDao;
+    private OrderStateDaoImpl orderStateDao;
     // 결제관련 Dao
-    @Autowired
-    PayDaoImpl payDao;
-    @Autowired
-    PayStateDaoImpl payStateDao;
-    @Autowired
-    PayHistoryDaoImpl payHistoryDao;
-
+    private PayDaoImpl payDao;
+    private PayStateDaoImpl payStateDao;
+    private PayHistoryDaoImpl payHistoryDao;
     // 배송관련 Dao
+    private DeliveryDaoImpl deliveryDao;
+    // 장바구니 Dao
+    private BasketItemDaoImpl basketItemDao;
+    // 배송지목록 Dao
+    private AddrListDaoImpl addrListDao;
+    private CustCouponsDaoImpl custCouponsDao;
     @Autowired
-    DeliveryDaoImpl deliveryDao;
-
-    @Autowired
-    BasketItemDaoImpl basketItemDao;
-
-    @Autowired
-    AddrListDaoImpl addrListDao;
-
-    @Autowired
-    CustCouponsDaoImpl custCouponsDao;
+    public OrderServiceImpl(OrderDaoImpl orderDao, OrderDetailDaoImpl orderDetailDao, OrderStateDaoImpl orderStateDao, PayDaoImpl payDao, PayStateDaoImpl payStateDao, PayHistoryDaoImpl payHistoryDao, DeliveryDaoImpl deliveryDao, BasketItemDaoImpl basketItemDao, AddrListDaoImpl addrListDao, CustCouponsDaoImpl custCouponsDao) {
+        this.orderDao = orderDao;
+        this.orderDetailDao = orderDetailDao;
+        this.orderStateDao = orderStateDao;
+        this.payDao = payDao;
+        this.payStateDao = payStateDao;
+        this.payHistoryDao = payHistoryDao;
+        this.deliveryDao = deliveryDao;
+        this.basketItemDao = basketItemDao;
+        this.addrListDao = addrListDao;
+        this.custCouponsDao = custCouponsDao;
+    }
 
     // 주문 폼 페이지 정보 생성
     public HashMap<String, Object> orderForm(String id, List<BasketItemDto> basketItemDtoList) throws Exception {
@@ -64,6 +64,7 @@ public class OrderServiceImpl implements OrderService {
         return map;
     }
 
+    // 장바구니 상품 가격 계산 후 주문정보 객체 생성
     public OrderDto makeOrderDto(List<BasketItemDto> basketItemDtoList){
         OrderDto orderDto = new OrderDto();
         int totalQty = 0;
@@ -76,36 +77,11 @@ public class OrderServiceImpl implements OrderService {
         }
         orderDto.setTotal_item_qty(totalQty);
         orderDto.setTotal_price(totalPrice);
+        // 추후 할인금액 계산해서 넘길지 고려
+        orderDto.setTotal_pay_price(totalPrice);
 
         return orderDto;
     }
-
-    // 주문상세 페이지 정보 생성
-    /*
-        주문번호로 주문상세정보 조회
-            1. 주문상세정보(주문, 배송테이블) 조회
-                1-1. 실패 : 반환값이 null이면 실패
-                1-2. 성공 :
-            2. 주문상품내역목록 조회
-                2-1. 실패 : 반환된 리스트의 사이즈가 0이면 실패
-                2-2. 성공 :
-            3. 주문 상세정보 반환
-     */
-//    public OrderResultInfoDto getOrderCompleteInfo(String ord_num) {
-//        OrderResultInfoDto orderResultInfo = new OrderResultInfoDto();
-//        try {
-//            orderResultInfo = orderDao.selectOrderResult(ord_num);
-//            orderResultInfo.setOrderDetailDtoList(orderDetailDao.select(ord_num));
-//
-//            if (orderResultInfo == null || orderResultInfo.getOrderDetailDtoList().size() == 0){
-//                throw new Exception("Order Info or OrderDetail Info is Null");
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//        return orderResultInfo;
-//    }
 
     // 주문번호 생성
     public synchronized String orderNumGenerator(){
@@ -299,93 +275,4 @@ public class OrderServiceImpl implements OrderService {
         // 같으면 검증 통과, 다르면 실패
         return (sum == total_price) ? total_price : -1;
     }
-
-    // 주문 정보 초기값 설정
-//    public void initOrderReadyInfo(OrderReadyInfo orderReadyInfo, String id){
-//        // 주문 Dto
-//        OrderDto orderDto = orderReadyInfo.getOrderDto();
-//        orderDto.setSaveReadyInfo(id);
-//
-//        // 주문번호
-//        String ord_num = orderDto.getOrd_num();
-//
-//        // 주문 상품 Dto
-//        List<OrderDetailDto> orderDetailDtoList = orderReadyInfo.getOrderDetailDtoList();
-//        for (OrderDetailDto orderDetailDto : orderDetailDtoList){
-//            orderDetailDto.setOrd_num(ord_num);
-//            orderDetailDto.setSaveReadyInfo(id);
-//        }
-//
-//        // 주문 상태 Dto
-//        OrderStateDto orderStateDto = orderReadyInfo.getOrderStateDto();
-//        orderStateDto.setSaveReadyInfo(id, 1, ord_num, "주문대기");
-//
-//        // 결제 Dto
-//        PayDto payDto = orderReadyInfo.getPayDto();
-//        payDto.setSaveReadyInfo(id);
-//        payDto.setOrd_num(ord_num);
-//
-//        // 결제번호
-//        String pay_num = payDto.getPay_num();
-//
-//        // 결제 상태 Dto
-//        PayStateDto payStateDto = orderReadyInfo.getPayStateDto();
-//        payStateDto.setSaveReadyInfo(id, 1, pay_num, "PAY1");
-//
-//        // 배송관련 Dto
-//        DeliveryDto deliveryDto = orderReadyInfo.getDeliveryDto();
-//        deliveryDto.setSaveReadyInfo(id);
-//        deliveryDto.setOrd_num(ord_num);
-//    }
-//
-//    public HashMap<String, Object> jsonToObjectMap(HashMap<String, Object> jsonMap) throws JsonProcessingException {
-//        // ObjectMapper 생성
-//        ObjectMapper objectMapper = new ObjectMapper();
-//
-//        // orderDto 파싱
-//        Object obj = jsonMap.get("orderDto");
-//        String str = objectMapper.writeValueAsString(obj);
-//        OrderDto orderDto = objectMapper.readValue(str, OrderDto.class);
-//        jsonMap.put("orderDto", orderDto);
-//
-//        // orderDetailDtoList 파싱
-//        ArrayList<Object> objList = (ArrayList<Object>) jsonMap.get("orderDetailDtoList");
-//        str = objectMapper.writeValueAsString(objList);
-//        List<OrderDetailDto> orderDetailDtoList = Arrays.asList(objectMapper.readValue(str, OrderDetailDto[].class));
-//        jsonMap.put("orderDetailDtoList", orderDetailDtoList);
-//
-//        // orderStateDto 생성
-//        String ord_num = orderDto.getOrd_num();
-//        String id = orderDto.getId();
-//        OrderStateDto orderStateDto = new OrderStateDto(ord_num, 1, "ORD1", id);
-//        orderStateDto.setReg_id(id);
-//        orderStateDto.setUp_id(id);
-//        jsonMap.put("orderStateDto", orderStateDto);
-//
-//        // deliveryDto 파싱
-//        obj = jsonMap.get("deliveryDto");
-//        str = objectMapper.writeValueAsString(obj);
-//        DeliveryDto deliveryDto = objectMapper.readValue(str, DeliveryDto.class);
-//        deliveryDto.setReg_id(id);
-//        deliveryDto.setUp_id(id);
-//        jsonMap.put("deliveryDto", deliveryDto);
-//
-//        // payDto 파싱
-//        obj = jsonMap.get("payDto");
-//        str = objectMapper.writeValueAsString(obj);
-//        PayDto payDto = objectMapper.readValue(str, PayDto.class);
-//        payDto.setReg_id(id);
-//        payDto.setUp_id(id);
-//        jsonMap.put("payDto", payDto);
-//
-//        // payStateDto 생성
-//        String pay_num = payDto.getPay_num();
-//        PayStateDto payStateDto = new PayStateDto(pay_num, 1, "PAY1");
-//        payStateDto.setReg_id(id);
-//        payStateDto.setUp_id(id);
-//        jsonMap.put("payStateDto", payStateDto);
-//
-//        return jsonMap;
-//    }
-
 }

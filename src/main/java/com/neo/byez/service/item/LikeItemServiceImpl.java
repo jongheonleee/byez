@@ -49,7 +49,6 @@ public class LikeItemServiceImpl {
 
         try {
             ItemDto target = itemDao.select(dto.getNum());
-            System.out.println(target);
             dto.setName(target.getName());
             dto.setType(target.getCust_type());
             dto.setReview_cnt(target.getReview_cnt());
@@ -93,12 +92,8 @@ public class LikeItemServiceImpl {
 
         try {
             for (LikeItemDto dto : dtos.getList()) {
-                System.out.println(dto);
                 rowCnt += likeDao.delete(dto);
             }
-
-            System.out.println(rowCnt);
-            System.out.println(totalCnt);
 
             if (totalCnt != rowCnt) {
                 throw new Exception("상품을 제대로 삭제하지 못했습니다.");

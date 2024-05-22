@@ -25,7 +25,7 @@ public class CustCouponsController {
 //        HttpSession session = request.getSession();
 //        String loginId = (String) session.getAttribute("loginId");
 
-        String loginId = "spa11";
+        String loginId = "user1";
 
         // 고객의 id정보로 보유쿠폰들을 가져와서 view에 전달
         List<UserCouponDetails> coupons = custCouponsService.getUserCouponDetailsByUserId(loginId);

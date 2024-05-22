@@ -251,7 +251,7 @@
 </form>
 
 <!-- 주문 form -->
-<form action="order" method="post" class="orderCheckedBasketItemForm">
+<form action="/order/orderForm" method="post" class="orderCheckedBasketItemForm">
 </form>
 <%@include file="../views/include/quick.jsp"%>
 <%@include file="../views/include/footer.jsp"%>

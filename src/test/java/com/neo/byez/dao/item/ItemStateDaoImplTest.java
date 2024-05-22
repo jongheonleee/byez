@@ -5,8 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.neo.byez.dao.user.UserDaoImpl;
-import com.neo.byez.domain.item.BasketDto;
-import com.neo.byez.domain.item.BasketItemDto;
 import com.neo.byez.domain.item.ItemDto;
 import com.neo.byez.domain.item.ItemStateDto;
 import com.neo.byez.domain.user.UserDto;
@@ -16,13 +14,19 @@ import java.util.List;
 import java.util.Map;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 

@@ -18,8 +18,8 @@
 
     <!-- Insert 문 -->
     <insert id="insert" parameterType="OrderDetailDto">
-        INSERT INTO ord_detail (ord_num, seq, item_num, id, item_name, price, item_comt, item_qty, item_price, ord_date, opt1, opt2, opt3, opt4, opt5, reg_date, reg_id, up_date, up_id)
-        VALUES (#{ord_num}, #{seq}, #{item_num}, #{id}, #{item_name}, #{price}, #{item_comt}, #{item_qty}, #{item_price}, now(), #{opt1}, #{opt2}, #{opt3}, #{opt4}, #{opt5}, now(), #{id}, now(), #{id});
+        INSERT INTO ord_detail (ord_num, seq, item_num, id, item_name, price, item_comt, item_qty, item_price, ord_date, review, ord_state, opt1, opt2, opt3, opt4, opt5, reg_date, reg_id, up_date, up_id)
+        VALUES (#{ord_num}, #{seq}, #{item_num}, #{id}, #{item_name}, #{price}, #{item_comt}, #{item_qty}, #{item_price}, now(), #{review}, #{ord_state}, #{opt1}, #{opt2}, #{opt3}, #{opt4}, #{opt5}, now(), #{id}, now(), #{id});
     </insert>
 
     <!-- Select 문 (주문번호로 조회) -->

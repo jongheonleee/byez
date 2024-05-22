@@ -26,246 +26,7 @@
     <script src="https://js.tosspayments.com/v1/payment-widget"></script>
 </head>
 <body>
-<nav>
-    <div class="wrapper">
-        <div class="nav_logo">
-            <a href="main.html">
-                <img src="/img/logo3.png" alt="" />
-            </a>
-        </div>
-        <ul class="nav_menu">
-            <li><a href="discount.html">할인 상품</a></li>
-            <li><a href="best.html">베스트</a></li>
-            <li><a href="category.html">여성</a></li>
-            <li><a href="category.html">남성</a></li>
-            <li><a href="category.html">혼성</a></li>
-        </ul>
-        <ul class="nav_member">
-            <li class="hover">
-                <a href="#">
-                    <img src="/img/top_mypage.png" />
-                </a>
-                <!-- <ul class="sub_menu">
-                <li><a href="#">LOGIN</a>
-                </li>
-                <li><a href="#">ORDER</a>
-                </li>
-            </ul> -->
-                <ul class="sub_menu">
-                    <li><a href="#">LOGOUT</a></li>
-                    <li><a href="mypage.html">MYPAGE</a></li>
-                    <li><a href="#">ORDER</a></li>
-                </ul>
-            </li>
-            <li>
-                <a href="#"><img src="/img/top_search.png" /></a>
-            </li>
-            <li>
-                <a href="#"><img src="/img/top_wish.png" /></a>
-            </li>
-            <li>
-                <a href="#" class="cart_cnt">
-                    <img src="/img/top_cart_pc.png" />
-                    <div>
-                        <span>0</span>
-                    </div>
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="nav_woman">
-        <ul>
-            <li>
-                <ul>
-                    <li>여성</li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">상의</a></li>
-                    <li><a href="category.html">맨투맨/스웨트셔츠</a></li>
-                    <li><a href="category.html">후드/집업</a></li>
-                    <li><a href="category.html">니트/스웨터</a></li>
-                    <li><a href="category.html">셔츠/블라우스</a></li>
-                    <li><a href="category.html">긴팔 티셔츠</a></li>
-                    <li><a href="category.html">반팔 티셔츠</a></li>
-                    <li><a href="category.html">슬리브리스</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">아우터</a></li>
-                    <li><a href="category.html">패딩/다운</a></li>
-                    <li><a href="category.html">폴리스/덤블</a></li>
-                    <li><a href="category.html">자켓/점퍼</a></li>
-                    <li><a href="category.html">블레이저</a></li>
-                    <li><a href="category.html">가디건</a></li>
-                    <li><a href="category.html">바람막이</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">하의</a></li>
-                    <li><a href="category.html">슬랙스</a></li>
-                    <li><a href="category.html">트레이닝/스웨트셔츠</a></li>
-                    <li><a href="category.html">팬츠</a></li>
-                    <li><a href="category.html">숏츠</a></li>
-                    <li><a href="category.html">스커트</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">신발</a></li>
-                    <li><a href="category.html">운동화</a></li>
-                    <li><a href="category.html">구두</a></li>
-                    <li><a href="category.html">로퍼</a></li>
-                    <li><a href="category.html">힐</a></li>
-                    <li><a href="category.html">부츠</a></li>
-                    <li><a href="category.html">슬리퍼</a></li>
-                    <li><a href="category.html">샌달</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">기타</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="nav_man">
-        <ul>
-            <li>
-                <ul>
-                    <li>여성</li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">상의</a></li>
-                    <li><a href="category.html">맨투맨/스웨트셔츠</a></li>
-                    <li><a href="category.html">후드/집업</a></li>
-                    <li><a href="category.html">니트/스웨터</a></li>
-                    <li><a href="category.html">셔츠/블라우스</a></li>
-                    <li><a href="category.html">긴팔 티셔츠</a></li>
-                    <li><a href="category.html">반팔 티셔츠</a></li>
-                    <li><a href="category.html">슬리브리스</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">아우터</a></li>
-                    <li><a href="category.html">패딩/다운</a></li>
-                    <li><a href="category.html">폴리스/덤블</a></li>
-                    <li><a href="category.html">자켓/점퍼</a></li>
-                    <li><a href="category.html">블레이저</a></li>
-                    <li><a href="category.html">가디건</a></li>
-                    <li><a href="category.html">바람막이</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">하의</a></li>
-                    <li><a href="category.html">슬랙스</a></li>
-                    <li><a href="category.html">트레이닝/스웨트셔츠</a></li>
-                    <li><a href="category.html">팬츠</a></li>
-                    <li><a href="category.html">숏츠</a></li>
-                    <li><a href="category.html">스커트</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">신발</a></li>
-                    <li><a href="category.html">운동화</a></li>
-                    <li><a href="category.html">구두</a></li>
-                    <li><a href="category.html">로퍼</a></li>
-                    <li><a href="category.html">힐</a></li>
-                    <li><a href="category.html">부츠</a></li>
-                    <li><a href="category.html">슬리퍼</a></li>
-                    <li><a href="category.html">샌달</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">기타</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="nav_unisex">
-        <ul>
-            <li>
-                <ul>
-                    <li>여성</li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">상의</a></li>
-                    <li><a href="category.html">맨투맨/스웨트셔츠</a></li>
-                    <li><a href="category.html">후드/집업</a></li>
-                    <li><a href="category.html">니트/스웨터</a></li>
-                    <li><a href="category.html">셔츠/블라우스</a></li>
-                    <li><a href="category.html">긴팔 티셔츠</a></li>
-                    <li><a href="category.html">반팔 티셔츠</a></li>
-                    <li><a href="category.html">슬리브리스</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">아우터</a></li>
-                    <li><a href="category.html">패딩/다운</a></li>
-                    <li><a href="category.html">폴리스/덤블</a></li>
-                    <li><a href="category.html">자켓/점퍼</a></li>
-                    <li><a href="category.html">블레이저</a></li>
-                    <li><a href="category.html">가디건</a></li>
-                    <li><a href="category.html">바람막이</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">하의</a></li>
-                    <li><a href="category.html">슬랙스</a></li>
-                    <li><a href="category.html">트레이닝/스웨트셔츠</a></li>
-                    <li><a href="category.html">팬츠</a></li>
-                    <li><a href="category.html">숏츠</a></li>
-                    <li><a href="category.html">스커트</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">신발</a></li>
-                    <li><a href="category.html">운동화</a></li>
-                    <li><a href="category.html">구두</a></li>
-                    <li><a href="category.html">로퍼</a></li>
-                    <li><a href="category.html">힐</a></li>
-                    <li><a href="category.html">부츠</a></li>
-                    <li><a href="category.html">슬리퍼</a></li>
-                    <li><a href="category.html">샌달</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">기타</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="search_div">
-        <div>
-            <p>
-                고객님<br />무엇을 찾으시나요?
-                <img src="/img/top_search_close.png" alt="" />
-            </p>
-            <form action="">
-                <input type="text" placeholder="상품을 찾아보세요" />
-                <button type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </form>
-        </div>
-    </div>
-    <div class="shadow"></div>
-</nav>
+<jsp:include page="/WEB-INF/views/include/nav.jsp"/>
 <section>
     <div class="wrapper">
         <!-- 제목  -->
@@ -275,14 +36,20 @@
                 <a href="main.html"><span>home</span></a>
                 <span>></span>
                 <a href="orderForm.html"><span>주문서</span></a>
-                <!-- <span>></span>
-            <a href="#"><span>중분류</span></a>
-            <span>></span>
-            <a href="#"><span>소분류</span></a> -->
             </p>
         </div>
 
         <div class="wrapper_info">
+            <!-- 전송용 태그 - 배송 -->
+            <input type="hidden" class="delivery_info" name="dlv_num" value="">
+            <input type="hidden" class="delivery_info" name="pickup_chk" value="N">
+            <input type="hidden" class="delivery_info" name="rcpr" value="">
+            <input type="hidden" class="delivery_info" name="rcpr_mobile" value="">
+            <input type="hidden" class="delivery_info" name="zpcd" value="">
+            <input type="hidden" class="delivery_info" name="main_addr" value="">
+            <input type="hidden" class="delivery_info" name="detail_addr" value="">
+            <input type="hidden" class="delivery_info" name="msg" value="">
+            <!--// 전송용 태그 - 배송 -->
 
             <!-- 전송용 태그 - 주문 -->
             <input type="hidden" class="order_info" name="ord_num" value="0">
@@ -291,25 +58,18 @@
             <input type="hidden" class="order_info" name="total_dlv_price" value="0">
             <input type="hidden" class="order_info" name="total_disc_price" value="0">
             <input type="hidden" class="order_info" name="total_pay_price" value="${orderDto.total_price}">
-            <input type="hidden" class="order_info" name="ord_state" value="">
+            <input type="hidden" class="order_info" name="ord_state" value="주문대기">
             <!--// 전송용 태그 - 주문 -->
+
+            <!-- 전송용 태그 - 쿠폰 -->
+            <input type="hidden" class="coupon_info" name="seq" value="">
+            <!--// 전송용 태그 - 쿠폰 -->
 
             <!-- 전송용 태그 - 결제 -->
             <input type="hidden" class="pay_info" name="pay_num" value="">
             <input type="hidden" class="pay_info" name="price" value="${orderDto.total_price}">
-            <input type="hidden" class="pay_info" name="mtd_code" value="">
+            <input type="hidden" class="pay_info" name="mtd_code" value="Toss">
             <!--// 전송용 태그 - 결제 -->
-
-            <!-- 전송용 태그 - 배송 -->
-            <input class="delivery_info" type="hidden" name="dlv_num" value="">
-            <input class="delivery_info" type="hidden" name="pickup_chk" value="N">
-            <input class="delivery_info" type="hidden" name="rcpr" value="">
-            <input class="delivery_info" type="hidden" name="rcpr_mobile" value="">
-            <input class="delivery_info" type="hidden" name="zpcd" value="">
-            <input class="delivery_info" type="hidden" name="main_addr" value="">
-            <input class="delivery_info" type="hidden" name="detail_addr" value="">
-            <input class="delivery_info" type="hidden" name="msg" value="">
-            <!--// 전송용 태그 - 배송 -->
 
             <!-- 배송 정보 -->
             <div class="orderForm_delivery">
@@ -342,13 +102,13 @@
                                             </c:if>
                                             <c:forEach var="addr" items="${addressEntryDtoList}" varStatus="status">
                                                 <li>
-                                                    <input type="hidden" id="dlvInfo_rcpr${status.index}" value="${addr.recipient}">
-                                                    <input type="hidden" id="dlvInfo_rcpr_mobile${status.index}" value="${addr.mobileNum}">
-                                                    <input type="hidden" id="dlvInfo_zpcd${status.index}" value="${addr.zpcd}">
-                                                    <input type="hidden" id="dlvInfo_main_addr${status.index}" value="${addr.mainAddr}">
-                                                    <input type="hidden" id="dlvInfo_detail_addr${status.index}" value="${addr.detailAddr}">
+                                                    <input type="hidden" id="dlvInfo_rcpr_${status.index}" value="${addr.recipient}">
+                                                    <input type="hidden" id="dlvInfo_rcpr_mobile_${status.index}" value="${addr.mobileNum}">
+                                                    <input type="hidden" id="dlvInfo_zpcd_${status.index}" value="${addr.zpcd}">
+                                                    <input type="hidden" id="dlvInfo_main_addr_${status.index}" value="${addr.mainAddr}">
+                                                    <input type="hidden" id="dlvInfo_detail_addr_${status.index}" value="${addr.detailAddr}">
 
-                                                    <input type="radio" name="delivery_list_item_btn" id="delivery_choice_${status.index}" onclick="changeDeliveryView(${status.index})"/>
+                                                    <input type="radio" name="delivery_list_item_btn" id="delivery_choice_${status.index}" onclick="selectDeliveryItem(${status.index})"/>
                                                     <label for="delivery_choice_${status.index}">${addr.nick}</label>
                                                 </li>
                                             </c:forEach>
@@ -391,7 +151,7 @@
                                 <li class="list_item">
                                     <span class="list_item_label">이름</span>
                                     <div class="list_item_area">
-                                        <input id="delivery_form_rcpr" type="text" oninput="changeDeliveryRcpr(this.value)"/>
+                                        <input id="delivery_form_rcpr" type="text" oninput="setDeliveryRcpr(this.value)"/>
                                     </div>
                                 </li>
                                 <!-- 주소 -->
@@ -400,7 +160,7 @@
                                     <div class="list_item_area">
                                         <input id="delivery_form_zpcd" type="text" readonly/><button type="button" id="searchAddressBtn">주소검색</button><br />
                                         <input id="delivery_form_main_addr" type="text" readonly/><br />
-                                        <input id="delivery_form_detail_addr" type="text" oninput="changeDeliveryDetailAddr(this.value)" />
+                                        <input id="delivery_form_detail_addr" type="text" oninput="setDeliveryDetailAddr(this.value)" />
                                     </div>
                                 </li>
                                 <!-- #######일반전화 -->
@@ -414,7 +174,7 @@
                                 <li class="list_item">
                                     <span class="list_item_label">휴대전화</span>
                                     <div class="list_item_area">
-                                        <input id="delivery_form_mobile_num" type="text" inputmode="numeric" maxlength="11" oninput="changeDeliveryMobile(this.value)"/>
+                                        <input id="delivery_form_mobile_num" type="text" inputmode="numeric" maxlength="11" oninput="setDeliveryMobile(this.value)"/>
                                     </div>
                                 </li>
                             </ul>
@@ -429,8 +189,8 @@
                         <div class="list_item_area_column">
                             <!-- A 선택 후 직접 입력 선택 시 A 출력 -->
                             <select class="orderForm_select" onchange="showEtc(this.value);">
-                                <option value="">배송 시 요청사항을 선택해주세요</option>
-                                <option value="부재 시 경비실에 맡겨주세요" selected="selected">부재 시 경비실에 맡겨주세요</option>
+                                <option value="" selected="selected">배송 시 요청사항을 선택해주세요</option>
+                                <option value="부재 시 경비실에 맡겨주세요">부재 시 경비실에 맡겨주세요</option>
                                 <option value="부재 시 택배함에 넣어주세요">부재 시 택배함에 넣어주세요</option>
                                 <option value="부재 시 집 앞에 놔주세요">부재 시 집 앞에 놔주세요</option>
                                 <option value="배송 전 연락 바랍니다">배송 전 연락 바랍니다</option>
@@ -444,7 +204,7 @@
                                     name="etc_textarea"
                                     style="display: none"
                                     maxlength="50"
-                                    oninput="changeDeliveryMsg(this.value)"
+                                    oninput="setDeliveryMsg(this.value)"
 <%--                                    onkeyup="return textarea_maxlength(this)"--%>
                                     placeholder="최대 50자까지 입력 가능합니다."
                             ></textarea>
@@ -470,30 +230,21 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <!--
-                            주문상품정보
-                                ##. 순번
-                                #. 상품번호
-                                #. 상품명
-                                #. 상품가격
-                                #. 수량
-                                #. 옵션
-                         -->
                     <c:forEach var="item" items="${basketItemDtoList}" varStatus="status">
                         <!-- 주문상품 정보 -->
-                        <td class="orderDetail">
+                        <td class="orderDetail_info">
                             <!-- 전송용 태그 - 주문상품 -->
-                            <input type="hidden" class="orderDetail_info" name="seq" value="${status.index}">
-                            <input type="hidden" class="orderDetail_info" name="item_num" value="${item.num}">
-                            <input type="hidden" class="orderDetail_info" name="item_name" value="${item.name}">
-                            <input type="hidden" class="orderDetail_info" name="item_qty" value="${item.qty}">
-                            <input type="hidden" class="orderDetail_info" name="price" value="${item.price}">
-                            <input type="hidden" class="orderDetail_info" name="item_price" value="${(item.price) * (item.qty)}">
-                            <input type="hidden" class="orderDetail_info" name="opt1" value="${item.opt1}">
-                            <input type="hidden" class="orderDetail_info" name="opt2" value="${item.opt2}">
-                            <input type="hidden" class="orderDetail_info" name="opt3" value="${item.opt3}">
-                            <input type="hidden" class="orderDetail_info" name="opt4" value="${item.opt4}">
-                            <input type="hidden" class="orderDetail_info" name="opt5" value="${item.opt5}">
+                            <input type="hidden" name="seq" value="${status.index}">
+                            <input type="hidden" name="item_num" value="${item.num}">
+                            <input type="hidden" name="item_name" value="${item.name}">
+                            <input type="hidden" name="item_qty" value="${item.qty}">
+                            <input type="hidden" name="price" value="${item.price}">
+                            <input type="hidden" name="item_price" value="${(item.price) * (item.qty)}">
+                            <input type="hidden" name="opt1" value="${item.opt1}">
+                            <input type="hidden" name="opt2" value="${item.opt2}">
+                            <input type="hidden" name="opt3" value="${item.opt3}">
+                            <input type="hidden" name="opt4" value="${item.opt4}">
+                            <input type="hidden" name="opt5" value="${item.opt5}">
                             <!--// 전송용 태그 - 주문상품 -->
 
                             <!-- 주문상품 이미지 -->
@@ -528,7 +279,6 @@
             <!-- 결제 정보 -->
             <div class="orderForm_payment">
                 <p class="orderForm_title">결제정보</p>
-
                 <table class="orderdetailInfo paymentInfo">
                     <tbody>
                     <tr>
@@ -568,31 +318,13 @@
                     <!-- 이용약관 UI -->
                     <div id="agreement"></div>
                     <!-- 쿠폰 체크박스 -->
-                    <div class="checkable typography--p" style="padding-left: 25px">
-                        <label for="coupon-box" class="checkable__label typography--regular"
-                        ><input
-                                id="coupon-box"
-                                class="checkable__input"
-                                type="checkbox"
-                                aria-checked="true"
-                                disabled
-                        /><span class="checkable__label-text">5,000원 쿠폰 적용</span></label
-                        >
-                    </div>
-                    <!-- 결제하기 버튼 -->
-                    <button class="button" id="payment-button" style="margin-top: 30px" disabled>
-                        결제하기
-                    </button>
+                    <button class="button" id="payment-button" style="margin-top: 30px" disabled>결제하기</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<footer>
-    <div class="wrapper">
-        <p>© 2024 spao-copymachine. All rights not reserved.</p>
-    </div>
-</footer>
+<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 <div class="quick">
     <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
         <img src="/img/quick_up.png" alt="" />
@@ -606,7 +338,7 @@
         <c:set var="limitDate" value="2500-01-01" />
         <p>적용 가능 쿠폰 리스트</p>
         <p>해당 주문에 적용 가능한 쿠폰입니다. 쿠폰을 선택해 주세요.</p>
-        <button class="xBtn"><i class="fa-solid fa-xmark"></i></button>
+        <button id="xBtn"><i class="fa-solid fa-xmark"></i></button>
         <div class="modalScroll">
             <table class="orderdetailInfo modalTable">
                 <thead>
@@ -660,161 +392,11 @@
         </div>
     </div>
 </div>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
 <script src="/js/tab.js"></script>
 <script src="/js/orderForm.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    // 주문번호 생성 요청 (orderNumGenerateRequest)
-    function orderNumGenerateRequest(){
-        $.ajax({
-            type : 'GET',
-            url : '/order/orderNumGenerator',
-            contentType : "application/json",
-            dataType: 'text'
-        })
-        .done(function(result){
-            setOrderPayDeliveryNum(result);
-            let map = makeOrderInfo();
-            orderReady(map);
-        })
-        .fail(function (){alert('주문번호 생성 실패')})
-    }
-
-    // 주문, 결제, 배송 번호 입력
-    function setOrderPayDeliveryNum(ord_num){
-        $('input[name=ord_num]').val(ord_num);
-        $('input[name=pay_num]').val('P' + ord_num);
-        $('input[name=dlv_num]').val('D' + ord_num);
-    }
-
-    // 객체 생성
-    function inputTagToObj(list){
-        let obj = {};
-        for(let i=0; i < list.length; i++){
-            let input = list[i];
-            obj[input.name] = input.value;
-        }
-        return obj;
-    }
-
-    // 객체 배열 생성
-    function inputTagToObjList(tagList){
-        let objList = [];
-        for(let i=0; i<tagList.length; i++){
-            let tmpList = tagList[i].children;
-            let obj = {};
-
-            for(let j=0; j < tmpList.length; j++){
-                let input = tmpList[j];
-                obj[input.name] = input.value;
-            }
-            objList[i] = obj;
-        }
-        return objList;
-    }
-
-    // 주문 정보 생성
-    function makeOrderInfo(){
-        let order_info = $('.order_info');
-        let orderInfo = inputTagToObj(order_info);
-
-        let orderDetail_info = $('.orderDetail');
-        let orderDetailInfo = inputTagToObjList(orderDetail_info);
-
-        let delivery_info = $('.delivery_info');
-        let deliveryInfo = inputTagToObj(delivery_info);
-
-        let pay_info = $('.pay_info');
-        let payInfo = inputTagToObj(pay_info);
-        let ord_num = $('input[name=ord_num]:first').val();
-        let pay_num = $('input[name=pay_num]:first').val();
-
-        let map = {
-            'orderDto' : orderInfo,
-            'orderDetailDtoList' : orderDetailInfo,
-            'orderStateDto' : {ord_num:ord_num},
-            'deliveryDto' : deliveryInfo,
-            'payDto' : payInfo,
-            'payStateDto' : {pay_num:pay_num}
-        }
-        return map;
-    }
-
-    // 주문 정보 저장 요청
-    function orderReady(map){
-        $.ajax({
-            type : 'POST',
-            url : '/order/orderReady',
-            headers : {"content-type" : "application/json"},
-            dataType : 'json',
-            // 주문정보 생성
-            data : JSON.stringify(map),
-        })
-        .done(function (result){
-            result.successUrl = window.location.origin + result.successUrl;
-            result.failUrl = window.location.origin + result.failUrl;
-            console.log(result)
-
-            paymentWidget.requestPayment(result);
-            // return result;
-        })
-            .fail(function (error){
-                console.log(error);
-                alert('주문 정보 저장 실패!');
-            });
-    }
-
-    const button = document.getElementById('payment-button');
-    const coupon = document.getElementById('coupon-box');
-    const generateRandomString = () => window.btoa(Math.random()).slice(0, 20);
-    var amount = $('#payment_view_totalPrice').text();
-    // ------  결제위젯 초기화 ------
-    // TODO: clientKey는 개발자센터의 결제위젯 연동 키 > 클라이언트 키로 바꾸세요.
-    // TODO: 구매자의 고유 아이디를 불러와서 customerKey로 설정하세요. 이메일・전화번호와 같이 유추가 가능한 값은 안전하지 않습니다.
-    // @docs https://docs.tosspayments.com/reference/widget-sdk#sdk-설치-및-초기화
-    const clientKey = "test_gck_docs_Ovk5rk1EwkEbP0W43n07xlzm";
-    const customerKey = generateRandomString();
-    const paymentWidget = PaymentWidget(clientKey, customerKey); // 회원 결제
-    // const paymentWidget = PaymentWidget(clientKey, PaymentWidget.ANONYMOUS); // 비회원 결제
-
-    // ------  결제 UI 렌더링 ------
-    // @docs https://docs.tosspayments.com/reference/widget-sdk#renderpaymentmethods선택자-결제-금액-옵션
-    var paymentMethodWidget = paymentWidget.renderPaymentMethods(
-        "#payment-method",
-        { value: amount },
-        // 렌더링하고 싶은 결제 UI의 variantKey
-        // 결제 수단 및 스타일이 다른 멀티 UI를 직접 만들고 싶다면 계약이 필요해요.
-        // @docs https://docs.tosspayments.com/guides/payment-widget/admin#멀티-결제-ui
-        { variantKey: "DEFAULT" }
-    );
-    // ------  이용약관 UI 렌더링 ------
-    // @docs https://docs.tosspayments.com/reference/widget-sdk#renderagreement선택자-옵션
-    paymentWidget.renderAgreement("#agreement", { variantKey: "AGREEMENT" });
-
-    //  ------  결제 UI 렌더링 완료 이벤트 ------
-    paymentMethodWidget.on("ready", function () {
-        button.disabled = false;
-        coupon.disabled = false;
-    });
-
-    // ------  결제 금액 업데이트 ------
-    // @docs https://docs.tosspayments.com/reference/widget-sdk#updateamount결제-금액
-    coupon.addEventListener("change", function () {
-        if (coupon.checked) {
-            paymentMethodWidget.updateAmount(amount - 5000);
-        } else {
-            paymentMethodWidget.updateAmount(amount);
-        }
-    });
-
-
-
-    // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
-    // @docs https://docs.tosspayments.com/reference/widget-sdk#requestpayment결제-정보
-    button.addEventListener("click", orderNumGenerateRequest);
-</script>
 </body>
 </html>

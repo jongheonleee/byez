@@ -68,8 +68,6 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
             orderStateDto.setUp_id(id);
             ordEtcReqDto.setReg_id(id);
             ordEtcReqDto.setUp_id(id);
-            System.out.println(orderDetailDto);
-            System.out.println(orderStateDto);
 
             rowCnt += ordEtcReqDao.insertCancel(ordEtcReqDto);
             rowCnt += orderDao.updateStateCode(orderDto);
@@ -82,7 +80,6 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
             if (updateCnt == DBCnt) {
                 rowCnt++;
             }
-            System.out.println(rowCnt);
             if (rowCnt != 4) {
                 throw new Exception("insertCancel ERROR rowCnt에러");
             }
@@ -137,7 +134,6 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
             if (updateCnt == DBCnt) {
                 rowCnt++;
             }
-            System.out.println(rowCnt);
             if (rowCnt != 5) {
                 throw new Exception("insertRefund ERROR rowCnt에러");
             }
@@ -169,14 +165,12 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
             if (updateCnt == DBCnt) {
                 rowCnt++;
             }
-            System.out.println(rowCnt);
             if (rowCnt != 3) {
                 throw new Exception("Confirm Purchase ERROR rowCnt에러");
             }
             return true;
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println(rowCnt);
             throw e;
         }
     }
@@ -226,10 +220,7 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
             rowCnt += orderStateDao.insert(orderStateDto);
             rowCnt += deliveryDao.insert(deliveryDto);
             rowCnt += orderDetailService.updateIfChanged(orderDetailDto);
-            System.out.println(" 이전 카운트"+ rowCnt);
             rowCnt += orderDetailDao.updateEachOrdState(orderDetailDto);
-            System.out.println("업데이트될 dto? : " + orderDetailDto);
-            System.out.println(rowCnt);
             if (rowCnt != 6) {
                 throw new Exception("insertExchange ERROR rowCnt에러");
             }

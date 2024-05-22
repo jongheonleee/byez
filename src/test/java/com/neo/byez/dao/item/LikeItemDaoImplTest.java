@@ -17,6 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Date;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @ExtendWith(SpringExtension.class)
 class LikeItemDaoImplTest {

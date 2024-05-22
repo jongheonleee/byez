@@ -55,7 +55,6 @@ public class ItemController {
             // 카테고리 상품 조회
             sc.setTypeKeyword(type);
             sc.checkOption();
-            System.out.println(sc.getOption());
             List<ItemDto> list = itemService.readBySearchCondition(sc);
 
             // 페이징 처리
@@ -99,7 +98,6 @@ public class ItemController {
 
             // 카테고리 상품 조회
             sc.checkOption();
-            System.out.println(sc);
             List<ItemDto> list = itemService.readBySearchCondition(sc);
 
             // 페이징 처리
@@ -125,7 +123,6 @@ public class ItemController {
     public String bestList() {
         // 베스트 상품들 조회
         // 페이지에 뿌리기
-        System.out.println("best!");
         return "index";
     }
 

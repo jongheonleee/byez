@@ -2,11 +2,6 @@ package com.neo.byez.service.item;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.neo.byez.domain.item.BasketDto;
-import com.neo.byez.domain.item.ItemDto;
-import com.neo.byez.domain.item.LikeItemDto;
-import java.util.Date;
-import java.util.List;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +9,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @ExtendWith(SpringExtension.class)

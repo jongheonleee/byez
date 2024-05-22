@@ -45,7 +45,7 @@ public class UserInfoController {
 
     @GetMapping("/index")
     public String moveToMypageIndex() {
-        return "/user/mypage";
+        return "redirect:/order/list";
     }
 
     @GetMapping("/modifyPage")

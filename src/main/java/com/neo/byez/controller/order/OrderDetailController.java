@@ -58,7 +58,6 @@ public class OrderDetailController {
         try {
             List<OrderDetailDto> list = orderDetailService.getOrderDetailsList(id);
             List<OrderDetailDto> etcList = orderDetailService.selectAllEtc(id);
-            System.out.println("주문내역리스트" + list);
             if(list.isEmpty() ){
                 m.addAttribute("message", "조회결과가 없습니다.");
             }

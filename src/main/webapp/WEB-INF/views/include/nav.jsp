@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <nav>
     <div class="wrapper">
         <div class="nav_logo">
@@ -8,7 +10,7 @@
         </div>
         <ul class="nav_menu">
             <li><a href="/item/discount">할인 상품</a></li>
-            <li><a href="/item/best">베스트</a></li>
+            <li><a href="#">베스트</a></li>
             <li><a href="/item/categories/02">여성</a></li>
             <li><a href="/item/categories/01">남성</a></li>
             <li><a href="/item/categories/03">혼성</a></li>
@@ -26,16 +28,16 @@
                         </li>
 <%--                        <li><a href="mypage.html">MYPAGE</a>--%>
                         <%-- 수인 테스트용 MYPAGE INDEX --%>
-                        <li><a href="/mypage/index">MYPAGE</a>
+                        <li><a href="/order/list">MYPAGE</a>
                         </li>
-                        <li><a href="/order">ORDER</a>
+                        <li><a href="/order/list">ORDER</a>
                         </li>
                     </c:if>
                     <%-- 로그아웃 상태 --%>
                     <c:if test="${sessionScope.loginState == null}">
                         <li><a href="/login/form">LOGIN</a>
                         </li>
-                        <li><a href="/order">ORDER</a>
+                        <li><a href="/order/list">ORDER</a>
                         </li>
                     </c:if>
                 </ul>

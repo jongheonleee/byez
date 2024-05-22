@@ -92,7 +92,6 @@ public class BasketItemController {
             ItemDto selectedDto = itemService.getItem(dto.getNum());
             dto.setMain_img(selectedDto.getMain_img());
 
-            System.out.println(dto);
             if (!basketService.register(dto)) {
                 return new ResponseEntity<>("장바구니 상품을 등록하지 지못했습니다.", HttpStatus.BAD_REQUEST);
             }
@@ -153,7 +152,6 @@ public class BasketItemController {
         String id = (String) session.getAttribute("id");
         id = "user1";
         dto.setId(id);
-        System.out.println(dto);
 
         // 서비스로 해당 상품 수정
         try {
@@ -174,11 +172,7 @@ public class BasketItemController {
     @PostMapping("/order")
     public String order(BasketItemDtos dtos, Model model) {
         List<BasketItemDto> list = dtos.getOrders();
-        for (BasketItemDto dto : list) {
-            System.out.println(dto);
-        }
 
-        System.out.println("dede");
         model.addAttribute("list", list);
         return "order";
     }
