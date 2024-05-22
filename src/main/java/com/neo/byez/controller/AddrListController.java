@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -21,12 +22,10 @@ public class AddrListController {
     @RequestMapping("/myAddrList")
     public String myAddrList(HttpServletRequest request, Model model) throws Exception {
 
-//        HttpSession session = request.getSession();
-//        String loginId = (String) session.getAttribute("loginId");
+        HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("userId");
 
-        String loginId = "spa11";
-
-        List<AddressEntryDto> addresses = addrListService.getUsersAddrById(loginId);
+        List<AddressEntryDto> addresses = addrListService.getUsersAddrById(userId);
 
         model.addAttribute("addresses", addresses);
 
@@ -57,12 +56,10 @@ public class AddrListController {
             return "addrRegisterForm";
         }
 
-//        HttpSession session = request.getSession();
-//        String loginId = (String) session.getAttribute("loginId");
+        HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("userId");
 
-        String loginId = "spa11";
-
-        addressEntryDto.setId(loginId);
+        addressEntryDto.setId(userId);
 
         addrListService.registerAddr(addressEntryDto);
 
