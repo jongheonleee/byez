@@ -34,8 +34,8 @@
                 <div class="tab_c_arti">
                     <ul class="weekly_best">
                         <c:forEach  var="board" items="${boardList}">
-                            <li><a href="#">
-                                <img src="/img/${board.main_img}" alt="">
+                            <li><a href="/goods/${board.num}">
+                                <img src="${board.main_img}" alt="">
                             </a>
                                 <p class="item_name">
                                     <span>${board.name}</span>
@@ -43,21 +43,22 @@
                                 <p class="sales_price"><fmt:formatNumber value="${board.price}" pattern="#,###"/></p>
                                 <p class="discounted_price"><fmt:formatNumber value="${board.disc_price}" pattern="#,###"/></p>
 
-
                                 <ul class="col">
-                                    <li style="background-color: ${board.col};"></li>
-                                    <li style="background-color: ${board.col};"></li>
+                                    <c:forEach var="color" items="${board.colors}">
+                                        <li style="background-color: ${color}; display: inline"></li>
+                                    </c:forEach>
                                 </ul>
+
                                 <div class="wrap-star">
                                     <div class='star-rating'>
                                         <span style="width: ${20 * board.review_rate}%"></span>
                                     </div>
                                 </div>
+
                                 <i class="fa-solid fa-heart" style="color: red;"></i>
                                 <span class="like_cnt">${board.like_cnt}</span>
                                 <p class="review_cnt">리뷰수 <span>${board.review_cnt}</span></p>
-                                <div class="sex">${board.type}</div>
-                                <div class="rank">${board.rankk}</div>
+                                <div class="sex">${board.cust_type}</div>
                             </li>
                         </c:forEach>
                     </ul>
@@ -67,8 +68,8 @@
                 <div class="tab_c_arti">
                     <ul class="weekly_best">
                         <c:forEach  var="board" items="${boardList2}">
-                            <li><a href="#">
-                                <img src="/img/${board.main_img}" alt="">
+                            <li><a href="/goods/${board.num}">
+                                <img src="${board.main_img}" alt="">
                             </a>
                                 <p class="item_name">
                                     <span>${board.name}</span>
@@ -76,21 +77,24 @@
                                 <p class="sales_price"><fmt:formatNumber value="${board.price}" pattern="#,###"/></p>
                                 <p class="discounted_price"><fmt:formatNumber value="${board.disc_price}" pattern="#,###"/></p>
 
-
                                 <ul class="col">
-                                    <li style="background-color: ${board.col};"></li>
-                                    <li style="background-color: ${board.col};"></li>
+                                    <c:forEach var="color" items="${board.colors}">
+                                        <li style="background-color: ${color}; display: inline"></li>
+                                    </c:forEach>
                                 </ul>
+
+
                                 <div class="wrap-star">
                                     <div class='star-rating'>
                                         <span style="width: ${20 * board.review_rate}%"></span>
                                     </div>
                                 </div>
+
+
                                 <i class="fa-solid fa-heart" style="color: red;"></i>
                                 <span class="like_cnt">${board.like_cnt}</span>
                                 <p class="review_cnt">리뷰수 <span>${board.review_cnt}</span></p>
-                                <div class="sex">${board.type}</div>
-                                <div class="rank">${board.rankk}</div>
+                                <div class="sex">${board.cust_type}</div>
                             </li>
                         </c:forEach>
                     </ul>
@@ -100,8 +104,8 @@
                 <div class="tab_c_arti">
                     <ul class="weekly_best">
                         <c:forEach  var="board" items="${boardList3}">
-                            <li><a href="#">
-                                <img src="/img/${board.main_img}" alt="">
+                            <li><a href="/goods/${board.num}">
+                                <img src="${board.main_img}" alt="">
                             </a>
                                 <p class="item_name">
                                     <span>${board.name}</span>
@@ -109,21 +113,22 @@
                                 <p class="sales_price"><fmt:formatNumber value="${board.price}" pattern="#,###"/></p>
                                 <p class="discounted_price"><fmt:formatNumber value="${board.disc_price}" pattern="#,###"/></p>
 
-
                                 <ul class="col">
-                                    <li style="background-color: ${board.col};"></li>
-                                    <li style="background-color: ${board.col};"></li>
+                                    <c:forEach var="color" items="${board.colors}">
+                                        <li style="background-color: ${color}; display: inline"></li>
+                                    </c:forEach>
                                 </ul>
+
                                 <div class="wrap-star">
                                     <div class='star-rating'>
                                         <span style="width: ${20 * board.review_rate}%"></span>
                                     </div>
                                 </div>
+
                                 <i class="fa-solid fa-heart" style="color: red;"></i>
                                 <span class="like_cnt">${board.like_cnt}</span>
                                 <p class="review_cnt">리뷰수 <span>${board.review_cnt}</span></p>
-                                <div class="sex">${board.type}</div>
-                                <div class="rank">${board.rankk}</div>
+                                <div class="sex">${board.cust_type}</div>
                             </li>
                         </c:forEach>
                     </ul>

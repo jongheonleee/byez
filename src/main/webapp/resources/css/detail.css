@@ -13,7 +13,7 @@ section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
 
 .info {width: 100%; height: fit-content;
     /* background-color: rgba(255, 0, 0, .1); */
-    margin-bottom: 50px;
+    margin-bottom: 200px;
     overflow: hidden;
 }
 .review {width: 100%; height: fit-content;

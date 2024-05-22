@@ -9,6 +9,7 @@ public class BasketItemDto {
     private String id;
     private String num;
     private String name;
+    private String main_img;
     private int price;
     private int qty;
     private String opt1; // 사이즈
@@ -46,7 +47,28 @@ public class BasketItemDto {
         this.up_id = up_id;
     }
 
-
+    public BasketItemDto(int seq, String id, String num, String name, String main_img, int price,
+            int qty, String opt1, String opt2, String opt3, String opt4, String opt5,
+            String coupon_chk,
+            Date reg_date, String reg_id, Date up_date, String up_id) {
+        this.seq = seq;
+        this.id = id;
+        this.num = num;
+        this.name = name;
+        this.main_img = main_img;
+        this.price = price;
+        this.qty = qty;
+        this.opt1 = opt1;
+        this.opt2 = opt2;
+        this.opt3 = opt3;
+        this.opt4 = opt4;
+        this.opt5 = opt5;
+        this.coupon_chk = coupon_chk;
+        this.reg_date = reg_date;
+        this.reg_id = reg_id;
+        this.up_date = up_date;
+        this.up_id = up_id;
+    }
 
     public int getSeq() {
         return seq;
@@ -166,6 +188,14 @@ public class BasketItemDto {
 
     public void setUp_date(Date up_date) {
         this.up_date = up_date;
+    }
+
+    public String getMain_img() {
+        return main_img;
+    }
+
+    public void setMain_img(String main_img) {
+        this.main_img = main_img;
     }
 
     public String getUp_id() {

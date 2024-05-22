@@ -28,6 +28,11 @@ public class ItemDaoImpl implements ItemDao {
         return session.selectOne(namespace +"select", num);
     }
 
+    public ItemDetailPageDto selectDetailItem(String num) throws Exception {
+        return session.selectOne(namespace + "selectDetailItem", num);
+    }
+
+
     // 모두 조회
     public List<ItemDto> selectAll(Integer page, Integer pageSize) throws Exception {
         Map map = new HashMap();
@@ -52,9 +57,6 @@ public class ItemDaoImpl implements ItemDao {
         return session.selectOne(namespace + "countDiscountItem", sc);
     }
 
-    public ItemDetailPageDto selectDetailItem(String num) throws Exception {
-        return session.selectOne(namespace + "selectDetailItem", num);
-    }
 
 
     // 등록

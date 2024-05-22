@@ -47,3 +47,7 @@ section:nth-of-type(3) {margin-top: 0;}
 
 .sex {padding: 3px; background-color: black; width: fit-content; color: white;}
 .rank {width: 50px; height: 50px; background-color: red; display: flex; justify-content: center; align-items: center; color: white; position: absolute; top:0; left: 5px; font-size: 20px; font-weight: bold;}
+
+.star-rating {width:100px;}
+.star-rating,.star-rating span {display:inline-block; height:18px; overflow:hidden; background:url(/img/blackStar.jpeg)no-repeat; background-size: 100px auto;}
+.star-rating span{background-position:left bottom; line-height:0; vertical-align:top; filter :grayscale(100%)}

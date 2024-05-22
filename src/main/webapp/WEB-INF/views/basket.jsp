@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="css/nav.css?after">
-    <link rel="stylesheet" href="css/basket.css?after?after?after?after">
+    <link rel="stylesheet" href="css/basket.css?after?after?after?after?after">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -23,7 +23,7 @@
     <div class="wrapper">
         <!-- 2-1. 타이틀 : 장바구니 -->
         <p>
-            <a href="main.html"><span>HOME></span></a>
+            <a href="/"><span>HOME></span></a>
             <span></span>
             <a href="/basket"><span> 장바구니</span></a>
         </p>
@@ -86,7 +86,7 @@
                             <td class="tb1" style="text-align: center;">
                                 <div class="basketImgWrap">
                                     <a href="/goods/${basketItemDto.num}">
-                                        <img src="img/1.jpeg">
+                                        <img src="${basketItemDto.main_img}">
                                     </a>
                                 </div>
                                 <div class="eachBasketInfo">
@@ -94,10 +94,10 @@
                                         <strong>${basketItemDto.name}</strong>
                                     </p>
                                     <p>
-                                        [사이즈 : ${basketItemDto.opt1}/ 컬러 : ${basketItemDto.opt2}]
+                                        [사이즈 : ${basketItemDto.opt1} / 컬러 : ${basketItemDto.opt2}]
                                     </p>
                                     <div>
-                                        [성별 : ${basketItemDto.opt3}]
+                                        ${basketItemDto.opt3}
                                     </div>
                                 </div>
                             </td>
@@ -121,9 +121,10 @@
                                                         <input class="name" type="hidden" name="name" value="${basketItemDto.name}"><br>
                                                         <input class="num" type="hidden" name="num" value="${basketItemDto.num}"><br>
                                                         <input class="price" type="hidden" name="price" value="${basketItemDto.price}"><br>
+                                                        <input class="opt3" type="hidden" name="opt3" value="${basketItemDto.opt3}">
                                                         <div class="modalImgWrap">
                                                             <a href="/goods/${basketItemDto.num}">
-                                                                <img src="img/1.jpeg">
+                                                                <img src="${basketItemDto.main_img}">
                                                             </a>
                                                         </div>
 
@@ -149,11 +150,11 @@
                                                                 </label>
                                                                 <input type="hidden" class="opt1" name="opt1" value="${basketItemDto.opt1}" placeholder="${basketItemDto.opt1}">
                                                                     <select class="changeOpt1" onchange="selectOpt1(this.value);">
-                                                                        <option value="XS">XS</option>
                                                                         <option value="S">S</option>
                                                                         <option value="M">M</option>
                                                                         <option value="L">L</option>
                                                                         <option value="XL">XL</option>
+                                                                        <option value="XXL">XXL</option>
                                                                     </select>
                                                             </li>
 
@@ -228,6 +229,7 @@
     <input type="hidden" name="qty" class="updateQty">
     <input type="hidden" name="opt1" class="updateOpt1">
     <input type="hidden" name="opt2" class="updateOpt2">
+    <input type="hidden" name="opt3" class="updateOpt3">
 </form>
 
 <!-- 삭제 form -->
@@ -256,6 +258,6 @@
 <!-- 4. 자스 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="/js/nav.js?after"></script>
-<script src="js/basket.js"></script>
+<script src="/js/basket.js?after"></script>
 </body>
 </html>

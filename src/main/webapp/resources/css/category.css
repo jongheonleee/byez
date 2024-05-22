@@ -21,8 +21,8 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .filter_con>li:first-of-type {border: 0;}
 
 
-.item_num {width: 140px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid lightgray; box-sizing: border-box;}
-.sort {width: 140px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid lightgray; box-sizing: border-box; position: relative;}
+.item_num {width: 115px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid lightgray; box-sizing: border-box;}
+.sort {width: 115px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid lightgray; box-sizing: border-box; position: relative;}
 .order {position: absolute; top:100%; width: 100%; height: fit-content; background-color: white; border: 1px solid lightgray; display: none; z-index: 5;}
 .order>li {display: flex; justify-content: center; align-items: center; width: 100%; height: 40px;}
 
@@ -76,7 +76,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .filter_wrapper span {font-size: 18px;}
 
 .type {width: 32%; padding: 10px; background-color: white; border: 1px lightgray solid; box-sizing: border-box;}
-.item {width: 49%; padding: 10px 3px; background-color: white; border: 1px lightgray solid; box-sizing: border-box; margin-bottom: 5px;}
+.item {width: 49%; padding: 10px 3px; background-color: white; border: 1px lightgray solid; box-sizing: border-box; margin-bottom: 5px; color: gray;}
 
 .panel:nth-last-of-type(2)>div {justify-content: flex-start;}
 
@@ -91,7 +91,8 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .detail_search>input {width: 80%; height: 30px; border: 1px solid lightgray; box-sizing: border-box; text-indent: 5px;}
 .detail_search>button {width: 19%; height: 30px; border: 1px solid lightgray; box-sizing: border-box;}
 
-.type:hover,.item:hover,.color:hover {color:red; border: red 1px solid;}
+.type:hover,.item:hover,.color:hover {color:black; border: black 1px solid;}
+
 
 .paging {
   width: 100%;

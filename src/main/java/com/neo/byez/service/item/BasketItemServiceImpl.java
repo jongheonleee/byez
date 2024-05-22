@@ -244,4 +244,9 @@ public class BasketItemServiceImpl implements BasketItemService {
             throw e;
         }
     }
+
+    @Override
+    public BasketItemDto readByContent(BasketItemDto dto) throws Exception {
+        return dao.selectByContent(dto);
+    }
 }

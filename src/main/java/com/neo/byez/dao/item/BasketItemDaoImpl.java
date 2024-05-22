@@ -65,5 +65,9 @@ public class BasketItemDaoImpl implements BasketItemDao {
         return session.update(namespace + "update", dto);
     }
 
+    @Override
+    public BasketItemDto selectByContent(BasketItemDto dto) throws Exception {
+        return session.selectOne(namespace + "select2", dto);
+    }
 }
 

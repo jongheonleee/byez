@@ -17,6 +17,10 @@
         <typeAlias alias="LikeItemDto" type="com.neo.byez.domain.item.LikeItemDto"/>
         <typeAlias alias="ItemPriceDto" type="com.neo.byez.domain.item.ItemPriceDto"/>
         <typeAlias alias="ItemStateDto" type="com.neo.byez.domain.item.ItemStateDto"/>
+        <typeAlias alias="ItemDetailDto" type="com.neo.byez.domain.item.ItemDetailDto"/>
+        <typeAlias alias="ItemOptDto" type="com.neo.byez.domain.item.ItemOptDto"/>
+        <typeAlias alias="ItemDetailPageDto" type="com.neo.byez.domain.item.ItemDetailPageDto"/>
+        <typeAlias alias="SearchCondition" type="com.neo.byez.domain.item.SearchCondition"/>
         <!-- 상품 관련 : 종헌 - 끝 -->
 
         <!-- 주문 관련 : 진우 - 시작 -->
@@ -37,6 +41,12 @@
         <typeAlias alias="CustCouponsDto" type="com.neo.byez.domain.CustCouponsDto"/>
         <typeAlias alias="AddressEntryDto" type="com.neo.byez.domain.AddressEntryDto"/>
         <!-- 쿠폰 배송지 목록 관련 : 제법 - 끝 -->
+
+
+        <!-- 게시물 관련 : 찬빈 - 시작 -->
+        <typeAlias alias="QnaDto" type="com.neo.byez.domain.QnaDto"/>
+        <typeAlias alias="ReviewDto" type="com.neo.byez.domain.ReviewDto"/>
+        <!-- 게시물 관련 : 찬빈 - 끝 -->
 
     </typeAliases>
 </configuration>

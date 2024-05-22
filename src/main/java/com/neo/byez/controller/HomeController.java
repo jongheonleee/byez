@@ -26,6 +26,10 @@ public class HomeController {
             boardList2 = itemService.showMTop8(dto);
             boardList3 = itemService.showUTop8(dto);
 
+            for (ItemDto itemDto : boardList) {
+                System.out.println(itemDto);
+            }
+
             model.addAttribute("boardList", boardList);
             model.addAttribute("boardList2", boardList2);
             model.addAttribute("boardList3", boardList3);
@@ -34,7 +38,7 @@ public class HomeController {
         } catch (Exception e) {
             // 예외 처리
             e.printStackTrace();
-            return "error";
+            return "errorPage";
         }
         return "index2";
     }

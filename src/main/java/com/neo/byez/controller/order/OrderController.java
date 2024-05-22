@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = {"/order"})
+//@RequestMapping(value = {"/order"})
 public class OrderController {
     @Autowired
     OrderServiceImpl orderService;

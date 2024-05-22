@@ -60,50 +60,50 @@
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0201">상의</a></li>
-                    <li><a href="/item/category/020101">맨투맨/스웨트셔츠</a></li>
-                    <li><a href="/item/category/020102">후드/집업</a></li>
-                    <li><a href="/item/category/020103">니트/스웨터</a></li>
-                    <li><a href="/item/category/020104">셔츠/블라우스</a></li>
-                    <li><a href="/item/category/020105">긴팔 티셔츠</a></li>
-                    <li><a href="/item/category/020106">반팔 티셔츠</a></li>
-                    <li><a href="/item/category/020107">슬리브리스</a></li>
+                    <li><a href="/item/categories/0201">상의</a></li>
+                    <li><a href="/item/categories/020101">맨투맨/스웨트셔츠</a></li>
+                    <li><a href="/item/categories/020102">후드/집업</a></li>
+                    <li><a href="/item/categories/020103">니트/스웨터</a></li>
+                    <li><a href="/item/categories/020104">셔츠/블라우스</a></li>
+                    <li><a href="/item/categories/020105">긴팔 티셔츠</a></li>
+                    <li><a href="/item/categories/020106">반팔 티셔츠</a></li>
+                    <li><a href="/item/categories/020107">슬리브리스</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0202">아우터</a></li>
-                    <li><a href="/item/category/020201">패딩/다운</a></li>
-                    <li><a href="/item/category/020202">폴리스/덤블</a></li>
-                    <li><a href="/item/category/020203">자켓/점퍼</a></li>
-                    <li><a href="/item/category/020204">블레이저</a></li>
-                    <li><a href="/item/category/020205">가디건</a></li>
-                    <li><a href="/item/category/020206">바람막이</a></li>
+                    <li><a href="/item/categories/0202">아우터</a></li>
+                    <li><a href="/item/categories/020201">패딩/다운</a></li>
+                    <li><a href="/item/categories/020202">폴리스/덤블</a></li>
+                    <li><a href="/item/categories/020203">자켓/점퍼</a></li>
+                    <li><a href="/item/categories/020204">블레이저</a></li>
+                    <li><a href="/item/categories/020205">가디건</a></li>
+                    <li><a href="/item/categories/020206">바람막이</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0203">하의</a></li>
-                    <li><a href="/item/category/020301">슬랙스</a></li>
-                    <li><a href="/item/category/020302">트레이닝/스웨트셔츠</a></li>
-                    <li><a href="/item/category/020303">팬츠</a></li>
-                    <li><a href="/item/category/020304">숏츠</a></li>
+                    <li><a href="/item/categories/0203">하의</a></li>
+                    <li><a href="/item/categories/020301">슬랙스</a></li>
+                    <li><a href="/item/categories/020302">트레이닝/스웨트셔츠</a></li>
+                    <li><a href="/item/categories/020303">팬츠</a></li>
+                    <li><a href="/item/categories/020304">숏츠</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0204">신발</a></li>
-                    <li><a href="/item/category/020101">운동화</a></li>
-                    <li><a href="/item/category/020102">구두</a></li>
-                    <li><a href="/item/category/020103">로퍼</a></li>
-                    <li><a href="/item/category/020105">부츠</a></li>
-                    <li><a href="/item/category/020106">슬리퍼</a></li>
-                    <li><a href="/item/category/020107">샌달</a></li>
+                    <li><a href="/item/categories/0204">신발</a></li>
+                    <li><a href="/item/categories/020101">운동화</a></li>
+                    <li><a href="/item/categories/020102">구두</a></li>
+                    <li><a href="/item/categories/020103">로퍼</a></li>
+                    <li><a href="/item/categories/020105">부츠</a></li>
+                    <li><a href="/item/categories/020106">슬리퍼</a></li>
+                    <li><a href="/item/categories/020107">샌달</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/99">기타</a></li>
+                    <li><a href="/item/categories/99">기타</a></li>
                 </ul>
             </li>
         </ul>
@@ -117,51 +117,51 @@
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0101">상의</a></li>
-                    <li><a href="/item/category/010101">맨투맨/스웨트셔츠</a></li>
-                    <li><a href="/item/category/010102">후드/집업</a></li>
-                    <li><a href="/item/category/010103">니트/스웨터</a></li>
-                    <li><a href="/item/category/010104">셔츠/블라우스</a></li>
-                    <li><a href="/item/category/010105">긴팔 티셔츠</a></li>
-                    <li><a href="/item/category/010106">반팔 티셔츠</a></li>
-                    <li><a href="/item/category/010107">슬리브리스</a></li>
+                    <li><a href="/item/categories/0101">상의</a></li>
+                    <li><a href="/item/categories/010101">맨투맨/스웨트셔츠</a></li>
+                    <li><a href="/item/categories/010102">후드/집업</a></li>
+                    <li><a href="/item/categories/010103">니트/스웨터</a></li>
+                    <li><a href="/item/categories/010104">셔츠/블라우스</a></li>
+                    <li><a href="/item/categories/010105">긴팔 티셔츠</a></li>
+                    <li><a href="/item/categories/010106">반팔 티셔츠</a></li>
+                    <li><a href="/item/categories/010107">슬리브리스</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0102">아우터</a></li>
-                    <li><a href="/item/category/010201">패딩/다운</a></li>
-                    <li><a href="/item/category/010202">폴리스/덤블</a></li>
-                    <li><a href="/item/category/010203">자켓/점퍼</a></li>
-                    <li><a href="/item/category/010204">블레이저</a></li>
-                    <li><a href="/item/category/010205">가디건</a></li>
-                    <li><a href="/item/category/010206">바람막이</a></li>
+                    <li><a href="/item/categories/0102">아우터</a></li>
+                    <li><a href="/item/categories/010201">패딩/다운</a></li>
+                    <li><a href="/item/categories/010202">폴리스/덤블</a></li>
+                    <li><a href="/item/categories/010203">자켓/점퍼</a></li>
+                    <li><a href="/item/categories/010204">블레이저</a></li>
+                    <li><a href="/item/categories/010205">가디건</a></li>
+                    <li><a href="/item/categories/010206">바람막이</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0103">하의</a></li>
-                    <li><a href="/item/category/010301">슬랙스</a></li>
-                    <li><a href="/item/category/010302">트레이닝/스웨트셔츠</a></li>
-                    <li><a href="/item/category/010303">팬츠</a></li>
-                    <li><a href="/item/category/010304">숏츠</a></li>
+                    <li><a href="/item/categories/0103">하의</a></li>
+                    <li><a href="/item/categories/010301">슬랙스</a></li>
+                    <li><a href="/item/categories/010302">트레이닝/스웨트셔츠</a></li>
+                    <li><a href="/item/categories/010303">팬츠</a></li>
+                    <li><a href="/item/categories/010304">숏츠</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0104">신발</a></li>
-                    <li><a href="/item/category/040101">운동화</a></li>
-                    <li><a href="/item/category/040102">구두</a></li>
-                    <li><a href="/item/category/040103">로퍼</a></li>
-                    <li><a href="/item/category/040104">힐</a></li>
-                    <li><a href="/item/category/040105">부츠</a></li>
-                    <li><a href="/item/category/040106">슬리퍼</a></li>
-                    <li><a href="/item/category/040107">샌달</a></li>
+                    <li><a href="/item/categories/0104">신발</a></li>
+                    <li><a href="/item/categories/040101">운동화</a></li>
+                    <li><a href="/item/categories/040102">구두</a></li>
+                    <li><a href="/item/categories/040103">로퍼</a></li>
+                    <li><a href="/item/categories/040104">힐</a></li>
+                    <li><a href="/item/categories/040105">부츠</a></li>
+                    <li><a href="/item/categories/040106">슬리퍼</a></li>
+                    <li><a href="/item/categories/040107">샌달</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/99">기타</a></li>
+                    <li><a href="/item/categories/99">기타</a></li>
                 </ul>
             </li>
         </ul>
@@ -176,51 +176,51 @@
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0301">상의</a></li>
-                    <li><a href="/item/category/030101">맨투맨/스웨트셔츠</a></li>
-                    <li><a href="/item/category/030102">후드/집업</a></li>
-                    <li><a href="/item/category/030103">니트/스웨터</a></li>
-                    <li><a href="/item/category/030104">셔츠/블라우스</a></li>
-                    <li><a href="/item/category/030105">긴팔 티셔츠</a></li>
-                    <li><a href="/item/category/030106">반팔 티셔츠</a></li>
-                    <li><a href="/item/category/030107">슬리브리스</a></li>
+                    <li><a href="/item/categories/0301">상의</a></li>
+                    <li><a href="/item/categories/030101">맨투맨/스웨트셔츠</a></li>
+                    <li><a href="/item/categories/030102">후드/집업</a></li>
+                    <li><a href="/item/categories/030103">니트/스웨터</a></li>
+                    <li><a href="/item/categories/030104">셔츠/블라우스</a></li>
+                    <li><a href="/item/categories/030105">긴팔 티셔츠</a></li>
+                    <li><a href="/item/categories/030106">반팔 티셔츠</a></li>
+                    <li><a href="/item/categories/030107">슬리브리스</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0302">아우터</a></li>
-                    <li><a href="/item/category/030201">패딩/다운</a></li>
-                    <li><a href="/item/category/030202">폴리스/덤블</a></li>
-                    <li><a href="/item/category/030203">자켓/점퍼</a></li>
-                    <li><a href="/item/category/030204">블레이저</a></li>
-                    <li><a href="/item/category/030205">가디건</a></li>
-                    <li><a href="/item/category/030206">바람막이</a></li>
+                    <li><a href="/item/categories/0302">아우터</a></li>
+                    <li><a href="/item/categories/030201">패딩/다운</a></li>
+                    <li><a href="/item/categories/030202">폴리스/덤블</a></li>
+                    <li><a href="/item/categories/030203">자켓/점퍼</a></li>
+                    <li><a href="/item/categories/030204">블레이저</a></li>
+                    <li><a href="/item/categories/030205">가디건</a></li>
+                    <li><a href="/item/categories/030206">바람막이</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0303">하의</a></li>
-                    <li><a href="/item/category/030301">슬랙스</a></li>
-                    <li><a href="/item/category/030302">트레이닝/스웨트셔츠</a></li>
-                    <li><a href="/item/category/030303">팬츠</a></li>
-                    <li><a href="/item/category/030304">숏츠</a></li>
+                    <li><a href="/item/categories/0303">하의</a></li>
+                    <li><a href="/item/categories/030301">슬랙스</a></li>
+                    <li><a href="/item/categories/030302">트레이닝/스웨트셔츠</a></li>
+                    <li><a href="/item/categories/030303">팬츠</a></li>
+                    <li><a href="/item/categories/030304">숏츠</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/category/0304">신발</a></li>
-                    <li><a href="/item/category/030401">운동화</a></li>
-                    <li><a href="/item/category/030402">구두</a></li>
-                    <li><a href="/item/category/030403">로퍼</a></li>
-                    <li><a href="/item/category/030404">힐</a></li>
-                    <li><a href="/item/category/030405">부츠</a></li>
-                    <li><a href="/item/category/030406">슬리퍼</a></li>
-                    <li><a href="/item/category/030407">샌달</a></li>
+                    <li><a href="/item/categories/0304">신발</a></li>
+                    <li><a href="/item/categories/030401">운동화</a></li>
+                    <li><a href="/item/categories/030402">구두</a></li>
+                    <li><a href="/item/categories/030403">로퍼</a></li>
+                    <li><a href="/item/categories/030404">힐</a></li>
+                    <li><a href="/item/categories/030405">부츠</a></li>
+                    <li><a href="/item/categories/030406">슬리퍼</a></li>
+                    <li><a href="/item/categories/030407">샌달</a></li>
                 </ul>
             </li>
             <li>
                 <ul>
-                    <li><a href="category/99">기타</a></li>
+                    <li><a href="categories/99">기타</a></li>
                 </ul>
             </li>
         </ul>

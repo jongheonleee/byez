@@ -2,11 +2,15 @@ package com.neo.byez.controller.item;
 
 
 import com.neo.byez.common.validator.BasketItemValidator;
+import com.neo.byez.domain.item.BasketDto;
 import com.neo.byez.domain.item.BasketItemDto;
 import com.neo.byez.domain.item.BasketItemDtos;
+import com.neo.byez.domain.item.ItemDto;
 import com.neo.byez.domain.item.OrderItemDto;
 import com.neo.byez.domain.item.OrderItemDtos;
 import com.neo.byez.service.item.BasketItemService;
+import com.neo.byez.service.item.BasketItemServiceImpl;
+import com.neo.byez.service.item.ItemServiceImpl;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -28,12 +32,19 @@ import static com.neo.byez.common.message.ErrorMessage.*;
 @Controller
 public class BasketItemController {
 
+    private BasketItemServiceImpl basketService;
+
+    private ItemServiceImpl itemService;
+
     @Autowired
-    private BasketItemService service;
+    public BasketItemController(BasketItemServiceImpl basketService, ItemServiceImpl itemService) {
+        this.basketService = basketService;
+        this.itemService = itemService;
+    }
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        binder.setValidator(new BasketItemValidator());
+//        binder.setValidator(new BasketItemValidator());
     }
 
     // 장바구니 기능
@@ -46,12 +57,12 @@ public class BasketItemController {
     @GetMapping("/basket")
     public String list(BasketItemDto dto, Model model, String msg, HttpSession session) {
         String id = (String) session.getAttribute("id");
-        id = "1";
+        id = "user1";
         dto.setId(id);
         try {
             // 해당 유저의 장바구니 상품 목록 조회
-            List<BasketItemDto> list = service.getBasketItem(dto);
-            int cnt = service.getCount(dto);
+            List<BasketItemDto> list = basketService.getBasketItem(dto);
+            int cnt = basketService.getCount(dto);
 
             // 모델에 저장
             session.setAttribute("cnt", cnt);
@@ -75,11 +86,18 @@ public class BasketItemController {
     @ResponseBody
     public ResponseEntity<String> add(@RequestBody BasketItemDto dto, RedirectAttributes ratt, HttpSession session) {
         String id = (String) session.getAttribute("id");
-        id = "1";
+        id = "user1";
         dto.setId(id);
-        System.out.println(dto);
-        if (!service.register(dto)) {
-            return new ResponseEntity<>("장바구니 상품을 등록하지 지못했습니다.", HttpStatus.BAD_REQUEST);
+        try {
+            ItemDto selectedDto = itemService.getItem(dto.getNum());
+            dto.setMain_img(selectedDto.getMain_img());
+
+            System.out.println(dto);
+            if (!basketService.register(dto)) {
+                return new ResponseEntity<>("장바구니 상품을 등록하지 지못했습니다.", HttpStatus.BAD_REQUEST);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return new ResponseEntity<>("장바구니 상품을 등록하지 못했습니다.", HttpStatus.OK);
@@ -88,9 +106,9 @@ public class BasketItemController {
     @PostMapping("/basket/delete")
     public String remove(BasketItemDto dto, RedirectAttributes ratt, HttpSession session) {
         String id = (String) session.getAttribute("id");
-        id = "1";
+        id = "user1";
         dto.setId(id);
-        if (!service.remove(dto)) {
+        if (!basketService.remove(dto)) {
             ratt.addAttribute("msg", "상품을 정상적으로 ");
         }
 
@@ -101,7 +119,7 @@ public class BasketItemController {
     public String removeSeveral(@Valid BasketItemDtos dtos, RedirectAttributes ratt, HttpSession session) {
         // 여러 상품 삭제
         try {
-            if (!service.removeSeveral(dtos)) {
+            if (!basketService.removeSeveral(dtos)) {
                 throw new Exception("제대로 삭제되지 않았습니다.");
             }
         } catch (Exception e) {
@@ -117,11 +135,11 @@ public class BasketItemController {
 
     @PostMapping("/basket/delete/all")
     public String removeAll(BasketItemDto dto, RedirectAttributes ratt, HttpSession session) {
-//        String id = (String) session.getAttribute("id");
-//        id = "1";
-//        dto.setId(id);
+        String id = (String) session.getAttribute("id");
+        id = "user1";
+        dto.setId(id);
 
-        if (!service.removeAll(dto)) {
+        if (!basketService.removeAll(dto)) {
             ratt.addAttribute("msg", "상품을 정상적으로 모두 삭제하지 못했습니다.");
         }
 
@@ -133,74 +151,37 @@ public class BasketItemController {
     @PostMapping("/basket/update")
     public String modify(@Valid BasketItemDto dto, RedirectAttributes ratt, HttpSession session) {
         String id = (String) session.getAttribute("id");
-        id = "1";
+        id = "user1";
         dto.setId(id);
         System.out.println(dto);
 
         // 서비스로 해당 상품 수정
         try {
-            if (!service.modify(dto)) {
+            ItemDto selectedDto = itemService.getItem(dto.getNum());
+            dto.setMain_img(selectedDto.getMain_img());
+
+            if (!basketService.modify(dto)) {
                 throw new Exception("상품을 정상적으로 변경하지 못했습니다.");
             }
         } catch (Exception e) {
-            ratt.addAttribute("msg", e.getMessage());
+            e.printStackTrace();
         }
-
 
         // 기존 상품 페이지로 이동
         return "redirect:/basket";
     }
 
-//    @PostMapping("/order")
-//    public String order(OrderItemDtos opd, Model model) {
-//        List<OrderItemDto> list = opd.getOrders();
-//        for (OrderItemDto dto : list) {
-//            System.out.println(dto);
-//        }
-//
-//        model.addAttribute("list", list);
-//        return "order";
-//    }
+    @PostMapping("/order")
+    public String order(BasketItemDtos dtos, Model model) {
+        List<BasketItemDto> list = dtos.getOrders();
+        for (BasketItemDto dto : list) {
+            System.out.println(dto);
+        }
+
+        System.out.println("dede");
+        model.addAttribute("list", list);
+        return "order";
+    }
 
 
 }
-
-
-// 서비스로 해당 상품 등록
-//        try {
-//            int rowCnt = service.register(dto);
-//            // 적용되지 않음
-//            if (rowCnt != 1) {
-//                throw new Exception(ITEM_REGISTER_FAIL.getMessage());
-//            }
-//
-//            // 기존의 장바구니 상품 페이지로 이동, 💥어떤 것을 쓸지 고민해보기(여기서 굳이 redirect를 써야할까??)
-//            return "redirect:/basket2";
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            model.addAttribute("msg", e.getMessage());
-//            return "inbasket2";
-//        }
-
-
-// 서비스로 유저의 장바구니 상품 모두 삭제
-//        try {
-//            int rowCnt = service.removeAll(dto);
-//        } catch (Exception e) {
-//            model.addAttribute("msg", e.getMessage());
-//            return "basket2";
-//        }
-
-// 서비스로 해당 상품 삭제
-//        try {
-//            int rowCnt = service.remove(dto);
-//            if (rowCnt != 1) {
-//                throw new Exception(ITEM_REMOVE_FAIL.getMessage());
-//            }
-//
-//            // 기존의 상품 페이지로 이동
-//            return "redirect:/basket";
-//        } catch (Exception e) {
-//            model.addAttribute("msg", e.getMessage());
-//            return "basket2";
-//        }

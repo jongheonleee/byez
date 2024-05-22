@@ -98,8 +98,10 @@ public class SearchCondition {
             option = "NC";
         } else if (typeKeyword.length() > 0 && custKeyword.length() > 0) {
             option = "TC";
-        } else {
+        } else if (nameKeyword.length() > 0 && typeKeyword.length() > 0){
             option = "NT";
+        } else {
+            option = "T";
         }
     }
     @Override

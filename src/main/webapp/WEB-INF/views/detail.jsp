@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/detail.css?after?after">
+    <link rel="stylesheet" href="/css/detail.css?after?after?after">
     <link rel="stylesheet" href="/css/footer.css?after">
     <link rel="stylesheet" href="/css/quick.css?after">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -22,11 +22,11 @@
 <section>
     <div class="wrapper">
         <p>
-            <a href="main.html"><span>home</span></a>
+            <a href="/"><span>home</span></a>
         </p>
         <div class="info">
             <div class="infoImgWrapper">
-                <img src="/img/detail1.jpeg" alt="" class="detail_img">
+                <img src="${itemDetail.detail_img}" alt="" class="detail_img">
                 <p>소재 : <span class="matr">${itemDetail.matr}</span></p>
                 <p>제조국 : <span class="origin">${itemDetail.origin}</span></p>
                 <p>제조사 : <span class="mfg_corp">${itemDetail.mfg_corp}</span></p>
@@ -104,9 +104,10 @@
                             <!-- 추후에 db에서 num만 조회해서 좋아요 상품 등록하게 만들기-->
                             <div class="item-info">
                                 <input class="num" type="hidden" value=${itemDetail.num}>
-                                <input class="name" type="hidden" value=${itemDetail.name}>
+                                <input class="name" type="hidden" value="${itemDetail.detail_name}">
                                 <input class="price" type="hidden" value=${itemDetail.price}>
                                 <input class="disc_price" type="hidden" value=${itemDetail.disc_price}>
+                                <input class="cust_type" type="hidden" value="${itemDetail.cust_type}">
                             </div>
                         </button>
                         <button class="cart-btn">장바구니</button>
@@ -341,6 +342,6 @@
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
 <script src="/js/count.js"></script>
-<script src="/js/detail.js?after?after"></script>
+<script src="/js/detail.js?after?after?after"></script>
 </body>
 </html>

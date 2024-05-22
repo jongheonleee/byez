@@ -2,9 +2,10 @@ package com.neo.byez.dao.item;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.neo.byez.dao.UserDaoImpl;
-import com.neo.byez.domain.UserDto;
+
+import com.neo.byez.dao.user.UserDaoImpl;
 import com.neo.byez.domain.item.BasketDto;
+import com.neo.byez.domain.user.UserDto;
 import java.util.List;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;

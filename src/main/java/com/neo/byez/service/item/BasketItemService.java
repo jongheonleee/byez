@@ -37,4 +37,6 @@ public interface BasketItemService {
     boolean modify(BasketItemDto dto) throws Exception;
 
     int getPrice(BasketItemDto dto) throws Exception;
+
+    BasketItemDto readByContent(BasketItemDto dto) throws Exception;
 }

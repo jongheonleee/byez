@@ -52,12 +52,11 @@
     let id = $(this).parents("div.modalBody").find("input.id").val();
     let name = $(this).parents("div.modalBody").find("input.name").val();
     let num = $(this).parents("div.modalBody").find("input.num").val();
-    alert($(this).parents("div.modalBody").find("input.qty").val());
     let qty = parseInt($(this).parents("div.modalBody").find("input.qty").val());
     let price = parseInt($(this).parents("div.modalBody").find("input.price").val());
     let opt1 = $(this).parents("div.modalBody").find("input.opt1").val();
     let opt2 = $(this).parents("div.modalBody").find("input.opt2").val();
-
+    let opt3 = $(this).parents('div.modalBody').find('input.opt3').val();
 
     // 검증 로직 추가
     if (seq <= 0) {
@@ -109,6 +108,7 @@
   $(".updatePrice").val(price);
   $(".updateOpt1").val(opt1);
   $(".updateOpt2").val(opt2);
+  $(".updateOpt3").val(opt3);
 
   $(".updateBasketItem").submit();
 });
@@ -190,13 +190,31 @@
   let orderNumber = 0;
 
   $('.basketItemInfo').each(function(i, e) {
+      alert("dede");
       if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
           // 값 조회
           const seq = parseInt($(e).find(".eachBasketItemSeq").val());
+          const id = $(e).find('.eachBasketItemId').val();
+          const num = $(e).find('.eachBasketItemNum').val();
+          const name = $(e).find('.eachBasketItemName').val();
+          const price = parseInt($(e).find('.eachBasketItemPrice').val());
+          const qty = parseInt($(e).find('.eachBasketItemQty').val());
+          const opt1 = $(e).find('.eachBasketItemOpt1').val();
+          const opt2 = $(e).find('.eachBasketItemOpt2').val();
+
+
 
           // input 태그 생성
           // form에 추가
           formContents += "<input name='orders[" + orderNumber + "].seq' type='hidden' value='" + seq + "'>";
+          formContents += "<input name='orders[" + orderNumber + "].id' type='hidden' value='" + id + "'>";
+          formContents += "<input name='orders[" + orderNumber + "].num' type='hidden' value='" + num + "'>";
+          formContents += "<input name='orders[" + orderNumber + "].name' type='hidden' value='" + name + "'>";
+          formContents += "<input name='orders[" + orderNumber + "].price' type='hidden' value='" + price + "'>";
+          formContents += "<input name='orders[" + orderNumber + "].qty' type='hidden' value='" + qty + "'>";
+          formContents += "<input name='orders[" + orderNumber + "].opt1' type='hidden' value='" + opt1 + "'>";
+          formContents += "<input name='orders[" + orderNumber + "].opt2' type='hidden' value='" + opt2 + "'>";
+
 
           // 주문 번호 증가
           orderNumber += 1;

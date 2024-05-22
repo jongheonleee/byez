@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.neo.byez.dao.UserDaoImpl;
-import com.neo.byez.domain.UserDto;
 import com.neo.byez.domain.item.BasketDto;
 import com.neo.byez.domain.item.BasketItemDto;
 import com.neo.byez.domain.item.ItemDetailDto;

@@ -162,5 +162,4 @@ public class LikeItemServiceImpl {
     public int getCount(String id) throws Exception {
         return likeDao.count(id);
     }
-
 }

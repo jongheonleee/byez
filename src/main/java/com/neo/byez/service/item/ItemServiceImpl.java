@@ -138,7 +138,7 @@ public class ItemServiceImpl {
                 // 상품 테이블의 할인가 계산해서 수정 => 1
                     // 해당 상품 조회
                     // 해당 상품 가격 할인율 조회
-                    // 필드값 계산 
+                    // 필드값 계산
                     // 수정 => 1
 
 
@@ -344,19 +344,19 @@ public class ItemServiceImpl {
     //     메인 페이지 여성 top 8 보주기
     public List<ItemDto> showWTop8(ItemDto dto) throws Exception {
         dto.setItem_type("02");
-        return dao.selectWTop8(dto);
+        return itemDao.selectWTop8(dto);
     }
 
     //     메인 페이지 남성 top 8 보주기
     public List<ItemDto> showMTop8(ItemDto dto) throws Exception {
         dto.setItem_type("01");
-        return dao.selectWTop8(dto);
+        return itemDao.selectWTop8(dto);
     }
 
     //     메인 페이지 혼성 top 8 보주기git commit -m [feat] 상품파트 service 2차 구현"
     public List<ItemDto> showUTop8(ItemDto dto) throws Exception {
         dto.setItem_type("03");
-        return dao.selectWTop8(dto);
+        return itemDao.selectWTop8(dto);
     }
 
 

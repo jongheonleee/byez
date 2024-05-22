@@ -69,7 +69,7 @@
                 <c:forEach var="likeItemDto" items="${list}">
                 <li class = "likeItemInfo">
                     <a href="/goods/${likeItemDto.num}">
-                        <div style="background-image: url(/img/1.jpeg);">
+                        <div style="background-image: url(${likeItemDto.main_img});">
                         </div>
                     </a>
                     <ul class="itemInfo">

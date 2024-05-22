@@ -127,8 +127,9 @@ section>.wrapper>p:nth-of-type(2) {font-size: 42px; font-weight: bold; text-alig
   float: left;
   width: 13%;
   height: 100%;
-  background-color: black;
   margin: 0 15px;
+  display: flex;
+  align-items: center;
 }
 
 .tb1 {
@@ -272,6 +273,10 @@ section>.wrapper>p:nth-of-type(2) {font-size: 42px; font-weight: bold; text-alig
 }
 
 .modalItemName {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 400px;
   position: absolute;
   top: 7%;
   left: 50%;

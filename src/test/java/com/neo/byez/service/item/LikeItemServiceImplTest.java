@@ -2,8 +2,6 @@ package com.neo.byez.service.item;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.neo.byez.dao.UserDaoImpl;
-import com.neo.byez.domain.UserDto;
 import com.neo.byez.domain.item.BasketDto;
 import com.neo.byez.domain.item.ItemDto;
 import com.neo.byez.domain.item.LikeItemDto;

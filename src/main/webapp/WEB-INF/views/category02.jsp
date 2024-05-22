@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/category.css?after">
+    <link rel="stylesheet" href="/css/category.css?after?after">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -135,18 +135,18 @@
 
         <div class="content">
             <p>
-                <a href="main.html"><span>home</span></a>
+                <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="category.html"><span>우먼</span></a>
+                <a href="/item/categories/02"><span>우먼</span></a>
             </p>
             <p>여성</p>
             <div class="category">
                 <ul>
-                    <li><a href="#">상의</a></li>
-                    <li><a href="#">아우터</a></li>
-                    <li><a href="#">하의</a></li>
-                    <li><a href="#">신발</a></li>
-                    <li><a href="#">기타</a></li>
+                    <li><a href="/item/categories/0201">상의</a></li>
+                    <li><a href="/item/categories/0202">아우터</a></li>
+                    <li><a href="/item/categories/0203">하의</a></li>
+                    <li><a href="/item/categories/0204">신발</a></li>
+                    <li><a href="/item/categories/99">기타</a></li>
                 </ul>
                 <div>
                     <div class="item_num">
@@ -176,7 +176,7 @@
                 <c:forEach var="itemDto" items="${list}">
                     <li>
                         <a href="/goods/${itemDto.num}">
-                            <img src="/img/1.jpeg" alt="">
+                            <img src="${itemDto.main_img}" alt="">
                         </a>
                         <p class="item_name">
                             <span>${itemDto.name}</span>
@@ -188,13 +188,10 @@
                                 <li style="background-color: ${color}; display: inline"></li>
                                 </c:forEach>
                             </ul>
-                        <div class="stars">
-                            ${itemDto.review_rate}
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                        <div class="wrap-star">
+                            <div class='star-rating'>
+                                <span style="width: ${20 * itemDto.review_rate}%"></span>
+                            </div>
                         </div>
                         <i class="fa-solid fa-heart" style="color: red;"></i>
                         <span class="like_cnt">${itemDto.like_cnt}</span>
@@ -226,7 +223,7 @@
 <%@include file="../views/include/quick.jsp"%>
 <%@include file="../views/include/footer.jsp"%>
 <script src="/js/jquery-3.6.4.min.js"></script>
-<script src="/js/nav.js?after?after"></script>
+<script src="/js/nav.js?after?after?after"></script>
 <script src="/js/sort.js"></script>
 <script src="/js/accordion.js"></script>
 </body>

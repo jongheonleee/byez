@@ -84,6 +84,7 @@ $(document).ready(function(){
         const price = parseInt($('.item-info').find('.price').val());
         const opt1 = $('.opt1').val();
         const opt2 = $('.opt2').val();
+        const opt3 = $('.cust_type').val();
         const coupon_chk = '';
 
         // Json 객체 직렬화
@@ -94,10 +95,10 @@ $(document).ready(function(){
             price : price,
             opt1 : opt1,
             opt2 : opt2,
+            opt3 : opt3,
             coupon_chk : coupon_chk
         });
 
-        alert(basketItemDto);
 
         // ajax 호출
         $.ajax({
