@@ -179,6 +179,11 @@ public class UserInfoController {
     // 1.3.1. 탈퇴처리 성공 시 메인 화면으로 이동
     // 1.3.2. 탈퇴처리 실패 시 다시 탈퇴 요청 화면으로 이동
 
+    @GetMapping("/withdrawalReason")
+    public String moveToWithdrawalReasonPage() {
+        return "/user/withdrawalReason";
+    }
+
     @GetMapping("/withdrawal")
     public String moveToWithdrawalPage() {
         return "/user/withdrawalForm";

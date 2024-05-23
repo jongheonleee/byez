@@ -103,7 +103,7 @@ input[type=submit]:hover {
 .sign-up-button {
     display: flex;
     position: relative;
-    top: 0;
+    top: 450px;
     margin: 20px auto;
     width: 400px;
     height: 40px;
@@ -120,14 +120,14 @@ input[type=submit]:hover {
     justify-content: space-around;
     background-color: black;
     border: none;
-    font-size: 20px;
+    color: white;
+    font-size: 18px;
     font-weight: bold;
 }
-.sign-up-button button a:hover {
-    font-size: 18px;
+.sign-up-button button:hover {
+    font-size: 20px;
 }
 .sign-up-button button a {
-    color: whitesmoke;
     text-decoration: none;
 }
 .sign-up-button span {
@@ -144,7 +144,7 @@ input[type=submit]:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: 450px auto 20px;
     font-size: 15px;
     font-weight: bold;
 }

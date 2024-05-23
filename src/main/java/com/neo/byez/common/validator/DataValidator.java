@@ -32,7 +32,7 @@ public class DataValidator {
         } else if (id.contains(" ") || !id.matches("^[a-zA-Z0-9]*")) {
             wrongIdFormat = INVALID_ID_FORMAT.getMessage();
             return false;
-        } else if (id.length() < 1 || id.length() > 20) {
+        } else if (id.length() < 3 || id.length() > 20) {
             wrongIdFormat = ID_LENGTH_OUT_OF_BOUNDS.getMessage();
             return false;
         }

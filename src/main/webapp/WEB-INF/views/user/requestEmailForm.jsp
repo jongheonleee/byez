@@ -51,16 +51,18 @@
         height: 80px;
         align-items: flex-end;
     }
+    input[type="email"] {padding: 5px; box-sizing: border-box; width: 180px; height: 30px; margin: 0 5px;}
     .input-email input[type="email"] {
         margin: 0 5px;
         width: 180px;
         height: 25px;
     }
+    #sendEmailBtn { width: 50px; height: 30px;}
     #sendEmailBtn:enabled {
         background-color: black;
         color: whitesmoke;
-        width: 45px;
-        height: 25px;
+        width: 50px;
+        height: 30px;
     }
     #sendEmailBtn:enabled:hover {
         font-size: 15px;
@@ -73,11 +75,12 @@
         margin: 60px auto 10px;
         color:midnightblue;
     }
+    input[type="text"] {padding: 5px; box-sizing: border-box; width: 180px; height: 30px; margin: 0 5px;}
     .input-verification-code button {
         background-color: black;
         color: whitesmoke;
-        width: 45px;
-        height: 25px;
+        width: 50px;
+        height: 30px;
     }
     .input-verification-code button:hover {
         font-size: 15px;

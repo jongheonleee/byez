@@ -67,6 +67,24 @@ table tr:nth-of-type(5) td {padding: 0 15px;}
     /* background-color: rgba(255, 0, 0, .2); */
     display: flex; justify-content: space-evenly;}
 
+#checkDuplicateBtn {
+    background-color: black;
+    width: 100px;
+    height: 30px;
+    border: 1px solid gray;
+    color: white;
+    font-size: 15px;
+    font-weight: normal;
+    margin-left: 10px;
+    transition: .3s;
+}
+
+#checkDuplicateBtn:hover {
+    background-color: white;
+    color: black;
+    font-weight: bold;
+}
+
 button, input[type="submit"] {
     background-color: white;
     color: black; border: 1px solid lightgray; box-sizing: border-box; width: 130px; height: 60px; font-size: 20px; font-weight: bold;
@@ -74,12 +92,9 @@ button, input[type="submit"] {
 input[type="submit"]:hover {background-color: black; color: white;}
 input[type="submit"] {transition: 0.3s;}
 input[type="submit"]:hover {background-color: black; color: white; border-color: black;}
-
-
-/* button {background-color: white;
-    color: black; border: 1px solid lightgray; box-sizing: border-box; width: 130px; height: 60px; font-size: 20px; font-weight: bold;}
-button:last-of-type:hover {background-color: black; color: white;}
-button:last-of-type {transition: 0.3s;}
-button:last-of-type:hover {background-color: black; color: white; border-color: black;} */
-
-/* #red {display: none;} */
+input[type="submit"]:disabled {
+    background-color: gray;
+    color: white;
+    border: 1px solid gray;
+    font-size: 20px;
+}

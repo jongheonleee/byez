@@ -5,6 +5,9 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
+
 import static com.neo.byez.common.message.ValidatorMessage.*;
 
 public class SignUpValidator implements Validator {
@@ -146,16 +149,6 @@ public class SignUpValidator implements Validator {
         if (!email.matches("[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,6}$")) {
             errors.rejectValue("email", INVALID_EMAIL_FORMAT.getMessage());
         }
-
-//        // Email: 한글 작성 제한
-//        if(email.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
-//            errors.rejectValue("email", INVALID_EMAIL_FORMAT.getMessage());
-//        }
-//
-//        // Email: format 제한
-//        if(!(email.contains("@") && email.contains("."))) {
-//            errors.rejectValue("email", WRONG_EMAIL_FORMAT.getMessage());
-//        }
     }
 
     // 생년월일 - 유효성 검증 메서드
@@ -171,18 +164,41 @@ public class SignUpValidator implements Validator {
             errors.rejectValue("bef_birth", BIRTH_LENGTH_OUT_OF_BOUNDS.getMessage());
         }
 
+        int intYear = 0;
+        int intMonth = 0;
+        int intDay = 0;
         if (befBirthStr.length() == 8) {
-            String year = befBirthStr.substring(0,4);
+            String year = befBirthStr.substring(0, 4);
             String month = befBirthStr.substring(4, 6);
             String day = befBirthStr.substring(6);
 
-            int intYear = Integer.parseInt(year);
-            int intMonth = Integer.parseInt(month);
-            int intDay = Integer.parseInt(day);
+            intYear = Integer.parseInt(year);
+            intMonth = Integer.parseInt(month);
+            intDay = Integer.parseInt(day);
+        } else {
+            errors.rejectValue("bef_birth", BIRTH_LENGTH_OUT_OF_BOUNDS.getMessage());
+        }
 
-            if (!(intYear >= 1900 && intYear <= 9999 && intMonth >= 1 && intMonth <= 12 && intDay >= 1 && intDay <= 31)) {
+        // 현재 날짜
+        LocalDate today = LocalDate.now();
+        int currentYear = today.getYear();
+
+        // 기본적인 범위 확인
+        if (!(intYear >= 1900 && intYear <= currentYear && intMonth >= 1 && intMonth <= 12 && intDay >= 1 && intDay <= 31)) {
+            errors.rejectValue("bef_birth", INVALID_BEFORE_BIRTH_FORMAT.getMessage());
+        }
+
+        try {
+            // 생년월일을 LocalDate 객체로 생성
+            LocalDate birthDate = LocalDate.of(intYear, intMonth, intDay);
+
+            // 생년월일이 현재 날짜를 초과하는지 확인
+            if (birthDate.isAfter(today)) {
                 errors.rejectValue("bef_birth", INVALID_BEFORE_BIRTH_FORMAT.getMessage());
             }
+        } catch (DateTimeException e) {
+            e.printStackTrace();
+            errors.rejectValue("bef_birth", INVALID_BEFORE_BIRTH_FORMAT.getMessage());
         }
     }
 
@@ -215,5 +231,3 @@ public class SignUpValidator implements Validator {
         }
     }
 }
-
-
