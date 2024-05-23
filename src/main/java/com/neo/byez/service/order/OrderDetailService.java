@@ -46,4 +46,6 @@ public interface OrderDetailService {
     public OrderDetailDto searchOrdItem(String ord_num, String item_num, String id);
 
     public int changeReviewState(ReviewDto reviewDto);
+    public boolean validateSearchOrdItem(String ord_num,String item_num,String id);
+
 }

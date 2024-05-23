@@ -109,6 +109,23 @@
         }
     }
 </script>
+<script src="../js/jquery-3.6.4.min.js"></script>
+<script src="../js/nav.js"></script>
+<script type="text/javascript">
+    function readURL(input) {
+        var file = input.files[0]
+        console.log(file)
+        if (file != '') {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function (e) {
+                console.log(e.target)
+                console.log(e.target.result)
+                $('#preview').attr('src', e.target.result);
+            }
+        }
+    }
+</script>
 <script>
     function validateQna() {
         var title = document.getElementById("qna_title").value;
@@ -116,9 +133,18 @@
         if (title.trim() === "" || content.trim() === "") {
             alert("제목과 내용을 작성해주세요");
             return false;
-        } else {
-            return true;
         }
+        if(title.length>100||content.length>1000){
+            alert("글자수 확인하고 작성해 주세요");
+            return false;
+        }
+        <c:if test="${mode eq 'write'}">
+        alert("등록되었습니다.");
+        </c:if>
+        <c:if test="${mode ne 'write'}">
+        alert("수정되었습니다.");
+        </c:if>
+        return true;
     }
 
     $(document).ready(function () {
@@ -126,24 +152,13 @@
             let form = $("#form");
             form.attr("action", "/qna/update?seq_num=${qnaDto.seq_num}");
             form.attr("method", "post")
-            var title = document.getElementById("qna_title").value;
-            var content = document.getElementById("qna_content").value;
-            if (title.trim() === "" || content.trim() === "") {
-            } else {
-                alert("수정되었습니다.");
-            }
+
             form.submit();
         })
         $("#writebtn").on("click", function () {
             let form = $("#form");
             form.attr("action", "/qna/write");
             form.attr("method", "post")
-            var title = document.getElementById("qna_title").value;
-            var content = document.getElementById("qna_content").value;
-            if (title.trim() === "" || content.trim() === "") {
-            } else {
-                alert("작성되었습니다.");
-            }
             form.submit();
         })
     });
@@ -152,3 +167,4 @@
 </body>
 
 </html>
+

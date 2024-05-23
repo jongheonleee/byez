@@ -45,6 +45,7 @@ public class OrderDetailServiceImpl implements  OrderDetailService{
     @Override
     public List<ItemOptionDto> selectColorOption(String num) {
         return itemOptionDao.selectColor(num);
+
     }
 
     @Override
@@ -117,5 +118,14 @@ public class OrderDetailServiceImpl implements  OrderDetailService{
     @Override
     public List<OrderDetailDto> selectAllEtc(String id) throws Exception {
         return ordDetailDao.selectAllEtc(id);
+    }
+    @Override
+    public boolean validateSearchOrdItem(String ord_num, String item_num, String id) {
+        OrderDetailDto ordDetailDto = ordDetailDao.selectOrdItem(ord_num, item_num, id);
+        if (ordDetailDto==null||ordDetailDto.getItem_num()==null || ordDetailDto.getOrd_num()==null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }

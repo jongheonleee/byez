@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/qnaList.css?after">
+    <link rel="stylesheet" href="../css/qnaList.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -31,7 +31,7 @@
         </div>
         <jsp:include page="/WEB-INF/views/include/aside.jsp"/>
         <div class="content">
-            <table>
+            <table class="tableStyle">
                 <tr>
                     <th class="cate_num">질문유형</th>
                     <th class="qna_title">제목</th>
@@ -69,7 +69,7 @@
                             <option value="title"  ${search == 'title' ? 'selected' : ''}>제목</option>
                             <option value="content" ${search == 'content' ? 'selected' : ''}>내용</option>
                         </select>
-                        <input type="text" name="searchContent" value="${searchContent}">
+                        <input type="text" name="searchContent" value="${searchContent}" placeholder="검색하시오">
                         <input type="checkbox" value="Y" name="res_state">답변 완료
                         <input type="hidden" name="mode" value="search">
                         <button type="submit">검색하기</button>

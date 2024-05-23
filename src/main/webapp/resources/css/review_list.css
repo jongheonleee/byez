@@ -54,7 +54,6 @@ section {width: 100%; min-width: 1200px; height: fit-content;   margin-top: 90px
 .box {
     display: inline-block; /* 박스를 인라인 블록 요소로 설정 */
     vertical-align: top; /* 박스들이 수직으로 상단에 정렬되도록 설정 */
-    background-color: #ddd; /* 박스의 배경색 설정 */
     text-align: center; /* 텍스트를 가로로 중앙 정렬 */
     height: 100%; /* 부모 컨테이너의 높이에 맞춤 */
     box-sizing: border-box; /* padding과 border를 포함하여 크기 계산 */
@@ -150,5 +149,15 @@ section {width: 100%; min-width: 1200px; height: fit-content;   margin-top: 90px
     border-top: #000 2px solid;
 }
 
-
-
+.item_name{
+    font-size: 17px;
+    font-weight: bold;
+}
+.item_score{
+    font-size: 17px;
+    font-weight: bold;
+}
+.item_title{
+    font-size: 17px;
+    font-weight: bold;
+}

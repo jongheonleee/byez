@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/review_write.css?after">
+    <link rel="stylesheet" href="/css/review_write.css">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -46,8 +46,8 @@
                             </div>
                         </th>
                         <td class="item_info">
-                            <p class="item_name">상품명 :${ordDetailDto.item_name}</p>
-                            <p class="item_opt">옵션명 :${ordDetailDto.opt1},${ordDetailDto.opt2}</p>
+                            <p class="item_name">상품명 : ${ordDetailDto.item_name}</p>
+                            <p class="item_opt">옵션 : ${ordDetailDto.opt1}  ${ordDetailDto.opt2}  ${ordDetailDto.opt3}</p>
                         </td>
                     </tr>
                     <tr>
@@ -137,28 +137,30 @@
         if (title.trim() === "" || content.trim() === "") {
             alert("제목과 내용을 작성해주세요");
             return false;
-        } else {
-            return true;
         }
+        if(title.length>100||content.length>1000){
+            alert("글자수 선넘지 마세요");
+            return false;
+        }
+        <c:if test="${mode eq 'write'}">
+        alert("등록되었습니다.");
+        </c:if>
+        <c:if test="${mode ne 'write'}">
+        alert("수정되었습니다.");
+        </c:if>
+        return true;
     }
     $(document).ready(function () {
         $("#writebtn").on("click", function () {
             let form = $("#form");
             form.attr("action", "write");
             form.attr("method", "post");
-            alert("등록되었습니다1.");
             form.submit();
         })
         $("#updatebtn").on("click", function () {
             let form = $("#form");
             form.attr("action", "modify?seq_num=${ReviewDto.review_num}");
             form.attr("method", "post");
-            var title = document.getElementById("title").value;
-            var content = document.getElementById("content").value;
-            if (title.trim() === "" || content.trim() === "") {
-            } else {
-                alert("수정되었습니다.");
-            }
             form.submit();
         })
     });
@@ -171,3 +173,4 @@
 </script>
 </body>
 </html>
+

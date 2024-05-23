@@ -88,7 +88,7 @@
                     </tr>
                     <tr class="put_detail_content">
                         <td colspan="3">
-                            <div>답변도 제가 알아서 할거란말이에요 제가 알아서 할거란말이에요답변도 제가 알아서 할거란말이에요 제가 알아서 할거란말이에요답변도 제가 알아서 할거란말이에요 제가 알아서 할거란말이에요답변도 제가 알아서 할거란말이에요 제가 알아서 할거란말이에요답변도 제가 알아서 할거란말이에요 제가 알아서 할거란말이에요답변도 제가 알아서 할거란말이에요 제가 알아서 할거란말이에요답변도 제가 알아서 할거란말이에요 제가 알아서 할거란말이에요답변도 제가 알아서 할거란말이에요 제가 알아서 할거란말이에요답변도 제가 알아서 할거란말이에요 제가 알아서 할거란말이에요답변도 제가 알아서 할거란말이에요 제가 알아서 할거란말이에요답변도 제가 알아서 할거란말이에요 제가 알아서 할거란말이에요</div>
+                            <div>${qnaDto.res_content}</div>
                         </td>
                     </tr>
                     </tbody>
@@ -127,4 +127,18 @@
 <script src="/js/nav.js"></script>
 </body>
 
+<%--    function readURL(input) {--%>
+<%--        var file = input.files[0]--%>
+<%--        console.log(file)--%>
+<%--        if (file != '') {--%>
+<%--            var reader = new FileReader();--%>
+<%--            reader.readAsDataURL(file);--%>
+<%--            reader.onload = function (e) {--%>
+<%--                console.log(e.target)--%>
+<%--                console.log(e.target.result)--%>
+<%--                $('#preview').attr('src', e.target.result);--%>
+<%--            }--%>
+<%--        }--%>
+<%--    }--%>
+<%--</script>--%>
 </html>
