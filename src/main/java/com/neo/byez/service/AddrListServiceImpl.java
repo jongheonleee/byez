@@ -25,12 +25,30 @@ public class AddrListServiceImpl implements AddrListService {
 
     @Override
     public List<AddressEntryDto> getUsersAddrById(String id) throws Exception {
-        return addrListDao.selectById(id);
+        List<AddressEntryDto> addresses = addrListDao.selectById(id);
+
+        for (AddressEntryDto address : addresses) {
+            String mobileNum = "0" + address.getMobileNum();
+            String telNum = "0" + address.getTelNum();
+
+            address.setMobileNum(mobileNum);
+            address.setTelNum(telNum);
+        }
+        return addresses;
     }
 
     @Override
     public AddressEntryDto getUsersAddrBySeq(Integer seq) throws Exception {
-        return addrListDao.selectBySeq(seq);
+
+        AddressEntryDto addressEntryDto = addrListDao.selectBySeq(seq);
+
+        String mobileNum = "0" + addressEntryDto.getMobileNum();
+        String telNum = "0" + addressEntryDto.getTelNum();
+
+        addressEntryDto.setMobileNum(mobileNum);
+        addressEntryDto.setTelNum(telNum);
+
+        return addressEntryDto;
     }
 
     @Override
@@ -50,6 +68,7 @@ public class AddrListServiceImpl implements AddrListService {
 
     @Override
     public int changeAddr(AddressEntryDto addressEntryDto) throws Exception {
+
         return addrListDao.update(addressEntryDto);
     }
 

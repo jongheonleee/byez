@@ -39,9 +39,16 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 
 .content > table th,
 .content > table td {
-  text-align: center; /* 텍스트를 가운데 정렬합니다. */
-  padding: 22px 0px; /* 내부 여백을 추가합니다. */
-  white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+    text-align: center;
+    white-space: nowrap;
+}
+
+.content > table th {
+    padding: 22px 0px;
+}
+
+.content > table td {
+    padding: 24px 0px;
 }
 
 .content > table tr {

@@ -52,10 +52,10 @@
                         <td>
                             <c:choose>
                                 <c:when test="${coupon.couponDto.discType eq 'PER'}">
-                                    ${coupon.couponDto.prmo}% (최대 ${coupon.couponDto.maxDiscPrice}원 할인)
+                                    ${coupon.couponDto.prmo}% (최대 <fmt:formatNumber value="${coupon.couponDto.maxDiscPrice}" type="number" groupingUsed="true"/>원 할인)
                                 </c:when>
                                 <c:otherwise>
-                                    -${coupon.couponDto.prmo} (최대 ${coupon.couponDto.maxDiscPrice}원 할인)
+                                    -${coupon.couponDto.prmo} (최대 <fmt:formatNumber value="${coupon.couponDto.maxDiscPrice}" type="number" groupingUsed="true"/>원 할인)
                                 </c:otherwise>
                             </c:choose>
                         </td>
@@ -65,7 +65,7 @@
                                     제한 없음
                                 </c:when>
                                 <c:otherwise>
-                                    ${coupon.couponDto.minPayPrice}
+                                    <fmt:formatNumber value="${coupon.couponDto.minPayPrice}" type="number" groupingUsed="true"/>
                                 </c:otherwise>
                             </c:choose>
                         </td>
