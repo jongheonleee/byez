@@ -264,7 +264,7 @@
         }
 
         // 할인금액이 최대 할인금액 보다 크면
-        if (selectedPrmo > selectedMaxDiscPrice) {
+        if (promotion > selectedMaxDiscPrice) {
             // 최대 할인금액으로 저장
             promotion = selectedMaxDiscPrice;
         }

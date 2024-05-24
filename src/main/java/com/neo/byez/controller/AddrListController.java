@@ -38,9 +38,16 @@ public class AddrListController {
     }
 
     @RequestMapping("addrEditForm")
-    public String addrEditForm(Integer seq, Model model) throws Exception {
+    public String addrEditForm(HttpServletRequest request, Integer seq, Model model) throws Exception {
+
+        HttpSession session = request.getSession();
+        String userId = (String) session.getAttribute("userId");
 
         AddressEntryDto addressEntryDto = addrListService.getUsersAddrBySeq(seq);
+
+        if(!(addressEntryDto.getId().equals(userId))) { // 다른 사용자 정보 못보게 방지
+            return "redirect: /myAddrList";
+        }
 
         model.addAttribute("address", addressEntryDto);
 
