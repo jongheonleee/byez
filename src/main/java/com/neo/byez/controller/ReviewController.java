@@ -3,6 +3,7 @@ package com.neo.byez.controller;
 import com.neo.byez.domain.ReviewItemJoinDto;
 import com.neo.byez.domain.ReviewDto;
 import com.neo.byez.domain.order.OrderDetailDto;
+import com.neo.byez.domain.order.OrderDetailJoinItemDto;
 import com.neo.byez.service.ReviewServiceImpl;
 import com.neo.byez.service.order.OrderDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,8 @@ public class ReviewController {
         //SESSION 통해 현재 접속해있는 고객의 ID값을 가져와야한다. 현재는 "asdf"로 설정해주도록 한다.
         //on이 리뷰완료된것 off가 리뷰안된것
         String userId = (String) httpSession.getAttribute("userId");
-        List<OrderDetailDto> reviewOfflist = ordDetailServiceImpl.searchById(userId);
+        List<OrderDetailJoinItemDto> reviewOfflist = ordDetailServiceImpl.searchById(userId);
+
         List<ReviewItemJoinDto> reviewOnList = reviewServiceimpl.searchJoinItem(userId);
         model.addAttribute("reviewOffList", reviewOfflist);
         model.addAttribute("reviewOnList", reviewOnList);
@@ -46,7 +48,7 @@ public class ReviewController {
         if( !ordDetailServiceImpl.validateSearchOrdItem(ord_num,item_num,userId)){
             return "redirect:/review/list";
         }
-        OrderDetailDto ordDetailDto = ordDetailServiceImpl.searchOrdItem(ord_num, item_num, userId);
+        OrderDetailJoinItemDto ordDetailDto = ordDetailServiceImpl.searchOrdItem(ord_num, item_num, userId);
         //값이 잘못들어가서 위에 nullpointException 경우 생각해서 test 코드 작성 및 예외처리 해주기
         model.addAttribute("ordDetailDto", ordDetailDto);
         model.addAttribute("mode", "write");
@@ -82,7 +84,7 @@ public class ReviewController {
             return "redirect:/review/list";
         }
         //ordDetailDto를 통해서 주문번호와 상품번호를 통해서 고객이 선택한 opt를 가져오도록 한다. (리뷰 테이블에 옵션 컬럼 추가방안고민)
-        OrderDetailDto ordDetailDto = ordDetailServiceImpl.searchOrdItem(ord_num, item_num, userId);
+        OrderDetailJoinItemDto ordDetailDto = ordDetailServiceImpl.searchOrdItem(ord_num, item_num, userId);
         // reviewDto에서 seq_num을 통해 고객이 입력했던 제목과 내용값을 가져와야 한다.
         ReviewDto reviewDto = reviewServiceimpl.searchByReviewNum(review_num);
         model.addAttribute("ordDetailDto", ordDetailDto);

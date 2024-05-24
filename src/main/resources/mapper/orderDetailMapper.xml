@@ -125,15 +125,17 @@
     </select>
 <!-- 찬빈 추가 -->
 <!--  id를 통해 리뷰가 작성되지 않은 결제가 완료된 주문번호 속 상품을 가져온다.   -->
-    <select id="selectById" parameterType="map" resultType="OrderDetailDto">
-        SELECT *
-        FROM ord_detail
-        WHERE id = #{id} AND review='N'
+    <select id="selectById" parameterType="map" resultType="com.neo.byez.domain.order.OrderDetailJoinItemDto">
+        SELECT o.*,i.main_img
+        FROM ord_detail o
+                 INNER JOIN item i ON o.item_num = i.num
+        WHERE o.id = #{id} AND o.review='N' AND o.ord_state='구매확정'
     </select>
 <!--주문번호와 상품번호를 통해 ordDetail 테이블의 값을 가져온다.-->
-    <select id="selectOrdItem" parameterType="map" resultType="OrderDetailDto">
-        SELECT *
-        FROM ord_detail
+    <select id="selectOrdItem" parameterType="map" resultType="com.neo.byez.domain.order.OrderDetailJoinItemDto">
+        SELECT o.*,i.main_img
+        FROM ord_detail o
+                 INNER JOIN item i ON o.item_num = i.num
         WHERE ord_num = #{ord_num} AND item_num = #{item_num} AND id=#{id}
     </select>
 <!--리뷰작성후 해당 sql를 구동시켜 리뷰상태가 완료된 상태임으로 바꿔주는 sql-->

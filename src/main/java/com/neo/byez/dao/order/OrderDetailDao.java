@@ -3,6 +3,7 @@ package com.neo.byez.dao.order;
 
 import com.neo.byez.domain.ReviewDto;
 import com.neo.byez.domain.order.OrderDetailDto;
+import com.neo.byez.domain.order.OrderDetailJoinItemDto;
 
 import java.util.List;
 import java.util.Map;
@@ -28,7 +29,7 @@ public  interface OrderDetailDao {
      int updateEachOrdState(OrderDetailDto orderDetailDto);
     List<OrderDetailDto> selectPage(Integer curPage, Integer pageSize, String userId) throws Exception;
     //찬빈 추가
-    List<OrderDetailDto> selectById(String id);
-    OrderDetailDto selectOrdItem(String ord_num,String item_num,String id);
+    List<OrderDetailJoinItemDto> selectById(String id);
+    OrderDetailJoinItemDto selectOrdItem(String ord_num,String item_num,String id);
     int updateReviewState(ReviewDto reviewDto);
 }

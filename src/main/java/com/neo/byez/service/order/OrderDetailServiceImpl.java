@@ -5,6 +5,7 @@ import com.neo.byez.dao.order.OrderDetailDaoImpl;
 import com.neo.byez.domain.ReviewDto;
 import com.neo.byez.domain.order.ItemOptionDto;
 import com.neo.byez.domain.order.OrderDetailDto;
+import com.neo.byez.domain.order.OrderDetailJoinItemDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -100,12 +101,12 @@ public class OrderDetailServiceImpl implements  OrderDetailService{
     }
     //--------------------------찬빈추가
     @Override
-    public List<OrderDetailDto> searchById(String id) {
+    public List<OrderDetailJoinItemDto> searchById(String id) {
         return ordDetailDao.selectById(id);
     }
 
     @Override
-    public OrderDetailDto searchOrdItem(String ord_num, String item_num, String id) {
+    public OrderDetailJoinItemDto searchOrdItem(String ord_num, String item_num, String id) {
         return ordDetailDao.selectOrdItem(ord_num,item_num,id);
     }
 
@@ -120,7 +121,7 @@ public class OrderDetailServiceImpl implements  OrderDetailService{
     }
     @Override
     public boolean validateSearchOrdItem(String ord_num, String item_num, String id) {
-        OrderDetailDto ordDetailDto = ordDetailDao.selectOrdItem(ord_num, item_num, id);
+        OrderDetailJoinItemDto ordDetailDto = ordDetailDao.selectOrdItem(ord_num, item_num, id);
         if (ordDetailDto==null||ordDetailDto.getItem_num()==null || ordDetailDto.getOrd_num()==null) {
             return false;
         } else {

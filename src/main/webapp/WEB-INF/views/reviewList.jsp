@@ -1,6 +1,8 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -53,13 +55,13 @@
                     <div class="container">
                         <!-- 이미지 -->
                         <div class="box box1">
-                            <img src="/img/1.jpeg" alt="Product Image">
+                            <img src="${offList.main_img}" alt="Product Image">
                         </div>
                         <!-- 상품상세 -->
                         <div class="box box2">
                             <h4>${offList.item_name}</h4>
                             <h6>${offList.opt1}   ${offList.opt2}   ${offList.opt3}</h6>
-                            <h6>${offList.reg_date}</h6>
+                            <h6>   <c:out value="${fn:substring(offList.reg_date, 0, 10)}" /></h6>
                         </div>
                         <!-- 리뷰버튼 -->
                         <div class="box box3">
@@ -78,7 +80,7 @@
                         <c:forEach var="onList" items="${reviewOnList}">
                             <li class="reviewDone">
                                 <div class="first">
-                                    <div class="first_image"><img src="/img/1.jpeg"></div>
+                                    <div class="first_image"><img src="${onList.main_img}"></div>
                                     <div class="first_info">
                                         <p class="item_name"> 상품명 : ${onList.item_name}</p>
                                         <p class="item_score"> 별점 : ${onList.score}점</p>
@@ -87,7 +89,7 @@
                                     </div>
                                 </div>
                                 <div class="second">
-                                    <p>${onList.reg_date}</p>
+                                    <p> <c:out value="${fn:substring(onList.reg_date, 0, 10)}" /></p>
                                     <a href="/review/delete?review_num=${onList.review_num}" onclick="return confirm('삭제하시겠습니까?')">
                                         <button>삭제</button>
                                     </a>

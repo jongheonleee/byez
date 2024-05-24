@@ -4,6 +4,7 @@ package com.neo.byez.service.order;
 import com.neo.byez.domain.ReviewDto;
 import com.neo.byez.domain.order.ItemOptionDto;
 import com.neo.byez.domain.order.OrderDetailDto;
+import com.neo.byez.domain.order.OrderDetailJoinItemDto;
 
 import java.util.List;
 import java.util.Map;
@@ -43,9 +44,9 @@ public interface OrderDetailService {
     public List<OrderDetailDto>  selectAllEtc(String id) throws Exception;
 
     //---------------------------찬빈추가
-    public List<OrderDetailDto> searchById(String id);
+    public List<OrderDetailJoinItemDto> searchById(String id);
 
-    public OrderDetailDto searchOrdItem(String ord_num, String item_num, String id);
+    public OrderDetailJoinItemDto searchOrdItem(String ord_num, String item_num, String id);
 
     public int changeReviewState(ReviewDto reviewDto);
     public boolean validateSearchOrdItem(String ord_num,String item_num,String id);

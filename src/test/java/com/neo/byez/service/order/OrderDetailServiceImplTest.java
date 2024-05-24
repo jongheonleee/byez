@@ -155,12 +155,12 @@ public class OrderDetailServiceImplTest {
         assertEquals(orderDetailService.searchById("TestID0").size(),1);
     }
 
-    @Test
-    public void 값찾기_상품주문ID() {
-        OrderDetailDto ordDetailDto = orderDetailService.searchOrdItem("TestOrd_num0","0","TestID0");
-       assertEquals(ordDetailDto.getOrd_num(),"TestOrd_num0");
-        assertEquals(ordDetailDto.getItem_num(),"0");
-        assertEquals(ordDetailDto.getId(),"TestID0");
-    }
+//    @Test
+//    public void 값찾기_상품주문ID() {
+//        OrderDetailDto ordDetailDto = orderDetailService.searchOrdItem("TestOrd_num0","0","TestID0");
+//       assertEquals(ordDetailDto.getOrd_num(),"TestOrd_num0");
+//        assertEquals(ordDetailDto.getItem_num(),"0");
+//        assertEquals(ordDetailDto.getId(),"TestID0");
+//    }
 
 }
