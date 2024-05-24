@@ -45,9 +45,9 @@ public interface UserService {
     // 4.1.1. 이메일 인증 후 이메일 주소 변경
     boolean modifyUserEmail(String id, String email);
 
-    // 4.2. 생년월일 변경
-    // 4.2.1. 생년월일 변경이력 저장
-    boolean modifyUserBefBirth(String id, Integer bef_birth);
+//    // 4.2. 생년월일 변경
+//    // 4.2.1. 생년월일 변경이력 저장
+//    boolean modifyUserBefBirth(String id, Integer bef_birth);
 
     // 4.3. 휴대폰 번호 변경
     // 4.2.1. 휴대폰 번호 변경이력 저장

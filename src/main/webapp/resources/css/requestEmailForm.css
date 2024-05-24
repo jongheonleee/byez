@@ -1,0 +1,89 @@
+.logo-wrapper { display: flex; align-items: center; justify-content: center; }
+img { width: 180px; height: 80px; }
+section {
+    border: solid black 3px;
+    padding: 5px;
+    width:500px;
+    height: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%) ;
+    align-content: center;
+    text-align: center;
+}
+.sub-header h4 {
+    display: flex;
+    height: 50px;
+    justify-content: center;
+    align-items: flex-end;
+    color: darkblue;
+}
+.header {
+    margin: 10px;
+    height: 20%;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: underline;
+    text-underline-offset: 10px;
+}
+.verify-email {
+    height: 90px;
+    padding: 10px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.send-email {
+    margin: 5px;
+    height: 80px;
+    align-items: flex-end;
+}
+input[type="email"] {padding: 5px; box-sizing: border-box; width: 180px; height: 30px; margin: 0 5px;}
+.input-email input[type="email"] {
+    margin: 0 5px;
+    width: 180px;
+    height: 25px;
+}
+#sendEmailBtn { width: 50px; height: 30px;}
+#sendEmailBtn:enabled {
+    background-color: black;
+    color: whitesmoke;
+    width: 50px;
+    height: 30px;
+}
+#sendEmailBtn:enabled:hover {
+    font-size: 15px;
+    font-weight: bold;
+}
+.input-verification-code {
+    display: none;
+}
+.input-verification-code h4 {
+    margin: 60px auto 10px;
+    color:midnightblue;
+}
+input[type="text"] {padding: 5px; box-sizing: border-box; width: 180px; height: 30px; margin: 0 5px;}
+.input-verification-code button {
+    background-color: black;
+    color: whitesmoke;
+    width: 50px;
+    height: 30px;
+}
+.input-verification-code button:hover {
+    font-size: 15px;
+    font-weight: bold;
+}
+#email-format-error-msg {
+    color: red;
+    font-weight: normal;
+    /*background-color: darkcyan;*/
+    height: 100px;
+}

@@ -74,19 +74,19 @@
                         <td>${userDto.name}</td>
                         <td></td>
                     </tr>
-                    <tr class="no-bottom">
-                        <td>생년월일</td>
-                        <td>${userDto.bef_birth}</td>
-                        <td><button id="modify-bef-birth" onclick="showBefBirthChangeInput()">생년월일 변경</button></td>
-                    </tr>
-                    <tr class="hidden no-bottom new-bef-birth-show">
-                        <td>변경할 생년월일</td>
-                        <td>
-                            <input type="text" id="bef_birth" name="bef_birth" maxlength="8" oninput="checkBirthFormat(this.value)">
-                            <span id="birth-error-msg"></span>
-                        </td>
-                        <td><button type="button" id="saveNewBefBirthBtn" disabled>생년월일 저장</button></td>
-                    </tr>
+<%--                    <tr class="no-bottom">--%>
+<%--                        <td>생년월일</td>--%>
+<%--                        <td>${userDto.bef_birth}</td>--%>
+<%--                        <td><button id="modify-bef-birth" onclick="showBefBirthChangeInput()">생년월일 변경</button></td>--%>
+<%--                    </tr>--%>
+<%--                    <tr class="hidden no-bottom new-bef-birth-show">--%>
+<%--                        <td>변경할 생년월일</td>--%>
+<%--                        <td>--%>
+<%--                            <input type="text" id="bef_birth" name="bef_birth" maxlength="8" oninput="checkBirthFormat(this.value)">--%>
+<%--                            <span id="birth-error-msg"></span>--%>
+<%--                        </td>--%>
+<%--                        <td><button type="button" id="saveNewBefBirthBtn" disabled>생년월일 저장</button></td>--%>
+<%--                    </tr>--%>
                     <tr class="no-bottom">
                         <td>휴대폰 번호</td>
                         <td>
@@ -196,15 +196,15 @@
         pwdChangeBtn.style.display = "none";
     }
 
-    function showBefBirthChangeInput() {
-        let befBirthChangeInput = document.getElementsByClassName('new-bef-birth-show');
-        let befBirthChangeBtn = document.getElementById('modify-bef-birth');
-
-        for(let i = 0; i < befBirthChangeInput.length; i++) {
-            befBirthChangeInput[i].style.display = "table-row";
-        }
-        befBirthChangeBtn.style.display= "none";
-    }
+    // function showBefBirthChangeInput() {
+    //     let befBirthChangeInput = document.getElementsByClassName('new-bef-birth-show');
+    //     let befBirthChangeBtn = document.getElementById('modify-bef-birth');
+    //
+    //     for(let i = 0; i < befBirthChangeInput.length; i++) {
+    //         befBirthChangeInput[i].style.display = "table-row";
+    //     }
+    //     befBirthChangeBtn.style.display= "none";
+    // }
 
     function checkBirthFormat(inputValue) {
         let pattern = new RegExp('^[0-9]+$')
@@ -370,25 +370,25 @@
                 }
             });
         });
-
-        // 3. 생년월일 변경
-        $("#saveNewBefBirthBtn").click(function() {
-            let id = userDto.id;
-            let bef_birth = $("#bef_birth").val();
-
-            $.ajax({
-                url: "/mypage/modifyBefBirth",
-                type: "POST",
-                data: { id: id, bef_birth: bef_birth },
-                success: function (response) {
-                    alert("생년월일 변경 성공!");
-                    window.location.href = "/mypage/modifyPage";
-                },
-                error: function (xhr, status, error) {
-                    alert(xhr.responseText);
-                }
-            });
-        });
+        //
+        // // 3. 생년월일 변경
+        // $("#saveNewBefBirthBtn").click(function() {
+        //     let id = userDto.id;
+        //     let bef_birth = $("#bef_birth").val();
+        //
+        //     $.ajax({
+        //         url: "/mypage/modifyBefBirth",
+        //         type: "POST",
+        //         data: { id: id, bef_birth: bef_birth },
+        //         success: function (response) {
+        //             alert("생년월일 변경 성공!");
+        //             window.location.href = "/mypage/modifyPage";
+        //         },
+        //         error: function (xhr, status, error) {
+        //             alert(xhr.responseText);
+        //         }
+        //     });
+        // });
 
         // 4. 휴대폰 번호 변경
         $("#saveNewMobileNumBtn").click(function() {

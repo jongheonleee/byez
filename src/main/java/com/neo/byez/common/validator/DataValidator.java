@@ -59,7 +59,7 @@ public class DataValidator {
             return false;
         }
         // PWD : 영문, 숫자, 특수문자 조합 (cf. 특수문자 종류 제한 없음)
-        else if (!pwd.matches("^(?=.*[a-zA-Z])((?=.*\\d)|(?=.*\\W)).{8,20}+$")) {
+        else if (!pwd.matches("^(?=.*[a-zA-Z])(?=.*\\d)(?=.*\\W).{8,20}$")) {
             wrongPwdFormat = INVALID_PASSWORD_FORMAT.getMessage();
             return false;
         }

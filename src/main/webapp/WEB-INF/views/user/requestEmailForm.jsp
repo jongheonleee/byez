@@ -4,97 +4,16 @@
 <head>
     <title>[BYEZ] 회원가입 본인인증</title>
 </head>
-<style>
-    body {
-        border: solid black 3px;
-        padding: 5px;
-        width:500px;
-        height: 500px;
-        display: flex;
-        position : absolute;
-        flex-direction: column;
-        top: 20%;
-        left: 50%;
-        transform: translate(-50%, -20%) ;
-        align-content: center;
-        text-align: center;
-    }
-    .sub-header h4 {
-        display: flex;
-        height: 50px;
-        justify-content: center;
-        align-items: flex-end;
-        color: darkblue;
-    }
-    .header {
-        margin: 10px;
-        height: 20%;
-        font-size: 30px;
-        font-weight: bold;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-decoration: underline;
-        text-underline-offset: 10px;
-    }
-    .verify-email {
-        height: 90px;
-        padding: 10px;
-        font-weight: bold;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    .send-email {
-        margin: 5px;
-        height: 80px;
-        align-items: flex-end;
-    }
-    input[type="email"] {padding: 5px; box-sizing: border-box; width: 180px; height: 30px; margin: 0 5px;}
-    .input-email input[type="email"] {
-        margin: 0 5px;
-        width: 180px;
-        height: 25px;
-    }
-    #sendEmailBtn { width: 50px; height: 30px;}
-    #sendEmailBtn:enabled {
-        background-color: black;
-        color: whitesmoke;
-        width: 50px;
-        height: 30px;
-    }
-    #sendEmailBtn:enabled:hover {
-        font-size: 15px;
-        font-weight: bold;
-    }
-    .input-verification-code {
-        display: none;
-    }
-    .input-verification-code h4 {
-        margin: 60px auto 10px;
-        color:midnightblue;
-    }
-    input[type="text"] {padding: 5px; box-sizing: border-box; width: 180px; height: 30px; margin: 0 5px;}
-    .input-verification-code button {
-        background-color: black;
-        color: whitesmoke;
-        width: 50px;
-        height: 30px;
-    }
-    .input-verification-code button:hover {
-        font-size: 15px;
-        font-weight: bold;
-    }
 
-    #email-format-error-msg {
-        color: red;
-        font-weight: normal;
-        /*background-color: darkcyan;*/
-        height: 100px;
-    }
-</style>
+<link rel="stylesheet" href="/css/requestEmailForm.css">
+
 <body>
+<div class="logo-wrapper">
+    <a href="/">
+        <img src="/img/byez.png" alt="메인로고" class="main-logo">
+    </a>
+</div>
+<section class="wrapper">
     <header class="header">
         BYEZ 회원가입
     </header>
@@ -105,20 +24,21 @@
         <h4>인증번호를 받을 이메일을 입력해주세요.</h4>
     </header>
 
-    <section class="verify-email">
+    <div class="verify-email">
         <div class="send-email">
             E-mail: <input type="email" id="email" name="email" oninput="checkEmailFormat(this.value)" placeholder="byez@example.com" required>
             <button id="sendEmailBtn" disabled>전송</button>
         </div>
         <div id="email-format-error-msg"></div>
 
-    <%-- 이메일 전송 후 보여주기 --%>
+        <%-- 이메일 전송 후 보여주기 --%>
         <div class="input-verification-code" id="verificationDiv" onclick="showVerifyEmailForm()">
             <h4>인증번호를 받지 못하셨다면, 다시 전송 버튼을 클릭하십시오.</h4>
             인증 번호: <input type="text" id="verificationCode" name="mail_key" required>
             <button id="verifyCodeBtn">인증</button>
         </div>
-    </section>
+    </div>
+</section>
 </body>
 
 <script>

@@ -17,7 +17,12 @@
         </ul>
         <ul class="nav_member">
             <li class="hover">
-                <a href="#">
+            <c:if test="${sessionScope.loginState != null}">
+                <a href="/mypage/index">
+            </c:if>
+            <c:if test="${sessionScope.loginState == null}">
+                <a href="/login/form">
+            </c:if>
                     <img src="/img/top_mypage.png">
                 </a>
                 <ul class="sub_menu">

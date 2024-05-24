@@ -24,7 +24,7 @@
                     <li><a href="/review/list">나의 게시물 관리</a></li>
                     <li><a href="/qna/list">나의 문의</a></li>
                     <li><a href="/like">위시리스트</a></li>
-                    <li><a href="/mypage/withdrawal">회원탈퇴</a></li>
+                    <li><a href="/mypage/withdrawalReason">회원탈퇴</a></li>
                 </ul>
             </li>
         </ul>

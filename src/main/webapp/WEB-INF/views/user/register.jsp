@@ -52,7 +52,7 @@
             <td>
               <input type="text" id="id" name="id" maxlength="20" placeholder="3자리 이상 입력하세요." oninput="checkIdFormat()" required>
               <button id="checkDuplicateBtn">중복확인</button>
-              <p id="id-error-msg"></p>
+              <p id="id-msg"></p>
             </td>
           </tr>
           <tr>
@@ -268,11 +268,13 @@
         type: "POST",
         data: { id: id },
         success: function (response) {
-          $("#id-error-msg").text(response); // 성공 메시지를 id-error-msg에 표시
+          $("#id-msg").text(response); // 성공 메시지를 id-msg에 표시
+          $("#id-msg").removeClass('duplicate-msg').addClass('success-msg'); // 성공 시 success-msg 클래스를 추가
           $("#sendUserInfoBtn").prop("disabled", false); // 성공 시 제출 버튼 활성화
         },
         error: function (xhr, status, error) {
-          $("#id-error-msg").text(xhr.responseText); // 오류 메시지를 id-error-msg에 표시
+          $("#id-msg").text(xhr.responseText); // 오류 메시지를 id-msg에 표시
+          $("#id-msg").removeClass('success-msg').addClass('duplicate-msg'); // 오류 시 error-msg 클래스를 추가
           $("#sendUserInfoBtn").prop("disabled", true); // 실패 시 제출 버튼 비활성화
         }
       });

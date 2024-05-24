@@ -8,8 +8,13 @@
 <link rel="stylesheet" href="/css/loginForm.css?after">
 
 <body>
+
 <form action="/login/in?prevPage=${prevPage}" method="POST">
-    <div class="title">Login</div>
+    <div class="title">
+        <a href="/">
+            <img src="/img/byez.png" alt="메인로고" class="main-logo">
+        </a>
+    </div>
     <div class="login-msg">
         <c:if test="${not empty memberShipCheckMsg}">
             ${memberShipCheckMsg}
@@ -33,21 +38,19 @@
         <span>
                 <a href="/find/findIdForm">아이디 찾기</a> |
                 <a href="/find/findPwdForm">비밀번호 찾기</a>
-            </span>
+        </span>
     </div>
     <input type="submit" value="Login">
 </form>
 
 <%--  회원가입  --%>
 <div class="sign-up-button">
-    byez 쇼핑몰의 회원이 아니신가요?
+    <span>byez 쇼핑몰의 회원이 아니신가요?</span>
     <button onclick="location.href='/register/verify'">SIGN UP</button>
-</div>
 
-<div class="simple-sign-up">
     <p>간편 가입 및 로그인</p>
-    <%--REST API key (=client_id): 873c82dfa901cd280c11ee222e944826--%>
-    <div class="sns-button">
+    <div class="simple-button-wrapper">
+        <%--REST API key (=client_id): 873c82dfa901cd280c11ee222e944826--%>
         <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=873c82dfa901cd280c11ee222e944826&redirect_uri=http://localhost:8080/kakaoLogin">
             <img src="/img/kakao_login_logo.png" alt="Kakao 로그인" class="login-logo">
         </a>
@@ -56,6 +59,19 @@
         </a>
     </div>
 </div>
+
+<%--<div class="simple-sign-up">--%>
+<%--    <p>간편 가입 및 로그인</p>--%>
+<%--    &lt;%&ndash;REST API key (=client_id): 873c82dfa901cd280c11ee222e944826&ndash;%&gt;--%>
+<%--    <div class="sns-button">--%>
+<%--        <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=873c82dfa901cd280c11ee222e944826&redirect_uri=http://localhost:8080/kakaoLogin">--%>
+<%--            <img src="/img/kakao_login_logo.png" alt="Kakao 로그인" class="login-logo">--%>
+<%--        </a>--%>
+<%--        <a href="#">--%>
+<%--            <img src="/img/naver_login_logo.png" alt="Naver 로그인" class="login-logo">--%>
+<%--        </a>--%>
+<%--    </div>--%>
+<%--</div>--%>
 </body>
 
 <script>

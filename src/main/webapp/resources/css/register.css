@@ -19,6 +19,8 @@ body {background-color: rgb(245, 245, 245);}
 .register_form_wrapper>div:first-of-type>p:first-of-type {text-align: center; font-weight: bold; font-size: 40px; margin-bottom: 10px;}
 
 .errorMsg {color: red; margin-bottom: 20px;}
+.success-msg {color: blue;}
+.duplicate-msg {color: red;}
 
 table {
     border-collapse: collapse;
@@ -52,7 +54,7 @@ table input[type="email"] {width: 200px; height: 25px; font-size: 15px; text-ind
 
 table input[type="text"] ~ p ,
 table input[type="password"] ~ p ,
-table input[type="email"] ~ p {color: red; font-size: 14px;}
+table input[type="email"] ~ p {font-size: 15px;}
 
 #birth2 {width: 25px; text-align: center; text-indent: 0;}
 table input[type="radio"] {margin-right: 5px;}

@@ -78,8 +78,8 @@ button {
     transition: .3s;
 }
 
-button:hover { font-weight: bold; color: white; background-color: black}
-
+button:hover { font-weight: bold; color: white; background-color: black }
+button:disabled { color: white; background-color: gray; }
 #verificationDiv {
     display: none;
 }
