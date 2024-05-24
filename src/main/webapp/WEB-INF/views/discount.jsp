@@ -70,7 +70,7 @@
                     <c:forEach var="itemDto" items="${list1}">
                         <li>
                             <a href="/goods/${itemDto.num}">
-                                <img src="${itemDto.main_img}" alt="">
+                                <img src="/img/${itemDto.main_img}" alt="">
                             </a>
                             <p class="item_name">
                                 <span>${itemDto.name}</span>
@@ -101,7 +101,7 @@
                 <c:forEach var="itemDto" items="${list2}">
                     <li>
                         <a href="/goods/${itemDto.num}">
-                            <img src="${itemDto.main_img}" alt="">
+                            <img src="/img/${itemDto.main_img}" alt="">
                         </a>
                         <p class="item_name">
                             <span>${itemDto.name}</span>
@@ -132,7 +132,7 @@
                 <c:forEach var="itemDto" items="${list3}">
                     <li>
                         <a href="/goods/${itemDto.num}">
-                            <img src="${itemDto.main_img}" alt="">
+                            <img src="/img/${itemDto.main_img}" alt="">
                         </a>
                         <p class="item_name">
                             <span>${itemDto.name}</span>
@@ -163,7 +163,7 @@
                 <c:forEach var="itemDto" items="${list4}">
                     <li>
                         <a href="/goods/${itemDto.num}">
-                            <img src="${itemDto.main_img}" alt="">
+                            <img src="/img/${itemDto.main_img}" alt="">
                         </a>
                         <p class="item_name">
                             <span>${itemDto.name}</span>
@@ -194,7 +194,7 @@
                 <c:forEach var="itemDto" items="${list5}">
                     <li>
                         <a href="/goods/${itemDto.num}">
-                            <img src="${itemDto.main_img}" alt="">
+                            <img src="/img/${itemDto.main_img}" alt="">
                         </a>
                         <p class="item_name">
                             <span>${itemDto.name}</span>
@@ -225,7 +225,7 @@
                 <c:forEach var="itemDto" items="${list6}">
                     <li>
                         <a href="/goods/${itemDto.num}">
-                            <img src="${itemDto.main_img}" alt="">
+                            <img src="/img/${itemDto.main_img}" alt="">
                         </a>
                         <p class="item_name">
                             <span>${itemDto.name}</span>

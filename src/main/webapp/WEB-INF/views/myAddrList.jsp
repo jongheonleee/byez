@@ -82,14 +82,14 @@
 </footer>
 <div class="quick">
     <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
-        <img src="img/quick_up.png" alt="">
+        <img src="/img/quick_up.png" alt="">
     </a>
     <a href="#none" onclick="jQuery('html,body').animate({scrollTop:$(document).height()},'slow');">
-        <img src="img/quick_down.png" alt="">
+        <img src="/img/quick_down.png" alt="">
     </a>
 </div>
-<script src="js/jquery-3.6.4.min.js"></script>
-<script src="js/nav.js"></script>
+<script src="/js/jquery-3.6.4.min.js"></script>
+<script src="/js/nav.js"></script>
 <script src="/js/aside.js"></script>
 <script>
     function goAddrEditForm(seq) {

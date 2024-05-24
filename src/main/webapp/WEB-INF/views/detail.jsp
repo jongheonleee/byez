@@ -26,7 +26,7 @@
         </p>
         <div class="info">
             <div class="infoImgWrapper">
-                <img src="${itemDetail.detail_img}" alt="" class="detail_img">
+                <img src="/img/${itemDetail.detail_img}" alt="" class="detail_img">
                 <p>소재 : <span class="matr">${itemDetail.matr}</span></p>
                 <p>제조국 : <span class="origin">${itemDetail.origin}</span></p>
                 <p>제조사 : <span class="mfg_corp">${itemDetail.mfg_corp}</span></p>

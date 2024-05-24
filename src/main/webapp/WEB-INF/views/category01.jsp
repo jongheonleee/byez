@@ -249,7 +249,7 @@
                 <c:forEach var="itemDto" items="${list}">
                     <li>
                         <a href="/goods/${itemDto.num}">
-                            <img src="${itemDto.main_img}" alt="">
+                            <img src="/img/${itemDto.main_img}" alt="">
                         </a>
                         <p class="item_name">
                             <span>${itemDto.name}</span>

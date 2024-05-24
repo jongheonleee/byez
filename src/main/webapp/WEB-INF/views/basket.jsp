@@ -86,7 +86,7 @@
                             <td class="tb1" style="text-align: center;">
                                 <div class="basketImgWrap">
                                     <a href="/goods/${basketItemDto.num}">
-                                        <img src="${basketItemDto.main_img}">
+                                        <img src="/img/${basketItemDto.main_img}">
                                     </a>
                                 </div>
                                 <div class="eachBasketInfo">
@@ -124,7 +124,7 @@
                                                         <input class="opt3" type="hidden" name="opt3" value="${basketItemDto.opt3}">
                                                         <div class="modalImgWrap">
                                                             <a href="/goods/${basketItemDto.num}">
-                                                                <img src="${basketItemDto.main_img}">
+                                                                <img src="/img/${basketItemDto.main_img}">
                                                             </a>
                                                         </div>
 

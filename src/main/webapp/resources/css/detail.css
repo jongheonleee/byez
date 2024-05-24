@@ -157,7 +157,7 @@ section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
     /* background-color: rgba(255, 0, 0, 0.1);  */
     display: flex; justify-content: space-between; margin-bottom: 15px;}
 .star-rating {width:100px;}
-.star-rating,.star-rating span {display:inline-block; height:18px; overflow:hidden; background:url(../img/starYellow.png)no-repeat; background-size: 100px auto;}
+.star-rating,.star-rating span {display:inline-block; height:18px; overflow:hidden; background:url(/img/starYellow.png)no-repeat; background-size: 100px auto;}
 .star-rating span{background-position:left bottom; line-height:0; vertical-align:top;}
 
 .review_pic {width: fit-content; height: fit-content; background-color: rgba(255, 0, 0, .1); margin-top: 20px;}
