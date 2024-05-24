@@ -12,11 +12,10 @@
         VALUES (#{ord_num}, #{id}, #{item_num}, #{title}, #{writer}, #{content}, #{score}, #{reg_id}, #{up_id})
     </insert>
 
-    <delete id="delete" parameterType="map">
+    <delete id="delete" parameterType="Integer">
         DELETE
         FROM review
         WHERE review_num = #{review_num}
-          AND id = #{id}
 
     </delete>
     <delete id="deleteAll">

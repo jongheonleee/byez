@@ -166,3 +166,6 @@ section {
 .btn_right {
     display: flex;
 }
+.marginOpt{
+    margin-top: 44px;
+}

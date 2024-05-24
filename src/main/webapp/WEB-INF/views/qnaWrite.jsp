@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/qna_write.css?after">
+    <link rel="stylesheet" href="../css/qna_write.css">
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -35,7 +35,7 @@
         <jsp:include page="/WEB-INF/views/include/aside.jsp"/>
         <form id="form" action="" method="" onsubmit="return validateQna()">
             <div class="content">
-                <table>
+                <table class="marginOpt">
                     <th>
                         title
                     </th>
@@ -52,11 +52,11 @@
                             <option value="900">기타</option>
                             <option value="1000">신고</option>
                         </select>
-                        <input id="qna_title" name="qna_title" type="text" placeholder="제목을 작성해 주세요" value="${qnaDto.qna_title}">
+                        <input id="qna_title" name="qna_title" type="text" placeholder="제목을 작성해 주세요 (100자 제한)" value="${qnaDto.qna_title}">
                     </td>
                     <tr>
                         <th colspan="3">
-                            <textarea class="put_large_content" id="qna_content" name="qna_content" placeholder="글을 작성해 주세요" contenteditable="true">${qnaDto.qna_content}</textarea>
+                            <textarea class="put_large_content" id="qna_content" name="qna_content" placeholder="글을 작성해 주세요 (1000자 제한)" contenteditable="true">${qnaDto.qna_content}</textarea>
                         </th>
                     </tr>
                 </table>

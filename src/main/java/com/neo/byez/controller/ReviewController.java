@@ -98,7 +98,12 @@ public class ReviewController {
     }
 
     @GetMapping("/delete")
-    public String delete() {
-        return null;
+    public String delete(HttpServletRequest httpServletRequest,HttpSession httpSession) {
+        String userId = (String) httpSession.getAttribute("userId");
+        Integer review_num= Integer.valueOf(httpServletRequest.getParameter("review_num"));
+        System.out.println(userId);
+        System.out.println(review_num);
+       reviewServiceimpl.remove(review_num);
+        return "redirect:/review/list";
     }
 }

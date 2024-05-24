@@ -26,9 +26,20 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .content>table {width: 100%; height: 100px;  border-top: 2px solid black; border-collapse: collapse; margin-top: 44px}
 .content> table td,
 .content> table tr{ text-align: center;
-    vertical-align: middle;}
+    vertical-align: middle;
+    padding: 20px 0;}
 
 .search{
     display: flex;
     justify-content: center;
+    padding-top: 20px;
+}
+.page{
+    padding-top: 20px;
+}
+.search input{
+    border: black 1px solid;
+}
+.reg_date{
+    padding: 10px 0;
 }

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/review_list.css">
+    <link rel="stylesheet" href="/css/review_list.css?after">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/quick.css">
     <!-- 추가합니다 -->
@@ -88,10 +88,10 @@
                                 <div class="second">
                                     <p>${onList.reg_date}</p>
                                     <a href="/review/delete?review_num=${onList.review_num}" onclick="return confirm('삭제하시겠습니까?')">
-                                        <button>삭제하기</button>
+                                        <button>삭제</button>
                                     </a>
                                     <a href="/review/modify?review_num=${onList.review_num}&ord_num=${onList.ord_num}&item_num=${onList.item_num}" onclick="return confirm('수정하시겠습니까?')">
-                                        <button>수정하기</button>
+                                        <button>수정</button>
                                     </a>
                                 </div>
                             </li>

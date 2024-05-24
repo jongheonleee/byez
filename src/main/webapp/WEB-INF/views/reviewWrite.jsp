@@ -56,11 +56,11 @@
                         </th>
                         <td>
                             <select name="score">
-                                <option value=5>5점</option>
-                                <option value=4>4점</option>
-                                <option value=3>3점</option>
-                                <option value=2>2점</option>
-                                <option value=1>1점</option>
+                                <option value=5 ${reviewDto.score == 5 ? 'selected' : ''}>5점</option>
+                                <option value=4 ${reviewDto.score == 4 ? 'selected' : ''}>4점</option>
+                                <option value=3 ${reviewDto.score == 3 ? 'selected' : ''}>3점</option>
+                                <option value=2 ${reviewDto.score == 2 ? 'selected' : ''}>2점</option>
+                                <option value=1 ${reviewDto.score == 1 ? 'selected' : ''}>1점</option>
                             </select>
                         </td>
                     </tr>
@@ -69,12 +69,12 @@
                             한줄평
                         </th>
                         <td>
-                            <input id="title" name="title" type="text" placeholder="한줄평" value="${reviewDto.title}">
+                            <input id="title" name="title" type="text" placeholder="한줄평 (100자 제한)" value="${reviewDto.title}">
                         </td>
                     </tr>
                     <tr>
                         <th colspan="3">
-                            <textarea  id="content" name="content"placeholder="자세한리뷰" class="put_large_content" contenteditable="true">${reviewDto.content}</textarea>
+                            <textarea  id="content" name="content"placeholder="자세한리뷰 (100자 제한)" class="put_large_content" contenteditable="true">${reviewDto.content}</textarea>
                         </th>
                     </tr>
 
@@ -139,7 +139,7 @@
             return false;
         }
         if(title.length>100||content.length>1000){
-            alert("글자수 선넘지 마세요");
+            alert("글자수 확인하고 작성해주세요");
             return false;
         }
         <c:if test="${mode eq 'write'}">

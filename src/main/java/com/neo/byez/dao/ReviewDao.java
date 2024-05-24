@@ -9,7 +9,7 @@ public interface ReviewDao {
     int count();
     int insert(ReviewDto reviewDto);
 
-    int delete(Integer review_num,String id);
+    int delete(Integer review_num);
     int deleteAll();
 
     int update(ReviewDto reviewDto);

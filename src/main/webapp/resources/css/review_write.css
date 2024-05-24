@@ -183,3 +183,6 @@ section {
     font-size: 24px; /* 원하는 글자 크기로 변경하세요 */
     font-weight: bold; /* 텍스트를 굵게 만듭니다 */
 }
+.second button{
+    background-color: #6b7684;
+}

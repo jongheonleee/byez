@@ -74,4 +74,8 @@ class ReviewDaoImplTest {
         assertEquals(reviewDao.count(), 1);
         assertTrue(reviewDao.selectById("asdf").get(0).equals(reviewDto));
     }
+    @Test
+    void delete1() {
+        reviewDao.delete(2);
+    }
 }

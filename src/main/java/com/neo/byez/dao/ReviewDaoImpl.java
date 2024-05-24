@@ -28,11 +28,11 @@ public class ReviewDaoImpl implements ReviewDao {
     }
 
     @Override
-    public int delete(Integer review_num, String id) {
-        Map map = new HashMap<>();
-        map.put("review_num", review_num);
-        map.put("id", id);
-        return sqlSession.delete(namespace + "delete", map);
+    public int delete(Integer review_num) {
+//        Map map = new HashMap<>();
+//        map.put("review_num", review_num);
+//        map.put("id", id);
+        return sqlSession.delete(namespace + "delete", review_num);
     }
 
     @Override

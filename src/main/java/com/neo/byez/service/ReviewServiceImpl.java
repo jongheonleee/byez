@@ -24,8 +24,8 @@ public class ReviewServiceImpl implements ReviewService{
     }
 
     @Override
-    public int remove(Integer review_num, String id) {
-        return reviewDao.delete(review_num,id);
+    public int remove(Integer review_num) {
+        return reviewDao.delete(review_num);
     }
 
     @Override

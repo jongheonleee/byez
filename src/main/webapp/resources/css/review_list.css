@@ -136,8 +136,9 @@ section {width: 100%; min-width: 1200px; height: fit-content;   margin-top: 90px
 
 .second button{
     float: right;
-    border-bottom: #000 2px solid;
+    border-bottom: #000 1px solid;
     margin-left: 10px;
+    background-color: white;
 }
 
 

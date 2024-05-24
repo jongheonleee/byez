@@ -31,9 +31,10 @@ class ReviewServiceImplTest {
         assertEquals(reviewService.getCount(), 1);
     }
 
-    @Test
-    void remove() {
-    }
+//    @Test
+//    void remove() {
+//        reviewService.remove(2,"user1");
+//    }
 
     @Test
     void modify() {
