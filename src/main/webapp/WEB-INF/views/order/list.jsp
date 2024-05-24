@@ -43,13 +43,16 @@
                         <fieldset class="search">
                             <select id="order_status" name="order_status" class="fSelect uniform-height">
                                 <option value="all">전체 주문처리상태</option>
-                                <option value="shipped_before">입금전</option>
                                 <option value="shipped_standby">배송준비중</option>
                                 <option value="shipped_begin">배송중</option>
                                 <option value="shipped_complate">배송완료</option>
-                                <option value="order_cancel">취소</option>
-                                <option value="order_exchange">교환</option>
-                                <option value="order_return">반품</option>
+                                <option value="order_cancel">취소신청</option>
+                                <option value="order_cancelCmpl">취소완료</option>
+                                <option value="order_exchange">교환신청</option>
+                                <option value="order_exchangeCmpl">교환완료</option>
+                                <option value="order_return">반품신청</option>
+                                <option value="order_returnCmpl">반품완료</option>
+
                             </select>
                             <span class="period">
                                         <a href="#none" class="btnNormal uniform-height" days="00"><img src="//img.echosting.cafe24.com/skin/base_ko_KR/myshop/btn_date1.gif" offimage="//img.echosting.cafe24.com/skin/base_ko_KR/myshop/btn_date1.gif" onimage="//img.echosting.cafe24.com/skin/base_ko_KR/myshop/btn_date1_on.gif" alt="오늘"></a>
@@ -91,7 +94,7 @@
                             <p>주문상품내역</p>
                         </div>
                         <table class="product">
-                            <thead>
+                            <thead class="thead">
                             <tr>
                                 <th scope="col">주문일자</th>
                                 <th scope="col">상품명</th>
@@ -102,12 +105,12 @@
                             </thead>
 
                             <tbody>
-                            <c:forEach var="orderDetailDto" items="${list}">
+                            <c:forEach var="orderDetailDto" items="${limitList}">
                             <tr>
                                 <td class="number order_actions">
-                                        ${orderDetailDto.ord_date}
+                                    ${orderDetailDto.ord_date}
                                             <input type="hidden" name="ord_date" value="${orderDetailDto.ord_date}">
-                                    <p>
+                                    <p class="ord_num">
 <%--                                        <a href="#">${orderDetailDto.ord_num}</a>--%>
                                         ${orderDetailDto.ord_num}
                                     </p>
@@ -138,20 +141,20 @@
                                             </form>
                                 </td>
                                 <td>${orderDetailDto.item_name}
-                                    <p>
+                                    <p class="option">
                                         옵션 : ${orderDetailDto.opt1}/${orderDetailDto.opt2}
                                     </p>
                                 </td>
                                 <td>${orderDetailDto.item_qty}</td>
                                 <td>${orderDetailDto.item_price}</td>
                                 <td class="order_actions">
-                                    <div>${orderDetailDto.ord_state}</div>
+                                    <div class="confirmDiv">${orderDetailDto.ord_state}</div>
                                     <form action = "/confirmPurchase" method = "post" class="form_center">
                                             <%--           hidden타입의 주문상태를 담아둔다--%>
                                         <input type="hidden" name="ord_num" value="${orderDetailDto.ord_num}">
                                         <c:if test="${orderDetailDto.ord_state == '배송완료' || '교환완료'  }">
                                             <div>
-                                            <input type="submit" id="confirm_button" value="구매확정">
+                                            <input type="submit" class="confirm_button" value="구매확정">
                                             <input type = "hidden" name="ord_state" value="구매확정">
                                             <input type = "hidden" name="state_code" value="CPS">
                                             </div>
@@ -162,6 +165,26 @@
                             </c:forEach>
                             </tbody>
                         </table>
+                        <c:if test="${not empty listMessage}">
+                            <p class="noneOrderMsg">${listMessage}</p>
+                        </c:if>
+                        <br>
+
+                        <div class="paging">
+                        <c:if test="${ph.showPrev}">
+                            <a href = "list?curPage=${ph.naviStart-1}"><<</a> &nbsp;
+                            <a href = "list?curPage=${ph.curPage-1}"><</a>
+                        </c:if>
+
+                        <c:forEach var="ph" begin="${ph.naviStart}" end="${ph.naviEnd}" varStatus="status">
+                            <a id = "${status.index}" href="list?curPage=${status.index}" style="font-size: 20px">${status.index}</a>
+                        </c:forEach>
+
+                        <c:if test="${ph.showNext}">
+                            <a href = "list?curPage=${ph.curPage+1}">></a> &nbsp;
+                            <a href = "list?curPage=${ph.naviEnd+1}">>></a>
+                        </c:if>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -206,7 +229,7 @@
                         <p>취소/교환/반품</p>
                     </div>
                     <table class="product">
-                        <thead>
+                        <thead class="thead">
                         <tr>
                             <th scope="col">주문일자</th>
                             <th scope="col">상품명</th>
@@ -220,16 +243,19 @@
                         <tr>
                             <c:forEach var="orderDetailDto" items="${etcList}">
                         <tr>
+                            <div class="ord_num_ord_date">
                             <td class="number">
-                                    ${orderDetailDto.ord_date}
+                                <p style="margin-top: 20px"> ${orderDetailDto.ord_date}
                                 <input type="hidden" name="ord_date" value="${orderDetailDto.ord_date}">
-                                <p>
+                                </p>
+                                <p class="ord_num">
 <%--                                    <a href="#">${orderDetailDto.ord_num}</a>--%>
                                     ${orderDetailDto.ord_num}
                                 </p>
                             </td>
+                            </div>
                             <td>${orderDetailDto.item_name}
-                                <p>
+                                <p class="option">
                                     옵션 : ${orderDetailDto.opt1}/${orderDetailDto.opt2}
                                 </p>
                             </td>
@@ -240,8 +266,30 @@
                         </c:forEach>
                         </tbody>
                     </table>
+
+<%--                    취소교환반품 리스트 페이징기능 관련 매퍼, 다오 추가후 기능추가 예정--%>
+                    <c:if test="${ph.showPrev}">
+                        <a href = list?curPage=${ph.naviStart-1}><<</a> &nbsp;
+                        <a href = list?curPage=${ph.curPage-1}><</a>
+                    </c:if>
+
+                    <c:forEach var="ph" begin="${ph.naviStart}" end="${ph.naviEnd}" varStatus="status">
+                        <a id = "${status.index}" href="list?curPage=${status.index}" style="font-size: 20px">${status.index}</a>
+                    </c:forEach>
+
+                    <c:if test="${ph.showNext}">
+                        <a href = /list?curPage=${ph.curPage+1}>></a> &nbsp;
+                        <a href = /list?curPage=${ph.naviEnd+1}>>></a>
+                    </c:if>
+
+                    <c:if test="${not empty etcMessage}">
+                        <p class="noneOrderMsg">${etcMessage}</p>
+                    </c:if>
+
                 </div>
             </div>
+
+<%--            3번째 탭 주석처리--%>
             <div id="tab1-3" class="tab_content">
                 <div class="tab_c_arti">
                     <p>789</p>
@@ -263,27 +311,40 @@
         <img src="/img/quick_down.png" alt="">
     </a>
 </div>
-<script src="/js/jquery-3.6.4.min.js"></script>
-<script src="/js/nav.js"></script>
-<script src="/js/tab.js"></script>
-<script>
-    $("#${ph.curPage}").css("color", "#f141a2")
-    $("#${ph.curPage}").css("font-weight", "bold")
-    $("#${ph.curPage}").css("font-size", "25px")
-    $("#${ph.curPage}").css("text-align", "center")
 
-    document.getElementById("confirm_button").onclick = function () {
-        let confirmPurchase = confirm("구매확정 후에는 교환,반품이 불가합니다")
-        if (confirmPurchase) {
-            alert("구매 확정되었습니다.");
-        }else return false;
-    }
-</script>
+    <%--$("#${ph.curPage}").css("color", "#f141a2");--%>
+    <%--$("#${ph.curPage}").css("font-weight", "bold");--%>
+    <%--$("#${ph.curPage}").css("font-size", "25px");--%>
+    <%--$("#${ph.curPage}").css("text-align", "center");--%>
+
+    <script src="/js/jquery-3.6.4.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/tab.js"></script>
+
+
     <script>
-        document.getElementById('tab1-2').addEventListener('click', function() {
-            window.location.href = '/etcList';
+        // document.getElementsByClassName("confirm_button").onclick = function () {
+        //     console.log("test")
+        //     let confirmPurchase = confirm("구매확정 후에는 교환,반품이 불가합니다")
+        //     if (confirmPurchase) {
+        //         alert("구매 확정되었습니다.");
+        //     } else return false;
+        // }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // 이벤트 위임을 사용하여 동적 요소에 대응
+            document.body.addEventListener('click', function(event) {
+                if (event.target.className === "confirm_button") {
+                    let confirmPurchase = confirm("구매확정 후에는 교환,반품이 불가합니다");
+                    if (confirmPurchase) {
+                        alert("구매 확정되었습니다.");
+                    }else if(!confirmPurchase) {
+                        event.preventDefault(); // 구매확정을 취소했을 때, 폼 제출 막기
+                    }
+                }
+            });
         });
-    </script>
 </script>
+
 </body>
 </html>

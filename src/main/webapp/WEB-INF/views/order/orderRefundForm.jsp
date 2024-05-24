@@ -19,8 +19,7 @@
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp"/>
 <section>
-    <form action="<c:url value="/refundOrder"/>" method="post">
-
+    <form id="refund" action="<c:url value="/refundOrder"/>" method="post">
         <div class="wrapper">
             <div class="title">
                 <p>
@@ -89,8 +88,9 @@
                     <tr>
                         <td class="pickup">수거신청여부</td>
                         <td class="pickupChoice">
-                            <input type="radio" id ="req" name="req_chk" value="Y" checked="checked">수거신청
-                            <input type="radio" id="noReq"  name="req_chk" value="N">직접발송
+                            <input type="radio" id="req" name="req_chk" value="Y" checked="checked" onclick="updateHiddenInput(this.value)">수거신청
+                            <input type="radio" id="noReq" name="req_chk" value="N" onclick="updateHiddenInput(this.value)">직접발송
+                            <input type="hidden" id="pickup_chk" name="pickup_chk" value="Y"> <!-- 초기값 설정 -->
                             <p>수거신청 선택시 택배사에 연락하지 않으셔도 직접 수거요청을 드립니다.</p>
                         </td>
                     </tr>
@@ -162,16 +162,22 @@
         </div>
         <input type="hidden" name="appcn_name" value="${deliveryDto.rcpr}">
         <input type="hidden" name="appcn_mobile" value="${deliveryDto.rcpr_mobile}">
-        <input type="hidden" name="rcpr" value="${deliveryDto.rcpr}">
-        <input type="hidden" name="zpcd" value="${deliveryDto.zpcd}">
-        <input type="hidden" name="main_addr" value="${deliveryDto.main_addr}">
-        <input type="hidden" name="detail_addr" value="${deliveryDto.detail_addr}">
-        <input type="hidden" name="rcpr_mobile" value="${deliveryDto.rcpr_mobile}">
+        <input type="hidden" id="rcpr" name="rcpr" value="${deliveryDto.rcpr}">
+        <input type="hidden" id="zpcd" name="zpcd" value="${deliveryDto.zpcd}">
+        <input type="hidden" id="main_addr" name="main_addr" value="${deliveryDto.main_addr}">
+        <input type="hidden" id="detail_addr" name="detail_addr" value="${deliveryDto.detail_addr}">
+        <input type="hidden" id="rcpr_mobile" name="rcpr_mobile" value="${deliveryDto.rcpr_mobile}">
         <input type="hidden" name="ord_num" value="${ord_num}">
         <input type="hidden" name="type_code" value="R">
         <input type="hidden" name="state_code" value="RTN1">
         <input type="hidden" name="ord_state" value="반품신청">
     </form>
+
+<%--    <input type="hidden" class="dlv" name="rcpr" value="${deliveryDto.rcpr}">--%>
+<%--    <input type="hidden" class="dlv" name="zpcd" value="${deliveryDto.zpcd}">--%>
+<%--    <input type="hidden" class="dlv" name="main_addr" value="${deliveryDto.main_addr}">--%>
+<%--    <input type="hidden" class="dlv" name="detail_addr" value="${deliveryDto.detail_addr}">--%>
+<%--    <input type="hidden" class="dlv" name="rcpr_mobile" value="${deliveryDto.rcpr_mobile}">--%>
 </section>
 <footer>
     <div class="wrapper">
@@ -385,6 +391,74 @@
         return true;
     }
 
+        //반품신청버튼 클릭
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("refundBtn").onclick = function() {
+                let form = $('form');
+                let chg_chk = form.find('input[name="chg_chk"]:checked').val();
+                let new_rcpr = form.find('input[name="new_rcpr"]').val().trim();
+                let new_zpcd = form.find('input[name="new_zpcd"]').val().trim();
+                let new_main_addr = form.find('input[name="new_main_addr"]').val().trim();
+                let new_detail_addr = form.find('input[name="new_detail_addr"]').val().trim();
+                let new_rcpr_mobile = form.find('input[name="new_rcpr_mobile"]').val().trim();
+    //TODO 수거지 변경 시 수거지 입력 유효성 검증
+    function checkRcpr() {
+        // 수거신청인 입력값 유효성 검증
+        // 한글만 가능
+        let inputField = document.querySelector('input[name="new_rcpr"]');
+        let name = inputField.value;
+        let pattern = new RegExp('^[\s,ㄱ-ㅎ가-힣]+$');
+
+        if (name.length > 0 && !name.match(pattern)) {
+            alert("이름은 한글만 입력 가능합니다.");
+            inputField.value = "";
+            return false;
+        }
+        return true;
+    }
+
+    function checkZpcd() {
+        // 우편번호 입력값 유효성 검증
+        // 5자리 숫자만 가능
+        let inputField = document.querySelector('input[name="new_zpcd"]');
+        let zipcode = inputField.value;
+        let pattern = new RegExp('^[0-9]{5}$'); // 5자리 숫자만 매칭
+
+        if (!pattern.test(zipcode)) {
+            alert("우편번호는 5자리 숫자만 입력 가능합니다.");
+            inputField.value = ""; // 입력 필드 초기화
+            return false;
+        }
+        return true;
+    }
+
+    function checkRcprMobile() {
+        var inputField = document.querySelector('input[name="new_rcpr_mobile"]');
+        var mobileNumber = inputField.value;
+        // 정규 표현식을 사용하여 숫자와 하이픈만 포함하고, 올바른 형식인지 검사합니다.
+        // 예: "010-1234-5678" - 여기서는 일반적인 한국의 휴대폰 번호 형식을 사용합니다.
+        var pattern = /^(\d{3}-\d{3,4}-\d{4})$/;
+
+        if (!pattern.test(mobileNumber)) {
+            alert("휴대폰 번호는 010-0000-0000의 형식으로 숫자와 '-'만 사용 가능합니다.");
+            inputField.value = "";
+            return false;
+        }
+        return true;
+    }
+
+    //교환신청버튼 클릭
+    document.addEventListener("DOMContentLoaded", function() {
+        document.getElementById("refundBtn").onclick = function() {
+            let form = $('form');
+            let chg_chk = form.find('input[name="chg_chk"]:checked').val();
+            let noReqChecked = document.getElementById("noReq").checked;
+
+            let new_rcpr = form.find('input[name="new_rcpr"]').val().trim();
+            let new_zpcd = form.find('input[name="new_zpcd"]').val().trim();
+            let new_main_addr = form.find('input[name="new_main_addr"]').val().trim();
+            let new_detail_addr = form.find('input[name="new_detail_addr"]').val().trim();
+            let new_rcpr_mobile = form.find('input[name="new_rcpr_mobile"]').val().trim();
     //교환신청버튼 클릭
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("refundBtn").onclick = function() {
@@ -426,6 +500,33 @@
             let refundConfirm = confirm("반품신청 하시겠습니까?");
             if (refundConfirm) {
                 updateHiddenFields();
+                document.getElementById('refund').addEventListener('submit', function(event) {
+                    let rcpr = document.getElementById("rcpr");
+                    let zpcd = document.getElementById("zpcd");
+                    let main_addr = document.getElementById('main_addr');
+                    let detail_addr = document.getElementById('detail_addr');
+                    let rcpr_mobile = document.getElementById('rcpr_mobile');
+
+                    if (rcpr.value === "") {
+                        rcpr.value = '${deliveryDto.rcpr}';
+                    }
+
+                    if (zpcd.value === "") {
+                        zpcd.value = '${deliveryDto.zpcd}';
+                    }
+                    if (main_addr.value === "") {
+                        main_addr.value = '${deliveryDto.main_addr}';
+                    }
+                    if (detail_addr.value === "") {
+                        detail_addr.value = '${deliveryDto.detail_addr}';
+                    }
+                    if (rcpr_mobile.value === "") {
+                        rcpr_mobile.value = '${deliveryDto.rcpr_mobile}';
+                    }
+                    handleShippingOptionChange();
+
+                });
+
                 alert("반품 신청되었습니다.");
             } else {
                 return false;
@@ -446,7 +547,12 @@
     function goBack() {
         window.location.href = '/order/list'
     }
+
+    //req_chk 값을 히든태그에 저장하여 dlv테이블 - pickup_chk 컬럼에 저장할 수 있도록 함
+    function updateHiddenInput(value) {
+        document.getElementById('pickup_chk').value = value;
+    }
+
 </script>
 </body>
 </html>
-

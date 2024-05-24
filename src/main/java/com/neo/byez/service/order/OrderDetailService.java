@@ -14,9 +14,9 @@ public interface OrderDetailService {
 
     public List<OrderDetailDto> getOrderDetailsList(String id) throws Exception;
 
-    List<OrderDetailDto> getPage(Map map) throws Exception;
+    List<OrderDetailDto> getPage(Integer curPage, Integer pageSize, String userId) throws Exception;
 
-    public int getCount() throws Exception;
+    public int getCount(String userId) throws Exception;
 
     List<ItemOptionDto> selectColorOption(String num);
 
@@ -27,6 +27,8 @@ public interface OrderDetailService {
     public int getCountSize(String num);
 
     public int updateOption(OrderDetailDto orderDetailDto) throws Exception;
+
+
 
 
 

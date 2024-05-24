@@ -6,6 +6,8 @@ import com.neo.byez.domain.order.OrdEtcReqDto;
 public interface OrdEtcReqDao {
     int getCount();
 
+    int getCountOrdNum(String ord_num);
+
     int insertCancel(OrdEtcReqDto ordEtcReqDto);
 
     void deleteAll();

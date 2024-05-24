@@ -40,6 +40,7 @@ public class OrderDetailDto {
         this.ord_state = ord_state;
     }
 
+
     public String getOrd_num() {
         return ord_num;
     }

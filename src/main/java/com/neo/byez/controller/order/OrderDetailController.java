@@ -46,33 +46,33 @@ public class OrderDetailController {
             --> selectAllEtc
 
         고객아이디는 세션에서 받아와서 조회가능
-        임의로 cust DB에 저장된 aaa라는 고객아이디를 사용
+        임의로 cust DB에 저장된 user1이라는 고객아이디를 사용
         아이디별 주문내역 조회하기 메서드로 받은 값을 list에 담아 모델에 저장하여 view로 옮겨준다
          */
 
-        String id = (String) session.getAttribute("userId");
+        String userId = (String) session.getAttribute("userId");
 
         try {
-            List<OrderDetailDto> list = orderDetailService.getOrderDetailsList(id);
-            List<OrderDetailDto> etcList = orderDetailService.selectAllEtc(id);
-            if(list.isEmpty() ){
-                m.addAttribute("message", "조회결과가 없습니다.");
-            }
+            List<OrderDetailDto> list = orderDetailService.getOrderDetailsList(userId);
+            List<OrderDetailDto> etcList = orderDetailService.selectAllEtc(userId);
             if (curPage == null) {
                 curPage = 1;
             }
             if (pageSize == null) {
                 pageSize = 10;
             }
-            int totalCnt = orderDetailService.getCount();
-            PageHandler ph = new PageHandler(totalCnt, curPage, pageSize);
-            // System.out.println("ph : " +ph);
-            Map map = new HashMap();
-            map.put("offset", (curPage - 1) * 10);
-            map.put("pageSize",  pageSize);
+            int totalCnt = orderDetailService.getCount(userId);
+            PageHandler ph = new PageHandler(totalCnt, curPage, 10);
 
-            List<OrderDetailDto> limitList = orderDetailService.getPage(map);
-            // System.out.println(limitList.size() == 10);
+            List<OrderDetailDto> limitList = orderDetailService.getPage(curPage, pageSize, userId);
+
+            if(limitList.isEmpty() ){
+                m.addAttribute("listMessage", "조회결과가 없습니다.");
+            }
+
+                if(etcList.isEmpty()){
+                    m.addAttribute("etcMessage", "조회결과가 없습니다.");
+            }
 
             //페이징된것
             m.addAttribute("limitList", limitList);
@@ -89,61 +89,4 @@ public class OrderDetailController {
         }
         return "/order/list";
     }
-
-    /*주문취소 반품 교환리스트 보여주기*/
-//    @RequestMapping(value = "/etcList")
-//    public String orderEtcList(Model m, Integer curPage, Integer pageSize) throws Exception {
-//
-//        /*
-//        마이페이지의 주문/배송
-//        [주문내역]
-//
-//        1. 아이디별 전체주문내역
-//            --> selectAll 로 전체 리스트 보여준다.
-//         TODO 2. 아이디별 취소/반품/교환내역
-//            --> 주문상태가 구매완료/배송완료/주문완료가 아닌 주문내역만 select하기
-//            --> selectAllEtc
-//
-//        고객아이디는 세션에서 받아와서 조회가능
-//        임의로 cust DB에 저장된 aaa라는 고객아이디를 사용
-//        아이디별 주문내역 조회하기 메서드로 받은 값을 list에 담아 모델에 저장하여 view로 옮겨준다
-//         */
-//
-//        String id = "asdf1234";
-//
-//        try {
-//            List<OrderDetailDto> etcList = orderDetailService.selectAllEtc(id);
-//            System.out.println("취소반품교환리스트" + etcList);
-//            List<OrderDetailDto> list1 = orderDetailService.getOrderDetailsList("asdf1234");
-//            System.out.println("기존의 리스트" + list1);
-//            if(etcList.isEmpty() ){
-//                m.addAttribute("message", "조회결과가 없습니다.");
-//            }
-//            if (curPage == null) {
-//                curPage = 1;
-//            }
-//            if (pageSize == null) {
-//                pageSize = 10;
-//            }
-//            int totalCnt = orderDetailService.getCount();
-//            PageHandler ph = new PageHandler(totalCnt, curPage, pageSize);
-//            // System.out.println("ph : " +ph);
-//            Map map = new HashMap();
-//            map.put("offset", (curPage - 1) * 10);
-//            map.put("pageSize",  pageSize);
-//
-//            List<OrderDetailDto> limitList = orderDetailService.getPage(map);
-//            // System.out.println(limitList.size() == 10);
-//            m.addAttribute("limitList", limitList);
-//            m.addAttribute("ph", ph);
-//            m.addAttribute("curPage", curPage);
-//            m.addAttribute("pageSize", pageSize);
-//            m.addAttribute("etcList", etcList);
-//        } catch (IndexOutOfBoundsException e) {
-//            return  "redirect:/order/list2";
-//        }
-//        return  "redirect:/order/list2";
-//    }
-
-
 }

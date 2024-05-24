@@ -18,6 +18,11 @@ public class OrdEtcReqDaoImpl implements OrdEtcReqDao {
     }
 
     @Override
+    public int getCountOrdNum(String ord_num) {
+        return session.selectOne(namespace + "coundByOrdNum", ord_num);
+    }
+
+    @Override
     public int insertCancel(OrdEtcReqDto ordEtcReqDto){
         return session.insert(namespace + "insertCancel", ordEtcReqDto);
     }

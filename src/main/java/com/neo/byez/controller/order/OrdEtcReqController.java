@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -52,16 +53,20 @@ public class OrdEtcReqController {
 */
 
     @RequestMapping(value = "/cancel")
-    public String cancelForm(String ord_num,  Model m) throws Exception {
+    public String cancelForm(HttpSession session, String ord_num, Model m) throws Exception {
+
+        String userId = "user1";
+//        String userId = (String) session.getAttribute("userId");
 
         List<OrderDetailDto> cancelList = orderDetailService.selectOneOrdDetail(ord_num);
+        m.addAttribute("id", userId);
         m.addAttribute("ord_num",ord_num);
         m.addAttribute("cancelList",cancelList);
         return "/order/orderCancelForm";
     }
 
     @RequestMapping(value = "/cancelOrder")
-    public String cancelOrder(Model m, OrdEtcReqDto ordEtcReqDto, OrderStateDto orderStateDto, OrderDetailDto orderDetailDto, OrderDto orderDto, String ord_state) throws Exception {
+    public String cancelOrder(HttpSession session,Model m, OrdEtcReqDto ordEtcReqDto, OrderStateDto orderStateDto, OrderDetailDto orderDetailDto, OrderDto orderDto, String ord_state) throws Exception {
 
         /*
             -확인-
@@ -81,8 +86,12 @@ public class OrdEtcReqController {
         //
         //aaa 고객이 주문한 모든 내역을 불러옴
         //실제 구현시에는 로그인한 고객의 아이디를 세션에서 불러와 조회한다.
+
+        String userId = "user1";
+//        String userId = (String) session.getAttribute("userId");
         List<OrderDetailDto> list = orderDetailService.getOrderDetailsList("asdf1234");
         //주문내역(list)을 모델에 담아 view로 보내준다
+        m.addAttribute("id", userId);
         m.addAttribute("list", list);
         //주문내역을 불러올때 주문번호가 ordDetailDto에 담기기 때문에
         //
@@ -96,9 +105,9 @@ public class OrdEtcReqController {
         ordEtcReqService.insertOrderState(orderStateDto);
         ordEtcReqService.updateStateCode(orderDto);
         ordEtcReqService.updateOrdState(ordDetailDto);
-
         */
-            ordEtcReqService.insertCancelInfo(ordEtcReqDto , orderDetailDto, orderDto, orderStateDto);
+
+            ordEtcReqService.insertCancelInfo(session, ordEtcReqDto , orderDetailDto, orderDto, orderStateDto);
 
         return "redirect:/order/list";
     }
@@ -179,8 +188,13 @@ public class OrdEtcReqController {
     @RequestMapping(value = "/refund")
     public String moveToRefundForm(String ord_num,  Model m) throws Exception {
 
+        String userId = "user1";
+//        String userId = (String) session.getAttribute("userId");
+
         DeliveryDto deliveryDto = deliveryDao.selectByOrdNum(ord_num);
         List<OrderDetailDto> refundList = orderDetailService.selectOneOrdDetail(ord_num);
+        m.addAttribute("reg_id",userId);
+        m.addAttribute("up_id",userId);
         m.addAttribute("ord_num",ord_num);
         m.addAttribute("refundList",refundList);
         m.addAttribute("deliveryDto", deliveryDto);
@@ -189,15 +203,22 @@ public class OrdEtcReqController {
     }
 
     @RequestMapping(value = "/refundOrder")
-    public String refundOrder(Model m, OrdEtcReqDto ordEtcReqDto, OrderStateDto orderStateDto, OrderDetailDto orderDetailDto, OrderDto orderDto,DeliveryDto deliveryDto) throws Exception {
+    public String refundOrder(HttpSession session,Model m, OrdEtcReqDto ordEtcReqDto, OrderStateDto orderStateDto, OrderDetailDto orderDetailDto, OrderDto orderDto,DeliveryDto deliveryDto) throws Exception {
 
-        List<OrderDetailDto> list = orderDetailService.getOrderDetailsList("aaa");
-        //주문내역(list)을 모델에 담아 view로 보내준다
-        m.addAttribute("list", list);
+
+        String userId = "user1";
+//        String userId = (String) session.getAttribute("userId");
+        m.addAttribute("reg_id",userId);
+        m.addAttribute("up_id",userId);
+
+//        List<OrderDetailDto> list = orderDetailService.getOrderDetailsList("aaa");
+//        //주문내역(list)을 모델에 담아 view로 보내준다
+//        m.addAttribute("list", list);
         //주문내역을 불러올때 주문번호가 ordDetailDto에 담기기 때문에
         m.addAttribute("orderDetailDto", orderDetailDto);
 
-        ordEtcReqService.insertRefundInfo(ordEtcReqDto , orderDetailDto, orderDto, orderStateDto, deliveryDto);
+
+        ordEtcReqService.insertRefundInfo(session, ordEtcReqDto , orderDetailDto, orderDto, orderStateDto, deliveryDto);
 
         return "redirect:/order/list";
      }
@@ -211,7 +232,7 @@ public class OrdEtcReqController {
         3. ord 테이블 주문상태 업데이트
      */
      @RequestMapping("/confirmPurchase")
-     public String confirmPurchase(OrderDto orderDto, OrderDetailDto orderDetailDto, OrderStateDto orderStateDto) throws Exception {
+     public String confirmPurchase(HttpSession session,OrderDto orderDto, OrderDetailDto orderDetailDto, OrderStateDto orderStateDto) throws Exception {
 
          ordEtcReqService.confirmPurchase(orderDto, orderDetailDto, orderStateDto);
             return "redirect:/order/list";
@@ -254,8 +275,12 @@ public class OrdEtcReqController {
      */
 
     @RequestMapping(value = "/exchange")
-    public String moveToExchangeForm(ItemOptionDto itemOptionDto, String item_num, String ord_num,  Integer seq, Model m) throws Exception {
+    public String moveToExchangeForm(HttpSession session,ItemOptionDto itemOptionDto, String item_num, String ord_num,  Integer seq, Model m) throws Exception {
         DeliveryDto deliveryDto = deliveryDao.selectByOrdNum(ord_num);
+
+        String userId = "user1";
+//        String userId = (String) session.getAttribute("userId");
+        m.addAttribute("id",userId);
 
         List<OrderDetailDto> exchangeList = orderDetailService.selectOneOrdDetail(ord_num);
         OrderDetailDto orderDetailDto = orderDetailService.selectOneSeqForExchange(ord_num, seq);
@@ -268,18 +293,21 @@ public class OrdEtcReqController {
         m.addAttribute("deliveryDto", deliveryDto);
         m.addAttribute("orderDetailDto", orderDetailDto);
         m.addAttribute("itemOptionDto", itemOptionDto);
+        System.out.println(orderDetailDto);
 
         return "/order/orderExchangeForm";
     }
 
     @RequestMapping(value = "/exchangeOrder")
-    public String exchangeOrder(Model m,  String num, OrdEtcReqDto ordEtcReqDto, OrderStateDto orderStateDto, OrderDetailDto orderDetailDto, OrderDto orderDto, DeliveryDto deliveryDto, ItemOptionDto itemOptionDto) throws Exception {
+    public String exchangeOrder(HttpSession session, Model m,  String num, OrdEtcReqDto ordEtcReqDto, OrderStateDto orderStateDto, OrderDetailDto orderDetailDto, OrderDto orderDto, DeliveryDto deliveryDto, ItemOptionDto itemOptionDto) throws Exception {
 
-        List<OrderDetailDto> list = orderDetailService.getOrderDetailsList("asdf1234");
+        List<OrderDetailDto> list = orderDetailService.getOrderDetailsList("ugyung1");
         List<ItemOptionDto> colorList = orderDetailService.selectColorOption(num);
         List<ItemOptionDto> sizeList = orderDetailService.selectSizeOption(num);
 
-
+        String userId = "user1";
+//        String userId = (String) session.getAttribute("userId");
+        m.addAttribute("id",userId);
         //주문내역(list)을 모델에 담아 view로 보내준다
         m.addAttribute("list", list);
         m.addAttribute("colorList", colorList);
@@ -288,7 +316,7 @@ public class OrdEtcReqController {
         //주문내역을 불러올때 주문번호가 ordDetailDto에 담기기 때문에
         m.addAttribute("orderDetailDto", orderDetailDto);
 
-        ordEtcReqService.insertExchangeInfo(ordEtcReqDto , orderDetailDto, orderDto, orderStateDto, deliveryDto);
+        ordEtcReqService.insertExchangeInfo(session, ordEtcReqDto , orderDetailDto, orderDto, orderStateDto, deliveryDto);
         return "redirect:/order/list";
     }
 }

@@ -8,6 +8,12 @@
         select count(*) from ord_etc_req
     </select>
 
+    <select id="coundByOrdNum" parameterType="string" resultType="int">
+        select count(*) from ord_etc_req
+        where ord_num = #{ord_num}
+    </select>
+
+<!--사용안함-->
     <insert id = "insertEtc" parameterType="OrdEtcReqDto" >
         INSERT INTO ord_etc_req (ord_num, type_code, reason_code, reason_detail, start_date, end_date, req_chk, chg_chk, appcn_name, appcn_mobile, zpcd, main_addr, detail_addr)
         VALUES (#{ord_num}, #{type_code}, #{reason_code}, #{reason_detail}, #{start_date}, #{end_date},
@@ -16,19 +22,19 @@
 
 <!--    취소정보입력-->
     <insert id="insertCancel" parameterType="OrdEtcReqDto">
-        insert into ord_etc_req(ord_num, type_code, reason_code, reason_detail, start_date, end_date)
-        values(#{ord_num}, #{type_code}, #{reason_code}, #{reason_detail}, now(), now())
+        insert into ord_etc_req(ord_num, seq,  type_code, reason_code, reason_detail, start_date, end_date, reg_date,reg_id,up_date,up_id)
+        values(#{ord_num}, #{seq}, #{type_code}, #{reason_code}, #{reason_detail}, now(), now(),now(),#{reg_id},now(),#{up_id})
     </insert>
 
 <!--    반품정보입력-->
     <insert id = "insertRefund" parameterType="OrdEtcReqDto">
-        insert into ord_etc_req(ord_num,type_code,reason_code,reason_detail,
-                                req_chk,chg_chk,appcn_name,appcn_mobile,zpcd,main_addr,detail_addr,start_date,end_date)
-        values(#{ord_num}, #{type_code}, #{reason_code}, #{reason_detail},
-               #{req_chk}, #{chg_chk}, #{appcn_name}, #{appcn_mobile}, #{zpcd}, #{main_addr}, #{detail_addr}, now(),now())
+        insert into ord_etc_req(ord_num, seq, type_code,reason_code,reason_detail,
+                                req_chk,chg_chk,appcn_name,appcn_mobile,zpcd,main_addr,detail_addr,start_date,end_date,reg_date,reg_id,up_date,up_id)
+        values(#{ord_num}, #{seq},#{type_code}, #{reason_code}, #{reason_detail},
+               #{req_chk}, #{chg_chk}, #{appcn_name}, #{appcn_mobile}, #{zpcd}, #{main_addr}, #{detail_addr}, now(),now(),now(),#{reg_id},now(),#{up_id})
     </insert>
 
-<!--    반품정보입력 : 직접발송시-->
+<!--    반품정보입력 : 직접발송시/ 사용안함-->
     <insert id = "insertRefundSendDirect" parameterType="OrdEtcReqDto">
         insert into ord_etc_req(ord_num,type_code,reason_code,reason_detail,
                                 req_chk,start_date,end_date)

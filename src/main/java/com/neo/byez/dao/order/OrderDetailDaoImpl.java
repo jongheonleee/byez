@@ -58,8 +58,8 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
     }
 
     @Override
-    public int getCount() throws Exception{
-        return session.selectOne(namespace + "count");
+    public int getCount(String id) throws Exception{
+        return session.selectOne(namespace + "countById", id);
     }
     @Override
     public List<OrderDetailDto> selectByOrdNum(String ord_num) throws Exception{
@@ -96,8 +96,12 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
     }
 
     @Override
-    public List<OrderDetailDto> selectPage(Map map) throws Exception {
-        return session.selectList(namespace + "selectPage", map);
+    public List<OrderDetailDto> selectPage(Integer curPage, Integer pageSize, String userId) throws Exception {
+        Map map = new HashMap();
+        map.put("offset", (curPage - 1) * 10);
+        map.put("pageSize",  pageSize);
+        map.put("id", userId);
+        return session.selectList(namespace + "selectPage", map );
     }
    //찬빈 추가
     @Override

@@ -8,6 +8,8 @@ import com.neo.byez.domain.item.BasketItemDto;
 import com.neo.byez.domain.item.ItemDto;
 import com.neo.byez.domain.user.UserDto;
 import java.util.List;
+
+import com.neo.byez.domain.user.UserDto;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

@@ -57,7 +57,7 @@ public class PageHandler {
     public void print() {
         // [PREV] 1 2 3 4 5 6 ... 10 [NEXT]
         // 이전 버튼
-        System.out.print(showPrev ? "[PREV] " : "");
+//        System.out.print(showPrev ? "[PREV] " : "");
 
         // navi 숫자
         for (int i=beginPage; i<=endPage; i++) {

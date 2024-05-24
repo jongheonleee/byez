@@ -100,9 +100,11 @@
         where ord_num = #{ord_num} and seq = #{seq}
     </select>
 
+<!--  아이디로 검색하는것으로 수정 (20240522 수정)  -->
     <select id = "selectPage" parameterType="map" resultType="OrderDetailDto">
         SELECT *
         FROM ord_detail
+        where id = #{id}
         ORDER BY ord_num DESC
             LIMIT #{offset},#{pageSize}
     </select>
@@ -114,6 +116,13 @@
         set ord_state = #{ord_state}
         where ord_num = #{ord_num} and seq = #{seq}
     </update>
+
+<!--아이디별 구매내역 갯수 count  20240522 추가함-->
+    <select id="countById" parameterType="string" resultType="int">
+        SELECT COUNT(*)
+        FROM ord_detail
+        where id = #{id}
+    </select>
 <!-- 찬빈 추가 -->
 <!--  id를 통해 리뷰가 작성되지 않은 결제가 완료된 주문번호 속 상품을 가져온다.   -->
     <select id="selectById" parameterType="map" resultType="OrderDetailDto">

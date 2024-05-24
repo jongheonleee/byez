@@ -9,6 +9,8 @@ import com.neo.byez.domain.item.LikeItemDto;
 import com.neo.byez.domain.user.UserDto;
 import java.util.Date;
 import java.util.List;
+
+import com.neo.byez.domain.user.UserDto;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
