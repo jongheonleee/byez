@@ -2,7 +2,9 @@ package com.neo.byez.controller.user;
 
 import com.neo.byez.common.validator.DataValidator;
 import com.neo.byez.common.validator.SignUpValidator;
+import com.neo.byez.dao.item.BasketDaoImpl;
 import com.neo.byez.domain.user.UserDto;
+import com.neo.byez.service.CustCouponsServiceImpl;
 import com.neo.byez.service.user.MailService;
 import com.neo.byez.service.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +32,15 @@ public class SignUpController {
     private MailService mailService;
     private BCryptPasswordEncoder passwordEncoder; // for PWD 암호화
     private DataValidator dataValidator;
+    private CustCouponsServiceImpl custCouponsService;
 
     @Autowired // 애너테이션 생략 가능
-    public SignUpController(UserServiceImpl userService, MailService mailService, BCryptPasswordEncoder passwordEncoder, DataValidator dataValidator) {
+    public SignUpController(UserServiceImpl userService, MailService mailService, BCryptPasswordEncoder passwordEncoder, DataValidator dataValidator, CustCouponsServiceImpl custCouponsService) {
         this.userService = userService;
         this.mailService = mailService;
         this.passwordEncoder = passwordEncoder;
         this.dataValidator = dataValidator;
+        this.custCouponsService = custCouponsService;
     }
 
     @InitBinder
@@ -117,7 +121,7 @@ public class SignUpController {
     // 2. 고객 기본정보 입력 후 본 Controller 로 form 전송
     // 2.1. 고객이 입력한 데이터 유효성 검증 (SignUpValidator)
     @PostMapping("/save")
-    public String saveCustInfo(@Valid UserDto userDto, BindingResult result, Model model) {
+    public String saveCustInfo(@Valid UserDto userDto, BindingResult result, Model model) throws Exception {
         if (result.hasErrors()) {
             List<ObjectError> errorMsgs = result.getAllErrors();
             model.addAttribute("errorMsg", errorMsgs.get(0).getCode());
@@ -153,6 +157,8 @@ public class SignUpController {
         // 3.2. 회원가입 성공 시
         // 3.2.1. 로그인 화면(/login/form)으로 이동
         if (userService.saveCustJoinInfo(userDto) == 1) {
+            // 신규 고객 쿠폰 임시로 추가 - 진우 (+ 예외 선언)
+            custCouponsService.grantCouponToUser(userDto.getId(),"신규 고객 쿠폰");
             return "redirect:/login/form";
         }
         // 3.3. 회원가입 실패 시

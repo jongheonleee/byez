@@ -50,10 +50,7 @@ public class OrderDetailController {
         아이디별 주문내역 조회하기 메서드로 받은 값을 list에 담아 모델에 저장하여 view로 옮겨준다
          */
 
-        String id = "user1";
-//        session.setAttribute("id", "user1");
-//        String id = (String) session.getAttribute("id");
-//        System.out.println("아이디:" +id);
+        String id = (String) session.getAttribute("userId");
 
         try {
             List<OrderDetailDto> list = orderDetailService.getOrderDetailsList(id);

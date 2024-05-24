@@ -63,7 +63,5 @@
         SET coupon_state = 'US'
         WHERE seq = #{seq};
     </update>
-
-
 </mapper>
 

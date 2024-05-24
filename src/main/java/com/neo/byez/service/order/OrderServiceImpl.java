@@ -103,6 +103,62 @@ public class OrderServiceImpl implements OrderService {
         }
     }
 
+    // 주문 성공 시 업데이트
+    @Transactional(rollbackFor = {Exception.class})
+    public int modifyOrder(String ord_num, String state) throws Exception {
+        try {
+            // 주문 번호로 주문, 주문 상품상세 업데이트
+            OrderDto orderDto = orderDao.select(ord_num);
+            List<OrderDetailDto> orderDetailDtoList = orderDetailDao.select(ord_num);
+
+            // 주문 상태 업데이트
+            orderDto.setOrd_state(state);
+
+            // 주문상품상세 상태 업데이트
+            for(OrderDetailDto orderDetailDto : orderDetailDtoList){
+                orderDetailDto.setOrd_state(state);
+                orderDetailDao.update(orderDetailDto);
+            }
+
+            // 주문 상태 추가
+            String id = orderDto.getId();
+            Integer seq = orderStateDao.count(ord_num) + 1;
+
+            OrderStateDto orderStateDto = new OrderStateDto(ord_num, seq, state, id);
+            orderStateDao.insert(orderStateDto);
+            return 1;
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
+    // 주문번호로 장바구니 상품 삭제
+    public int removeBasketItemByOrderNum(String ord_num, String id) {
+        /*
+            주문번호로 주문상세리스트 조회
+            시퀀스로 basketItemDto로 삭제
+         */
+        try {
+            // 주문번호로 주문상품 내역 조회
+            List<OrderDetailDto> orderDetailDtoList = orderDetailDao.select(ord_num);
+            for(OrderDetailDto orderDetailDto : orderDetailDtoList){
+                BasketItemDto basketItemDto = new BasketItemDto();
+                int seq = orderDetailDto.getSeq();
+                basketItemDto.setId(id);
+                basketItemDto.setSeq(seq);
+                System.out.println(basketItemDto);
+
+                // 장바구니 상품 삭제
+                basketItemDao.delete(basketItemDto);
+            }
+            return 1;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+
 
     /*
         결제 요청 전 주문 정보 저장

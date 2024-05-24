@@ -1,7 +1,9 @@
 package com.neo.byez.service.user;
 
+import com.neo.byez.dao.item.BasketDaoImpl;
 import com.neo.byez.dao.user.UserDaoImpl;
 import com.neo.byez.dao.user.UserInfoHistDaoImpl;
+import com.neo.byez.domain.item.BasketDto;
 import com.neo.byez.domain.user.UserDto;
 import com.neo.byez.domain.user.UserInfoHistDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,14 +26,16 @@ public class UserServiceImpl implements UserService {
     private MailService mailService;
     private BCryptPasswordEncoder passwordEncoder;
     private UserInfoHistDaoImpl userInfoHistDao;
+    private BasketDaoImpl basketDao;
 
     @Autowired
     public UserServiceImpl(UserDaoImpl userDao, MailService mailService, BCryptPasswordEncoder passwordEncoder,
-                           UserInfoHistDaoImpl userInfoHistDao) {
+                           UserInfoHistDaoImpl userInfoHistDao, BasketDaoImpl basketDao) {
         this.userDao = userDao;
         this.mailService = mailService;
         this.passwordEncoder = passwordEncoder;
         this.userInfoHistDao = userInfoHistDao;
+        this.basketDao = basketDao;
     }
 
     // 현재 시간을 반환하는 getCurrentTime() 메서드
@@ -171,6 +175,10 @@ public class UserServiceImpl implements UserService {
         try {
             if (userDao.selectUser(userDto.getId()) == null){
                 userDao.insertUser(userDto);
+                // 나중에 수정하기
+                BasketDto dto = new BasketDto();
+                dto.setId(userDto.getId());
+                basketDao.insert(dto);
                 return 1;
             } else {
                 return 0;

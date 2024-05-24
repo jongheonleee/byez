@@ -1,5 +1,6 @@
 package com.neo.byez.service.order;
 
+import com.neo.byez.dao.CustCouponsDaoImpl;
 import com.neo.byez.dao.order.OrderDaoImpl;
 import com.neo.byez.dao.order.PayDaoImpl;
 import com.neo.byez.dao.order.PayHistoryDaoImpl;
@@ -23,6 +24,8 @@ public class PayServiceImpl implements PayService {
     PayHistoryDaoImpl payHistoryDao;
     @Autowired
     OrderDaoImpl orderDao;
+    @Autowired
+    CustCouponsDaoImpl custCouponsDao;
 
 
     // 2. retURL 파라미터와 임시 데이터 검증
@@ -73,25 +76,42 @@ public class PayServiceImpl implements PayService {
             2. pay_hist insert
             3.
      */
-    @Transactional
-    public void payApproval(String ord_num) throws Exception {
-        String pay_num = "P"+ord_num;
+    @Transactional(rollbackFor = {Exception.class})
+    public int payApproval(String ord_num, String state){
+        try {
+            // 결제번호
+            String pay_num = "P"+ord_num;
 
-        PayDto payDto = payDao.select(pay_num);
-        String state = "결제완료";
-        String id = "asdf";
-        payDto.setState(state);
-        payDao.update(payDto);
+            // 결제Dto 조회
+            PayDto payDto = payDao.select(pay_num);
+            // 주문번호로 id 조회
+            String id = orderDao.select(ord_num).getId();
+            // 결제 상태 업데이트
+            payDto.setState(state);
+            payDao.update(payDto);
 
-        PayStateDto payStateDto = new PayStateDto(pay_num, 2, state);
-        payStateDto.setReg_id(id);
-        payStateDto.setUp_id(id);
-        payStateDao.insert(payStateDto);
+            // 결제 진행상태 생성
+            PayStateDto payStateDto = new PayStateDto(pay_num, 2, state);
+            payStateDto.setReg_id(id);
+            payStateDto.setUp_id(id);
 
-        Integer price = payDto.getPrice();
-        PayHistoryDto payHistoryDto = new PayHistoryDto(pay_num, 1, price, state);
-        payHistoryDto.setReg_id(id);
-        payHistoryDto.setUp_id(id);
-        payHistoryDao.insert(payHistoryDto);
+            // 결제 진행상태 데이터 삽입
+            payStateDao.insert(payStateDto);
+
+            // 결제금액 조회
+            Integer price = payDto.getPrice();
+            // 결제이력 생성
+            PayHistoryDto payHistoryDto = new PayHistoryDto(pay_num, 1, price, state);
+            payHistoryDto.setReg_id(id);
+            payHistoryDto.setUp_id(id);
+
+            // 결제 이력 삽입
+            payHistoryDao.insert(payHistoryDto);
+
+            return 1;
+        } catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }
     }
 }

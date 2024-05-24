@@ -62,8 +62,7 @@ public class LikeItemController {
 
         try {
             // 세션 아이디 조회
-            String id = (String) session.getAttribute("id");
-            id = "user1";
+            String id = (String) session.getAttribute("userId");
             if (id != null) {
                 BasketItemDto dto = new BasketItemDto();
                 dto.setId(id);
@@ -96,8 +95,7 @@ public class LikeItemController {
     @PostMapping("/add")
     @ResponseBody
     public ResponseEntity<String> add(@RequestBody LikeItemDto dto, RedirectAttributes ratt, HttpSession session) {
-        String id = (String) session.getAttribute("id");
-        id = "user1";
+        String id = (String) session.getAttribute("userId");
         dto.setId(id);
         if (!likeItemService.register(dto)) {
             return new ResponseEntity<>("좋아요 상품을 등록하지 못했습니다.", HttpStatus.BAD_REQUEST);
@@ -116,8 +114,7 @@ public class LikeItemController {
                 // 좋아요 페이지 이동
         // 로그인 안되있으면
                 // 메인 페이지로 이동
-        String id = (String) session.getAttribute("id");
-        id = "user1";
+        String id = (String) session.getAttribute("userId");
         dto.setId(id);
 
 
@@ -149,8 +146,7 @@ public class LikeItemController {
                 // 좋아요 페이지 이동
             // 로그인 안되있으면
                 // 메인 페이지 이동
-        String id = (String) session.getAttribute("id");
-        id = "user1";
+        String id = (String) session.getAttribute("userId");
         dto.setId(id);
 
         if (!likeItemService.modify(dto)) {

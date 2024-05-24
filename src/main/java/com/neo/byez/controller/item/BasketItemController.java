@@ -56,8 +56,8 @@ public class BasketItemController {
     // 유저의 장바구니 상품 목록을 보여줌
     @GetMapping("/basket")
     public String list(BasketItemDto dto, Model model, String msg, HttpSession session) {
-        String id = (String) session.getAttribute("id");
-        id = "user1";
+        String id = (String) session.getAttribute("userId");
+        System.out.println(id);
         dto.setId(id);
         try {
             // 해당 유저의 장바구니 상품 목록 조회
@@ -85,8 +85,7 @@ public class BasketItemController {
     @PostMapping("/basket/add")
     @ResponseBody
     public ResponseEntity<String> add(@RequestBody BasketItemDto dto, RedirectAttributes ratt, HttpSession session) {
-        String id = (String) session.getAttribute("id");
-        id = "user1";
+        String id = (String) session.getAttribute("userId");
         dto.setId(id);
         try {
             ItemDto selectedDto = itemService.getItem(dto.getNum());
@@ -104,8 +103,7 @@ public class BasketItemController {
 
     @PostMapping("/basket/delete")
     public String remove(BasketItemDto dto, RedirectAttributes ratt, HttpSession session) {
-        String id = (String) session.getAttribute("id");
-        id = "user1";
+        String id = (String) session.getAttribute("userId");
         dto.setId(id);
         if (!basketService.remove(dto)) {
             ratt.addAttribute("msg", "상품을 정상적으로 ");
@@ -134,8 +132,7 @@ public class BasketItemController {
 
     @PostMapping("/basket/delete/all")
     public String removeAll(BasketItemDto dto, RedirectAttributes ratt, HttpSession session) {
-        String id = (String) session.getAttribute("id");
-        id = "user1";
+        String id = (String) session.getAttribute("userId");
         dto.setId(id);
 
         if (!basketService.removeAll(dto)) {
@@ -149,8 +146,7 @@ public class BasketItemController {
 
     @PostMapping("/basket/update")
     public String modify(@Valid BasketItemDto dto, RedirectAttributes ratt, HttpSession session) {
-        String id = (String) session.getAttribute("id");
-        id = "user1";
+        String id = (String) session.getAttribute("userId");
         dto.setId(id);
 
         // 서비스로 해당 상품 수정

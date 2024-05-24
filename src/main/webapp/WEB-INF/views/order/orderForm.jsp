@@ -234,7 +234,7 @@
                         <!-- 주문상품 정보 -->
                         <td class="orderDetail_info">
                             <!-- 전송용 태그 - 주문상품 -->
-                            <input type="hidden" name="seq" value="${status.index}">
+                            <input type="hidden" name="seq" value="${item.seq}">
                             <input type="hidden" name="item_num" value="${item.num}">
                             <input type="hidden" name="item_name" value="${item.name}">
                             <input type="hidden" name="item_qty" value="${item.qty}">
@@ -392,6 +392,50 @@
         </div>
     </div>
 </div>
+<!--
+        주문 프로세스
+        고객이 상품을 주문한다.
+
+            1. 장바구니 or 상품상세에서 주문하기 클릭(orderForm 요청)
+            2. 주문에 필요한 정보를 출력한다.(주문자, 배송지목록, 주문상품목록, 쿠폰목록, 결제 정보)
+                1. 성공 시 : orderForm.jsp 출력
+                2. 실패 시 : "실패 메시지" 출력
+            3. 고객이 정보를 입력한다.
+            4. 결제 수단을 선택하고 결제하기 클릭
+                4-1. 주문번호 생성 요청 (orderNumGenerateRequest)
+                    4-1-1. 성공 시 : input 태그에 주문번호 입력
+                    4-1-2. 실패 시 : 재요청
+                    4-1-3. 재요청 실패 시 : "실패 메시지" 출력.
+
+                4-2. 결제 생성 요청 (paymentMakeRequest) - Toss API 기준
+                    4-2-1. 주문정보 저장 (orderReady) (주문, 주문상품목록, 배송지, 결제)
+                        a. 주문정보 검증
+                            a-a. 성공 시 : 주문정보 저장(b)
+                            a-b. 실패 시 : "실패 메시지" 출력.
+                        b. 주문정보 저장
+                    4-2-2. 결제 요청정보 생성(ord_num, ord_name, 성공 실패 URL, 주문자 이메일, 이름, 전화번호)
+                    4-2-3. 결제 생성 요청 및 사용자 인증
+                        a. 성공 시 : success URL 이동.(QueryParameter 정보 : paymentKey, orderId, amount)
+                        b. 실패 시 : fail URL 이동.
+            5. 결제 승인 요청 (confirm)
+                5-1. 승인 요청 정보 검증
+                    5-1-1. 성공 시 : 승인 요청(5-2)
+                    5-1-2. 실패 시 : "실패 메시지" 출력.
+                5-2. 승인 요청
+                    5-2-1. 성공 시 : 결제 정보 저장(5-3)
+                    5-2-2. 실패 시 : "실패 메시지 출력".
+                5-3. 결제 정보 저장(결제 상태 변경 및 결제 이력 생성)
+                    5-3-1. 성공 시 : 주문 완료 페이지 이동
+                    5-3-2. 실패 시 : "실패 메시지" 출력.
+            6. 주문 완료 페이지 이동
+
+        사전 정보
+            1. 주문자 정보
+            2. 배송지 목록
+            3. 주문상품 목록
+            4. 쿠폰 목록
+            5. 결제 정보
+    -->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/js/jquery-3.6.4.min.js"></script>
