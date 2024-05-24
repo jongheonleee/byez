@@ -8,7 +8,8 @@
     <title>BYEZ</title>
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/myAddrList.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="/css/footer.css?after?after">
+    <link rel="stylesheet" href="/css/aside.css?after">
     <link rel="stylesheet" href="css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,6 +90,7 @@
 </div>
 <script src="js/jquery-3.6.4.min.js"></script>
 <script src="js/nav.js"></script>
+<script src="/js/aside.js"></script>
 <script>
     function goAddrEditForm(seq) {
         window.location.href = 'addrEditForm?seq=' + seq;

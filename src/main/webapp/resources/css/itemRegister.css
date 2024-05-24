@@ -1,0 +1,15 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+.wrapper {width: 90%; height: 1000px; margin: auto;}
+
+.itemRegister {border-collapse: collapse;
+  border: 1px solid black; width: 100%;}
+
+.itemRegister th, .itemRegister td {
+  border: 1px solid black;
+  padding: 10px;
+}
+.itemRegister input {width: 50%; height: 25px; border: 1px solid black; text-indent: 5px; font-size: 16px;}

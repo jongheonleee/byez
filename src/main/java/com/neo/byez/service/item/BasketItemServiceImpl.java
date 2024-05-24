@@ -1,9 +1,8 @@
 package com.neo.byez.service.item;
 
-
+import com.neo.byez.domain.item.*;
 import com.neo.byez.dao.item.BasketItemDaoImpl;
 import com.neo.byez.domain.item.BasketItemDto;
-import com.neo.byez.domain.item.BasketItemDtos;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,24 +120,15 @@ public class BasketItemServiceImpl implements BasketItemService {
         return rowCnt == 1;
     }
 
-    @Transactional(rollbackFor = Exception.class)
     @Override
-    public boolean removeSeveral(BasketItemDtos dtos) throws Exception {
+    public boolean removeSeveral(BasketItemDtos dtos) {
         List<BasketItemDto> list = dtos.getOrders();
         int selectedCnt = list.size();
         int removeCnt = 0;
 
-        try {
-            for (BasketItemDto dto : list) {
-                removeCnt += remove(dto) ? 1 : 0;
-            }
 
-            if (removeCnt != selectedCnt) {
-                throw new Exception("제대로 삭제되지 않았습니다.");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw e;
+        for (BasketItemDto dto : list) {
+            removeCnt += remove(dto) ? 1 : 0;
         }
 
         return removeCnt == selectedCnt;

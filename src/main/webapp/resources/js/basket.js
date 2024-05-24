@@ -59,45 +59,6 @@
     let opt3 = $(this).parents('div.modalBody').find('input.opt3').val();
 
     // 검증 로직 추가
-    if (seq <= 0) {
-    alert("잘못된 시퀀스 번호입니다.");
-    return;
-  }
-
-    if (id === null || id === '') {
-    alert("잘못된 아이디입니다.");
-    return;
-  }
-
-    if (name === null || name === '') {
-    alert("잘못된 상품명입니다.");
-    return;
-  }
-
-    if (num === null || num <= 0) {
-    alert("잘못된 상품 번호입니다.");
-    return;
-  }
-
-    if (qty <= 0) {
-    alert("잘못된 상품 수량입니다.");
-    return;
-  }
-
-    if (price <= 0) {
-    alert("잘못된 상품 가격입니다.");
-    return;
-  }
-
-    if (opt1 === null || opt1 === '') {
-    alert("잘못된 상품 사이즈입니다.");
-    return;
-  }
-
-    if (opt2 === null || opt2 === '') {
-    alert("잘못된 상품 색상입니다.");
-    return;
-  }
 
 
   $(".updateSeq").val(seq);

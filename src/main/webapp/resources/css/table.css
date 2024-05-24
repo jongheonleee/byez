@@ -1,0 +1,8 @@
+
+.datatable-dropdown label {font-size: 1px; color: white;}
+
+.datatable-info {display: none;}
+
+.register {
+     padding: 5px 8px; border: lightgray 1px solid; border-radius: 7px; background-color: white; transition: 0.3s;}
+.register:hover {background-color: lightgray;}

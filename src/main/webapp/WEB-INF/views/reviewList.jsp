@@ -10,7 +10,8 @@
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/review_list.css?after">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/footer.css?after">
+    <link rel="stylesheet" href="/css/aside.css?after">
     <link rel="stylesheet" href="/css/quick.css">
     <!-- 추가합니다 -->
     <!-- <link rel="stylesheet" href="css/tab_template.css"> -->
@@ -102,6 +103,7 @@
         </div>
         <script src="/js/jquery-3.6.4.min.js"></script>
         <script src="/js/tab.js"></script>
+        <script src="/js/aside.js"></script>
     </div></section></body>
 </div>
 </div>

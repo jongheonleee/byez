@@ -49,6 +49,22 @@ public class ItemDto {
         this.up_id = up_id;
     }
 
+    public ItemDto(String num, String name, String item_type, String cust_type, int price,
+            int disc_price, String main_img, int review_cnt, double review_rate, int like_cnt,
+            String col) {
+        this.num = num;
+        this.name = name;
+        this.item_type = item_type;
+        this.cust_type = cust_type;
+        this.price = price;
+        this.disc_price = disc_price;
+        this.main_img = main_img;
+        this.review_cnt = review_cnt;
+        this.review_rate = review_rate;
+        this.like_cnt = like_cnt;
+        this.col = col;
+    }
+
     public String getNum() {
         return num;
     }
@@ -171,9 +187,9 @@ public class ItemDto {
 
     public List<String> getColors() {
         // 파싱 
-        String[] colors = col.split(",");
+        String[] cols = col.split(",");
         // 반환
-        return Arrays.asList(colors);
+        return Arrays.asList(cols);
     }
     @Override
     public boolean equals(Object o) {

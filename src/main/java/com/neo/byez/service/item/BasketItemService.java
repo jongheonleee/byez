@@ -1,7 +1,6 @@
 package com.neo.byez.service.item;
 
-import com.neo.byez.domain.item.BasketItemDto;
-import com.neo.byez.domain.item.BasketItemDtos;
+import com.neo.byez.domain.item.*;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,7 +21,7 @@ public interface BasketItemService {
     // 03. 유저 장바구니 상품 삭제
     boolean remove(BasketItemDto dto);
 
-    boolean removeSeveral(BasketItemDtos dtos) throws Exception;
+    boolean removeSeveral(BasketItemDtos dtos);
 
 
     // 04. 유저 장바구니 상품 모두 삭제

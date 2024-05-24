@@ -1,14 +1,7 @@
 package com.neo.byez.controller.item;
 
 
-import com.neo.byez.common.validator.BasketItemValidator;
-import com.neo.byez.domain.item.BasketDto;
-import com.neo.byez.domain.item.BasketItemDto;
-import com.neo.byez.domain.item.BasketItemDtos;
-import com.neo.byez.domain.item.ItemDto;
-import com.neo.byez.domain.item.OrderItemDto;
-import com.neo.byez.domain.item.OrderItemDtos;
-import com.neo.byez.service.item.BasketItemService;
+import com.neo.byez.domain.item.*;
 import com.neo.byez.service.item.BasketItemServiceImpl;
 import com.neo.byez.service.item.ItemServiceImpl;
 import java.util.List;
@@ -26,7 +19,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import static com.neo.byez.common.config.BasketItemConstant.*;
 import static com.neo.byez.common.message.ErrorMessage.*;
 
 @Controller
@@ -113,7 +105,7 @@ public class BasketItemController {
     }
 
     @GetMapping("/basket/delete/several")
-    public String removeSeveral(@Valid BasketItemDtos dtos, RedirectAttributes ratt, HttpSession session) {
+    public String removeSeveral(BasketItemDtos dtos, RedirectAttributes ratt, HttpSession session) {
         // 여러 상품 삭제
         try {
             if (!basketService.removeSeveral(dtos)) {

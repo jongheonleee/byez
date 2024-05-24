@@ -72,6 +72,9 @@
         <when test='option=="T"'>
           AND i.item_type LIKE concat(#{typeKeyword}, '%')
         </when>
+        <when test='option=="N"'>
+          AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        </when>
         <otherwise>
           AND i.name LIKE concat('%', #{nameKeyword}, '%')
           AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
@@ -102,6 +105,9 @@
       </when>
       <when test='option=="T"'>
         AND i.item_type LIKE concat(#{typeKeyword}, '%')
+      </when>
+      <when test='option=="N"'>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
       </when>
       <otherwise>
         AND i.name LIKE concat('%', #{nameKeyword}, '%')
@@ -143,6 +149,7 @@
     where i.item_type LIKE concat('__', #{typeKeyword}, '%')
     and i.price > i.disc_price
   </select>
+
 
 <!--  <select id="selectDiscountItem" parameterType="SearchCondition" resultType="ItemDto">-->
 <!--    select-->

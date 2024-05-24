@@ -8,8 +8,9 @@
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css?after">
     <link rel="stylesheet" href="/css/like.css?after?after?after?after">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/footer.css?after?after">
     <link rel="stylesheet" href="/css/quick.css">
+    <link rel="stylesheet" href="/css/aside.css?after">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -100,7 +101,8 @@
 <%@include file="../views/include/quick.jsp"%>
 <%@include file="../views/include/footer.jsp"%>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="/js/nav.js?after"></script>
+<script src="/js/nav.js?after?after?after"></script>
 <script src="/js/like.js"></script>
+<script src="/js/aside.js"></script>
 </body>
 </html>

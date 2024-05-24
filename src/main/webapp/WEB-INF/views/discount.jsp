@@ -9,7 +9,7 @@
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/discount.css?after">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/footer.css?after?after">
     <link rel="stylesheet" href="/css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -255,6 +255,6 @@
 <%@include file="../views/include/quick.jsp"%>
 <%@include file="../views/include/footer.jsp"%>
 <script src="/js/jquery-3.6.4.min.js"></script>
-<script src="/js/nav.js?after"></script>
+<script src="/js/nav.js?after?after"></script>
 </body>
 </html>

@@ -184,12 +184,13 @@ public class ItemDetailPageDto {
     }
 
     public List<String> getColors() {
-        String[] colors = col.split(",");
+        String[] colors = col.split("/");
         return Arrays.asList(colors);
     }
 
     public List<String> getSizes() {
-        String[] sizes = size.split(",");
+        String[] sizes = size.split("/");
+        Arrays.sort(sizes);
         return Arrays.asList(sizes);
     }
 

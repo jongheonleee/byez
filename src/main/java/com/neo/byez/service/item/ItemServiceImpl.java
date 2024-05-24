@@ -104,6 +104,7 @@ public class ItemServiceImpl {
 
             // 널이 아님
                 // 조회된 dto 반환
+        System.out.println(num);
         try {
             ItemDto dto = itemDao.select(num);
             if (dto == null) {
@@ -118,7 +119,7 @@ public class ItemServiceImpl {
     }
 
     @Transactional(rollbackFor = Exception.class) // 상품 정보 등록, TX 처리(중복 등록 방지)
-    public void add(ItemDto itemDto, ItemDetailDto itemDetailDto, ItemStateDto itemStateDto,
+    public boolean add(ItemDto itemDto, ItemDetailDto itemDetailDto, ItemStateDto itemStateDto,
             List<ItemOptDto> itemSizeDtos, List<ItemOptDto> itemColorDtos, ItemPriceDto itemPriceDto) throws Exception {
         /* 처리 작업 */
             // 상품 등록 => 1, ItemDto
@@ -163,7 +164,7 @@ public class ItemServiceImpl {
         sb.setLength(0);
         for (ItemOptDto color : itemColorDtos) {
             rowCnt += itemColorDao.insert(color);
-            sb.append(color.getCode()).append(",");
+            sb.append(color.getCode()).append("/");
         }
 
 
@@ -188,6 +189,8 @@ public class ItemServiceImpl {
         if (rowCnt != 5 + n1 + n2) {
             throw new Exception("적용되지 못한 쿼리문이 존재합니다.");
         }
+
+        return rowCnt != 5 + n1 + n2;
     }
 
     // 모든 상품을 조회, 임시적으로 구현(사용x)
@@ -237,12 +240,12 @@ public class ItemServiceImpl {
         // 옵션값 추가
         sb.setLength(0);
         List<ItemOptDto> sizes = itemSizeDao.select(num);
-        sizes.stream().forEach(size -> sb.append(size.getCode()).append(","));
+        sizes.stream().forEach(size -> sb.append(size.getCode()).append("/"));
         itemDetailPageDto.setSize(sb.toString());
 
         sb.setLength(0);
         List<ItemOptDto> colors = itemColorDao.select(num);
-        colors.stream().forEach(color -> sb.append(color.getCode()).append(","));
+        colors.stream().forEach(color -> sb.append(color.getCode()).append("/"));
         itemDetailPageDto.setCol(sb.toString());
 
 

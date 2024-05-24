@@ -49,6 +49,14 @@ public class ItemStateDto {
         this.up_id = up_id;
     }
 
+    public ItemStateDto(String num, int sales_qty, int view_cnt, int stock_qty, String state_code) {
+        this.num = num;
+        this.sales_qty = sales_qty;
+        this.view_cnt = view_cnt;
+        this.stock_qty = stock_qty;
+        this.state_code = state_code;
+    }
+
     public String getNum() {
         return num;
     }

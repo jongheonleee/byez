@@ -1,0 +1,21 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+/*.mside_content li>a {*/
+/*  color : #B2B2B2;*/
+/*  transition: 0.3s;*/
+/*}*/
+
+.gray {
+  color : #B2B2B2;
+  transition: 0.3s;
+}
+.mside_content li>a:hover {color:
+black;}
+
+.select {
+  color : black;
+}
+

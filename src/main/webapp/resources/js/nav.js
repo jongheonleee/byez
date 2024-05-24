@@ -18,8 +18,8 @@ $(function(){
         event.preventDefault(); // 폼의 기본 제출 동작을 막음
         var query = $('#searchInput').val().trim();
         if (query) {
-            var currentUrl = window.location.href.split('?')[0]; // 현재 페이지 URL 가져오기
-            window.location.href = currentUrl + '?nameKeyword=' + encodeURIComponent(query);
+            var url = '/item/search'.split('?')[0]; // 현재 페이지 URL 가져오기
+            window.location.href = url + '?nameKeyword=' + encodeURIComponent(query);
         }
     });
 

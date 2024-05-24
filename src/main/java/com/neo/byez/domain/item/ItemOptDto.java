@@ -24,6 +24,11 @@ public class ItemOptDto {
         this.up_id = up_id;
     }
 
+    public ItemOptDto(String num, String code) {
+        this.num = num;
+        this.code = code;
+    }
+
     public String getNum() {
         return num;
     }

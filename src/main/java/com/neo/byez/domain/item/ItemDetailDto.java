@@ -50,6 +50,25 @@ public class ItemDetailDto {
         this.up_id = up_id;
     }
 
+    public ItemDetailDto(String num, String detail_name, String comt, String detail_img, int price,
+            String rel_date, String gr_date, String mfg_corp, String mfg_name, String mfg_date,
+            String model, String origin, String matr, String caut) {
+        this.num = num;
+        this.detail_name = detail_name;
+        this.comt = comt;
+        this.detail_img = detail_img;
+        this.price = price;
+        this.rel_date = rel_date;
+        this.gr_date = gr_date;
+        this.mfg_corp = mfg_corp;
+        this.mfg_name = mfg_name;
+        this.mfg_date = mfg_date;
+        this.model = model;
+        this.origin = origin;
+        this.matr = matr;
+        this.caut = caut;
+    }
+
     public String getNum() {
         return num;
     }

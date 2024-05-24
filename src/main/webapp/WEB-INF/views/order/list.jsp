@@ -9,7 +9,8 @@
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/orderDetail.css?after?after?after">
-    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/footer.css?after?after">
+    <link rel="stylesheet" href="/css/aside.css?after">
     <link rel="stylesheet" href="/css/quick.css">
 
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -23,9 +24,9 @@
     <div class="wrapper">
         <div class="title">
             <p>
-                <a href="main.html"><span>home</span></a>
+                <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="mypage.html"><span>마이페이지</span></a>
+                <a href="/order/list"><span>마이페이지</span></a>
             </p>
             <p>주문조회</p>
         </div>

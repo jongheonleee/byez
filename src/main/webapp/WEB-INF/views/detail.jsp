@@ -9,7 +9,7 @@
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/detail.css?after?after?after">
-    <link rel="stylesheet" href="/css/footer.css?after">
+    <link rel="stylesheet" href="/css/footer.css?after?after">
     <link rel="stylesheet" href="/css/quick.css?after">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,7 @@
             </div>
             <div class="infoWrapper">
                 <p class="detail_name">${itemDetail.detail_name}</p>
-                <div class="type">${itemDetail.cust_type}</div>
+                <div class="type" value="${itemDetail.cust_type}">${itemDetail.cust_type}</div>
                 <p>
                     <span class="disc_price"><fmt:formatNumber value="${itemDetail.disc_price}" pattern="#,###"/></span>
                     <span class="price"><fmt:formatNumber value="${itemDetail.price}" pattern="#,###"/></span>
@@ -58,6 +58,7 @@
                     <ul class="col">
                         <input type="hidden" class="opt2" name="opt2" >
                         <select class="changeOpt2" onchange="selectOpt2(this.value);">
+                            <option value="" disabled selected>--색상을 선택해주세요--</option>
                             <c:forEach var="color" items="${itemDetail.colors}">
                                 <option value=${color}>${color}</option>
                             </c:forEach>
@@ -71,6 +72,7 @@
                     <ul class="size">
                         <input type="hidden" class="opt1" name="opt1">
                         <select class="changeOpt1" onchange="selectOpt1(this.value);">
+                            <option value="" disabled selected>--사이즈 유형을 선택해주세요--</option>
                             <c:forEach var="size" items="${itemDetail.sizes}">
                                 <option value=${size}>${size}</option>
                             </c:forEach>
@@ -85,7 +87,7 @@
                         <div class="count_box">
                             <div class="count-wrap _count">
                                 <button type="button" class="minus">-</button>
-                                <input type="text" class="inp qty" value="1"/>
+                                <input type="text" class="inp qty" value="1" readonly/>
                                 <button type="button" class="plus">+</button>
                             </div>
                         </div>
@@ -342,6 +344,6 @@
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
 <script src="/js/count.js"></script>
-<script src="/js/detail.js?after?after?after"></script>
+<script src="/js/detail.js?after?after?after?after?after"></script>
 </body>
 </html>

@@ -28,7 +28,7 @@ $(document).ready(function(){
 
     // 좋아요 버튼, ajax 전송
     $('.heart-btn').click(function(){
-        // $(this).find('.fa-heart').toggleClass('heart-red');
+        $(this).find('.fa-heart').toggleClass('heart-red');
 
         // 상품 정보 조회
             // num, name, type, price, disc_price, review_cnt, like_cnt, state_code
@@ -55,11 +55,8 @@ $(document).ready(function(){
             data : likeItemDto,
             success : function () {
                 alert('성공적으로 좋아요 상품을 등록했습니다.');
-                // 성공하고 나서 애니메이션 적용
-                $(this).find('.fa-heart').toggleClass('heart-red');
             },
             error : function () {
-                alert('좋아요 상품을 등록하지 못했습니다. 이미 등록된 상품일 확률이 높습니다.');
             }
         })
 
@@ -86,6 +83,37 @@ $(document).ready(function(){
         const opt2 = $('.opt2').val();
         const opt3 = $('.cust_type').val();
         const coupon_chk = '';
+
+        // if (0 >= num.length || num.length <= 100000000) {
+        //     alert("잘못된 상품 번호입니다.");
+        //     return;
+        // }
+        //
+        // if (0 >= name.length || name.length <= 1000) {
+        //     alert("잘못된 상품명입니다.");
+        //     return;
+        // }
+        //
+        // if (0 >= price || price <= 100000) {
+        //     alert("잘못된 수랑입니다.수량을 다시 한번 확인해주세요.");
+        //     return;
+        // }
+        //
+        // if (0 >= opt1.length || opt1.length <= 10) {
+        //     alert("잘못된 사이즈 정보입니다. 다시 한번 확인해주세요");
+        //     return;
+        // }
+        //
+        // if (0 >= opt2.length || opt2.length <= 10) {
+        //     alert("잘못된 색상 정보입니다. 다시 한번 확인해주세요");
+        //     return;
+        // }
+        //
+        // if (0 >= opt3.length || opt3.length <= 10) {
+        //     alert("잘못된 고객 정보입니다. 다시 한번 확인해주세요");
+        //     return;
+        // }
+
 
         // Json 객체 직렬화
         const basketItemDto = JSON.stringify({
@@ -116,7 +144,6 @@ $(document).ready(function(){
     });
 
     const selectOpt1 = function (e) {
-        alert('hey!');
         $(".opt1").val(e);
     }
 
@@ -158,8 +185,6 @@ $(document).ready(function(){
 
     // 주문 버튼, post 전송
     $('.order-btn').on('click', function (e) {
-        alert("start");
-
         if (!checkOpt()) {
             alert('상품의 옵션과 수량을 지정해주세요!');
             return;
@@ -173,6 +198,7 @@ $(document).ready(function(){
         const price = parseInt($('.item-info').find('.disc_price').val());
         const opt1 = $('.opt1').val();
         const opt2 = $('.opt2').val();
+        const opt3 = $('.infoWrapper').find('.type').val();
 
 
         // form 동적으로 생성
@@ -183,7 +209,7 @@ $(document).ready(function(){
         formText += '<input type="hidden" name="price" value="'+ price + '">';
         formText += '<input type="hidden" name="opt1" value="'+ opt1 + '">';
         formText += '<input type="hidden" name="opt2" value="'+ opt2 + '">';
-
+        formText += '<input type="hidden" name="opt3" value="'+ opt3 + '">';
 
         // 포스트로 전송
         $('.order-form').html(formText);

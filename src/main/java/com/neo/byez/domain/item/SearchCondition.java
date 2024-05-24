@@ -100,6 +100,8 @@ public class SearchCondition {
             option = "TC";
         } else if (nameKeyword.length() > 0 && typeKeyword.length() > 0){
             option = "NT";
+        } else if (nameKeyword.length() > 0){
+            option = "N";
         } else {
             option = "T";
         }

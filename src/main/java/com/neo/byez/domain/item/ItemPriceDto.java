@@ -32,6 +32,23 @@ public class ItemPriceDto {
         this.up_id = up_id;
     }
 
+    public ItemPriceDto(String num, double disc_rate, int period, Date start_date, Date end_date,
+            String remark) {
+        this.num = num;
+        this.disc_rate = disc_rate;
+        this.period = period;
+        this.start_date = start_date;
+        this.end_date = end_date;
+        this.remark = remark;
+    }
+
+    public ItemPriceDto(String num, double disc_rate, int period, String remark) {
+        this.num = num;
+        this.disc_rate = disc_rate;
+        this.period = period;
+        this.remark = remark;
+    }
+
     public String getNum() {
         return num;
     }
