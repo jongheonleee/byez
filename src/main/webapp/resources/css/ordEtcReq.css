@@ -88,7 +88,7 @@ table td{text-align: left; padding: 10px 20px;}
 
 
 /* 옵션변경버튼 왼쪽으로 정렬(아이디:changeOptionBtn) */
-#changeOptionBtn {
+#changeOptionBtn{
     float: left; /* 버튼을 왼쪽으로 정렬 */
     margin-top: 10px; /* 위쪽 여백 */
     padding: 5px 10px; /* 내부 패딩을 좀 더 넉넉하게 조절 */
@@ -97,6 +97,17 @@ table td{text-align: left; padding: 10px 20px;}
     color: black;
     cursor: pointer; /* 커서를 손가락 모양으로 변경 */
     transition: background-color 0.3s, box-shadow 0.3s; /* 배경색과 그림자 변화에 애니메이션 효과 적용 */
+}
+
+#zpcdBtn {
+    margin-top: 10px;
+    margin-left: 5px;
+    padding: 3px 8px;
+    border: 1px solid gray;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
 
 #changeOptionBtn:hover {
@@ -196,3 +207,6 @@ table td{text-align: left; padding: 10px 20px;}
 input::placeholder {
     color: grey; /* 플레이스홀더 텍스트의 색상 */
 }
+
+/*테이블간 간격 넓이기 */
+table {margin-bottom: 70px;}

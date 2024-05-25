@@ -346,7 +346,7 @@
                         <button id="changeOptionBtn" type = "button">옵션변경</button>
                     </td>
                     <td>${orderDetailDto.item_qty}</td>
-                    <td>${orderDetailDto.item_price}</td>
+                    <td>${orderDetailDto.item_price}원</td>
                     <td>${orderDetailDto.ord_state}</td>
                 </tr>
             </table>
@@ -429,7 +429,7 @@
                         </td>
                         <td class="addressText" >* 수령인<input type="text" name="new_rcpr" value="" oninput="setRcpr(this.value)" placeholder="한글만 입력해주세요.">
                             <p>
-                                <span>* 우편번호 <button type="button" onclick="findZpcd_DaumPostcode()">우편번호 검색</button>
+                                <span>* 우편번호 <button type="button" id="zpcdBtn" onclick="findZpcd_DaumPostcode()">우편번호검색</button>
                                     <input type="text" name="new_zpcd" id="zpcdSearch" value=""   readonly></span>
                                 <span>* 기본주소<input type="text" name="new_main_addr" id="mainAddr" value=""   readonly></span>
                                 <span>* 상세주소<input type="text" name="new_detail_addr" id="detailAddr" value="" oninput="setDetailAddr(this.value)" placeholder="상세주소를 정확히 입력해주세요."></span>
@@ -495,7 +495,7 @@
     </div>
 
     <form id="submitForm" action="/exchangeOrder" method="post">
-        // 상품 정보
+
         <input type="hidden" class="item_info" name="ord_num" value="${ord_num}">
         <input type="hidden" class="item_info" name="seq" value="${orderDetailDto.seq}">
         <input type="hidden" class="item_info" name="opt1" value="">
@@ -504,12 +504,12 @@
         <input type="hidden" class="item_info" name="state_code" value="EXC1">
         <input type="hidden" class="item_info" name="ord_state" value="교환신청">
 
-        // 기타 정보
+
         <input type="hidden" class="etc_info" name="reason_code" value="">
         <input type="hidden" class="etc_info" name="pickup_chk" value="Y">
         <input type="hidden" class="etc_info" name="chg_check" value="Y">
 
-        // 배송지 정보
+
         <input type="hidden" class="delivery_info" name="rcpr" value="${deliveryDto.rcpr}">
         <input type="hidden" class="delivery_info" name="rcpr_mobile" value="${deliveryDto.rcpr_mobile}">
         <input type="hidden" class="delivery_info" name="zpcd" value="${deliveryDto.zpcd}">
@@ -657,6 +657,11 @@
         $('input[name=detail_addr].delivery_info').val(v);
     }
 
+    // 이전페이지로 돌아가기
+    function goBack() {
+        window.location.href = '/order/list'
+    }
+
 
     // 이벤트 연결
     // 모달창 띄우기
@@ -714,6 +719,9 @@
         $('#submitForm').submit();
     });
 
+
+    //이전페이지로 이동
+    $('.back').on('click', goBack);
 
 
     // 주소검색 API

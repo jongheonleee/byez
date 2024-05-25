@@ -84,7 +84,7 @@
         select *
         from ord_detail
         WHERE id = #{id}
-          AND ord_state NOT IN ('구매확정', '배송완료', '주문완료');
+          AND ord_state NOT IN ('구매확정', '배송완료', '주문완료', '주문대기');
     </select>
 
     <update id = "updateOption" parameterType="OrderDetailDto">

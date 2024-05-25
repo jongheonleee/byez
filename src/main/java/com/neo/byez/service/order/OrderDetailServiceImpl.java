@@ -27,6 +27,11 @@ public class OrderDetailServiceImpl implements  OrderDetailService{
         return ordDetailDao.selectByOrdNum(ord_num);
     }
 
+    @Override
+    public OrderDetailDto selectNumAndSeq(String ord_num, Integer seq) throws Exception {
+        return ordDetailDao.selectNumAndSeq(ord_num,seq);
+    }
+
 
     @Override
     public List<OrderDetailDto> getOrderDetailsList(String id) throws Exception {
@@ -76,7 +81,7 @@ public class OrderDetailServiceImpl implements  OrderDetailService{
     }
 
     @Override
-    public OrderDetailDto selectOneSeqForExchange(String ord_num, Integer seq) throws Exception {
+    public OrderDetailDto selectOneSeq(String ord_num, Integer seq) throws Exception {
         return ordDetailDao.selectNumAndSeq(ord_num, seq);
     }
 

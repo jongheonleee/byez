@@ -42,7 +42,6 @@
                         <th scope="col">주문상태</th>
                     </tr>
                     <tr>
-                    <c:forEach var="orderDetailDto" items="${refundList}">
                         <td class="orderNum">
                             <p>${orderDetailDto.ord_date}</p>
                             <p>${orderDetailDto.ord_num}</p>
@@ -52,10 +51,9 @@
                             <p id ="originalOption">옵션: ${orderDetailDto.opt1}/${orderDetailDto.opt2}</p>
                         </td>
                         <td>${orderDetailDto.item_qty}</td>
-                        <td>${orderDetailDto.item_price}</td>
+                        <td>${orderDetailDto.item_price}원</td>
                         <td>${orderDetailDto.ord_state}</td>
                     </tr>
-                    </c:forEach>
                 </table>
 
                 <p class="table_title">반품사유
@@ -131,7 +129,7 @@
                         </td>
                         <td class="addressText" >* 수령인<input type="text" name="new_rcpr" value="" oninput="checkRcpr()" placeholder="한글만 입력해주세요.">
                             <p>
-                            <span>* 우편번호 <button type="button" onclick="findZpcd_DaumPostcode()">우편번호 검색</button>
+                            <span>* 우편번호 <button type="button" onclick="findZpcd_DaumPostcode()">우편번호검색</button>
                                 <input type="text" name="new_zpcd" id="zpcdSearch" value=""  readonly></span>
                                 <span>* 기본주소<input type="text" name="new_main_addr" id="mainAddr" value="" readonly></span>
                                 <span>* 상세주소<input type="text" name="new_detail_addr" id="detailAddr" value="" placeholder="상세주소를 정확히 입력해주세요."></span>
@@ -391,16 +389,7 @@
         return true;
     }
 
-        //반품신청버튼 클릭
-        document.addEventListener("DOMContentLoaded", function() {
-            document.getElementById("refundBtn").onclick = function() {
-                let form = $('form');
-                let chg_chk = form.find('input[name="chg_chk"]:checked').val();
-                let new_rcpr = form.find('input[name="new_rcpr"]').val().trim();
-                let new_zpcd = form.find('input[name="new_zpcd"]').val().trim();
-                let new_main_addr = form.find('input[name="new_main_addr"]').val().trim();
-                let new_detail_addr = form.find('input[name="new_detail_addr"]').val().trim();
-                let new_rcpr_mobile = form.find('input[name="new_rcpr_mobile"]').val().trim();
+
     //TODO 수거지 변경 시 수거지 입력 유효성 검증
     function checkRcpr() {
         // 수거신청인 입력값 유효성 검증
@@ -447,19 +436,7 @@
         return true;
     }
 
-    //교환신청버튼 클릭
-    document.addEventListener("DOMContentLoaded", function() {
-        document.getElementById("refundBtn").onclick = function() {
-            let form = $('form');
-            let chg_chk = form.find('input[name="chg_chk"]:checked').val();
-            let noReqChecked = document.getElementById("noReq").checked;
-
-            let new_rcpr = form.find('input[name="new_rcpr"]').val().trim();
-            let new_zpcd = form.find('input[name="new_zpcd"]').val().trim();
-            let new_main_addr = form.find('input[name="new_main_addr"]').val().trim();
-            let new_detail_addr = form.find('input[name="new_detail_addr"]').val().trim();
-            let new_rcpr_mobile = form.find('input[name="new_rcpr_mobile"]').val().trim();
-    //교환신청버튼 클릭
+    //반품신청버튼 클릭
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("refundBtn").onclick = function() {
             let form = $('form');

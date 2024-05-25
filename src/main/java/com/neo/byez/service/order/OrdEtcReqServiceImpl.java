@@ -131,14 +131,16 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
             rowCnt += orderDao.updateStateCode(orderDto);
             rowCnt += orderStateDao.insert(orderStateDto);
             rowCnt += deliveryDao.insert(deliveryDto);
-            int updateCnt = orderDetailDao.updateOrdState(orderDetailDto);
+            rowCnt += orderDetailDao.updateEachOrdState(orderDetailDto);
 
-            List list = orderDetailDao.selectByOrdNum(orderDetailDto.getOrd_num());
-            int DBCnt = list.size();
+//            int updateCnt = orderDetailDao.updateOrdState(orderDetailDto);
 
-            if (updateCnt == DBCnt) {
-                rowCnt++;
-            }
+//            List list = orderDetailDao.selectByOrdNum(orderDetailDto.getOrd_num());
+//            int DBCnt = list.size();
+//
+//            if (updateCnt == DBCnt) {
+//                rowCnt++;
+//            }
             if (rowCnt != 5) {
                 throw new Exception("insertRefund ERROR rowCnt에러");
             }
@@ -156,20 +158,16 @@ public class OrdEtcReqServiceImpl implements OrdEtcReqService {
 
             String id = "user1";
             String ord_num = orderDto.getOrd_num();
-            orderStateDto.setSaveReadyInfo(id,0, ord_num,orderStateDto.getState_code() );
-            // 주문상태, 배송번호 초기화
+
+            orderStateDto.setSaveReadyInfo(id, 0, ord_num,orderStateDto.getState_code() );
+            // 주문상태초기화
             setOrderStateSeq(orderStateDto);
 
             rowCnt += orderDao.updateStateCode(orderDto);
             rowCnt += orderStateDao.insert(orderStateDto);
-            int updateCnt = orderDetailDao.updateOrdState(orderDetailDto);
+            rowCnt += orderDetailDao.updateEachOrdState(orderDetailDto);
 
-            List list = orderDetailDao.selectByOrdNum(orderDetailDto.getOrd_num());
-            int DBCnt = list.size();
 
-            if (updateCnt == DBCnt) {
-                rowCnt++;
-            }
             if (rowCnt != 3) {
                 throw new Exception("Confirm Purchase ERROR rowCnt에러");
             }

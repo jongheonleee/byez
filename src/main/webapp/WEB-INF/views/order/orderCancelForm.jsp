@@ -53,7 +53,7 @@
                             <p id ="originalOption">옵션: ${orderDetailDto.opt1}/${orderDetailDto.opt2}</p>
                         </td>
                         <td>${orderDetailDto.item_qty}</td>
-                        <td>${orderDetailDto.item_price}</td>
+                        <td>${orderDetailDto.item_price}원</td>
                         <td>${orderDetailDto.ord_state}</td>
                     </tr>
                     </c:forEach>

@@ -118,12 +118,13 @@
                                                 <%-- 주문취소버튼--%>
                                             <form action = "/cancel" method="post" class="form_center">
                                                 <input type="hidden" name="ord_num" value="${orderDetailDto.ord_num}">
-                                                <c:if test="${orderDetailDto.ord_state == '주문완료'  }">
+                                                <c:if test="${orderDetailDto.ord_state == '주문완료'||'주문대기' }">
                                                     <input type="submit" class="cancel_button" value="취소">
                                                 </c:if>
                                             </form>
                                                 <%-- 주문반품버튼--%>
                                             <form action = "/refund" method="post" class="form_center">
+                                                <input type="hidden" name="seq" value="${orderDetailDto.seq}">
                                                 <input type="hidden" name="ord_num" value="${orderDetailDto.ord_num}">
                                                 <c:if test="${orderDetailDto.ord_state == '배송완료' || '배송중'|| '교환완료'  }">
                                                     <input type="submit" class="refund_button" value="반품">
@@ -147,7 +148,7 @@
                                     </p>
                                 </td>
                                 <td>${orderDetailDto.item_qty}</td>
-                                <td>${orderDetailDto.item_price}</td>
+                                <td>${orderDetailDto.item_price}원</td>
                                 <td class="order_actions">
                                     <div class="confirmDiv">${orderDetailDto.ord_state}</div>
                                     <form action = "/confirmPurchase" method = "post" class="form_center">
@@ -158,6 +159,7 @@
                                             <input type="submit" class="confirm_button" value="구매확정">
                                             <input type = "hidden" name="ord_state" value="구매확정">
                                             <input type = "hidden" name="state_code" value="CPS">
+                                                <input type = "hidden" name="seq" value="${orderDetailDto.seq}">
                                             </div>
                                         </c:if>
                                     </form>
@@ -261,7 +263,7 @@
                                 </p>
                             </td>
                             <td>${orderDetailDto.item_qty}</td>
-                            <td>${orderDetailDto.item_price}</td>
+                            <td>${orderDetailDto.item_price}원</td>
                             <td>${orderDetailDto.ord_state}</td>
                         </tr>
                         </c:forEach>

@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import javax.xml.transform.Source;
 import java.util.List;
 
 @Controller
@@ -186,18 +187,24 @@ public class OrdEtcReqController {
      */
 
     @RequestMapping(value = "/refund")
-    public String moveToRefundForm(String ord_num,  Model m) throws Exception {
+    public String moveToRefundForm(String ord_num, Integer seq, Model m) throws Exception {
 
         String userId = "user1";
 //        String userId = (String) session.getAttribute("userId");
 
         DeliveryDto deliveryDto = deliveryDao.selectByOrdNum(ord_num);
-        List<OrderDetailDto> refundList = orderDetailService.selectOneOrdDetail(ord_num);
+//        List<OrderDetailDto> refundList = orderDetailService.selectOneOrdDetail(ord_num);
+
+        //240524 유경 수정 -> 전체반품에서 부분반품 가능하도록 1개의 주문내역만 선택하기 위함
+        //list로 한 ord_num의 모든 주문내역을 받아오다가 단 한개만 가져온다.
+
+        OrderDetailDto orderDetailDto = orderDetailService.selectOneSeq(ord_num,seq);
         m.addAttribute("reg_id",userId);
         m.addAttribute("up_id",userId);
         m.addAttribute("ord_num",ord_num);
-        m.addAttribute("refundList",refundList);
+        m.addAttribute("orderDetailDto",orderDetailDto);
         m.addAttribute("deliveryDto", deliveryDto);
+        System.out.println(orderDetailDto);
 
         return "/order/orderRefundForm";
     }
@@ -282,8 +289,8 @@ public class OrdEtcReqController {
 //        String userId = (String) session.getAttribute("userId");
         m.addAttribute("id",userId);
 
-        List<OrderDetailDto> exchangeList = orderDetailService.selectOneOrdDetail(ord_num);
-        OrderDetailDto orderDetailDto = orderDetailService.selectOneSeqForExchange(ord_num, seq);
+
+        OrderDetailDto orderDetailDto = orderDetailService.selectOneSeq(ord_num, seq);
         List<ItemOptionDto> colorList = orderDetailService.selectColorOption(item_num);
         List<ItemOptionDto> sizeList = orderDetailService.selectSizeOption(item_num);
 
