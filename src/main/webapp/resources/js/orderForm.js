@@ -21,12 +21,12 @@
         let zpcd = deliveryItem.zpcd;
         let main_addr = deliveryItem.main_addr;
         let detail_addr = deliveryItem.detail_addr;
-        let addr = '(' + zpcd + ') ' + main_addr + ' ' + detail_addr;
+        // let addr = '(' + zpcd + ') ' + main_addr + ' ' + detail_addr;
 
         // 선택한 배송지 출력
         $('#delivery_view_rcpr').html(rcpr);
         $('#delivery_view_mobile').html(mobile);
-        $('#delivery_view_addr').html(addr);
+        $('#delivery_view_addr').html('(' + zpcd + ') ' + main_addr + ' ' + detail_addr);
     }
 
 // 전송용 태그에 저장 - 배송지 정보
@@ -129,19 +129,25 @@
                         extraAddr = ' (' + extraAddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    // document.getElementById("sample6_extraAddress").value = extraAddr;
+                    $('#delivery_form_main_addr').val(extraAddr);
+
+                    // 전송용 태그에 저장
+                    setDeliveryMainAddr(extraAddr);
 
                 } else {
-                    document.getElementById("sample6_extraAddress").value = '';
+                    // $('#delivery_form_main_addr').val('');
+                    $('#delivery_form_main_addr').val(addr);
+
+                    // 전송용 태그에 저장
+                    setDeliveryMainAddr(addr);
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                 $('#delivery_form_zpcd').val(data.zonecode);
-                $('#delivery_form_main_addr').val(addr);
 
                 // 전송용 태그에 저장
                 setDeliveryZpcd(data.zonecode);
-                setDeliveryMainAddr(addr);
+
 
                 // 커서를 상세주소 필드로 이동한다.
                 $('#delivery_form_detail_addr').focus();
@@ -209,10 +215,14 @@
 
 // 쿠폰 적용 전 가격으로 초기화
     function cancleCoupon() {
+        let promotion = previousDiscountAmount.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        let total_pay_price = previousTotalPaymentAmount.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+
         // 결제 초기화 정보 출력
-        document.getElementById('payment_view_couponPrice').textContent = previousDiscountAmount;
-        document.getElementById('payment_view_discountPrice').textContent = previousDiscountAmount;
-        document.getElementById('payment_view_payPrice').textContent = previousTotalPaymentAmount;
+        document.getElementById('payment_view_couponPrice').textContent = promotion;
+        document.getElementById('payment_view_discountPrice').textContent = promotion;
+        document.getElementById('payment_view_payPrice').textContent = total_pay_price;
 
         // 결제 위젯 초기화
         paymentMethodWidget.updateAmount(previousTotalPaymentAmount);
@@ -272,12 +282,6 @@
         // 총 결제금액을 계산
         var total_pay_price = total_price - promotion;
 
-
-        // 결과 표시
-        $('#payment_view_couponPrice').text(promotion);
-        $('#payment_view_discountPrice').text(promotion);
-        $('#payment_view_payPrice').text(total_pay_price);
-
         // 전송용 태그에 저장 - 총 할인금액
         setTotalDiscountPrice(promotion);
 
@@ -286,6 +290,15 @@
 
         // 결제 위젯 결제금액 업데이트
         paymentMethodWidget.updateAmount(total_pay_price);
+
+        // 금액 , 파싱
+        promotion = promotion.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+        total_pay_price = total_pay_price.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+
+        // 결과 표시
+        $('#payment_view_couponPrice').text(promotion);
+        $('#payment_view_discountPrice').text(promotion);
+        $('#payment_view_payPrice').text(total_pay_price);
     }
 
 //끝 - 쿠폰 관련
@@ -464,12 +477,12 @@
 
 // ------ '결제하기' 버튼 누르면 결제창 띄우기 ------
 // @docs https://docs.tosspayments.com/reference/widget-sdk#requestpayment결제-정보
+button.addEventListener("click", orderNumGenerateRequest);
 
 $(function (){
     // button.on("click", orderNumGenerateRequest);
-    button.addEventListener("click", orderNumGenerateRequest);
     selectDeliveryItem(0);
-    $('#delivery_choice_0').prop('checked', true);
+    // $('#delivery_choice_0').prop('checked', true);
 })
 
 

@@ -55,7 +55,7 @@
                     <div class="container">
                         <!-- 이미지 -->
                         <div class="box box1">
-                            <img src="${offList.main_img}" alt="Product Image">
+                            <img src="/img/${offList.main_img}" alt="Product Image">
                         </div>
                         <!-- 상품상세 -->
                         <div class="box box2">

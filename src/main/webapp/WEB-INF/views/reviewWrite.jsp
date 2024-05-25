@@ -42,7 +42,7 @@
                     <tr>
                         <th>
                             <div class="first_image">
-                                <img src="${ordDetailDto.main_img}">
+                                <img src="/img/${ordDetailDto.main_img}">
                             </div>
                         </th>
                         <td class="item_info">

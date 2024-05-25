@@ -1,5 +1,4 @@
-
-  $(document).ready(function() {
+$(document).ready(function() {
   let totalCnt = 0;
   let orderPrice = 0;
 
@@ -8,12 +7,12 @@
   // 주문 예상 정보 업데이트
 
   $('.basketITemInfo').each(function (i, e) {
-  if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
-  // 값 조회
-  totalCnt += parseInt($(e).find(".eachBasketItemQty").val());
-  orderPrice += parseInt($(e).find(".eachBasketItemPrice").val()) * parseInt($(e).find(".eachBasketItemQty").val());
-}
-})
+    if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
+      // 값 조회
+      totalCnt += parseInt($(e).find(".eachBasketItemQty").val());
+      orderPrice += parseInt($(e).find(".eachBasketItemPrice").val()) * parseInt($(e).find(".eachBasketItemQty").val());
+    }
+  })
 
 
   $(".totalCnt").html(totalCnt.toLocaleString());
@@ -21,44 +20,44 @@
 });
 
 
-  $('.allBasketItemCheckBox').on("change", function () {
+$('.allBasketItemCheckBox').on("change", function () {
   calculateOrderInfo();
 });
 
-  $('.basketItemCheckBox').on("change", function () {
+$('.basketItemCheckBox').on("change", function () {
   calculateOrderInfo();
 });
 
-  const calculateOrderInfo = function () {
+const calculateOrderInfo = function () {
   let totalCnt = 0;
   let orderPrice = 0;
 
   $('.basketITemInfo').each(function (i, e) {
-  if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
-  // 값 조회
-  totalCnt += parseInt($(e).find(".eachBasketItemQty").val());
-  orderPrice += parseInt($(e).find(".eachBasketItemPrice").val()) * parseInt($(e).find(".eachBasketItemQty").val());
-}
-})
+    if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
+      // 값 조회
+      totalCnt += parseInt($(e).find(".eachBasketItemQty").val());
+      orderPrice += parseInt($(e).find(".eachBasketItemPrice").val()) * parseInt($(e).find(".eachBasketItemQty").val());
+    }
+  })
 
   $(".totalCnt").html(totalCnt.toLocaleString());
   $(".orderPrice").html(orderPrice.toLocaleString());
 
 }
 
-  $(".sendModalBtn").on("click", function(e){
-    e.preventDefault();
-    let seq = parseInt($(this).parents("div.modalBody").find("input.seq").val());
-    let id = $(this).parents("div.modalBody").find("input.id").val();
-    let name = $(this).parents("div.modalBody").find("input.name").val();
-    let num = $(this).parents("div.modalBody").find("input.num").val();
-    let qty = parseInt($(this).parents("div.modalBody").find("input.qty").val());
-    let price = parseInt($(this).parents("div.modalBody").find("input.price").val());
-    let opt1 = $(this).parents("div.modalBody").find("input.opt1").val();
-    let opt2 = $(this).parents("div.modalBody").find("input.opt2").val();
-    let opt3 = $(this).parents('div.modalBody').find('input.opt3').val();
+$(".sendModalBtn").on("click", function(e){
+  e.preventDefault();
+  let seq = parseInt($(this).parents("div.modalBody").find("input.seq").val());
+  let id = $(this).parents("div.modalBody").find("input.id").val();
+  let name = $(this).parents("div.modalBody").find("input.name").val();
+  let num = $(this).parents("div.modalBody").find("input.num").val();
+  let qty = parseInt($(this).parents("div.modalBody").find("input.qty").val());
+  let price = parseInt($(this).parents("div.modalBody").find("input.price").val());
+  let opt1 = $(this).parents("div.modalBody").find("input.opt1").val();
+  let opt2 = $(this).parents("div.modalBody").find("input.opt2").val();
+  let opt3 = $(this).parents('div.modalBody').find('input.opt3').val();
 
-    // 검증 로직 추가
+  // 검증 로직 추가
 
 
   $(".updateSeq").val(seq);
@@ -74,8 +73,8 @@
   $(".updateBasketItem").submit();
 });
 
-  /* 장바구니 삭제 버튼 */
-  $(".deleteBtn").on("click", function(e){
+/* 장바구니 삭제 버튼 */
+$(".deleteBtn").on("click", function(e){
   e.preventDefault();
 
   // 값 조회
@@ -90,24 +89,24 @@
   $(".deleteBasketItem").submit();
 });
 
-  $('.allBasketItemCheckBox').on("click", function () {
+$('.allBasketItemCheckBox').on("click", function () {
   if ($(".allBasketItemCheckBox").is(":checked")) {
-  $(".basketItemCheckBox").prop("checked", true);
-} else {
-  $(".basketItemCheckBox").prop("checked", false);
-}
+    $(".basketItemCheckBox").prop("checked", true);
+  } else {
+    $(".basketItemCheckBox").prop("checked", false);
+  }
 });
 
-  $('.basketItemCheckBox').on("click", function () {
+$('.basketItemCheckBox').on("click", function () {
   if ($(this).prop("checked")) {
-  $(this).attr("checked", true);
-} else {
-  $(this).attr("checked", false);
-}
+    $(this).attr("checked", true);
+  } else {
+    $(this).attr("checked", false);
+  }
 });
 
-  /* 장바구니 모든 상품 삭제 버튼 */
-  $(".deleteAllBtn").on("click", function(e){
+/* 장바구니 모든 상품 삭제 버튼 */
+$(".deleteAllBtn").on("click", function(e){
   e.preventDefault();
 
   const id = $(this).data("id");
@@ -116,41 +115,42 @@
   $(".deleteAllBasketItemForm").submit();
 });
 
-  $(".deleteSeveralBtn").on("click", function (e) {
+$(".deleteSeveralBtn").on("click", function (e) {
   let formContents = '';
   let deleteNumber = 0;
 
   $('.basketITemInfo').each(function (i, e) {
-  if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
-  // 값 조회
-  let id = $(e).find(".eachBasketItemId").val();
-  let seq = $(e).find(".eachBasketItemSeq").val();
+    if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
+      // 값 조회
+      let id = $(e).find(".eachBasketItemId").val();
+      let seq = $(e).find(".eachBasketItemSeq").val();
 
 
-  // input 태그 생성
-  let inputItemId = "<input name='orders[" + deleteNumber + "].id' type='hidden' value='" + id + "'>";
-  let inputItemSeq = "<input name='orders[" + deleteNumber + "].seq' type='hidden' value='" + seq + "'>";
+      // input 태그 생성
+      let inputItemId = "<input name='orders[" + deleteNumber + "].id' type='hidden' value='" + id + "'>";
+      let inputItemSeq = "<input name='orders[" + deleteNumber + "].seq' type='hidden' value='" + seq + "'>";
 
-  // form에 추가
-  formContents += inputItemId;
-  formContents += inputItemSeq;
+      // form에 추가
+      formContents += inputItemId;
+      formContents += inputItemSeq;
 
-  // 삭제 번호 증가
-  deleteNumber += 1;
-}
-})
+      // 삭제 번호 증가
+      deleteNumber += 1;
+    }
+  })
 
   // form 전송
   $(".deleteSeveralBasketItemForm").html(formContents);
   $(".deleteSeveralBasketItemForm").submit();
 });
 
-  /* 장바구니 선택 상품 구매 버튼 */
-  $(".orderBtn").on("click", function(){
+/* 장바구니 선택 상품 구매 버튼 */
+$(".orderBtn").on("click", function(){
   let formContents = '';
   let orderNumber = 0;
 
   $('.basketItemInfo').each(function(i, e) {
+
       if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
           // 값 조회
           const seq = parseInt($(e).find(".eachBasketItemSeq").val());
@@ -188,29 +188,29 @@
   $(".orderCheckedBasketItemForm").submit();
 });
 
-  $('.deleteSelectedBtn').on("click", function () {
+$('.deleteSelectedBtn').on("click", function () {
   let deleteNumber = 0;
   let formContents = '';
 
 
   $(".basketItemInfo").each(function (i, e) {
-  if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
-  // 값 조회
-  let id = $(e).find(".eachBasketItemId").val();
-  let seq = $(e).find(".eachBasketItemSeq").val();
+    if ($(e).find(".basketItemCheckBox").is(":checked") === true) {
+      // 값 조회
+      let id = $(e).find(".eachBasketItemId").val();
+      let seq = $(e).find(".eachBasketItemSeq").val();
 
-  // input 태그 생성
-  let inputItemId = "<input name='deletes[" + deleteNumber + "].id' type='hidden' value='" + id + "'>";
-  let inputItemSeq = "<input name='deletes[" + deleteNumber + "].seq' type='hidden' value='" + seq + "'>";
+      // input 태그 생성
+      let inputItemId = "<input name='deletes[" + deleteNumber + "].id' type='hidden' value='" + id + "'>";
+      let inputItemSeq = "<input name='deletes[" + deleteNumber + "].seq' type='hidden' value='" + seq + "'>";
 
-  // form에 추가
-  formContents += inputItemId;
-  formContents += inputItemSeq;
+      // form에 추가
+      formContents += inputItemId;
+      formContents += inputItemSeq;
 
-  // 주문 번호 증가
-  deleteNumber += 1;
-}
-})
+      // 주문 번호 증가
+      deleteNumber += 1;
+    }
+  })
 
   $(".deleteSelectedBasketItem").html(formContents);
   $(".deleteSelectedBasketItem").submit();
@@ -218,42 +218,42 @@
 });
 
 
-  const selectOpt1 = function (e) {
+const selectOpt1 = function (e) {
   $(".opt1").val(e);
 }
 
-  const selectOpt2 = function (e) {
+const selectOpt2 = function (e) {
   $(".opt2").val(e);
 }
 
 
-  $('.openModalBtn').on("click", function(e) {
+$('.openModalBtn').on("click", function(e) {
   e.preventDefault();
   $(this).parent().find("div.modal").css("display", "flex");
 });
 
-  $('.closeModalBtn').on("click", function(e) {
+$('.closeModalBtn').on("click", function(e) {
   e.preventDefault();
   $(this).parents("div.modal").css("display", "none");
 })
 
-  $(function(){
-    $('._count :button').on({
-      'click' : function(e){
-        e.preventDefault();
-        let $cnt = $(this).parent('._count').find('.inp');
-        let currCnt = parseInt($cnt.val());
+$(function(){
+  $('._count :button').on({
+    'click' : function(e){
+      e.preventDefault();
+      let $cnt = $(this).parent('._count').find('.inp');
+      let currCnt = parseInt($cnt.val());
 
-        const minCnt = 1;
-        const maxCnt = 1000;
+      const minCnt = 1;
+      const maxCnt = 1000;
 
-        if ($(this).hasClass('minus') && currCnt>minCnt){
-          currCnt--;
-        } else if (!$(this).hasClass('minus') && currCnt<maxCnt){
-          currCnt++;
-        }
-
-        $cnt.val(currCnt);
+      if ($(this).hasClass('minus') && currCnt>minCnt){
+        currCnt--;
+      } else if (!$(this).hasClass('minus') && currCnt<maxCnt){
+        currCnt++;
       }
-    });
+
+      $cnt.val(currCnt);
+    }
   });
+});

@@ -7,6 +7,7 @@ public class OrderDetailDto {
     private Integer seq;            // 시퀀스
     private String item_num;        // 상품번호
     private String id;              // 주문자 id
+    private String main_img;        // 상품 이미지
     private String item_name;       // 상품명
     private Integer price;          // 상품금액
     private String item_comt;       // 상품 설명
@@ -40,7 +41,6 @@ public class OrderDetailDto {
         this.ord_state = ord_state;
     }
 
-
     public String getOrd_num() {
         return ord_num;
     }
@@ -71,6 +71,14 @@ public class OrderDetailDto {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getMain_img() {
+        return main_img;
+    }
+
+    public void setMain_img(String main_img) {
+        this.main_img = main_img;
     }
 
     public String getItem_name() {
@@ -238,6 +246,7 @@ public class OrderDetailDto {
                 ", seq=" + seq +
                 ", item_num='" + item_num + '\'' +
                 ", id='" + id + '\'' +
+                ", main_img='" + main_img + '\'' +
                 ", item_name='" + item_name + '\'' +
                 ", price=" + price +
                 ", item_comt='" + item_comt + '\'' +

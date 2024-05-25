@@ -33,9 +33,9 @@
         <div class="orderForm_header">
             <h2>Order / Payment</h2>
             <p>
-                <a href="main.html"><span>home</span></a>
+                <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="orderForm.html"><span>주문서</span></a>
+                <span>주문서</span>
             </p>
         </div>
 
@@ -83,66 +83,67 @@
                 </ul>
                 <!-- 탭 콘텐츠 -->
                 <div class="≈">
-
                     <div id="tab1-1" class="tab_content">
                         <div class="tab_c_arti">
-                            <!-- <p>123</p> -->
-                            <!-- 배송지 선택 폼 -->
-                            <ul class="info_list_delivery info_style">
-                                <!-- 배송지 목록 선택 -->
-                                <li class="list_item">
-                                    <span class="list_item_label">배송지</span>
-                                    <div class="list_item_area">
-                                        <ul>
-                                            <!--
-                                                TODO:배송지 목록 없는 경우 직접 입력 보여줄것
-                                            -->
-                                            <c:if test="${empty addressEntryDtoList}">
+                            <c:if test="${not empty addressEntryDtoList}">
+                                <ul class="info_list_delivery info_style">
+                                    <!-- 배송지 목록 선택 -->
+                                    <li class="list_item">
+                                        <span class="list_item_label">배송지</span>
+                                        <div class="list_item_area">
+                                            <ul>
+                                                <c:forEach var="addr" items="${addressEntryDtoList}" varStatus="status">
+                                                    <li>
+                                                        <input type="hidden" id="dlvInfo_rcpr_${status.index}" value="${addr.recipient}">
+                                                        <input type="hidden" id="dlvInfo_rcpr_mobile_${status.index}" value="${addr.mobileNum}">
+                                                        <input type="hidden" id="dlvInfo_zpcd_${status.index}" value="${addr.zpcd}">
+                                                        <input type="hidden" id="dlvInfo_main_addr_${status.index}" value="${addr.mainAddr}">
+                                                        <input type="hidden" id="dlvInfo_detail_addr_${status.index}" value="${addr.detailAddr}">
 
-                                            </c:if>
-                                            <c:forEach var="addr" items="${addressEntryDtoList}" varStatus="status">
-                                                <li>
-                                                    <input type="hidden" id="dlvInfo_rcpr_${status.index}" value="${addr.recipient}">
-                                                    <input type="hidden" id="dlvInfo_rcpr_mobile_${status.index}" value="${addr.mobileNum}">
-                                                    <input type="hidden" id="dlvInfo_zpcd_${status.index}" value="${addr.zpcd}">
-                                                    <input type="hidden" id="dlvInfo_main_addr_${status.index}" value="${addr.mainAddr}">
-                                                    <input type="hidden" id="dlvInfo_detail_addr_${status.index}" value="${addr.detailAddr}">
-
-                                                    <input type="radio" name="delivery_list_item_btn" id="delivery_choice_${status.index}" onclick="selectDeliveryItem(${status.index})"/>
-                                                    <label for="delivery_choice_${status.index}">${addr.nick}</label>
-                                                </li>
-                                            </c:forEach>
-                                            <%--// 배송지 정보 --%>
-                                            <!-- ####### 버튼 나중에 구현 -->
-                                            <button type="button" class="order_button" onclick="showDelivery()" style="display: none">
-                                                배송지 변경
-                                            </button>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <!-- 이름/연락처 -->
-                                <li class="list_item">
-                                    <span class="list_item_label">이름/연락처</span>
-                                    <div class="list_item_area">
-                                        <ul>
-                                            <li id="delivery_view_rcpr"></li>
-                                            <li id="delivery_view_mobile"></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                                <!-- 주소(우편번호, 기본주소, 상세주소) -->
-                                <li class="list_item">
-                                    <span class="list_item_label">주소</span>
-                                    <div class="list_item_area">
-                                        <ul>
-                                            <li id="delivery_view_addr"></li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
+                                                        <input type="radio" name="delivery_list_item_btn" id="delivery_choice_${status.index}" <c:if test="${status.index==0}">checked</c:if> onclick="selectDeliveryItem(${status.index})"/>
+                                                        <label for="delivery_choice_${status.index}">${addr.nick}</label>
+                                                    </li>
+                                                </c:forEach>
+                                                    <%--// 배송지 정보 --%>
+                                                <!-- ####### 버튼 나중에 구현 -->
+                                                <button type="button" class="order_button" onclick="showDelivery()" style="display: none">
+                                                    배송지 변경
+                                                </button>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <!-- 이름/연락처 -->
+                                    <li class="list_item">
+                                        <span class="list_item_label">이름/연락처</span>
+                                        <div class="list_item_area">
+                                            <ul>
+                                                <li id="delivery_view_rcpr"></li>
+                                                <li id="delivery_view_mobile"></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <!-- 주소(우편번호, 기본주소, 상세주소) -->
+                                    <li class="list_item">
+                                        <span class="list_item_label">주소</span>
+                                        <div class="list_item_area">
+                                            <ul>
+                                                <li id="delivery_view_addr"></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </c:if>
+                            <c:if test="${empty addressEntryDtoList}">
+                                <ul class="info_list_delivery info_style" id="noDlvCheck">
+                                    <!-- 배송지 목록 선택 -->
+                                    <li class="list_item noDlv">
+                                        <p>등록된 배송지가 없습니다.</p>
+                                    </li>
+                                </ul>
+                            </c:if>
                         </div>
                     </div>
-                    <div id="tab1-2" class="tab_content">
+                    <div id="tab1-2" class="tab_content" <c:if test="${empty addressEntryDtoList}">style="display: block"</c:if> >
                         <div class="tab_c_arti">
                             <!-- <p>123</p> -->
                             <!-- 배송지 직접 입력 폼 -->
@@ -218,56 +219,59 @@
                 <p class="orderForm_title">상품정보</p>
                 <!-- 주문상품 정보 테이블-->
                 <table class="orderdetailInfo">
-                    <colgroup></colgroup>
                     <thead>
-                    <tr>
-                        <th scope="col">상품정보</th>
-                        <th scope="col">수량</th>
-                        <th scope="col">상품할인</th>
-                        <th scope="col">배송그룹</th>
-                        <th scope="col">배송비</th>
-                        <th scope="col">주문금액</th>
-                    </tr>
+                        <th>상품정보</th>
+                        <th>수량</th>
+                        <th>상품금액</th>
+                        <th>배송그룹</th>
+                        <th>배송비</th>
+                        <th>주문금액</th>
                     </thead>
                     <tbody>
-                    <c:forEach var="item" items="${basketItemDtoList}" varStatus="status">
-                        <!-- 주문상품 정보 -->
-                        <td class="orderDetail_info">
-                            <!-- 전송용 태그 - 주문상품 -->
-                            <input type="hidden" name="seq" value="${item.seq}">
-                            <input type="hidden" name="item_num" value="${item.num}">
-                            <input type="hidden" name="item_name" value="${item.name}">
-                            <input type="hidden" name="item_qty" value="${item.qty}">
-                            <input type="hidden" name="price" value="${item.price}">
-                            <input type="hidden" name="item_price" value="${(item.price) * (item.qty)}">
-                            <input type="hidden" name="opt1" value="${item.opt1}">
-                            <input type="hidden" name="opt2" value="${item.opt2}">
-                            <input type="hidden" name="opt3" value="${item.opt3}">
-                            <input type="hidden" name="opt4" value="${item.opt4}">
-                            <input type="hidden" name="opt5" value="${item.opt5}">
-                            <!--// 전송용 태그 - 주문상품 -->
-
-                            <!-- 주문상품 이미지 -->
-                            <div class="connect_img"></div>
-                            <!-- 상품번호 -->
-                            <div>${item.num}</div>
-                            <!-- 상품명 -->
-                            <div class="textLeft">${item.name}</div>
-                            <!-- 옵션 -->
-                            <div class="textLeft">옵션 : ${item.opt1}, ${item.opt2}</div>
-                        </td>
-                        <!-- 수량 -->
-                        <td>${item.qty}</td>
-                        <!-- 상품할인 -->
-                        <td>${item.price}원</td>
-                        <!-- 배송그룹 -->
-                        <td>그룹1</td>
-                        <!-- 배송비 -->
-                        <td>0원</td>
-                        <!-- 주문금액 -->
-                        <td>${(item.price) * (item.qty)}원</td>
-                        </tr>
-                    </c:forEach>
+                        <c:forEach var="item" items="${basketItemDtoList}" varStatus="status">
+                            <tr>
+                                <td class="orderDetail_info" style="text-align: center;">
+                                    <!-- 전송용 태그 - 주문상품 -->
+                                    <input type="hidden" name="seq" value="${item.seq}">
+                                    <input type="hidden" name="item_num" value="${item.num}">
+                                    <input type="hidden" name="main_img" value="${item.main_img}">
+                                    <input type="hidden" name="item_name" value="${item.name}">
+                                    <input type="hidden" name="item_qty" value="${item.qty}">
+                                    <input type="hidden" name="price" value="${item.price}">
+                                    <input type="hidden" name="item_price" value="${(item.price) * (item.qty)}">
+                                    <input type="hidden" name="opt1" value="${item.opt1}">
+                                    <input type="hidden" name="opt2" value="${item.opt2}">
+                                    <input type="hidden" name="opt3" value="${item.opt3}">
+                                    <input type="hidden" name="opt4" value="${item.opt4}">
+                                    <input type="hidden" name="opt5" value="${item.opt5}">
+                                    <!--// 전송용 태그 - 주문상품 -->
+                                    <div class="basketImgWrap">
+                                        <a href="/goods/${item.num}">
+<%--                                            <img src="/img/${item.main_img}">--%>
+                                            <img src="/img/${item.main_img}">
+                                        </a>
+                                    </div>
+                                    <div class="eachBasketInfo">
+                                        <p>
+                                            <a href="/goods/${item.num}">
+                                                <strong>${item.name}</strong>
+                                            </a>
+                                        </p>
+                                        <p>
+                                            [사이즈 : ${item.opt1} / 컬러 : ${item.opt2}]
+                                        </p>
+                                        <div>
+                                            ${item.opt3}
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="text-align: center;">${item.qty}</td>
+                                <td style="text-align: center;"><p class="sales_price"><fmt:formatNumber value="${item.price}" pattern="#,###"/></p></td>
+                                <td style="text-align: center;"><p class="sales_price">배송그룹1</p></td>
+                                <td style="text-align: center;"><p class="sales_price">0원</p></td>
+                                <td style="text-align: center;"><p class="sales_price"><fmt:formatNumber value="${item.qty * item.price}" pattern="#,###"/></p></td>
+                            </tr>
+                        </c:forEach>
                     </tbody>
                 </table>
             </div>
@@ -284,7 +288,7 @@
                     <tr>
                         <td>상품금액</td>
                         <td></td>
-                        <td><span id="payment_view_totalPrice">${orderDto.total_price}</span>원</td>
+                        <td><span id="payment_view_totalPrice"><fmt:formatNumber value="${orderDto.total_price}" pattern="#,###"/></span>원</td>
                     </tr>
                     <tr>
                         <td>쿠폰할인금액</td>
