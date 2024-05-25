@@ -85,22 +85,14 @@
                 </c:forEach>
                 </tbody>
             </table>
+            <c:if test="${coupons.size() == 0}">
+                <p class="message">보유중인 쿠폰이 없습니다.</p>
+            </c:if>
         </div>
     </div>
 </section>
-<footer>
-    <div class="wrapper">
-        <p>© 2024 spao-copymachine. All rights not reserved.</p>
-    </div>
-</footer>
-<div class="quick">
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
-        <img src="/img/quick_up.png" alt="">
-    </a>
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:$(document).height()},'slow');">
-        <img src="/img/quick_down.png" alt="">
-    </a>
-</div>
+<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
 <script src="/js/aside.js"></script>

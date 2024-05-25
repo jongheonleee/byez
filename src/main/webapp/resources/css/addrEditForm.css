@@ -46,22 +46,22 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 }
 
 .content > form > table tr {
-    border-bottom: 1px solid #dddddd; /* 각 테이블 행에 회색 하단 테두리 추가 */
+    border-bottom: 1px solid gray; /* 각 테이블 행에 회색 하단 테두리 추가 */
 }
 
 .addr_search_btn {
-    background-color: #FFFFFF; /* 흰 배경 */
-    border: 1px solid #DDDDDD; /* 매우 연한 회색 테두리 */
-    color: #000000; /* 검은 글자 */
+    background-color: white;
+    border: 1px solid gray;
+    color: black;
     margin: 2px 12px;
-    padding: 6px 14px; /* 상하 6px, 좌우 12px의 여백 */
-    white-space: nowrap; /* 텍스트 줄 바꿈 방지 */
+    padding: 6px 14px;
+    white-space: nowrap;
 }
 
 .edit_address_btn {
-    background-color: #000000; /* 흰 배경 */
-    border: 1px solid #DDDDDD; /* 매우 연한 회색 테두리 */
-    color: #FFFFFF; /* 검은 글자 */
+    background-color: black;
+    border: 1px solid gray;
+    color: white;
     padding: 18px 45px;
     text-align: center;
     text-decoration: none;
@@ -75,15 +75,15 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 }
 
 .edit_address_btn:hover {
-    background-color: #FFFFFF;
-    color: #000000;
-    border: 1px solid #000000;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
 }
 
 .cancle_btn {
-    background-color: #FFFFFF; /* 흰 배경 */
-    border: 1px solid #DDDDDD; /* 매우 연한 회색 테두리 */
-    color: #000000; /* 검은 글자 */
+    background-color: white;
+    border: 1px solid gray;
+    color: black;
     padding: 18px 45px;
     text-align: center;
     text-decoration: none;
@@ -97,7 +97,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 }
 
 .cancle_btn:hover {
-    border: 1px solid #000000;
+    border: 1px solid black;
 }
 
 tbody input {
@@ -127,5 +127,11 @@ tbody input {
 
 .editTable input {
     box-sizing: border-box;
-    border: 1px solid lightgray;
+    border: 1px solid gray;
+}
+
+input[readonly] {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    pointer-events: none;
 }

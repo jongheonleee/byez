@@ -28,11 +28,21 @@ public class AddrListServiceImpl implements AddrListService {
         List<AddressEntryDto> addresses = addrListDao.selectById(id);
 
         for (AddressEntryDto address : addresses) {
-            String mobileNum = "0" + address.getMobileNum();
-            String telNum = "0" + address.getTelNum();
+
+            String mobileNum = address.getMobileNum();
+            String telNum = address.getTelNum();
+
+            if(mobileNum != null) {
+                mobileNum = "0" + address.getMobileNum();
+            }
+
+            if(telNum != null) {
+                telNum = "0" + address.getTelNum();
+            }
 
             address.setMobileNum(mobileNum);
             address.setTelNum(telNum);
+
         }
         return addresses;
     }
@@ -42,8 +52,16 @@ public class AddrListServiceImpl implements AddrListService {
 
         AddressEntryDto addressEntryDto = addrListDao.selectBySeq(seq);
 
-        String mobileNum = "0" + addressEntryDto.getMobileNum();
-        String telNum = "0" + addressEntryDto.getTelNum();
+        String mobileNum = addressEntryDto.getMobileNum();
+        String telNum = addressEntryDto.getTelNum();
+
+        if(mobileNum != null) {
+            mobileNum = "0" + addressEntryDto.getMobileNum();
+        }
+
+        if(telNum != null) {
+            telNum = "0" + addressEntryDto.getTelNum();
+        }
 
         addressEntryDto.setMobileNum(mobileNum);
         addressEntryDto.setTelNum(telNum);
