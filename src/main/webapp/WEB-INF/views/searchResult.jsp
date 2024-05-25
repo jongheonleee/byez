@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/search_result.css?after">
+    <link rel="stylesheet" href="/css/search_result.css?after?after?after">
     <link rel="stylesheet" href="/css/footer.css?after?after">
     <link rel="stylesheet" href="/css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -26,23 +26,23 @@
                 <span>></span>
                 <span>상품검색</span>
             </p>
-                <c:if test="${nameKeyword == null}" >
-                    <div>
-                        <p>
-                            고객님<br>무엇을 찾으시나요?
-                            <!-- <img src="img/top_search_close.png" alt=""> -->
-                        </p>
-                    </div>
-                </c:if>
+            <c:if test="${searchCnt == 0}" >
+                <div>
+                    <p>
+                        검색 결과가 없습니다.
+                        <!-- <img src="img/top_search_close.png" alt=""> -->
+                    </p>
+                </div>
+            </c:if>
 
-                <c:if test="${nameKeyword != null}" >
-                    <div>
-                        <p>
-                            "${nameKeyword}" 에 대한 검색 결과입니다!
-                            <!-- <img src="img/top_search_close.png" alt=""> -->
-                        </p>
-                    </div>
-                </c:if>
+            <c:if test="${searchCnt != 0}" >
+                <div>
+                    <p>
+                        <span>"${nameKeyword}"</span> 에 대한 검색 결과입니다!
+                        <!-- <img src="img/top_search_close.png" alt=""> -->
+                    </p>
+                </div>
+            </c:if>
         </div>
         <div class="filter">
             <div class="filter_wrapper">
@@ -254,7 +254,7 @@
                 <c:forEach var="itemDto" items="${list}">
                     <li>
                         <a href="/goods/${itemDto.num}">
-                            <img src="${itemDto.main_img}" alt="">
+                            <img src="/img/${itemDto.main_img}" alt="">
                         </a>
                         <p class="item_name">
                             <span>${itemDto.name}</span>

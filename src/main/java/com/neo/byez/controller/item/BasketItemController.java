@@ -4,6 +4,7 @@ package com.neo.byez.controller.item;
 import com.neo.byez.domain.item.*;
 import com.neo.byez.service.item.BasketItemServiceImpl;
 import com.neo.byez.service.item.ItemServiceImpl;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -49,27 +50,34 @@ public class BasketItemController {
     @GetMapping("/basket")
     public String list(BasketItemDto dto, Model model, String msg, HttpSession session) {
         String id = (String) session.getAttribute("userId");
-        System.out.println(id);
         dto.setId(id);
         try {
             // 해당 유저의 장바구니 상품 목록 조회
             List<BasketItemDto> list = basketService.getBasketItem(dto);
-            int cnt = basketService.getCount(dto);
+            System.out.println(list);
+            System.out.println(list.size());
+
+            // 해당 유저의 장바구니 상품의 옵션 목록 생성
+            List<ItemDetailPageDto> list2 = new ArrayList<>();
+            for (BasketItemDto basketItemDto : list) {
+                ItemDetailPageDto itemDetailPageDto = itemService.readDetailItem(basketItemDto.getNum());
+                list2.add(itemDetailPageDto);
+            }
+
+            int basketCnt = basketService.getCount(dto);
 
             // 모델에 저장
-            session.setAttribute("cnt", cnt);
-            model.addAttribute("cnt", cnt);
+            session.setAttribute("basketCnt", basketCnt);
             model.addAttribute("list", list);
+            model.addAttribute("list2", list2);
             model.addAttribute("msg", msg);
 
-            // 페이지 이동
-            return "basket";
         } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("msg", ITEM_SELECT_FAIL.getMessage());
-
-            return "basket";
         }
+        // 페이지 이동
+        return "basket";
     }
 
     //

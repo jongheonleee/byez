@@ -1,8 +1,15 @@
 package com.neo.byez.controller.item;
 
 
-import com.neo.byez.domain.item.*;
-import com.neo.byez.service.item.*;
+import com.neo.byez.domain.item.BasketItemDto;
+import com.neo.byez.domain.item.BasketItemDtos;
+import com.neo.byez.domain.item.ItemDetailPageDto;
+import com.neo.byez.domain.item.ItemDto;
+import com.neo.byez.domain.item.ItemRegisterInfo;
+import com.neo.byez.domain.item.PageHandler;
+import com.neo.byez.domain.item.SearchCondition;
+import com.neo.byez.service.item.BasketItemServiceImpl;
+import com.neo.byez.service.item.ItemServiceImpl;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -37,7 +44,8 @@ public class ItemController {
         int basketCnt = 0;
         try {
             // 세션에서 아이디 조회
-            String id = (String) session.getAttribute("userId");
+            String id = (String) session.getAttribute("id");
+            id = "user1";
             if (id != null) {
                 BasketItemDto dto = new BasketItemDto();
                 dto.setId(id);
@@ -81,7 +89,7 @@ public class ItemController {
         int basketCnt = 0;
         try {
             // 세션에서 아이디 조회
-            String id = (String) session.getAttribute("userId");
+            String id = (String) session.getAttribute("id");
             if (id != null) {
                 BasketItemDto dto = new BasketItemDto();
                 dto.setId(id);
@@ -125,7 +133,8 @@ public class ItemController {
         int basketCnt = 0;
         try {
             // 세션에서 아이디 조회
-            String id = (String) session.getAttribute("userId");
+            String id = (String) session.getAttribute("id");
+            id = "user1";
             if (id != null) {
                 BasketItemDto dto = new BasketItemDto();
                 dto.setId(id);
@@ -185,7 +194,8 @@ public class ItemController {
         int basketCnt = 0;
         try {
             // 세션에서 아이디 조회
-            String id = (String) session.getAttribute("userId");
+            String id = (String) session.getAttribute("id");
+            id = "user1";
             if (id != null) {
                 BasketItemDto dto = new BasketItemDto();
                 dto.setId(id);
@@ -194,11 +204,13 @@ public class ItemController {
             }
 
             ItemDetailPageDto itemDetail = itemService.readDetailItem(num);
+            ItemDto itemDto = itemService.getItem(num);
             if (itemDetail == null) {
                 throw new Exception("상세 상품 정보를 정상적으로 조회하지 못했습니다. 존재하지 않는 상품일 확률이 높습니다.");
             }
 
             model.addAttribute("basketCnt", basketCnt);
+            model.addAttribute("itemDto", itemDto);
             model.addAttribute("itemDetail", itemDetail);
 
         } catch (Exception e) {
@@ -219,12 +231,10 @@ public class ItemController {
         try {
             dto.setNum(itemNum);
             // 세션에서 아이디 조회
-            String id = (String) session.getAttribute("userId");
+            String id = (String) session.getAttribute("id");
 //            if (id == null) {
 //                return "forward:/order";
 //            }
-
-            System.out.println(dto);
 
             id = "user1";
             // 장바구니 상품 등록
@@ -234,11 +244,10 @@ public class ItemController {
             dto.setMain_img(selectedDto.getMain_img());
             basketItemService.register(dto);
             BasketItemDto target = basketItemService.readByContent(dto);
-            BasketItemDtos dtos = new BasketItemDtos();
-            dtos.addBasketItemDto(target);
+            BasketItemDtos basketItemDtos = new BasketItemDtos();
+            basketItemDtos.addBasketItemDto(target);
 
-
-            ratt.addFlashAttribute("basketItemDtos", dtos);
+            ratt.addFlashAttribute("basketItemDtos", basketItemDtos);
             return "redirect:/order/orderForm";
         } catch (Exception e) {
             model.addAttribute("errorMsg", e.getMessage());
@@ -246,71 +255,10 @@ public class ItemController {
         }
     }
 
-//    @GetMapping("/admin/item")
-    public String getItemForm() {
-        return "itemRegister";
-    }
-
-//    @PostMapping("/admin/item")
-    public String addItemForm(ItemRegisterInfo info, MultipartHttpServletRequest mh) {
-        System.out.println(info);
-        // 필요한 DTO 생성
-        ItemDto itemDto = info.getItemDto();
-//        System.out.println(itemDto);
-
-        ItemDetailDto itemDetailDto = info.getItemDetailDto();
-//        System.out.println(itemDetailDto);
-
-        ItemStateDto itemStateDto = info.getItemStateDto();
-//        System.out.println(itemStateDto);
-
-        List<ItemOptDto> sizeList = info.getSizeList();
-//        sizeList.stream().forEach(e -> System.out.print(e.getCode()));
-
-        List<ItemOptDto> colorList = info.getColorList();
-//        colorList.stream().forEach(e -> System.out.print(e.getCode()));
-
-        ItemPriceDto itemPriceDto = info.getItemPriceDto();
-//        System.out.println(itemPriceDto);
-
-
-
-//        // 이미지 파일 업로드 로직
-//        MultipartFile mf = mh.getFile("main_img");
-//        String fileName = mf.getOriginalFilename();
-//
-//        String path = "/img/";
-//        File uploadFile = new File( path+fileName);
-//
-//        MultipartFile mf2 = mh.getFile("detail_img");
-//        String fileName2 = mf.getOriginalFilename();
-//
-//        File uploadFile2 = new File( path+fileName2);
-
-        try {
-            // 서비스 호출, 상품 등록
-//            mf.transferTo(uploadFile);
-//            mf.transferTo(uploadFile2);
-//
-//            itemDto.setMain_img(path+fileName);
-//            itemDetailDto.setDetail_img(path+fileName2);
-
-            itemService.add(itemDto, itemDetailDto, itemStateDto, sizeList, colorList, itemPriceDto);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-
-        return "itemRegister";
-
-
-    }
 
     @GetMapping("/item/search")
     public String getResult(SearchCondition sc, Model model, HttpSession session) {
         sc.checkOption();
-        System.out.println(sc.getOption());
 
         try {
             // 장바구니 수량 조회

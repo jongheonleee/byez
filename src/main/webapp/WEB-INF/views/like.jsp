@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css?after">
-    <link rel="stylesheet" href="/css/like.css?after?after?after?after">
+    <link rel="stylesheet" href="/css/like.css?after?after?after?after?after">
     <link rel="stylesheet" href="/css/footer.css?after?after">
     <link rel="stylesheet" href="/css/quick.css">
     <link rel="stylesheet" href="/css/aside.css?after">
@@ -23,9 +23,9 @@
     <div class="wrapper">
         <div class="title">
             <p>
-                <a href="main.html"><span>home</span></a>
+                <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="like.html"><span>위시리스트</span></a>
+                <a href="/like"><span>위시리스트</span></a>
             </p>
             <p>위시 리스트</p>
         </div>
@@ -35,29 +35,40 @@
         <hr>
         <div class="content">
             <ul class="wishList">
-                <c:forEach var="likeItemDto" items="${list}">
-                <li class = "likeItemInfo">
-                    <a href="/goods/${likeItemDto.num}">
-                        <div style="background-image: url(${likeItemDto.main_img});">
-                        </div>
-                    </a>
-                    <ul class="itemInfo">
-                        <li class="itemName">${likeItemDto.name}</li>
-                        <li>
-                            <del class="sales_price"><fmt:formatNumber value="${likeItemDto.price}" pattern="#,###"/>원</del>
-                            <span class="sales_price"><fmt:formatNumber value="${likeItemDto.disc_price}" pattern="#,###"/>원</span>
-                            <em class="textStyle">30%</em>
+                <c:if test="${list.size() == 0}">
+                    <li></li>
+                    <li id = "none">
+                        <p>위시리스트에 담긴 상품이 없습니다.</p>
+                    </li>
+                </c:if>
+
+                <c:if test="${list.size() > 0}">
+                    <c:forEach var="likeItemDto" items="${list}">
+                        <li class = "likeItemInfo">
+                            <a href="/goods/${likeItemDto.num}">
+                                <div style="background-image: url(/img/${likeItemDto.main_img});">
+                                </div>
+                            </a>
+                            <ul class="itemInfo">
+                                <li class="itemName">${likeItemDto.name}</li>
+                                <li>
+                                    <del class="sales_price"><fmt:formatNumber value="${likeItemDto.price}" pattern="#,###"/>원</del>
+                                    <span class="sales_price"><fmt:formatNumber value="${likeItemDto.disc_price}" pattern="#,###"/>원</span>
+                                    <em class="textStyle">30%</em>
+                                </li>
+                                <li class="textStyle">
+                                    <i class="fa-solid fa-heart"></i>
+                                    <span>${likeItemDto.like_cnt}</span>
+                                </li>
+                                <li>리뷰수 : ${likeItemDto.review_cnt}</li>
+                            </ul>
+                            <input type="checkbox" class ="checkBox" data-id="${likeItemDto.id}" data-num="${likeItemDto.num}">
                         </li>
-                        <li class="textStyle">
-                            <i class="fa-solid fa-heart"></i>
-                            <span>${likeItemDto.like_cnt}</span>
-                        </li>
-                        <li>리뷰수 : ${likeItemDto.review_cnt}</li>
-                    </ul>
-                    <input type="checkbox" class ="checkBox" data-id="${likeItemDto.id}" data-num="${likeItemDto.num}">
-                </li>
-                </c:forEach>
+                    </c:forEach>
+                </c:if>
             </ul>
+
+
             <!-- 버튼 및 페이징 -->
             <div class="btnPaging">
                 <!-- 이전 페이지 버튼 -->
@@ -74,10 +85,13 @@
                 <c:if test="${ph.showNext}">
                     <a href="<c:url value='/like${type}${ph.getQueryString(ph.endPage+1)}' />">&gt;</a>
                 </c:if>
+
+                <c:if test="${list.size() > 0}">
+                    <button class="modifyBtn">편집</button>
+                    <button class="btnStyle deleteBtn" style="display: none">삭제</button>
+                    <button class="btnStyle cancelBtn" style="display: none">취소</button>
+                </c:if>
             </div>
-            <button class="modifyBtn">편집</button>
-            <button class="btnStyle deleteBtn" style="display: none">삭제</button>
-            <button class="btnStyle cancelBtn" style="display: none">취소</button>
         </div>
         <hr>
     </div>
@@ -102,7 +116,7 @@
 <%@include file="../views/include/footer.jsp"%>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="/js/nav.js?after?after?after"></script>
-<script src="/js/like.js"></script>
+<script src="/js/like.js?after?after"></script>
 <script src="/js/aside.js"></script>
 </body>
 </html>

@@ -5,12 +5,12 @@ a {text-decoration: none; color:black;}
 
 section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px; float: left; padding: 50px 0;}
 
-.searchDiv {width: 100%; height: 400px; position: relative;}
+.searchDiv {width: 100%; height: 185px; position: relative;}
 .searchDiv>p:first-of-type {text-align: right; margin-bottom: 86px;}
 .searchDiv>p:nth-of-type(2) {font-size: 20px; font-weight: bold;}
 
 .filter {width: 22%; height: 100%; float: left; padding-top: 65px;}
-.content {width: 78%; height: 100%; float: left;} 
+.content {width: 78%; height: 100%; float: left;}
 /* .content>p:first-of-type {text-align: right; margin-bottom: 86px;}
 .content>p:nth-of-type(2) {font-size: 20px; font-weight: bold;} */
 
@@ -36,8 +36,8 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .weekly_best li img {width: 100%; height: 400px; object-fit:cover; object-position: top;}
 .item_name {width: 100%; height: fit-content; display: flex; justify-content: space-between; margin: 10px 0;}
 .item_name span {overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 400px;
- font-size: 17px;}
- .item_name i {font-size: 22px; color: gray;}
+  font-size: 17px;}
+.item_name i {font-size: 22px; color: gray;}
 .sales_price {text-decoration:line-through; font-size: 17px;}
 .discounted_price {font-weight: bold; font-size: 25px;}
 .col {width: fit-content; height: 14px; margin: 15px 0;}
@@ -55,54 +55,68 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .filter_con_col {width: 17px; height: 17px; border: 1px solid lightgray; box-sizing: border-box; border-radius: 50%; display: inline-block; margin-right: 5px;}
 
 .accordion {
-    background-color: white;
-    cursor: pointer;
-    padding: 20px 0;
-    width: 100%;
-    border: none;
-    transition: 0.4s;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-top: 1px solid #e5e5e5;
-    
-  }
-  .panel {
-    padding:10px 0 30px 0;
-    background-color: white;
-    overflow: hidden;
-  }
+  background-color: white;
+  cursor: pointer;
+  padding: 20px 0;
+  width: 100%;
+  border: none;
+  transition: 0.4s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #e5e5e5;
 
-  .accordion:first-of-type {border-top: 2px solid black;}
+}
+.panel {
+  padding:10px 0 30px 0;
+  background-color: white;
+  overflow: hidden;
+}
 
-  .panel>div {width: 100%; height: fit-content; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;}
+.accordion:first-of-type {border-top: 2px solid black;}
 
-  .filter_wrapper span {font-size: 18px;}
+.panel>div {width: 100%; height: fit-content; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;}
 
-  .type {width: 32%; padding: 10px; background-color: white; border: 1px lightgray solid; box-sizing: border-box;}
-  .item {width: 49%; padding: 10px 3px; background-color: white; border: 1px lightgray solid; box-sizing: border-box; margin-bottom: 5px;}
-  
-  .panel:nth-last-of-type(2)>div {justify-content: flex-start;}
+.filter_wrapper span {font-size: 18px;}
 
-  .color {width: 18%; height: 30px; border: 1px lightgray solid; box-sizing: border-box; margin-bottom: 10px; margin-right: 2.5%;}
-  .color:nth-of-type(5n) {margin-right: 0;}
+.type {width: 32%; padding: 10px; background-color: white; border: 1px lightgray solid; box-sizing: border-box;}
+.item {width: 49%; padding: 10px 3px; background-color: white; border: 1px lightgray solid; box-sizing: border-box; margin-bottom: 5px;}
 
-  .price_search {width: 100%; display: flex; justify-content: space-between; align-items: center;}
-  .price_search>input {width: 35%; height: 30px; border: 1px solid lightgray; box-sizing: border-box; text-indent: 5px;}
-  .price_search>button {width: 20%; height: 30px; border: 1px solid lightgray; box-sizing: border-box;}
+.panel:nth-last-of-type(2)>div {justify-content: flex-start;}
 
-  .detail_search {width: 100%; height: 30px;}
-  .detail_search>input {width: 80%; height: 30px; border: 1px solid lightgray; box-sizing: border-box; text-indent: 5px;}
-  .detail_search>button {width: 19%; height: 30px; border: 1px solid lightgray; box-sizing: border-box;}
+.color {width: 18%; height: 30px; border: 1px lightgray solid; box-sizing: border-box; margin-bottom: 10px; margin-right: 2.5%;}
+.color:nth-of-type(5n) {margin-right: 0;}
 
-  .type:hover,.item:hover,.color:hover {color:red; border: red 1px solid;}
+.price_search {width: 100%; display: flex; justify-content: space-between; align-items: center;}
+.price_search>input {width: 35%; height: 30px; border: 1px solid lightgray; box-sizing: border-box; text-indent: 5px;}
+.price_search>button {width: 20%; height: 30px; border: 1px solid lightgray; box-sizing: border-box;}
+
+.detail_search {width: 100%; height: 30px;}
+.detail_search>input {width: 80%; height: 30px; border: 1px solid lightgray; box-sizing: border-box; text-indent: 5px;}
+.detail_search>button {width: 19%; height: 30px; border: 1px solid lightgray; box-sizing: border-box;}
+
+.type:hover,.item:hover,.color:hover {color:red; border: red 1px solid;}
 
 .searchDiv>div {width: 75%; height: 35%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; justify-content: space-between;}
-.searchDiv>div>p:first-of-type {width: 100%; height: fit-content; display: flex; justify-content: space-between; font-size: 35px;}
+.searchDiv>div>p:first-of-type {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  font-size: 35px;
+}
 .searchDiv>div>p img {width: 30px; height: 30px;}
 .searchDiv>div form {width: 100%; height: fit-content; display: flex; justify-content: space-between; border-bottom: 2px solid black; box-sizing: border-box;}
 .searchDiv>div form>input {width: calc(100%); height: 60px;text-indent: 10px; font-size: 30px;}
 .searchDiv>div form>button {width: 60px; height: 60px; font-size: 35px; background-color: white;}
+.searchDiv>div>p {
+  color:gray;
+  font-style: italic;
+}
+
+.searchDiv>div>p>span {
+  color:black;
+  font-weight: 600;
+}
 
 
 .paging {

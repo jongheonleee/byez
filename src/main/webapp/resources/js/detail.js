@@ -1,17 +1,37 @@
 $(document).ready(function(){
 
-    /* 밑에 부분 하나의 메서드로 관리 */
-    let totalPrice = 0; // 전체 주문 가격
+    $('._count :button').on({'click': function (e) {
+            e.preventDefault();
 
-    // 각 상품 가격을 가져와서 totalPrice에 더함
-    $('.cart_price').each(function() {
-        let priceText = $(this).text().replace(/[^0-9]/g, '');
-        totalPrice += parseInt(priceText);
+            let $cnt = $(this).parent('._count').find('.inp');
+            let currCnt = parseInt($cnt.val());
+
+            const minCnt = 1;
+            const maxCnt = 10000;
+
+            if ($(this).hasClass('minus') && currCnt > minCnt) {
+                currCnt--;
+            } else if (!$(this).hasClass('minus') && currCnt < maxCnt) {
+                currCnt++;
+            } else if (currCnt < minCnt) {
+                alert(`주문 가능 수량은 최소 ${minCnt}개입니다.`);
+            } else if (currCnt >= maxCnt) {
+                alert(`주문 가능 수량은 최대 ${maxCnt}개입니다.`);
+            }
+
+            $cnt.val(currCnt);
+
+            // 가격 조회
+            let totalPrice = 0;
+            const price = parseInt($('.item-info').find('.price').val());
+
+            // 가격 계산
+            totalPrice = price * currCnt;
+
+            // 가격 업데이트
+            $(".total_price").html(totalPrice.toLocaleString());
+        }
     });
-
-    // 총 상품 금액 업데이트
-    $('.total_price').text(totalPrice.toLocaleString());
-    /* 위에 부분 하나의 메서드로 관리*/
 
 
     $(".review_pic > li img").click(function() {
@@ -54,7 +74,7 @@ $(document).ready(function(){
             headers : { "content-type": "application/json"},
             data : likeItemDto,
             success : function () {
-                alert('성공적으로 좋아요 상품을 등록했습니다.');
+
             },
             error : function () {
             }
@@ -77,6 +97,7 @@ $(document).ready(function(){
             // num, name, price(disc_price), qty, opt1(size), opt2(color), opt3(cust_type), opt4(item_type), coupon_chk
         const num = $('.item-info').find('.num').val();
         const name = $('.item-info').find('.name').val();
+        const main_img = $('.item-info').find('.name').val();
         const qty = parseInt($('._count>input').val());
         const price = parseInt($('.item-info').find('.price').val());
         const opt1 = $('.opt1').val();
@@ -84,41 +105,12 @@ $(document).ready(function(){
         const opt3 = $('.cust_type').val();
         const coupon_chk = '';
 
-        // if (0 >= num.length || num.length <= 100000000) {
-        //     alert("잘못된 상품 번호입니다.");
-        //     return;
-        // }
-        //
-        // if (0 >= name.length || name.length <= 1000) {
-        //     alert("잘못된 상품명입니다.");
-        //     return;
-        // }
-        //
-        // if (0 >= price || price <= 100000) {
-        //     alert("잘못된 수랑입니다.수량을 다시 한번 확인해주세요.");
-        //     return;
-        // }
-        //
-        // if (0 >= opt1.length || opt1.length <= 10) {
-        //     alert("잘못된 사이즈 정보입니다. 다시 한번 확인해주세요");
-        //     return;
-        // }
-        //
-        // if (0 >= opt2.length || opt2.length <= 10) {
-        //     alert("잘못된 색상 정보입니다. 다시 한번 확인해주세요");
-        //     return;
-        // }
-        //
-        // if (0 >= opt3.length || opt3.length <= 10) {
-        //     alert("잘못된 고객 정보입니다. 다시 한번 확인해주세요");
-        //     return;
-        // }
-
 
         // Json 객체 직렬화
         const basketItemDto = JSON.stringify({
             num : num,
             name : name,
+            main_img : main_img,
             qty : qty,
             price : price,
             opt1 : opt1,
@@ -135,10 +127,10 @@ $(document).ready(function(){
             headers : { "content-type": "application/json"},
             data : basketItemDto,
             success : function () {
-                alert('성공적으로 상품을 장바구니에 추가했습니다.');
+
             },
             error : function () {
-                alert('상품을 장바구니에 추가하지 못했습니다. 이미 등록된 상품일 경우가 높습니다.');
+
             }
         })
     });
@@ -198,7 +190,7 @@ $(document).ready(function(){
         const price = parseInt($('.item-info').find('.disc_price').val());
         const opt1 = $('.opt1').val();
         const opt2 = $('.opt2').val();
-        const opt3 = $('.infoWrapper').find('.type').val();
+        const opt3 = $('.cust_type').val();
 
 
         // form 동적으로 생성

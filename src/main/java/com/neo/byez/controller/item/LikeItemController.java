@@ -58,7 +58,8 @@ public class LikeItemController {
         // 유저의 좋아요 상품 변경함
     @GetMapping()
     public String list(SearchCondition sc, Model model, HttpSession session, String msg) {
-        int cnt = 0; // 장바구니 상품 카운트 기록
+        int likeCnt = 0; // 장바구니 상품 카운트 기록
+        int basketCnt = 0;
 
         try {
             // 세션 아이디 조회
@@ -67,7 +68,7 @@ public class LikeItemController {
                 BasketItemDto dto = new BasketItemDto();
                 dto.setId(id);
                 // 장바구니 수 카운트
-                cnt = basketItemService.getCount(dto);
+                basketCnt = basketItemService.getCount(dto);
             }
 
             // 좋아요 상품 조회
@@ -80,7 +81,8 @@ public class LikeItemController {
             // 장바구니 수 카운트 저장
             // ph 저장
             // 좋아요 상품 리스트 저장
-            model.addAttribute("cnt", cnt);
+            model.addAttribute("basketCnt", basketCnt);
+            model.addAttribute("likeCnt", likeCnt);
             model.addAttribute("list", list);
             model.addAttribute("ph", ph);
 

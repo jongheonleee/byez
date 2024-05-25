@@ -27,27 +27,27 @@
             <ul id="main_slide" class="slick">
                 <li class="slider_item">
                     <figure class="toms_menu_slide_img">
-                        <img src="/img/qwerty.jpeg">
+                        <img src="img/qwerty.jpeg">
                     </figure>
                 </li>
                 <li class="slider_item">
                     <figure class="toms_menu_slide_img">
-                        <img src="/img/qwerty2.jpeg">
+                        <img src="img/qwerty2.jpeg">
                     </figure>
                 </li>
                 <li class="slider_item">
                     <figure class="toms_menu_slide_img">
-                        <img src="/img/qwerty3.jpeg">
+                        <img src="img/qwerty3.jpeg">
                     </figure>
                 </li>
                 <li class="slider_item">
                     <figure class="toms_menu_slide_img">
-                        <img src="/img/qwerty4.jpeg">
+                        <img src="img/qwerty4.jpeg">
                     </figure>
                 </li>
                 <li class="slider_item">
                     <figure class="toms_menu_slide_img">
-                        <img src="/img/qwerty5.jpeg">
+                        <img src="img/qwerty5.jpeg">
                     </figure>
                 </li>
             </ul>
@@ -57,13 +57,13 @@
                 <div class="slide_btn_prev">
                     <a href="#">
                         <!-- <i class="fa-solid fa-angle-left"></i> -->
-                        <img src="/img/left.png" alt="">
+                        <img src="img/left.png" alt="">
                     </a>
                 </div>
                 <div class="slide_btn_next">
                     <a href="#">
                         <!-- <i class="fa-solid fa-angle-right"></i> -->
-                        <img src="/img/right.png" alt="">
+                        <img src="img/right.png" alt="">
                     </a>
                 </div>
             </div>

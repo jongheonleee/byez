@@ -20,6 +20,7 @@
 
 <!-- 2. section : 장바구니 타이틀, 장바구니 상품 목록, 모두삭제/선택삭제 버튼, 주문 정보-->
 <section>
+<%--    </c:forEach>--%>
     <div class="wrapper">
         <!-- 2-1. 타이틀 : 장바구니 -->
         <p>
@@ -31,7 +32,6 @@
         <p class="title">
             장바구니
         </p>
-
         <!-- 2-2. 주요 콘텐츠 : 장바구니 상품 목록 -->
             <!-- 2-2-1. 각 상품 콘텐츠 * n : 체크 박스, 상품정보(사진, 명, 옵션), 수량, 주문 금액, 주문관리 -->
                 <!-- 체크 박스 : 선택 여부 -->
@@ -42,156 +42,180 @@
             <!-- 2-3. 버튼 1 : 모두삭제/선택삭제 -->
         <div class="mainContent">
             <div class="basketItemList">
-                <table>
-                    <thead>
-                        <th class="td1">
-                            <div class="allCheckInputDiv">
-                                <input type="checkbox" class="allBasketItemCheckBox" checked="checked">
-                            </div>
-                        </th>
-                        <th>상품정보</th>
-                        <th>수량</th>
-                        <th>가격</th>
-                        <th>합계</th>
-                        <th>선택</th>
-                        <th></th>
-                        <th></th>
-                    </thead>
-
-                    <tbody>
-                    <c:forEach var="basketItemDto" items="${list}">
-<%--                        <tr>--%>
-<%--                            <div class="allCheckInputDiv">--%>
-<%--                                <input type="checkbox" class="allBasketItemCheckBox" checked="checked">--%>
-<%--                            </div>--%>
-<%--                        </tr>--%>
-                        <tr>
-                            <td class="basketItemInfo" style="text-align: center;">
-                                <div class="eachBasketItemCheckBox">
-                                    <input type="checkbox" class="basketItemCheckBox" checked="checked">
+                <c:if test="${list == null  || list.size() == 0}">
+                    <table>
+                        <thead>
+                            <th class="td1">
+                                <div class="allCheckInputDiv">
+                                    <input type="checkbox" class="allBasketItemCheckBox" checked="checked">
                                 </div>
-                                <input type="hidden" class="eachBasketItemId" value="${basketItemDto.id}">
-                                <input type="hidden" class="eachBasketItemSeq" value="${basketItemDto.seq}">
-                                <input type="hidden" class="eachBasketItemNum" value="${basketItemDto.num}">
-                                <input type="hidden" class="eachBasketItemName" value="${basketItemDto.name}">
-                                <input type="hidden" class="eachBasketItemPrice" value="${basketItemDto.price}">
-                                <input type="hidden" class="eachBasketItemQty" value="${basketItemDto.qty}">
-                                <input type="hidden" class="eachBasketItemOpt1" value="${basketItemDto.opt1}">
-                                <input type="hidden" class="eachBasketItemOpt2" value="${basketItemDto.opt2}">
-                                <input type="hidden" class="eachBasketItemOpt3" value="${basketItemDto.opt3}">
-                                <input type="hidden" class="eachBasketItemOpt4" value="${basketItemDto.opt4}">
-                            </td>
-
-
-                            <td class="tb1" style="text-align: center;">
-                                <div class="basketImgWrap">
-                                    <a href="/goods/${basketItemDto.num}">
-                                        <img src="/img/${basketItemDto.main_img}">
-                                    </a>
+                            </th>
+                            <th>상품정보</th>
+                            <th>수량</th>
+                            <th>가격</th>
+                            <th>합계</th>
+                            <th>선택</th>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="6">
+                                    장바구니에 담긴 상품이 없습니다.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </c:if>
+                <c:if test="${list.size() > 0}">
+                    <table>
+                        <thead>
+                            <th class="td1">
+                                <div class="allCheckInputDiv">
+                                    <input type="checkbox" class="allBasketItemCheckBox" checked="checked">
                                 </div>
-                                <div class="eachBasketInfo">
-                                    <p>
-                                        <strong>${basketItemDto.name}</strong>
-                                    </p>
-                                    <p>
-                                        [사이즈 : ${basketItemDto.opt1} / 컬러 : ${basketItemDto.opt2}]
-                                    </p>
-                                    <div>
-                                        ${basketItemDto.opt3}
-                                    </div>
-                                </div>
-                            </td>
+                            </th>
+                            <th>상품정보</th>
+                            <th>수량</th>
+                            <th>가격</th>
+                            <th>합계</th>
+                            <th>선택</th>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                        <tbody>
+                                <c:forEach var="i" begin="0" end="${list.size()-1}">
+                                    <%--                    <c:forEach var="basketItemDto" items="${list}">--%>
+                                    <%--                        <tr>--%>
+                                    <%--                            <div class="allCheckInputDiv">--%>
+                                    <%--                                <input type="checkbox" class="allBasketItemCheckBox" checked="checked">--%>
+                                    <%--                            </div>--%>
+                                    <%--                        </tr>--%>
+                                    <tr>
+                                        <td class="basketItemInfo" style="text-align: center;">
+                                            <div class="eachBasketItemCheckBox">
+                                                <input type="checkbox" class="basketItemCheckBox" checked="checked">
+                                            </div>
+                                            <input type="hidden" class="eachBasketItemId" value="${list.get(i).id}">
+                                            <input type="hidden" class="eachBasketItemSeq" value="${list.get(i).seq}">
+                                            <input type="hidden" class="eachBasketItemNum" value="${list.get(i).num}">
+                                            <input type="hidden" class="eachBasketItemName" value="${list.get(i).name}">
+                                            <input type="hidden" class="eachBasketItemPrice" value="${list.get(i).price}">
+                                            <input type="hidden" class="eachBasketItemQty" value="${list.get(i).qty}">
+                                            <input type="hidden" class="eachBasketItemOpt1" value="${list.get(i).opt1}">
+                                            <input type="hidden" class="eachBasketItemOpt2" value="${list.get(i).opt2}">
+                                            <input type="hidden" class="eachBasketItemOpt3" value="${list.get(i).opt3}">
+                                            <input type="hidden" class="eachBasketItemOpt4" value="${list.get(i).opt4}">
+                                        </td>
 
-                            <td style="text-align: center;">${basketItemDto.qty}</td>
-                            <td style="text-align: center;"><p class="sales_price"><fmt:formatNumber value="${basketItemDto.price}" pattern="#,###"/></p></td>
-                            <td style="text-align: center;"><p class="sales_price"><fmt:formatNumber value="${basketItemDto.qty * basketItemDto.price}" pattern="#,###"/></p></td>
-                            <td style="text-align: center;">
-                                <div>
-                                    <button class="deleteBtn btnStyle" data-seq="${basketItemDto.seq}" data-id="${basketItmDto.id}">삭제</button>
-                                </div>
-                                <div>
-                                    <button class="openModalBtn btnStyle">변경</button>
-                                    <div class="modal">
-                                        <div class="modalBody">
-                                            <button class="closeBtn closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
-                                                <form>
-                                                    <h1 class="modalItemName">${basketItemDto.name}</h1>
-                                                        <input class="seq" type="hidden" name="seq" value="${basketItemDto.seq}"><br>
-                                                        <input class="id" type="hidden" name="id" value="${basketItemDto.id}"><br>
-                                                        <input class="name" type="hidden" name="name" value="${basketItemDto.name}"><br>
-                                                        <input class="num" type="hidden" name="num" value="${basketItemDto.num}"><br>
-                                                        <input class="price" type="hidden" name="price" value="${basketItemDto.price}"><br>
-                                                        <input class="opt3" type="hidden" name="opt3" value="${basketItemDto.opt3}">
-                                                        <div class="modalImgWrap">
-                                                            <a href="/goods/${basketItemDto.num}">
-                                                                <img src="/img/${basketItemDto.main_img}">
-                                                            </a>
-                                                        </div>
 
-                                                        <ul class="modalStyle">
-                                                            <li>
-                                                                <label>
-                                                                    <b>수량</b>
-                                                                </label>
-                                                                <div class="modalQty">
-                                                                    <div class="count_box">
-                                                                        <div class="count-wrap _count">
-                                                                            <button type="button" class="minus">-</button>
-                                                                            <input type="text" class="inp qty" value="${basketItemDto.qty}" readonly/>
-                                                                            <button type="button" class="plus">+</button>
+                                        <td class="tb1" style="text-align: center;">
+                                            <div class="basketImgWrap">
+                                                <a href="/goods/${list.get(i).num}">
+                                                    <img src="/img/${list.get(i).main_img}">
+                                                </a>
+                                            </div>
+                                            <div class="eachBasketInfo">
+                                                <p>
+                                                    <strong>${list.get(i).name}</strong>
+                                                </p>
+                                                <p>
+                                                    [사이즈 : ${list.get(i).opt1} / 컬러 : ${list.get(i).opt2}]
+                                                </p>
+                                                <div>
+                                                        ${list.get(i).opt3}
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td style="text-align: center;">${list.get(i).qty}</td>
+                                        <td style="text-align: center;"><p class="sales_price"><fmt:formatNumber value="${list.get(i).price}" pattern="#,###"/></p></td>
+                                        <td style="text-align: center;"><p class="sales_price"><fmt:formatNumber value="${list.get(i).qty * list.get(i).price}" pattern="#,###"/></p></td>
+                                        <td style="text-align: center;">
+                                            <div>
+                                                <button class="deleteBtn btnStyle" data-seq="${list.get(i).seq}" data-id="${list.get(i).id}">삭제</button>
+                                            </div>
+                                            <div>
+                                                <button class="openModalBtn btnStyle">변경</button>
+                                                <div class="modal">
+                                                    <div class="modalBody">
+                                                        <button class="closeBtn closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
+                                                        <form>
+                                                            <h1 class="modalItemName">${list.get(i).name}</h1>
+                                                            <input class="seq" type="hidden" name="seq" value="${list.get(i).seq}"><br>
+                                                            <input class="id" type="hidden" name="id" value="${list.get(i).id}"><br>
+                                                            <input class="name" type="hidden" name="name" value="${list.get(i).name}"><br>
+                                                            <input class="num" type="hidden" name="num" value="${list.get(i).num}"><br>
+                                                            <input class="price" type="hidden" name="price" value="${list.get(i).price}"><br>
+                                                            <input class="opt3" type="hidden" name="opt3" value="${list.get(i).opt3}">
+                                                            <div class="modalImgWrap">
+                                                                <a href="/goods/${list.get(i).num}">
+                                                                    <img src="/img/${list.get(i).main_img}">
+                                                                </a>
+                                                            </div>
+
+                                                            <ul class="modalStyle">
+                                                                <li>
+                                                                    <label>
+                                                                        <b>수량</b>
+                                                                    </label>
+                                                                    <div class="modalQty">
+                                                                        <div class="count_box">
+                                                                            <div class="count-wrap _count">
+                                                                                <button type="button" class="minus">-</button>
+                                                                                <input type="text" class="inp qty" value="${list.get(i).qty}" readonly/>
+                                                                                <button type="button" class="plus">+</button>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
-                                                            </li>
+                                                                </li>
 
-                                                            <li>
-                                                                <label>
-                                                                    <b>사이즈</b>
-                                                                </label>
-                                                                <input type="hidden" class="opt1" name="opt1" value="${basketItemDto.opt1}" placeholder="${basketItemDto.opt1}">
+                                                                <li>
+                                                                    <label>
+                                                                        <b>사이즈</b>
+                                                                    </label>
+                                                                    <input type="hidden" class="opt1" name="opt1" value="${list.get(i).opt1}" placeholder="${list.get(i).opt1}">
                                                                     <select class="changeOpt1" onchange="selectOpt1(this.value);">
-                                                                        <option value="S">S</option>
-                                                                        <option value="M">M</option>
-                                                                        <option value="L">L</option>
-                                                                        <option value="XL">XL</option>
-                                                                        <option value="XXL">XXL</option>
+                                                                        <option value="" disabled selected>--사이즈 유형을 선택해주세요--</option>
+                                                                        <c:forEach var="size" items="${list2.get(i).sizes}">
+                                                                            <option value=${size}>${size}</option>
+                                                                        </c:forEach>
                                                                     </select>
-                                                            </li>
+                                                                </li>
 
-                                                            <li>
-                                                                <label>
-                                                                    <b>색상</b>
-                                                                </label>
-                                                                <input type="hidden" class="opt2" name="opt2" value="${basketItemDto.opt2}" placeholder="${basketItemDto.opt2}" >
+                                                                <li>
+                                                                    <label>
+                                                                        <b>색상</b>
+                                                                    </label>
+                                                                    <input type="hidden" class="opt2" name="opt2" value="${list.get(i).opt2}" placeholder="${list.get(i).opt2}" >
                                                                     <select class="changeOpt2" onchange="selectOpt2(this.value);">
-                                                                        <option value="COL1">블랙</option>
-                                                                        <option value="COL2">화이트</option>
-                                                                        <option value="COL3">브라운</option>
-                                                                        <option value="COL4">그린</option>
+                                                                        <option value="" disabled selected>--색상을 선택해주세요--</option>
+                                                                        <c:forEach var="color" items="${list2.get(i).colors}">
+                                                                            <option value=${color}>${color}</option>
+                                                                        </c:forEach>
                                                                     </select>
-                                                            </li>
-                                                        </ul>
+                                                                </li>
+                                                            </ul>
 
-                                                        <button class="modalBtn sendModalBtn">수정</button>
-                                                        <button class="modalBtn closeModalBtn">취소</button>
-                                              </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                                                            <button class="modalBtn sendModalBtn">수정</button>
+                                                            <button class="modalBtn closeModalBtn">취소</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
+                        </tbody>
+                    </table>
+
+                    <div class="deleteBtnArea">
+                        <!-- margin-left : 10px -->
+                        <button class="deleteAllBtn btnStyle" data-id="${list.get(i).id}">모두삭제</button>
+                        <button class="deleteSeveralBtn btnStyle" data-id="${list.get(i).id}">선택된 상품 삭제</button>
+                    </div>
+                </c:if>
             </div>
-
-            <div class="deleteBtnArea">
-                <!-- margin-left : 10px -->
-                <button class="deleteAllBtn btnStyle" data-id="${basketItemDto.id}">모두삭제</button>
-                <button class="deleteSeveralBtn btnStyle" data-id="${basketItemDto.id}">선택된 상품 삭제</button>
-
-            </div>
-
         </div>
         <!-- 2-4. 서브 콘텐츠 : 장바구니 주문 예상 정보 -->
             <!-- 2-4-1.장바구니 주문 예상 정보 * 1 : 상품 금액 - 할인 금액 = 주문 예상 금액  -->
@@ -211,7 +235,6 @@
                 <span class="totalCnt"></span>
             </p>
         </div>
-
         <div class="basketItemOrderBtn">
             <!-- margin-auto : 정중앙 배치  -->
             <button class="orderBtn orderBtnStyle">주문하기</button>

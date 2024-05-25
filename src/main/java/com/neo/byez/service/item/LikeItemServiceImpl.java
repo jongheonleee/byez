@@ -41,14 +41,12 @@ public class LikeItemServiceImpl {
     // 01. 유저 좋아요 상품 등록
     @Transactional(rollbackFor = Exception.class)
     public boolean register(LikeItemDto dto) {
-        // 상품 조회
-        // 아이디 조회
-        // LikeItemDto 생성
-        // 인서트
         int rowCnt = 0;
 
         try {
+            // 해당 상품 조회 및 생성
             ItemDto target = itemDao.select(dto.getNum());
+
             dto.setName(target.getName());
             dto.setType(target.getCust_type());
             dto.setReview_cnt(target.getReview_cnt());
@@ -58,10 +56,23 @@ public class LikeItemServiceImpl {
             dto.setLike_cnt(target.getLike_cnt());
             dto.setItem_comt(",,");
             dto.setState_code(",,");
-            rowCnt = likeDao.insert(dto);
-            if (rowCnt != 1) {
-                throw new Exception("상품이 정상적으로 등록되지 않았습니다.");
+
+            // 유저 좋아요 상품 조회
+            List<LikeItemDto> likeItemDtos = likeDao.selectAll(dto.getId());
+            boolean isDuplicated = likeItemDtos.stream()
+                                                .anyMatch(i -> i.equals(dto));
+            // 중복 등록, 좋아요 상품 취소
+            if (isDuplicated) {
+                rowCnt = likeDao.delete(dto);
+            } else { // 최초 등록, 좋아요 상품 등록
+                rowCnt = likeDao.insert(dto);
             }
+
+
+            if (rowCnt != 1) {
+                throw new Exception("예외가 발생했습니다.");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

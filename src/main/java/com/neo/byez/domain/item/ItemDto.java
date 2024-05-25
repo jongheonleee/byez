@@ -187,7 +187,7 @@ public class ItemDto {
 
     public List<String> getColors() {
         // 파싱 
-        String[] cols = col.split(",");
+        String[] cols = col.split("/");
         // 반환
         return Arrays.asList(cols);
     }

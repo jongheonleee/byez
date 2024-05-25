@@ -17,7 +17,6 @@
   // 선택된 요소들 동적으로 인풋 태그 생성
   $(".likeItemInfo").each(function (i, e) {
     if ($(this).find(".checkBox").is(":checked")) {
-      alert("de");
       let id = $(this).find(".checkBox").data("id");
       let num = $(this).find(".checkBox").data("num");
 
@@ -31,7 +30,6 @@
     }
   });
 
-  alert(formContents);
   $(".removeSeveralLikeForm").html(formContents);
   $(".removeSeveralLikeForm").submit();
 })

@@ -90,10 +90,14 @@ public class BasketItemServiceImpl implements BasketItemService {
             List<BasketItemDto> list = dao.getList(dto);
 
             // 중복되는 상품 확인
-            boolean isDuplicated = list.stream()
-                                       .anyMatch( item -> item.equals(dto));
-
-            if (!isDuplicated) {
+            Optional<BasketItemDto> found = list.stream().filter(i -> i.equals(dto)).findFirst();
+            if (found.isPresent()) {
+                // 수량 증가
+                BasketItemDto target = found.get();
+                target.setQty(target.getQty() + dto.getQty());
+                // 업데이트
+                dao.update(target);
+            } else {
                 rowCnt = dao.insert(dto);
             }
         } catch (Exception e) {
