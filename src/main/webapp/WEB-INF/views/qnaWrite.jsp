@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/qna_write.css?after">
+    <link rel="stylesheet" href="../css/qna_write.css?after?after">
     <link rel="stylesheet" href="../css/footer.css?after">
     <link rel="stylesheet" href="/css/aside.css">
     <link rel="stylesheet" href="../css/quick.css">
@@ -41,7 +41,7 @@
                         title
                     </th>
                     <td colspan="2">
-                        <select name="cate_num">
+                        <select class="selectopt"name="cate_num">
                             <option value="100">교환</option>
                             <option value="200">환불</option>
                             <option value="300">취소</option>
@@ -53,7 +53,7 @@
                             <option value="900">기타</option>
                             <option value="1000">신고</option>
                         </select>
-                        <input id="qna_title" name="qna_title" type="text" placeholder="제목을 작성해 주세요 (100자 제한)" value="${qnaDto.qna_title}">
+                        <input class="titlebtn"id="qna_title" name="qna_title" type="text" placeholder="제목을 작성해 주세요 (100자 제한)" value="${qnaDto.qna_title}">
                     </td>
                     <tr>
                         <th colspan="3">
@@ -63,14 +63,14 @@
                 </table>
                 <div class="btn_area">
                     <a href="/qna/list" onclick="return confirm('취소하시고 목록으로 가시겠습니까?')">
-                        <button type="button">목록</button>
+                        <button class="listbtn" type="button">목록</button>
                     </a>
                     <div class="btn_right">
                         <c:if test="${mode eq 'write'}">
-                            <button type="button" id="writebtn">등록</button>
+                            <button class="writebtn" type="button" id="writebtn">등록</button>
                         </c:if>
                         <c:if test="${mode eq 'update'}">
-                            <button type="button" id="updatebtn">수정</button>
+                            <button class ="updatebtn"type="button" id="updatebtn">수정</button>
                             <input type="hidden" name="seq_num" value="${qnaDto.seq_num}">
                         </c:if>
                     </div>
@@ -80,11 +80,8 @@
     </div>
     </div>
 </section>
-<footer>
-    <div class="wrapper">
-        <p>© 2024 spao-copymachine. All rights not reserved.</p>
-    </div>
-</footer>
+<%@include file="../views/include/footer.jsp" %>
+<%@include file="../views/include/quick.jsp" %>
 <div class="quick">
     <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
         <img src="/img/quick_up.png" alt="">

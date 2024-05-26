@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/qna_read.css?after">
+    <link rel="stylesheet" href="/css/qna_read.css?after?after">
     <link rel="stylesheet" href="/css/footer.css?after">
     <link rel="stylesheet" href="/css/aside.css">
     <link rel="stylesheet" href="/css/quick.css">
@@ -68,10 +68,10 @@
             </div>
             <div class="content">
                 <div class="btn_area">
-                    <a href="/qna/list"><button>목록</button></a>
+                    <a href="/qna/list"><button class="listbtn">목록</button></a>
                     <div class="btn_right">
-                        <a href="/qna/delete?seq_num=${qnaDto.seq_num}" onclick="return confirm('삭제하시겠습니까?')"><button>삭제</button></a>
-                        <a href="/qna/update?seq_num=${qnaDto.seq_num}" onclick="return confirm('수정하시겠습니까?')"><button>수정</button></a>
+                        <a href="/qna/delete?seq_num=${qnaDto.seq_num}" onclick="return confirm('삭제하시겠습니까?')"><button class="deletebtn">삭제</button></a>
+                        <a href="/qna/update?seq_num=${qnaDto.seq_num}" onclick="return confirm('수정하시겠습니까?')"><button class="updatebtn">수정</button></a>
                     </div>
                 </div>
             </div>
@@ -100,7 +100,7 @@
             </div>
             <div class="content">
                 <div class="btn_area">
-                    <a href="/qna/list"><button>목록</button></a>
+                    <a href="/qna/list"><button class="listbtn">목록</button></a>
                 </div>
             </div>
         </c:if>
@@ -114,11 +114,8 @@
         </div> -->
     </div>
 </section>
-<footer>
-    <div class="wrapper">
-        <p>© 2024 spao-copymachine. All rights not reserved.</p>
-    </div>
-</footer>
+<%@include file="../views/include/footer.jsp" %>
+<%@include file="../views/include/quick.jsp" %>
 <div class="quick">
     <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
         <img src="/img/quick_up.png" alt="">

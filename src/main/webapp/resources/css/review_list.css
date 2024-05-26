@@ -32,10 +32,10 @@ section {width: 100%; min-width: 1200px; height: fit-content;   margin-top: 90px
 /* 탭 메뉴 영역 */
 .tab_menu {box-sizing: border-box; width: 500px; height: 50px; display: flex; box-sizing: border-box; position: relative; z-index: 1; margin:50px auto 0;}
 .tab_menu li {width: calc(100%/2); height: 100%; box-sizing: border-box; }
-.tab_menu li a {width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; font-weight: bold; box-sizing: border-box; font-size: 20px; font-weight: normal;}
+.tab_menu li a {width: 100%; height: 100%; display: flex; justify-content: center;     overflow: hidden; object-position:top;align-items: center; font-weight: bold; box-sizing: border-box; font-size: 20px; font-weight: normal;}
 .tab_menu li a.tab_active {
-    border-bottom: 2px solid black;
     box-sizing: border-box;
+    border-bottom: 3px solid black;
     font-weight: bold;
 }
 /* 탭 콘텐츠 영역 */
@@ -46,9 +46,10 @@ section {width: 100%; min-width: 1200px; height: fit-content;   margin-top: 90px
 .container {
     width: 100%; /* 부모 컨테이너의 고정된 너비 설정 */
     height: 150px; /* 부모 컨테이너의 고정된 높이 설정 */
-    border-top: 2px solid #000; /* 컨테이너의 경계선 설정 */
+    border-bottom: 1px solid gray; /* 컨테이너의 경계선 설정 */
     white-space: nowrap; /* 줄 바꿈을 방지하여 박스들이 한 줄에 나열되도록 설정 */
     box-sizing: border-box; /* padding과 border를 포함하여 크기 계산 */
+    padding: 20px 0;
 }
 
 .box {
@@ -97,11 +98,13 @@ section {width: 100%; min-width: 1200px; height: fit-content;   margin-top: 90px
 #tab1-2 .content>ul{
     width: 100%;
     height: 100%;
+    border-color: white;
 }
 #tab1-2 .content>ul>li
 {
     width: 100%;
     height: fit-content;
+    border-color: white;
     /* padding:10px 0; */
 }
 .first{
@@ -122,6 +125,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;   margin-top: 90px
     width: 15%;
     height: 100%;
     float: left;
+    overflow: hidden;
 }
 .first_image img {
     width: 100%;
@@ -136,29 +140,77 @@ section {width: 100%; min-width: 1200px; height: fit-content;   margin-top: 90px
 
 .second button{
     float: right;
-    border-bottom: #000 1px solid;
+    border-bottom: gray 1px solid;
     margin-left: 10px;
     background-color: white;
 }
 
-
-.first{
-    border-top: #000 2px solid;
-
-}
-.second{
-    border-top: #000 2px solid;
-}
-
 .item_name{
-    font-size: 17px;
+    font-size: 20px;
     font-weight: bold;
 }
 .item_score{
-    font-size: 17px;
-    font-weight: bold;
+    font-size: 16px;
+
 }
 .item_title{
-    font-size: 17px;
-    font-weight: bold;
+    font-size: 16px;
+
+}
+.container img{
+    height: 108px;
+    object-fit: cover;
+}
+.first_image{
+    height:134px;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+}
+#writebtn {margin-right: 0; transition: 0.3s; background-color: black;font-size: 16px;font-weight:bold;color: white;}
+#writebtn:hover {background-color : #3182F6; color: white;}
+
+.first{
+    border-top:gray 1px solid;
+    padding: 15px 0;
+}
+.second{
+    border-top: gray 1px solid;
+    padding: 15px 0;
+}
+/*.reviewDone:first-of-type {border-color: white}*/
+
+/* 첫 번째 .reviewDone 요소의 .first에 스타일 적용 */
+.content ul li.reviewDone:first-of-type .first {
+    border-top: 1px solid white; /* 예: 검정 테두리 */
+}
+
+/* 첫 번째 .reviewDone 요소의 .second에 스타일 적용 */
+.content ul li.reviewDone:first-of-type .second {
+    border-top: 1px solid white; /* 예: 검정 테두리 */
+}
+
+
+.star-rating {width:100px;}
+.star-rating,.star-rating span {display:inline-block; height:18px; overflow:hidden; background:url(/img/starYellow.png)no-repeat; background-size: 100px auto;}
+.star-rating span{background-position:left bottom; line-height:0; vertical-align:top; }
+
+.first_image{
+    margin-right: 15px;
+}
+.box2{
+    padding-left:15px;
+}
+#updatebtn{
+    cursor: pointer;
+}
+#deletebtn{
+    cursor: pointer;
+}
+.mainP{
+    font-size: 20px;
+    font-weight:bold;
+}
+.subP{
+    font-size: 16px;
 }

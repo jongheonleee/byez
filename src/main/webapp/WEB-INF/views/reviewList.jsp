@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/review_list.css?after">
+    <link rel="stylesheet" href="/css/review_list.css?after?after?after">
     <link rel="stylesheet" href="/css/footer.css?after">
     <link rel="stylesheet" href="/css/aside.css?after">
     <link rel="stylesheet" href="/css/quick.css">
@@ -30,11 +30,11 @@
     <div class="wrapper">
         <div class="title">
             <p>
-                <a href="main.html"><span>home</span></a>
+                <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="mypage.html"><span>마이페이지</span></a>
-                <span>></span>
-                <a href="/review/list"><span>리뷰</span></a>
+                <a href="/mypage/index"><span>마이페이지</span></a>
+
+
 
             </p>
             <p>나의 게시물 관리</p>
@@ -59,14 +59,14 @@
                         </div>
                         <!-- 상품상세 -->
                         <div class="box box2">
-                            <h4>${offList.item_name}</h4>
-                            <h6>${offList.opt1}   ${offList.opt2}   ${offList.opt3}</h6>
-                            <h6>   <c:out value="${fn:substring(offList.reg_date, 0, 10)}" /></h6>
+                            <p class="mainP">${offList.item_name}</p>
+                            <p class="subP">${offList.opt1} ${offList.opt2} ${offList.opt3}</p>
+                            <p class="subP"><c:out value="${fn:substring(offList.reg_date, 0, 10)}"/></p>
                         </div>
                         <!-- 리뷰버튼 -->
                         <div class="box box3">
                             <a href="/review/write?ord_num=${offList.ord_num}&item_num=${offList.item_num}">
-                                <button>작성하기</button>
+                                <button id="writebtn">작성하기</button>
                             </a>
                         </div>
                     </div>
@@ -79,23 +79,32 @@
                     <ul>
                         <c:forEach var="onList" items="${reviewOnList}">
                             <li class="reviewDone">
-                                <div class="first">
-                                    <div class="first_image"><img src="${onList.main_img}"></div>
-                                    <div class="first_info">
-                                        <p class="item_name"> 상품명 : ${onList.item_name}</p>
-                                        <p class="item_score"> 별점 : ${onList.score}점</p>
-                                        <p class="item_title"> 한줄평 : ${onList.title}</p>
-                                        <p>${onList.content}</p>
+                                <div class="allList">
+                                    <div class="first">
+                                        <div class="first_image"><img src="/img/${onList.main_img}"></div>
+                                        <div class="first_info">
+                                            <p class="item_name"> 상품명 : ${onList.item_name}</p>
+                                            <div class="wrap-star">
+                                                <div class='star-rating'>
+                                                    <span style="width: ${20 * onList.score}%"></span>
+                                                </div>
+                                            </div>
+<%--                                            <p class="item_score"> 별점 : ${onList.score}점</p>--%>
+                                            <p class="item_title"> 한줄평 : ${onList.title}</p>
+                                            <p>${onList.content}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="second">
-                                    <p> <c:out value="${fn:substring(onList.reg_date, 0, 10)}" /></p>
-                                    <a href="/review/delete?review_num=${onList.review_num}" onclick="return confirm('삭제하시겠습니까?')">
-                                        <button>삭제</button>
-                                    </a>
-                                    <a href="/review/modify?review_num=${onList.review_num}&ord_num=${onList.ord_num}&item_num=${onList.item_num}" onclick="return confirm('수정하시겠습니까?')">
-                                        <button>수정</button>
-                                    </a>
+                                    <div class="second">
+                                        <p><c:out value="${fn:substring(onList.reg_date, 0, 10)}"/></p>
+                                        <a href="/review/delete?review_num=${onList.review_num}"
+                                           onclick="return confirm('삭제하시겠습니까?')">
+                                            <button id="deletebtn">삭제</button>
+                                        </a>
+                                        <a href="/review/modify?review_num=${onList.review_num}&ord_num=${onList.ord_num}&item_num=${onList.item_num}"
+                                           onclick="return confirm('수정하시겠습니까?')">
+                                            <button id="updatebtn">수정</button>
+                                        </a>
+                                    </div>
                                 </div>
                             </li>
                         </c:forEach>
@@ -106,15 +115,13 @@
         <script src="/js/jquery-3.6.4.min.js"></script>
         <script src="/js/tab.js"></script>
         <script src="/js/aside.js"></script>
-    </div></section></body>
+    </div>
+</section>
+</body>
 </div>
 </div>
 </section>
-<footer>
-    <div class="wrapper">
-        <p>© 2024 spao-copymachine. All rights not reserved.</p>
-    </div>
-</footer>
+
 <div class="quick">
     <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
         <img src="/img/quick_up.png" alt="">
@@ -130,3 +137,5 @@
 </html>
 
 
+<%@include file="../views/include/footer.jsp" %>
+<%@include file="../views/include/quick.jsp" %>

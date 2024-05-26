@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/review_write.css">
+    <link rel="stylesheet" href="/css/review_write.css?after?after">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -25,9 +25,9 @@
     <div class="wrapper">
         <div class="title">
             <p>
-                <a href="main.html"><span>home</span></a>
+                <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="mypage.html"><span>마이페이지</span></a>
+                <a href="/mypage/index"><span>마이페이지</span></a>
                 <span>></span>
                 <a href="/review/list"><span>리뷰</span></a>
             </p>
@@ -47,21 +47,25 @@
                         </th>
                         <td class="item_info">
                             <p class="item_name">상품명 : ${ordDetailDto.item_name}</p>
-                            <p class="item_opt">옵션 : ${ordDetailDto.opt1}  ${ordDetailDto.opt2}  ${ordDetailDto.opt3}</p>
+                            <p class="item_opt">옵션 : ${ordDetailDto.opt1} ${ordDetailDto.opt2} ${ordDetailDto.opt3}</p>
                         </td>
                     </tr>
                     <tr>
-                        <th>
-                            별점
-                        </th>
-                        <td>
-                            <select name="score">
-                                <option value=5 ${reviewDto.score == 5 ? 'selected' : ''}>5점</option>
-                                <option value=4 ${reviewDto.score == 4 ? 'selected' : ''}>4점</option>
-                                <option value=3 ${reviewDto.score == 3 ? 'selected' : ''}>3점</option>
-                                <option value=2 ${reviewDto.score == 2 ? 'selected' : ''}>2점</option>
-                                <option value=1 ${reviewDto.score == 1 ? 'selected' : ''}>1점</option>
-                            </select>
+                        <td colspan="5">
+                            <div>
+                                <fieldset class="rate fa-solid">
+                                    <input type="radio" id="rating10" name="score" value="5"><label for="rating10"
+                                                                                                    title="5점"></label>
+                                    <input type="radio" id="rating8" name="score" value="4"><label for="rating8"
+                                                                                                   title="4점"></label>
+                                    <input type="radio" id="rating6" name="score" value="3"><label for="rating6"
+                                                                                                   title="3점"></label>
+                                    <input type="radio" id="rating4" name="score" value="2"><label for="rating4"
+                                                                                                   title="2점"></label>
+                                    <input type="radio" id="rating2" name="score" value="1"><label for="rating2"
+                                                                                                   title="1점"></label>
+                                </fieldset>
+                            </div>
                         </td>
                     </tr>
                     <tr>
@@ -69,47 +73,45 @@
                             한줄평
                         </th>
                         <td>
-                            <input id="title" name="title" type="text" placeholder="한줄평 (100자 제한)" value="${reviewDto.title}">
+                            <input id="title" name="title" type="text" placeholder="(100자 제한)"
+                                   value="${reviewDto.title}">
                         </td>
                     </tr>
                     <tr>
                         <th colspan="3">
-                            <textarea  id="content" name="content"placeholder="자세한리뷰 (100자 제한)" class="put_large_content" contenteditable="true">${reviewDto.content}</textarea>
+                            <div><p class="detailReview">자세한 리뷰</p></div>
+                            <textarea id="content" name="content" placeholder="(100자 제한)"
+                                      class="put_large_content" contenteditable="true">${reviewDto.content}</textarea>
                         </th>
                     </tr>
 
                 </table>
                 <div class="btn_area">
                     <a href="list" onclick="return confirm('취소하시고 목록으로 가시겠습니까?')">
-                        <button type="button">목록</button>
+                        <button type="button" id="listbtn">목록</button>
                     </a>
                     <div class="btn_right">
                         <c:if test="${mode eq 'write'}">
-                            <a><button type="button" id="writebtn">등록</button></a>
+                            <a>
+                                <button type="button" id="writebtn">등록</button>
+                            </a>
                         </c:if>
                         <c:if test="${mode eq 'update'}">
-                            <a> <button type="button" id="updatebtn">수정</button></a>
+                            <a>
+                                <button type="button" id="updatebtn">수정</button>
+                            </a>
                             <input type="hidden" name="review_num" value="${reviewDto.review_num}"
                         </c:if>
                     </div>
                 </div>
             </div>
-        </form></div>
+        </form>
+    </div>
     </div>
 </section>
-<footer>
-    <div class="wrapper">
-        <p>© 2024 spao-copymachine. All rights not reserved.</p>
-    </div>
-</footer>
-<div class="quick">
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
-        <img src="/img/quick_up.png" alt="">
-    </a>
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:$(document).height()},'slow');">
-        <img src="/img/quick_down.png" alt="">
-    </a>
-</div>
+<%@include file="../views/include/footer.jsp" %>
+<%@include file="../views/include/quick.jsp" %>
+
 
 <%--<script src="/js/jquery-3.6.4.min.js"></script>--%>
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
@@ -138,7 +140,7 @@
             alert("제목과 내용을 작성해주세요");
             return false;
         }
-        if(title.length>100||content.length>1000){
+        if (title.length > 100 || content.length > 1000) {
             alert("글자수 확인하고 작성해주세요");
             return false;
         }
@@ -150,6 +152,7 @@
         </c:if>
         return true;
     }
+
     $(document).ready(function () {
         $("#writebtn").on("click", function () {
             let form = $("#form");
