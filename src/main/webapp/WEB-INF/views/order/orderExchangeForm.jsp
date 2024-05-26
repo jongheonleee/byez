@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/ordEtcReq.css?after?after?after?after">
+    <link rel="stylesheet" href="/css/ordEtcReq.css">
     <link rel="stylesheet" href="/css/footer.css?after?after">
     <link rel="stylesheet" href="/css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -322,28 +322,33 @@
             </div>
         </div>
         <div class="content">
-            <p class="table_title">주문 상품 정보
+            <p class="table_title">교환 상품 정보
             </p>
             <table class="ordProduct">
                 <tr>
-                    <th scope="col">주문일자 [주문번호]</th>
                     <th scope="col">상품정보</th>
+                    <th scope="col">주문일자</th>
                     <th scope="col">수량</th>
                     <th scope="col">상품구매금액</th>
                     <th scope="col">주문상태</th>
                 </tr>
                 <tr>
-                    <td class="orderNum">
-                        <p>${orderDetailDto.ord_date}</p>
-                        <p>${orderDetailDto.ord_num}</p>
-                    </td>
                     <td class="ordProductTitle">
-                        <p> ${orderDetailDto.item_name} </p>
+                        <a href="/goods/${orderDetailDto.item_num}">
+                            <img src="/img/${orderDetailDto.item_num}.jpeg" class="img">
+                        </a>
+                        <p class="item_name"> ${orderDetailDto.item_name} </p>
                         <p id ="originalOption">옵션: ${orderDetailDto.opt1}/${orderDetailDto.opt2}</p>
                         <div id = "changedOption" style ="display :  none;">
                             <span id="options"></span>
                         </div>
                         <button id="changeOptionBtn" type = "button">옵션변경</button>
+                    </td>
+                    <td class="orderNum">
+                        <p>${orderDetailDto.ord_date}</p>
+                        <p class="ord_num">
+                            <a href="/order/orderHist?ord_num=${orderDetailDto.ord_num}">${orderDetailDto.ord_num}</a>
+                        </p>
                     </td>
                     <td>${orderDetailDto.item_qty}</td>
                     <td>${orderDetailDto.item_price}원</td>
@@ -427,14 +432,14 @@
                                 * 필수입력항목
                             </p>
                         </td>
-                        <td class="addressText" >* 수령인<input type="text" name="new_rcpr" value="" oninput="setRcpr(this.value)" placeholder="한글만 입력해주세요.">
+                        <td class="addressText" >* 수령인<input type="text" name="new_rcpr" value="" oninput="setRcpr(this.value); checkRcpr();" placeholder="한글만 입력해주세요.">
                             <p>
                                 <span>* 우편번호 <button type="button" id="zpcdBtn" onclick="findZpcd_DaumPostcode()">우편번호검색</button>
                                     <input type="text" name="new_zpcd" id="zpcdSearch" value=""   readonly></span>
                                 <span>* 기본주소<input type="text" name="new_main_addr" id="mainAddr" value=""   readonly></span>
                                 <span>* 상세주소<input type="text" name="new_detail_addr" id="detailAddr" value="" oninput="setDetailAddr(this.value)" placeholder="상세주소를 정확히 입력해주세요."></span>
                             </p>
-                            <p>* 휴대폰번호<input type="text" name="new_rcpr_mobile" value="" oninput="setRcprMobile(this.value)" placeholder="010-0000-0000"></p>
+                            <p>* 휴대폰번호<input type="text" name="new_rcpr_mobile" value="" oninput="setRcprMobile(this.value);" placeholder="010-0000-0000"></p>
                         </td>
                     </tr>
                     </tbody>
@@ -455,44 +460,45 @@
             </div>
 
             <div id="buttons">
-                <button id="exchangeBtn">교환 신청</button>
                 <button type="button" class="back" >이전 페이지</button>
+                <button id="exchangeBtn">교환 신청</button>
             </div>
         </div>
     </div>
-    <div id="modal" class="dialog" style = "display:none">
-        <div class="tb">
-            <div class="inner" style="max-width:800px;">
-                <div class="top">
-                    <div class="title">옵션변경</div>
-                    <a href="#" id="XBtn" class="close">X</a>
-                </div>
-                <div class="ct">
-                    <input type="hidden" class="source_info" name="color" value="${orderDetailDto.opt1}">
-                    <input type="hidden" class="source_info" name="size" value="${orderDetailDto.opt2}">
-                    상품명
-                    [옵션 : ${orderDetailDto.opt1}/${orderDetailDto.opt2}]
-                    <br>
-                    상품옵션
-                    Color
-                    <select name ="color" id="color">
-                        <option value = "">색상</option>
-                        <c:forEach var="itemOptionDto" items="${colorList}">
-                            <option value = ${itemOptionDto.color}>${itemOptionDto.color}</option>
-                        </c:forEach>
-                    </select>
-                    Size
-                    <select name = "size" id="size">
-                        <option value = "">사이즈</option>
-                        <c:forEach var="itemOptionDto" items="${sizeList}">
-                            <option value = ${itemOptionDto.size}>${itemOptionDto.size}</option>
-                        </c:forEach>
-                    </select>
-                    <input type = button  id="change" value = "변경하기">
-                </div>
-            </div>
-        </div>
-    </div>
+<%--    <div id="modal" class="dialog" style = "display:none">--%>
+<%--        <div class="tb">--%>
+<%--            <div class="inner" style="max-width:800px;">--%>
+<%--                <div class="top">--%>
+<%--                    <div class="title">옵션변경</div>--%>
+<%--                    <a href="#" id="XBtn" class="close">X</a>--%>
+<%--                </div>--%>
+<%--                <div class="ct">--%>
+<%--                    <input type="hidden" class="source_info" name="color" value="${orderDetailDto.opt1}">--%>
+<%--                    <input type="hidden" class="source_info" name="size" value="${orderDetailDto.opt2}">--%>
+<%--                    ${orderDetail.item_name}--%>
+<%--                    [옵션 : ${orderDetailDto.opt1}/${orderDetailDto.opt2}]--%>
+<%--                    <br>--%>
+<%--                    상품옵션--%>
+<%--                    Color--%>
+<%--                    <select name ="color" id="color">--%>
+<%--                        <option value = "">색상</option>--%>
+<%--                        <c:forEach var="itemOptionDto" items="${colorList}">--%>
+<%--                            <option value = ${itemOptionDto.color}>${itemOptionDto.color}</option>--%>
+<%--                        </c:forEach>--%>
+<%--                    </select>--%>
+<%--                    Size--%>
+<%--                    <select name = "size" id="size">--%>
+<%--                        <option value = "">사이즈</option>--%>
+<%--                        <c:forEach var="itemOptionDto" items="${sizeList}">--%>
+<%--                            <option value = ${itemOptionDto.size}>${itemOptionDto.size}</option>--%>
+<%--                        </c:forEach>--%>
+<%--                    </select>--%>
+<%--                    <input type = button  id="change" value = "변경하기">--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+
 
     <form id="submitForm" action="/exchangeOrder" method="post">
 
@@ -518,24 +524,21 @@
     </form>
 
 </section>
-<footer>
-    <div class="wrapper">
-        <p>© 2024 spao-copymachine. All rights not reserved.</p>
-    </div>
-</footer>
-<div class="quick">
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
-        <img src="/img/quick_up.png" alt="">
-    </a>
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:$(document).height()},'slow');">
-        <img src="/img/quick_down.png" alt="">
-    </a>
-</div>
+<%@include file="../../views/include/footer.jsp"%>
+<%@include file="../../views/include/quick.jsp"%>
+
+<%--<div class="modalShadow">--%>
+<%--    <div class="modal">--%>
+
+<%--    </div>--%>
+<%--</div>--%>
+
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     // 모달창 출력
+
     function openModal(){
         $('#modal').show();
     }
@@ -579,7 +582,7 @@
         // 두 옵션이 모두 같으면 true
         // 선택한 옵션이 기존의 옵션과 하나라도 다르거나
         // 선택한 옵션이 2개의 옵션 모두 공백이 아니어야 true
-        return ((sourceColor !== selectColor) || (sourceSize !== selectSize)) || ((selectColor !== "") && (selectSize !== ""));
+        return ((sourceColor === selectColor) && (sourceSize === selectSize)) || ((selectColor === "") || (selectSize === ""));
     }
 
     // 사유를 선택하지 않으면 true
@@ -663,6 +666,61 @@
     }
 
 
+    document.addEventListener('DOMContentLoaded', function() {
+        updateShippingCost();  // 페이지 로드 완료 시 함수 실행
+    });
+
+    //교환사유에 따른 배송비 업데이트
+    function updateShippingCost() {
+        const reasonCode = document.getElementById('reason').value;
+        const shippingCostField = document.getElementById('shippingCost');
+        //직접발송시에는 배송비를 책정하지 않고 개별연락을 통해 전달한다.
+        const noReqChecked = document.getElementById('noReq').checked;
+
+        if (noReqChecked) {
+            shippingCostField.textContent = "개별 안내 드리겠습니다.";
+        }else if (reasonCode === 'CNS1' || reasonCode === 'CNS2') {
+            shippingCostField.textContent = '5000원';
+        } else if(reasonCode === 'SPL1' || reasonCode === 'SPL2' || reasonCode === 'SPL3') {
+            shippingCostField.textContent = '0원';
+        }else
+            shippingCostField.textContent = '교환사유를 선택하면 교환배송비를 확인할 수 있습니다.';
+    }
+
+
+    //TODO 수거지 변경 시 수거지 입력 유효성 검증
+    function checkRcpr() {
+        // 수거신청인 입력값 유효성 검증
+        // 한글만 가능
+        let inputField = document.querySelector('input[name="new_rcpr"]');
+        let name = inputField.value;
+        let pattern = new RegExp('^[\s,ㄱ-ㅎ가-힣]+$');
+
+        if (name.length > 0 && !name.match(pattern)) {
+            alert("이름은 한글만 입력 가능합니다.");
+            inputField.value = "";
+            return false;
+        }
+        return true;
+    }
+
+    //수거지정보 중 휴대폰번호 유효성검증
+    function checkRcprMobile() {
+        var inputField = document.querySelector('input[name="new_rcpr_mobile"]');
+        var mobileNumber = inputField.value;
+        // 정규 표현식을 사용하여 숫자와 하이픈만 포함하고, 올바른 형식인지 검사합니다.
+        // 예: "010-1234-5678" - 여기서는 일반적인 한국의 휴대폰 번호 형식을 사용합니다.
+        var pattern = /^(\d{3}-\d{3,4}-\d{4})$/;
+
+        if (!pattern.test(mobileNumber)) {
+            alert("휴대폰 번호는 010-0000-0000의 형식으로 숫자와 '-'만 사용 가능합니다.");
+            inputField.value = "";
+            return false;
+        }
+        return true;
+    }
+
+
     // 이벤트 연결
     // 모달창 띄우기
     $('#changeOptionBtn').on('click', openModal);
@@ -682,6 +740,7 @@
 
     // 교환사유 옵션 변경 시
     $('#reason').on('change', setReasonCode);
+    $('#reason').on('change', updateShippingCost);
 
     // 수거신청을 직접발송으로 변경 시
     $('#noReq').on('click', hidePickUpOriginalInfo);
@@ -698,7 +757,7 @@
     // 교환신청 버튼 클릭 시 교환 사유 선택되어있는지 확인
     $('#exchangeBtn').on('click', function (){
         // 만약 옵션 선택을 안하면
-        if(!valitateSelectOption()){
+        if(valitateSelectOption()){
             // 옵션 변경 요청
             return alert('옵션을 변경해주세요');
         }
@@ -775,7 +834,6 @@
             }
         }).open();
     }
-
 </script>
 
 </body>

@@ -14,6 +14,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 .title>p:nth-of-type(2) {font-size: 42px; font-weight: bold; text-align: center;}
 
 
+
 .mside {width: 22%; height: 100%;
             /*background-color: rgba(0, 0, 255, .1);*/
             float: left;}
@@ -35,7 +36,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 }
 
 .uniform-height {
-    height: 22px;  
+    height: 30px;
     display: inline-block;
     vertical-align: middle;
     line-height: 5px; 
@@ -47,20 +48,21 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 }
 
 input[type="date"] {
-    height: 22px; 
+    height: 30px;
+    width: 92px;
     padding: 0; /* 내부 패딩 제거 */
-    border: 1px solid #ccc; /* 시각적으로 구분되도록 테두리 추가 */
+    border: 1px solid gray; /* 시각적으로 구분되도록 테두리 추가 */
     box-sizing: border-box; /* border와 padding을 height에 포함 */
 }
 
 input[type="image"] {
-    height: 23px; /* image type input의 높이 조정 */
+    height: 30px; /* image type input의 높이 조정 */
     vertical-align: middle; /* 수직 중앙 정렬 */
 }
 .search {
     width: 100%; height: 100%;
     /*background-color: rgba(0, 0, 255, .1);*/
-    margin: 30px;}
+    margin: 50px 25px;}
 
 .info {
     width: 100%; height: 100% ;
@@ -84,8 +86,8 @@ input[type="image"] {
     color: #909090;}
 
 .product td {
-    border-bottom: 1px solid #ccc; /* 연한 회색의 하단 테두리 추가 */
-    padding: 20px 15px; /* 상하 10px, 좌우 15px 패딩 적용 */
+    border-bottom: 1px solid gray; /* 연한 회색의 하단 테두리 추가 */
+    padding: 16px 15px; /* 상하 10px, 좌우 15px 패딩 적용 */
 }
 
 .tab_c_arti>table {width: 100%; height: 100px;
@@ -124,9 +126,9 @@ form {
 }
 
 input[type="submit"] {
-    padding: 5px 10px; /* 버튼의 내부 패딩을 조정하여 보다 편안한 클릭 영역 제공 */
+    padding: 5px 10px; /* 버튼의 내부 패딩을 조정하여 보다 편안한 클릭 영역제공 */
     background-color: #f8f8f8; /* 배경색 설정 */
-    border: 1px solid #ccc; /* 경계선 설정 */
+    border: 1px solid gray; /* 경계선 설정 */
     cursor: pointer; /* 커서를 포인터로 설정하여 클릭 가능 요소임을 나타냄 */
 }
 
@@ -161,18 +163,32 @@ input[type="submit"]:hover {
 input[type="submit"] {
     padding: 5px 10px;
     background-color: white;
-    border: 1px solid #ccc;
+    border: 1px solid gray;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 input[type="submit"]:hover {
     background-color:  lightgray; /* 호버 시 배경색 변경 */
-    transition: background-color 0.3s, box-shadow 0.3s; /* 배경색과 그림자 변화에 애니메이션 효과 적용 */
+    transition: background-color 0.3s; /* 배경색과 그림자 변화에 애니메이션 효과 적용 */
 }
 
-.noneOrderMsg {text-align: center; font-size: 15px; font-weight: bold;}
+.noneOrderMsg {text-align: center; font-size: 16px; font-weight: bold;}
 .ord_num{color: #999999}
 .option {color: #999999}
-.paging {text-align: center;}
-.thead {border-bottom: 1px solid lightgray}
+
+.paging {text-align: center; font-weight: bold;}
+.paging a {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    color : gray;
+}
+
+.paging a:hover {color:black}
+
+.thead {border-bottom: 1px solid gray}
 .thead th {padding : 10px 0}
+
+.order_status {border: 1px solid lightgray; height: 30px; font-size: 14px;}
+.img {float: left; width:80px; height:100px; object-fit: cover}
+.item_name{margin-top:20px;}

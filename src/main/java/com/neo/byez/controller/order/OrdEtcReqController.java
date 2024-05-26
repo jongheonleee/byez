@@ -206,7 +206,8 @@ public class OrdEtcReqController {
         m.addAttribute("deliveryDto", deliveryDto);
         System.out.println(orderDetailDto);
 
-        return "/order/orderRefundForm";
+//        return "/order/orderExchangeForm2_forRefund";
+            return "/order/orderRefundForm";
     }
 
     @RequestMapping(value = "/refundOrder")

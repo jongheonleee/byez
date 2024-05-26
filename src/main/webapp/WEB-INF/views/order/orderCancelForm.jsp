@@ -36,22 +36,30 @@
                 </p>
                 <table class="ordProduct">
                     <tr>
-                        <th scope="col">주문일자 [주문번호]</th>
                         <th scope="col">상품정보</th>
+                        <th scope="col">주문일자</th>
                         <th scope="col">수량</th>
                         <th scope="col">상품구매금액</th>
                         <th scope="col">주문상태</th>
                     </tr>
                     <tr>
                         <c:forEach var="orderDetailDto" items="${cancelList}">
-                        <td class="orderNum">
-                            <p>${orderDetailDto.ord_date}</p>
-                            <p>${orderDetailDto.ord_num}</p>
-                        </td>
-                        <td class="ordProductTitle">
-                            <p> ${orderDetailDto.item_name} </p>
-                            <p id ="originalOption">옵션: ${orderDetailDto.opt1}/${orderDetailDto.opt2}</p>
-                        </td>
+
+                            <td>
+                                <a href="/goods/${orderDetailDto.item_num}">
+                                    <img src="/img/${orderDetailDto.item_num}.jpeg" class="img">
+                                </a>
+                                <p class="item_name">${orderDetailDto.item_name}</p>
+                                <p class="option">
+                                    옵션 : ${orderDetailDto.opt1}/${orderDetailDto.opt2}
+                                </p>
+                            </td>
+                            <td class="orderNum">
+                                <p>${orderDetailDto.ord_date}</p>
+                                <p class="ord_num">
+                                    <a href="/order/orderHist?ord_num=${orderDetailDto.ord_num}">${orderDetailDto.ord_num}</a>
+                                </p>
+                            </td>
                         <td>${orderDetailDto.item_qty}</td>
                         <td>${orderDetailDto.item_price}원</td>
                         <td>${orderDetailDto.ord_state}</td>
@@ -84,8 +92,8 @@
 
 
                 <div id="buttons">
-                    <button id="cancelBtn">취소 신청</button>
                     <button type="button" class="back" onClick="goBack()">이전 페이지</button>
+                    <button id="cancelBtn">취소 신청</button>
                 </div>
             </div>
         </div>
@@ -95,19 +103,8 @@
         <input type="hidden" name="ord_state" value="주문취소">
     </form>
 </section>
-<footer>
-    <div class="wrapper">
-        <p>© 2024 spao-copymachine. All rights not reserved.</p>
-    </div>
-</footer>
-<div class="quick">
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
-        <img src="/img/quick_up.png" alt="">
-    </a>
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:$(document).height()},'slow');">
-        <img src="/img/quick_down.png" alt="">
-    </a>
-</div>
+<%@include file="../../views/include/footer.jsp"%>
+<%@include file="../../views/include/quick.jsp"%>
 
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
