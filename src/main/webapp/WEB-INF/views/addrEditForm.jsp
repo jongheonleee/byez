@@ -23,7 +23,7 @@
             <p>
                 <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="myAddrList"><span>배송 주소록 관리</span></a>
+                <span>배송 주소록 관리</span>
             </p>
             <p>배송 주소록 관리</p>
         </div>
@@ -70,8 +70,8 @@
                         </td>
                     </tr>
                 </table>
-                <a href="myAddrList" class="cancle_btn">취소</a>
                 <input type="submit" value="등록" class="edit_address_btn">
+                <a href="myAddrList" class="cancle_btn">취소</a>
             </form>
         </div>
     </div>
@@ -124,6 +124,13 @@
         // 우편번호가 비어 있는지 확인
         if (zpcd.trim() === "" || mainAddr.trim() === "") {
             alert("주소 찾기 버튼을 눌러 주소를 입력하세요.");
+            return false;
+        }
+
+        // 우편번호가 5 또는 6자리인지 확인
+        var zpcdPattern = /^\d{5,6}$/;
+        if (!zpcdPattern.test(zpcd.trim())) {
+            alert("우편번호는 5자리 또는 6자리 숫자여야 합니다.");
             return false;
         }
 

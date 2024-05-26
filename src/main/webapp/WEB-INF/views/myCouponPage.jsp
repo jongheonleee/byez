@@ -25,7 +25,7 @@
             <p>
                 <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="myCouponPage"><span>마이쿠폰</span></a>
+                <span>마이쿠폰</span>
             </p>
             <p>마이쿠폰</p>
         </div>

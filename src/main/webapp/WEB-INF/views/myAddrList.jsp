@@ -24,7 +24,7 @@
             <p>
                 <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="myAddrList"><span>배송 주소록 관리</span></a>
+                <span>배송 주소록 관리</span>
             </p>
             <p>배송 주소록 관리</p>
         </div>

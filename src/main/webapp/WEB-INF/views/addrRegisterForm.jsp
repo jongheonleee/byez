@@ -23,7 +23,7 @@
             <p>
                 <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="myAddrList"><span>배송 주소록 관리</span></a>
+                <span>배송 주소록 관리</span>
             </p>
             <p>배송 주소록 관리</p>
         </div>
@@ -69,8 +69,8 @@
                         </td>
                     </tr>
                 </table>
-                <a href="myAddrList" class="cancle_btn">취소</a>
                 <input type="submit" value="등록" class="edit_address_btn">
+                <a href="myAddrList" class="cancle_btn">취소</a>
             </form>
         </div>
     </div>

@@ -61,7 +61,7 @@ section .wrapper {
     align-items: center;
     padding: 0 15px;
     /* background-color: rgba(255, 0, 0, 0.1); */
-    border: 1px solid gray;
+    border: 1px solid lightgray;
     justify-content: space-between;
 }
 
@@ -311,6 +311,7 @@ table td {
 }
 
 #couponModalCancel {
+    box-sizing : border-box;
     width: 100px;
     height: 40px;
     font-size: 14px;
@@ -325,6 +326,7 @@ table td {
 }
 
 #couponModalSelect {
+    box-sizing : border-box;
     width: 100px;
     height: 40px;
     font-size: 14px;
@@ -332,7 +334,6 @@ table td {
     background-color: black;
     color: white;
     margin-left: 15px;
-    box-sizing : border-box;
 }
 
 #couponModalSelect:hover{
