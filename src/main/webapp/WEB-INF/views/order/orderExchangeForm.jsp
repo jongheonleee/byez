@@ -9,6 +9,7 @@
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="/css/ordEtcReq.css">
+    <link rel="stylesheet" href="/css/exchangeModal.css">
     <link rel="stylesheet" href="/css/footer.css?after?after">
     <link rel="stylesheet" href="/css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -17,244 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<nav>
-    <div class="wrapper">
-        <div class="nav_logo">
-            <a href="main.html">
-                <img src="/img/logo3.png" alt="">
-            </a>
-        </div>
-        <ul class="nav_menu">
-            <li><a href="#">할인 상품</a></li>
-            <li><a href="best.html">베스트</a></li>
-            <li><a href="category.html">여성</a></li>
-            <li><a href="category.html">남성</a></li>
-            <li><a href="category.html">혼성</a></li>
-        </ul>
-        <ul class="nav_member">
-            <li class="hover">
-                <a href="#">
-                    <img src="/img/top_mypage.png">
-                </a>
-                <!-- <ul class="sub_menu">
-                    <li><a href="#">LOGIN</a>
-                    </li>
-                    <li><a href="#">ORDER</a>
-                    </li>
-                </ul> -->
-                <ul class="sub_menu">
-                    <li><a href="#">LOGOUT</a>
-                    </li>
-                    <li><a href="mypage.html">MYPAGE</a>
-                    </li>
-                    <li><a href="#">ORDER</a>
-                    </li>
-                </ul>
-            </li>
-            <li><a href="#"><img src="/img/top_search.png"></a></li>
-            <li><a href="#"><img src="/img/top_wish.png"></a></li>
-            <li><a href="#" class="cart_cnt">
-                <img src="/img/top_cart_pc.png">
-                <div>
-                    <span>0</span>
-                </div>
-            </a></li>
-
-        </ul>
-    </div>
-    <div class="nav_woman">
-        <ul>
-            <li>
-                <ul>
-                    <li>여성</li>
-
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">상의</a></li>
-                    <li><a href="category.html">맨투맨/스웨트셔츠</a></li>
-                    <li><a href="category.html">후드/집업</a></li>
-                    <li><a href="category.html">니트/스웨터</a></li>
-                    <li><a href="category.html">셔츠/블라우스</a></li>
-                    <li><a href="category.html">긴팔 티셔츠</a></li>
-                    <li><a href="category.html">반팔 티셔츠</a></li>
-                    <li><a href="category.html">슬리브리스</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">아우터</a></li>
-                    <li><a href="category.html">패딩/다운</a></li>
-                    <li><a href="category.html">폴리스/덤블</a></li>
-                    <li><a href="category.html">자켓/점퍼</a></li>
-                    <li><a href="category.html">블레이저</a></li>
-                    <li><a href="category.html">가디건</a></li>
-                    <li><a href="category.html">바람막이</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">슬랙스</a></li>
-                    <li><a href="category.html">트레이닝/스웨트셔츠</a></li>
-                    <li><a href="category.html">팬츠</a></li>
-                    <li><a href="category.html">숏츠</a></li>
-                    <li><a href="category.html">스커트</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">신발</a></li>
-                    <li><a href="category.html">운동화</a></li>
-                    <li><a href="category.html">구두</a></li>
-                    <li><a href="category.html">로퍼</a></li>
-                    <li><a href="category.html">힐</a></li>
-                    <li><a href="category.html">부츠</a></li>
-                    <li><a href="category.html">슬리퍼</a></li>
-                    <li><a href="category.html">샌달</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">기타</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="nav_man">
-        <ul>
-            <li>
-                <ul>
-                    <li>남성</li>
-
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">상의</a></li>
-                    <li><a href="category.html">맨투맨/스웨트셔츠</a></li>
-                    <li><a href="category.html">후드/집업</a></li>
-                    <li><a href="category.html">니트/스웨터</a></li>
-                    <li><a href="category.html">셔츠/블라우스</a></li>
-                    <li><a href="category.html">긴팔 티셔츠</a></li>
-                    <li><a href="category.html">반팔 티셔츠</a></li>
-                    <li><a href="category.html">슬리브리스</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">아우터</a></li>
-                    <li><a href="category.html">패딩/다운</a></li>
-                    <li><a href="category.html">폴리스/덤블</a></li>
-                    <li><a href="category.html">자켓/점퍼</a></li>
-                    <li><a href="category.html">블레이저</a></li>
-                    <li><a href="category.html">가디건</a></li>
-                    <li><a href="category.html">바람막이</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">슬랙스</a></li>
-                    <li><a href="category.html">트레이닝/스웨트셔츠</a></li>
-                    <li><a href="category.html">팬츠</a></li>
-                    <li><a href="category.html">숏츠</a></li>
-                    <li><a href="category.html">스커트</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">신발</a></li>
-                    <li><a href="category.html">운동화</a></li>
-                    <li><a href="category.html">구두</a></li>
-                    <li><a href="category.html">로퍼</a></li>
-                    <li><a href="category.html">힐</a></li>
-                    <li><a href="category.html">부츠</a></li>
-                    <li><a href="category.html">슬리퍼</a></li>
-                    <li><a href="category.html">샌달</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">기타</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="nav_unisex">
-        <ul>
-            <li>
-                <ul>
-                    <li>혼성</li>
-
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">상의</a></li>
-                    <li><a href="category.html">맨투맨/스웨트셔츠</a></li>
-                    <li><a href="category.html">후드/집업</a></li>
-                    <li><a href="category.html">니트/스웨터</a></li>
-                    <li><a href="category.html">셔츠/블라우스</a></li>
-                    <li><a href="category.html">긴팔 티셔츠</a></li>
-                    <li><a href="category.html">반팔 티셔츠</a></li>
-                    <li><a href="category.html">슬리브리스</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">아우터</a></li>
-                    <li><a href="category.html">패딩/다운</a></li>
-                    <li><a href="category.html">폴리스/덤블</a></li>
-                    <li><a href="category.html">자켓/점퍼</a></li>
-                    <li><a href="category.html">블레이저</a></li>
-                    <li><a href="category.html">가디건</a></li>
-                    <li><a href="category.html">바람막이</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">슬랙스</a></li>
-                    <li><a href="category.html">트레이닝/스웨트셔츠</a></li>
-                    <li><a href="category.html">팬츠</a></li>
-                    <li><a href="category.html">숏츠</a></li>
-                    <li><a href="category.html">스커트</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">신발</a></li>
-                    <li><a href="category.html">운동화</a></li>
-                    <li><a href="category.html">구두</a></li>
-                    <li><a href="category.html">로퍼</a></li>
-                    <li><a href="category.html">힐</a></li>
-                    <li><a href="category.html">부츠</a></li>
-                    <li><a href="category.html">슬리퍼</a></li>
-                    <li><a href="category.html">샌달</a></li>
-                </ul>
-            </li>
-            <li>
-                <ul>
-                    <li><a href="category.html">기타</a></li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div class="search_div">
-        <div>
-            <p>
-                고객님<br>무엇을 찾으시나요?
-                <img src="/img/top_search_close.png" alt="">
-            </p>
-            <form action="">
-                <input type="text" placeholder="상품을 찾아보세요">
-                <button type="submit">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </form>
-        </div>
-    </div>
-    <div class="shadow"></div>
-</nav>
+<jsp:include page="/WEB-INF/views/include/nav.jsp"/>
 <section>
     <!--
         교환신청페이지
@@ -306,7 +70,7 @@
                             <img src="/img/${orderDetailDto.item_num}.jpeg" class="img">
                         </a>
                         <p class="item_name"> ${orderDetailDto.item_name} </p>
-                        <p id ="originalOption">옵션: ${orderDetailDto.opt1}/${orderDetailDto.opt2}</p>
+                        <p id ="originalOption">[컬러 : ${orderDetailDto.opt1} / 사이즈 : ${orderDetailDto.opt2}]</p>
                         <div id = "changedOption" style ="display :  none;">
                             <span id="options"></span>
                         </div>
@@ -319,7 +83,7 @@
                         </p>
                     </td>
                     <td>${orderDetailDto.item_qty}</td>
-                    <td>${orderDetailDto.item_price}원</td>
+                    <td><fmt:formatNumber value="${orderDetailDto.item_price}" pattern="#,###"/>원</td>
                     <td>${orderDetailDto.ord_state}</td>
                 </tr>
             </table>
@@ -353,8 +117,10 @@
                 <tr>
                     <td class="pickup">수거신청여부</td>
                     <td class="pickupChoice">
-                        <input type="radio" id="req" name="req_chk" value="Y" onclick="setPickUpCheck(this.value)"  checked="checked" >수거신청
-                        <input type="radio" id="noReq" name="req_chk" value="N" onclick="setPickUpCheck(this.value)">직접발송
+                        <input type="radio" id="req" name="req_chk" value="Y" onclick="setPickUpCheck(this.value)"  checked="checked" >
+                        <label for="req">수거신청</label>
+                        <input type="radio" id="noReq" name="req_chk" value="N" onclick="setPickUpCheck(this.value)">
+                        <label for="noReq">직접발송</label>
                         <p>수거신청 선택시 택배사에 연락하지 않으셔도 직접 수거요청을 드립니다.</p>
                     </td>
                 </tr>
@@ -367,8 +133,10 @@
                     <tr>
                         <td class="pickupSpot">수거지 선택</td>
                         <td class="pickupSpotChoice">
-                            <input type="radio" id="old_delivery" name="chg_chk" value="N" checked="checked">배송지정보와 동일
-                            <input type="radio" id="new_delivery" name="chg_chk" value="Y">수거지 변경
+                            <input type="radio" id="old_delivery" name="chg_chk" value="N" checked="checked">
+                            <label for="old_delivery">배송지정보와 동일</label>
+                            <input type="radio" id="new_delivery" name="chg_chk" value="Y">
+                            <label for="new_delivery">수거지 변경</label>
                         </td>
                     </tr>
                     </thead>
@@ -433,40 +201,6 @@
             </div>
         </div>
     </div>
-<%--    <div id="modal" class="dialog" style = "display:none">--%>
-<%--        <div class="tb">--%>
-<%--            <div class="inner" style="max-width:800px;">--%>
-<%--                <div class="top">--%>
-<%--                    <div class="title">옵션변경</div>--%>
-<%--                    <a href="#" id="XBtn" class="close">X</a>--%>
-<%--                </div>--%>
-<%--                <div class="ct">--%>
-<%--                    <input type="hidden" class="source_info" name="color" value="${orderDetailDto.opt1}">--%>
-<%--                    <input type="hidden" class="source_info" name="size" value="${orderDetailDto.opt2}">--%>
-<%--                    ${orderDetail.item_name}--%>
-<%--                    [옵션 : ${orderDetailDto.opt1}/${orderDetailDto.opt2}]--%>
-<%--                    <br>--%>
-<%--                    상품옵션--%>
-<%--                    Color--%>
-<%--                    <select name ="color" id="color">--%>
-<%--                        <option value = "">색상</option>--%>
-<%--                        <c:forEach var="itemOptionDto" items="${colorList}">--%>
-<%--                            <option value = ${itemOptionDto.color}>${itemOptionDto.color}</option>--%>
-<%--                        </c:forEach>--%>
-<%--                    </select>--%>
-<%--                    Size--%>
-<%--                    <select name = "size" id="size">--%>
-<%--                        <option value = "">사이즈</option>--%>
-<%--                        <c:forEach var="itemOptionDto" items="${sizeList}">--%>
-<%--                            <option value = ${itemOptionDto.size}>${itemOptionDto.size}</option>--%>
-<%--                        </c:forEach>--%>
-<%--                    </select>--%>
-<%--                    <input type = button  id="change" value = "변경하기">--%>
-<%--                </div>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-
 
     <form id="submitForm" action="/exchangeOrder" method="post">
 
@@ -492,46 +226,84 @@
     </form>
 
 </section>
+
+<div class="modalShadow">
+    <div class="modal">
+        <p>옵션 변경</p>
+        <button class="clsBtn">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="modal_product_info">
+            <div>
+                <img src="img/${orderDetailDto.item_num}.jpeg" alt="">
+            </div>
+            <div>
+                <p><strong>${orderDetailDto.item_name}</strong></p>
+                <p><span>[컬러 : ${orderDetailDto.opt1}</span> /<span> 사이즈 : ${orderDetailDto.opt2}]</span></p>
+            </div>
+            <header class="formDiv">
+            <div class="select_option">
+                <p>color</p>
+                <select name="color" id="color">
+                    <option value="">색상</option>
+                    <c:forEach var="itemOptionDto" items="${colorList}">
+                        <option value = ${itemOptionDto.color}>${itemOptionDto.color}</option>
+                    </c:forEach>
+                </select>
+                <p>size</p>
+                <select name="size" id="size">
+                    <option value="">사이즈</option>
+                    <c:forEach var="itemOptionDto" items="${sizeList}">
+                        <option value = ${itemOptionDto.size}>${itemOptionDto.size}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            <div class="modal_btn">
+                <button class="cancelChange">취소</button>
+                <button id="change">옵션 변경</button>
+            </div>
+            </header>
+        </div>
+    </div>
+</div>
 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 <jsp:include page="/WEB-INF/views/include/quick.jsp"/>
-<%--<div class="modalShadow">--%>
-<%--    <div class="modal">--%>
-
-<%--    </div>--%>
-<%--</div>--%>
-
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
-    // 모달창 출력
 
+
+    // 모달창 출력
     function openModal(){
-        $('#modal').show();
+        $('.modalShadow').fadeIn();
     }
 
     // 모달창 닫기
     function closeModal(){
-        $('#modal').hide();
+        $('.modalShadow').fadeOut();
     }
 
     // 옵션 변경
     function changeOption(){
         let color = getOption().color;
         let size = getOption().size;
-        let str = '옵션: ' + color + '/' + size;
+        let str = '[컬러 : ' + color + '/' + '사이즈 : ' + size +' ]' ;
 
         // 2개의 옵션 중 한개도 변한게 없으면
-        if(!valitateSelectOption()){
-            // 옵션 변경 요청
-            return alert('옵션을 변경해주세요');
-        }
+        // if(!valitateSelectOption()){
+        //     // 옵션 변경 요청
+        //     return alert('옵션을 변경해주세요');
+        // }
         // 옵션 변경 - 보이는 부분
         $('#originalOption').html(str);
         // 전송용 데이터 변경 - 색상, 사이즈
         setOption(color, size);
+
+
         // 모달창 닫기
         closeModal();
+
     }
 
     function getOption(){
@@ -692,9 +464,10 @@
     // 모달창 띄우기
     $('#changeOptionBtn').on('click', openModal);
     // 모달창 닫기
-    $('#XBtn').on('click', closeModal);
+    $('.clsBtn').on('click', closeModal);
+    $('.cancelChange').on('click', closeModal);
     // 옵션 변경하기 (보이는 부분)
-    $('#change').on('click', changeOption);
+    $('#change').on('click', changeOption); //바꿔
     // 배송지 기존 배송지 버튼 선택 시
     $('input[type=radio]#old_delivery').on('click', function (v){
         setChgCheck(v);
@@ -745,6 +518,13 @@
         $('#submitForm').submit();
     });
 
+    $('#change').on('click', function (){
+        // 만약 옵션 선택을 안하면
+        if(valitateSelectOption()){
+            // 옵션 변경 요청
+            return alert('옵션을 변경해주세요');
+        }
+    });
 
     //이전페이지로 이동
     $('.back').on('click', goBack);

@@ -62,6 +62,12 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
     public int getCount(String id) throws Exception{
         return session.selectOne(namespace + "countById", id);
     }
+
+    @Override
+    public int getEtcCount(String id) throws Exception {
+        return session.selectOne(namespace + "countEtcById", id);
+    }
+
     @Override
     public List<OrderDetailDto> selectByOrdNum(String ord_num) throws Exception{
         return session.selectList(namespace + "selectByOrdNum" , ord_num);
@@ -104,7 +110,17 @@ public class OrderDetailDaoImpl implements OrderDetailDao {
         map.put("id", userId);
         return session.selectList(namespace + "selectPage", map );
     }
-   //찬빈 추가
+
+    @Override
+    public List<OrderDetailDto> selectEtcPage(Integer curPage, Integer pageSize, String userId) throws Exception {
+        Map map = new HashMap();
+        map.put("offset", (curPage - 1) * 10);
+        map.put("pageSize",  pageSize);
+        map.put("id", userId);
+        return session.selectList(namespace + "selectEtcPage", map );
+    }
+
+    //찬빈 추가
     @Override
     public List<OrderDetailJoinItemDto> selectById(String id) {
         Map map = new HashMap();

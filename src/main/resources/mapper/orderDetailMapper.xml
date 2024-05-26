@@ -109,6 +109,16 @@
             LIMIT #{offset},#{pageSize}
     </select>
 
+<!--    취소교환반품 목록 페이징(20240526 유경추가)-->
+    <select id = "selectEtcPage" parameterType="map" resultType="OrderDetailDto">
+        SELECT *
+        FROM ord_detail
+        where id = #{id}
+          AND ord_state NOT IN ('구매확정', '배송완료', '주문완료', '주문대기')
+        ORDER BY ord_num DESC
+            LIMIT #{offset},#{pageSize}
+    </select>
+
     <!--교환은 부분교환이 가능하도록 구현했기 때문에
 주문번호/시퀀스로 찾은 하나의 주문상태만 교환 -->
     <update id="updateEachOrdState" parameterType="OrderDetailDto">
@@ -123,6 +133,14 @@
         FROM ord_detail
         where id = #{id}
     </select>
+
+    <select id="countEtcById" parameterType="string" resultType="int">
+        SELECT COUNT(*)
+        FROM ord_detail
+        where id = #{id}
+          AND ord_state NOT IN ('구매확정', '배송완료', '주문완료', '주문대기');
+    </select>
+
 <!-- 찬빈 추가 -->
 <!--  id를 통해 리뷰가 작성되지 않은 결제가 완료된 주문번호 속 상품을 가져온다.   -->
     <select id="selectById" parameterType="map" resultType="com.neo.byez.domain.order.OrderDetailJoinItemDto">

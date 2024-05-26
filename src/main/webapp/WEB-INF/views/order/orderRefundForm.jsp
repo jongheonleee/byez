@@ -318,7 +318,7 @@
                         </p>
                     </td>
                     <td>${orderDetailDto.item_qty}</td>
-                    <td>${orderDetailDto.item_price}원</td>
+                    <td><fmt:formatNumber value="${orderDetailDto.item_price}" pattern="#,###"/>원</td>
                     <td>${orderDetailDto.ord_state}</td>
                 </tr>
             </table>
@@ -352,8 +352,10 @@
                 <tr>
                     <td class="pickup">수거신청여부</td>
                     <td class="pickupChoice">
-                        <input type="radio" id="req" name="req_chk" value="Y" onclick="setPickUpCheck(this.value)"  checked="checked" >수거신청
-                        <input type="radio" id="noReq" name="req_chk" value="N" onclick="setPickUpCheck(this.value)">직접발송
+                        <input type="radio" id="req" name="req_chk" value="Y" onclick="setPickUpCheck(this.value)"  checked="checked" >
+                        <label for="req">수거신청</label>
+                        <input type="radio" id="noReq" name="req_chk" value="N" onclick="setPickUpCheck(this.value)">
+                        <label for="noReq">직접발송</label>
                         <p>수거신청 선택시 택배사에 연락하지 않으셔도 직접 수거요청을 드립니다.</p>
                     </td>
                 </tr>
@@ -366,8 +368,10 @@
                     <tr>
                         <td class="pickupSpot">수거지 선택</td>
                         <td class="pickupSpotChoice">
-                            <input type="radio" id="old_delivery" name="chg_chk" value="N" checked="checked">배송지정보와 동일
-                            <input type="radio" id="new_delivery" name="chg_chk" value="Y">수거지 변경
+                            <input type="radio" id="old_delivery" name="chg_chk" value="N" checked="checked">
+                            <label for="old_delivery">배송지정보와 동일</label>
+                            <input type="radio" id="new_delivery" name="chg_chk" value="Y">
+                            <label for="new_delivery">수거지 변경</label>
                         </td>
                     </tr>
                     </thead>

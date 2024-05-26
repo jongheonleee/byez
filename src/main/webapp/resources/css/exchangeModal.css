@@ -1,0 +1,51 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+
+.modalShadow {width: 100%; height: 100vh; background-color: rgba(0, 0, 0, .5); position: fixed; top: 0; left: 0; display: none;}
+.modal {width: 500px; height: fit-content; background-color: white; position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); padding: 30px; box-sizing: border-box;}
+.modal>p:first-of-type {font-size: 24px; margin-bottom: 20px; font-weight: bold;}
+.clsBtn {width: fit-content; height: fit-content; 
+    background-color: transparent;
+     position: absolute; right: 30px; top: 27px; font-size: 30px; cursor: pointer;}
+.modal_product_info {width: 100%; height: 170px; 
+    /* background-color: rgba(255, 0, 0, .1); */
+}
+.modal_product_info>div:first-of-type {width: 35%; height: 100%; 
+    /* background-color: rgba(255, 0, 0, .1);  */
+    float: left;}
+
+.modal_product_info>div:last-of-type p:first-of-type {margin-bottom: 10px;}
+.modal_product_info>div:last-of-type {width: 65%; height: 100%; 
+    /* background-color: rgba(0, 255, 0, .1);  */
+    float: left; padding-left: 30px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center;}
+
+/*.modal_product_info>div:last-of-type p:nth-of-type(2) {margin-bottom: 10px;}*/
+.modal_product_info>div:last-of-type p:last-of-type {color: gray;} 
+
+.modal_product_info>div:first-of-type img {width: 100%; height: 100%; object-fit: cover; object-position: top;}
+
+.formDiv {width: 100%; height: 200px;
+    /* background-color: rgba(255, 0, 0, .1);  */
+    float: left; margin-top: 15px;}
+.select_option {width: 100%; height: fit-content; 
+    /* background-color: rgba(255, 0, 0, .1); */ box-sizing: border-box;}
+.select_option select {width: 100%; height: 30px; border: 1px solid gray; margin-top: 5px;}
+
+.select_option>p {font-weight: bold;}
+.select_option>p:nth-of-type(2) {margin-top: 10px;}
+
+
+.modal_btn {width: 100%; height: fit-content; 
+    /* background-color: gray;  */
+    display: flex; justify-content: space-between;}
+
+.modal_btn button {width: 48%; height: 50px; background-color: red; margin-top: 25px; font-size: 18px; cursor: pointer; transition: 0.3s; box-sizing: border-box; font-weight: bold;}
+
+.modal_btn button:first-of-type {border: 1px solid gray; background-color: lightgray;}
+.modal_btn button:first-of-type:hover {background-color: #c8c7c7;}
+
+.modal_btn button:last-of-type {background-color: black; color: white;}
+.modal_btn button:last-of-type:hover {background-color: #3182f6;}

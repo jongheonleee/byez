@@ -61,7 +61,7 @@
                                 </p>
                             </td>
                         <td>${orderDetailDto.item_qty}</td>
-                        <td>${orderDetailDto.item_price}원</td>
+                            <td><fmt:formatNumber value="${orderDetailDto.item_price}" pattern="#,###"/>원</td>
                         <td>${orderDetailDto.ord_state}</td>
                     </tr>
                     </c:forEach>

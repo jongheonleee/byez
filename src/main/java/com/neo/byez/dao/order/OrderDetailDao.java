@@ -19,6 +19,8 @@ public  interface OrderDetailDao {
     int deleteAll() throws Exception;
 
      int getCount(String id) throws Exception;
+     int getEtcCount(String id) throws Exception;
+
      List<OrderDetailDto> selectByOrdNum(String ord_num) throws Exception;
      List<OrderDetailDto> selectAllEtc(String id) throws Exception;
     //옵션변경
@@ -28,6 +30,7 @@ public  interface OrderDetailDao {
     //부분교환시 사용되는 주문상태 업데이트 dao
      int updateEachOrdState(OrderDetailDto orderDetailDto);
     List<OrderDetailDto> selectPage(Integer curPage, Integer pageSize, String userId) throws Exception;
+    List<OrderDetailDto> selectEtcPage(Integer curPage, Integer pageSize, String userId) throws Exception;
     //찬빈 추가
     List<OrderDetailJoinItemDto> selectById(String id);
     OrderDetailJoinItemDto selectOrdItem(String ord_num,String item_num,String id);

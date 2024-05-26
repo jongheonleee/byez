@@ -66,9 +66,9 @@
                                 <input type="date"
                                        id="date1"
                                        class="date-input"
-                                       max="2077-06-20"
+                                       max="2012-06-20"
                                        min="2077-06-05"
-                                       value="2077-06-15">
+                                       value="2024-05-31">
                             </label>
 
                             ~
@@ -76,9 +76,9 @@
                                 <input type="date"
                                        id="date2"
                                        class="date-input"
-                                       max="2077-06-20"
+                                       max="2012-06-20"
                                        min="2077-06-05"
-                                       value="2077-06-15">
+                                       value="2024-05-31">
                             </label>
                             <input alt="조회"  class= "uniform-height" type="image" src="//img.echosting.cafe24.com/skin/admin_ko_KR/myshop/btn_search.gif">
                         </fieldset>
@@ -128,7 +128,7 @@
                                                 <%-- 주문취소버튼--%>
                                             <form action = "/cancel" method="post" class="form_center">
                                                 <input type="hidden" name="ord_num" value="${orderDetailDto.ord_num}">
-                                                <c:if test="${orderDetailDto.ord_state == '주문완료'||'주문대기' }">
+                                                <c:if test="${orderDetailDto.ord_state == '주문완료'|| orderDetailDto.ord_state == '주문대기' }">
                                                     <input type="submit" class="cancel_button" value="취소">
                                                 </c:if>
                                             </form>
@@ -258,7 +258,7 @@
 
                         <tbody>
                         <tr>
-                            <c:forEach var="orderDetailDto" items="${etcList}">
+                            <c:forEach var="orderDetailDto" items="${limitEtcList}">
                         <tr>
                             <td>
                                 <a href="/goods/${orderDetailDto.item_num}">
@@ -292,19 +292,21 @@
                     <br>
 <%--                    취소교환반품 리스트 페이징기능 관련 매퍼, 다오 추가후 기능추가 예정--%>
                     <div class="paging">
-                    <c:if test="${ph.showPrev}">
-                        <a href = list?curPage=${ph.naviStart-1}><<</a> &nbsp;
-                        <a href = list?curPage=${ph.curPage-1}><</a>
+                        <c:if test="${phEtc.totalCnt > 0}">
+                    <c:if test="${phEtc.showPrev}">
+                        <a href = list?curPage=${phEtc.naviStart-1}><<</a> &nbsp;
+                        <a href = list?curPage=${phEtc.curPage-1}><</a>
                     </c:if>
 
-                    <c:forEach var="ph" begin="${ph.naviStart}" end="${ph.naviEnd}" varStatus="status">
-                        <a id = "${status.index}" href="list?curPage=${status.index}" style="font-size: 20px">${status.index}</a>
+                    <c:forEach var="phEtc" begin="${phEtc.naviStart}" end="${phEtc.naviEnd}" varStatus="status1">
+                        <a id = "${status1.index}" href="list?curPage=${status1.index}" style="font-size: 20px">${status1.index}</a>
                     </c:forEach>
 
-                    <c:if test="${ph.showNext}">
-                        <a href = /list?curPage=${ph.curPage+1}>></a> &nbsp;
-                        <a href = /list?curPage=${ph.naviEnd+1}>>></a>
+                    <c:if test="${phEtc.showNext}">
+                        <a href = /list?curPage=${phEtc.curPage+1}>></a> &nbsp;
+                        <a href = /list?curPage=${phEtc.naviEnd+1}>>></a>
                     </c:if>
+                        </c:if>
                     </div>
 
                     <c:if test="${not empty etcMessage}">

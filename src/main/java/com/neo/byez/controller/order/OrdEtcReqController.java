@@ -301,7 +301,7 @@ public class OrdEtcReqController {
         m.addAttribute("deliveryDto", deliveryDto);
         m.addAttribute("orderDetailDto", orderDetailDto);
         m.addAttribute("itemOptionDto", itemOptionDto);
-        System.out.println(orderDetailDto);
+
 
         return "/order/orderExchangeForm";
     }

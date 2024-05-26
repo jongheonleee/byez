@@ -19,7 +19,11 @@ public interface OrderDetailService {
 
     List<OrderDetailDto> getPage(Integer curPage, Integer pageSize, String userId) throws Exception;
 
+    List<OrderDetailDto> getEtcPage(Integer curPage, Integer pageSize, String userId) throws Exception;
+
     public int getCount(String userId) throws Exception;
+
+    public int getEtcCount(String userId) throws Exception;
 
     List<ItemOptionDto> selectColorOption(String num);
 

@@ -62,9 +62,14 @@ public class OrderDetailController {
                 pageSize = 10;
             }
             int totalCnt = orderDetailService.getCount(userId);
+            int etcTotalCnt = orderDetailService.getEtcCount(userId);
+
             PageHandler ph = new PageHandler(totalCnt, curPage, 10);
+            PageHandler phEtc = new PageHandler(etcTotalCnt, curPage, 10);
 
             List<OrderDetailDto> limitList = orderDetailService.getPage(curPage, pageSize, userId);
+            List<OrderDetailDto> limitEtcList = orderDetailService.getEtcPage(curPage, pageSize, userId);
+
 
             if(limitList.isEmpty() ){
                 m.addAttribute("listMessage", "조회결과가 없습니다.");
@@ -81,9 +86,13 @@ public class OrderDetailController {
             m.addAttribute("list", list);
 
             m.addAttribute("ph", ph);
+            m.addAttribute("phEtc", phEtc);
+
             m.addAttribute("curPage", curPage);
             m.addAttribute("pageSize", pageSize);
             m.addAttribute("etcList", etcList);
+            m.addAttribute("limitEtcList", limitEtcList);
+
         } catch (IndexOutOfBoundsException e) {
             return "/order/list";
         }

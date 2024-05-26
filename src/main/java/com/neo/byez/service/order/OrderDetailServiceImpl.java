@@ -44,8 +44,19 @@ public class OrderDetailServiceImpl implements  OrderDetailService{
     }
 
     @Override
+    public List<OrderDetailDto> getEtcPage(Integer curPage, Integer pageSize, String userId) throws Exception {
+        return ordDetailDao.selectEtcPage(curPage,pageSize,userId);
+    }
+
+
+    @Override
     public int getCount(String userId) throws Exception {
         return ordDetailDao.getCount(userId);
+    }
+
+    @Override
+    public int getEtcCount(String userId) throws Exception {
+        return ordDetailDao.getEtcCount(userId);
     }
 
     @Override

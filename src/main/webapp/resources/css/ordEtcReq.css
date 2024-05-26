@@ -95,14 +95,14 @@ table td{text-align: left; padding: 10px 20px;}
 #exchangeBtn{border: 1px solid ;color:white; background-color: black; margin-left: 5px;}
 #refundBtn{border: 1px solid ; color:white;background-color: black; margin-left: 5px;}
 #cancelBtn{border: 1px solid ; color:white;background-color: black; margin-left: 5px; }
-.back {border: 1px solid gray; color: black; background-color: white;}
+.back {border: 1px solid gray; color: black; background-color: lightgray;}
 
 
 #buttons{text-align: center; margin-top: 60px;}
 
 /*라디오버튼 간격띄우기 */
-.pickupChoice :last-of-type{margin-left:20px}
-.pickupSpotChoice :last-of-type{margin-left:20px}
+#noReq{margin-left:20px}
+#new_delivery{margin-left:20px}
 .pickupChoice p {
     color : gray;
     text-align: left;
@@ -145,77 +145,6 @@ table td{text-align: left; padding: 10px 20px;}
     transition: background-color 0.3s; /* 배경색과 그림자 변화에 애니메이션 효과 적용 */
 }
 
-/*모달창*/
-.dialog {
-    display: none;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 10;
-    width: 100%;
-    height: 100%;
-    /*background: rgba(0, 0, 0, 0.4);*/
-}
-
-.dialog>.tb {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
-/*.dialog>.tb .inner {*/
-/*    width: 30%;*/
-/*    max-width: 100px;*/
-/*    padding: 20px;*/
-/*    background: #fff;*/
-/*    border-radius: 16px;*/
-/*}*/
-
-.dialog>.tb .inner {
-    width: fit-content;
-    max-width: 100px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 16px;
-    border: 1px solid gray;
-    height: 200px; /* 높이를 화면 높이의 30%로 설정 */
-}
-
-.dialog .top {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #ddd;
-    justify-content: space-between;
-    padding-bottom: 15px;
-    margin-bottom: 15px;
-}
-
-.dialog .title {
-    font-weight: bold;
-    font-size: 18px; /* 글씨 크기 조정 */
-}
-
-/*.dialog .ct {*/
-/*    max-height: 30vh; !* 최대 높이를 40vh로 조정 *!*/
-/*    height: 30vh; !* 높이를 40vh로 조정 *!*/
-/*    overflow-y: auto;*/
-/*    border-bottom-left-radius: 10px;*/
-/*    border-bottom-right-radius: 10px;*/
-/*    background-color: #fff;*/
-/*}*/
-
-.dialog .ct {
-    max-height: 20vh; /* 컨텐츠 부분의 최대 높이를 25vh로 조정 */
-    overflow-y: auto; /* 내용이 넘칠 경우 스크롤바 생성 */
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: #fff;
-    text-align: center;
-}
-/*여기까지 모달창*/
-
 
 #changedOption{display: none; text-align: left; color: gray}
 
@@ -255,11 +184,7 @@ table {margin-bottom: 70px;}
 #size {
     margin-bottom: 10px; /* select 박스와 input 버튼 사이의 간격 */
 }
-#change {
-    display: block;
-    width: 20%; /* 너비 조정 */
-    text-align: center;
-}
 
-.modalShadow{width:100%; height:100vh;background-color: rgba(0,0,0,0.5); position:fixed;top:0;z-index: 300}
-.modal{width:500px; height:500px; background-color: white; position:absolute;top:50%;left:50%;transform: translate(-50%,-50%)}
+
+/*.modalShadow{width:100%; height:100vh;background-color: rgba(0,0,0,0.5); position:fixed;top:0;z-index: 300}*/
+/*.modal{width:500px; height:500px; background-color: white; position:absolute;top:50%;left:50%;transform: translate(-50%,-50%)}*/
