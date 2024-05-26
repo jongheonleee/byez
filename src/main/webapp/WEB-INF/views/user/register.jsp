@@ -13,130 +13,130 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="wrapper">
-  <div class="register_form">
-    <div class="register_form_wrapper">
-      <div>
-        <p>회원가입</p>
-      </div>
-      <p>*필수입력 항목</p>
-      <p class="errorMsg">
-        <c:if test="${not empty errorMsg}">
-          ${errorMsg}
-        </c:if>
-      </p>
-      <form action="/register/save" method="POST">
-        <table>
-          <tr>
-            <td>
-              <span>*이름</span>
-            </td>
-            <td>
-              <input type="text" id="name" name="name" maxlength="6" required oninput="checkNameFormat()">
-              <p id="name-error-msg"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>성별</td>
-            <td>
-              <input type="radio" name="sex" value="M"> M
-              <input type="radio" name="sex" value="F"> F
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>
-                  *아이디
-              </span>
-            </td>
-            <td>
-              <input type="text" id="id" name="id" maxlength="20" placeholder="3자리 이상 입력하세요." oninput="checkIdFormat()" required>
-              <button id="checkDuplicateBtn">중복확인</button>
-              <p id="id-msg"></p>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="2">비밀번호는 영문, 숫자, 특수문자를 최소 1개 이상 포함하여 8자 이상 20자 이하로 입력해주세요.</td>
-          </tr>
-          <tr>
-            <td>
-              <span>
-                  *비밀번호
-              </span>
-            </td>
-            <td><input type="password" id="pwd1" name="pwd" maxlength="20" oninput="checkPwdLength()" required>
-              <p id="pwd-length-error-msg"></p>
-              <p>
-                <c:if test="${not empty wrongPwdMsg}">
-                  ${wrongPwdMsg}
-                </c:if>
-              </p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>
-                  *비밀번호 확인
-              </span>
-            </td>
-            <td> <input type="password" id="pwd2" name="pwd" maxlength="20" oninput="checkPwdMatch()" required>
-              <p id="match-error-msg"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>
-                  생년월일
-              </span>
-            </td>
-            <td>
-              <input type="text" id="birth1" name="bef_birth" placeholder="8자리로 입력하세요." maxlength="8" oninput="checkBirthFormat1()">
-              - <input type="text" id="birth2" name="af_birth" maxlength="1" oninput="checkBirthFormat2()">
-              <p id="birth-error-msg"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>
-                  전화번호
-              </span>
-            </td>
-            <td>
-              <input type="text" id="tel_num" name="tel_num" placeholder="-제외한 숫자만 입력하십시오." maxlength="11" oninput="restrictToTelNumbers(this.value)">
-              <p id="tel-number-error-msg"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>
-                  핸드폰 번호
-              </span>
-            </td>
-            <td>
-              <input type="text" id="mobile_num" name="mobile_num" placeholder="-제외한 숫자만 입력하십시오." maxlength="11" oninput="restrictToPhoneNumbers(this.value)">
-              <p id="mobile-number-error-msg"></p>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span>
-                  *E-mail
-              </span>
-            </td>
-            <td>
-              <input type="email" name="email" placeholder="byez@example.com" maxlength="50" oninput="checkEmailFormat(this.value)" required>
-              <p id="email-error-msg"></p>
-            </td>
-          </tr>
-        </table>
-        <div class="button_wrapper">
-          <button onclick="location.href='/'">가입취소</button>
-          <input type="submit" id="sendUserInfoBtn" value="제출">
+  <div class="wrapper">
+    <div class="register_form">
+      <div class="register_form_wrapper">
+        <div>
+          <p>회원가입</p>
         </div>
-      </form>
+        <p>*필수입력 항목</p>
+        <p class="errorMsg">
+          <c:if test="${not empty errorMsg}">
+            ${errorMsg}
+          </c:if>
+        </p>
+        <form action="/register/save" method="POST">
+          <table>
+            <tr>
+              <td>
+                <span>*이름</span>
+              </td>
+              <td>
+                <input type="text" id="name" name="name" value="${userDto.name}" maxlength="6" required oninput="checkNameFormat()">
+                <p id="name-error-msg"></p>
+              </td>
+            </tr>
+            <tr>
+              <td>성별</td>
+              <td>
+                <input type="radio" name="sex" value="M" <c:if test="${userDto.sex == 'M'}">checked</c:if>> M
+                <input type="radio" name="sex" value="F" <c:if test="${userDto.sex == 'F'}">checked</c:if>> F
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                    *아이디
+                </span>
+              </td>
+              <td>
+                <input type="text" id="id" name="id" maxlength="20" value="${userDto.id}" placeholder="3자리 이상 입력하세요." oninput="checkIdFormat()" required>
+                <button id="checkDuplicateBtn">중복확인</button>
+                <p id="id-msg"></p>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2">비밀번호는 영문, 숫자, 특수문자를 최소 1개 이상 포함하여 8자 이상 20자 이하로 입력해주세요.</td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                    *비밀번호
+                </span>
+              </td>
+              <td><input type="password" id="pwd1" name="pwd" maxlength="20" oninput="checkPwdLength()" required>
+                <p id="pwd-length-error-msg"></p>
+                <p>
+                  <c:if test="${not empty wrongPwdMsg}">
+                    ${wrongPwdMsg}
+                  </c:if>
+                </p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                    *비밀번호 확인
+                </span>
+              </td>
+              <td> <input type="password" id="pwd2" name="pwd" maxlength="20" oninput="checkPwdMatch()" required>
+                <p id="match-error-msg"></p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                    생년월일
+                </span>
+              </td>
+              <td>
+                <input type="text" id="birth1" name="bef_birth" value="${userDto.bef_birth}" maxlength="8" placeholder="8자리로 입력하세요." oninput="checkBirthFormat1()">
+                - <input type="text" id="birth2" name="af_birth" value="${userDto.af_birth}" maxlength="1" oninput="checkBirthFormat2()">
+                <p id="birth-error-msg"></p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                    전화번호
+                </span>
+              </td>
+              <td>
+                <input type="text" id="tel_num" name="tel_num" value="${userDto.tel_num}" maxlength="11" placeholder="-제외한 숫자만 입력하십시오." oninput="restrictToTelNumbers(this.value)">
+                <p id="tel-number-error-msg"></p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                    핸드폰 번호
+                </span>
+              </td>
+              <td>
+                <input type="text" id="mobile_num" name="mobile_num" value="${userDto.mobile_num}" maxlength="11" placeholder="-제외한 숫자만 입력하십시오." oninput="restrictToPhoneNumbers(this.value)">
+                <p id="mobile-number-error-msg"></p>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <span>
+                    *E-mail
+                </span>
+              </td>
+              <td>
+                <input type="email" name="email" maxlength="50" value="${userDto.email}" placeholder="이메일을 입력해주세요." oninput="checkEmailFormat(this.value)" required>
+                <p id="email-error-msg"></p>
+              </td>
+            </tr>
+          </table>
+          <div class="button_wrapper">
+            <button onclick="location.href='/'">가입취소</button>
+            <input type="submit" id="sendUserInfoBtn" value="제출">
+          </div>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 </body>
 
 <script>

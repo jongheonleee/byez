@@ -6,11 +6,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BYEZ</title>
-  <link rel="stylesheet" href="/css/nav.css">
-  <link rel="stylesheet" href="/css/findIdResult.css">
-  <link rel="stylesheet" href="/css/footer.css?after?after">
-  <link rel="stylesheet" href="/css/quick.css">
+  <title>BYEZ|아이디 조회결과</title>
+
+  <link rel="stylesheet" href="/css/findIdResult.css?after">
   <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,50 +16,33 @@
 </head>
 
 <body>
+    <div class="wrapper">
 
-<%@include file="../../views/include/nav.jsp"%>
+      <div class="result-wrapper">
+        <div class="title">
+          <a href="/">
+            <img src="/img/byez.png" alt="메인로고" class="main-logo">
+          </a>
+        </div>
+        <div class="content">
+          <p>조회된 아이디는 다음과 같습니다.</p>
 
-<section>
-  <div class="wrapper">
-    <p>
-      <a href="/"><span>home</span></a>
-      <span>></span>
-      <a href="/login/form"><span>login</span></a>
-    </p>
+          <p class="show-cust-id">
+            ${fn:substring(id, 0, 2)}
+            <c:forEach begin="3" end="${id.length()}" step="1">
+              *
+            </c:forEach>
+          </p>
 
-    <div class="find-id-result">
-      <h1>아이디 조회 결과</h1>
-      <h3>조회된 아이디는 다음과 같습니다.</h3>
-      <ul class="show-cust-id">
-        <li>
-          <!-- <%-- 앞 4자리는 그대로 출력  --%> -->
-          <!-- <%-- 5번째부터는 * 으로 출력 --%> -->
-          ${fn:substring(id, 0, 4)}
-          <c:forEach begin="5" end="${id.length()}" step="1">
-            *
-          </c:forEach>
-        </li>
-      </ul>
-      <ul class="submit-button">
-        <li>
-          <form action="/" method="GET">
-            <input type="submit" value="HOME" class="find-result-btn-login">
-          </form>
-        </li>
-        <li>
-          <form action="/login/form" method="GET">
-            <input type="submit" value="LOGIN" class="find-result-btn-login">
-          </form>
-        </li>
-      </ul>
+          <div class="send-button">
+            <button onclick="location.href='/'">HOME</button>
+            <button onclick="location.href='/login/form'">LOGIN</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
-<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
-<jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 </body>
 
 <script src="/js/jquery-3.6.4.min.js"></script>
-<script src="/js/nav.js"></script>
 
 </html>

@@ -3,95 +3,95 @@
 ul {list-style: none;}
 a {text-decoration: none; color:black;}
 
-section {width: 100%; min-width: 1200px; height: fit-content; padding: 50px 0; box-sizing: border-box; margin-top: 90px;}
-
-/*section .wrapper {background-color: rgba(0, 255, 0, 0.1);}*/
-
-section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
-
-section .wrapper .find-id-input {
-    /*background-color: rgb(255, 0, 0, .1);*/
-    width: 600px;
-    height: 300px;
-    border: 3px solid grey;
-    margin: 0 auto;
-    padding: 0;
+.find-id-input-wrapper {
+    /*background-color: rgba(255, 0, 0, .1);*/
+    width: 500px;
+    height: 550px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid gray;
+    padding: 20px;
+    box-sizing: border-box;
 }
-
-h1 {
-    background-color: rgba(0, 0, 0, 0.9);
-    color: whitesmoke;
-    height: 50px;
+.title{
+    /* background-color: rgba(255, 0, 0, .1); */
+    width: 100%;
+    height: fit-content;
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
+    margin: 30px 0 70px;
 }
-
-h3 {
-    /*background-color: rgb(255, 0, 10, .2);*/
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-end;
+img {
+    width: 130px;
+    height: 58px;
 }
-
-section .wrapper .submit-email {
-    /*background-color: rgba(100, 0, 100, 0.1);*/
-    height: 100px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: center;
+.content {
+    /* background-color: rgba(0, 255, 0, .1); */
+    width: 100%;
+    height: fit-content;
+    margin-top: 90px;
+}
+.content p:first-of-type {
+     /*background-color: rgba(255, 0, 0, .1);*/
+    font-size: 16px;
+    text-align: center;
+}
+table {
+    background-color: white;
+    border: 1px solid gray;
+    margin: 10px auto 30px;
+    font-size: 20px;
+    width: 80%;
     font-weight: bold;
 }
-
-section .wrapper #verificationDiv {
-    /*background-color: rgba(0, 0, 255, 0.1);*/
-    height: 100px;
-    visibility: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    font-weight: bold;
+td {
+    /* border: 1px solid black; */
+    padding: 5px 0;
 }
-
-h5 {
-    color: midnightblue;
-    font-size: 15px;
-}
-
-
-input[type="text"], input[type="email"] {
-    width: 170px;
-    height: 25px;
-    border: 1px solid grey;
-    padding: 3px;
-    margin-left: 10px;
-}
-
-li { margin: 5px; }
-
-button {
-    width: 100px;
+input {
+    width: 100%;
     height: 30px;
-    border-radius: 2px;
-    color: whitesmoke;
-    background-color: black;
+    font-size: 16px;
+    outline: none;
     margin-left: 10px;
+    text-indent: 10px;
 }
-
-button:hover { font-size: 15px; font-weight: bold; }
-
-section .wrapper .submit-email #wrong-email-format-msg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
+td:first-of-type {
+    width: 180px;
+}
+td:nth-of-type(2) {
+    width: 60px;
+    text-align: right;
+}
+#wrong-email-format-msg {
     color: red;
-    font-size: 14px;
+    height: 20px;
+    padding: 5px;
+}
+.error-msg { height: 20px; margin-bottom: 10px; }
+#sendEmailBtn, #verifyCodeBtn {
+    margin: 0 10px;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 50px;
+    height: 30px;
+    transition : 0.3s;
+    font-size: 16px;
+    background-color : white;
+    border : 1px solid gray
+}
+#sendEmailBtn:disabled {
+    cursor: default;
+}
+#sendEmailBtn:enabled:hover {
+    border : 1px solid black;
+}
+.input-verification-code p:last-of-type {
+    margin-top: 100px;
+}
+.content p:last-of-type {
     font-weight: normal;
+    text-align: center;
 }

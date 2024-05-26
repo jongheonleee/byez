@@ -25,6 +25,8 @@
                     <a href="/"><span>home</span></a>
                     <span>></span>
                     <a href="/mypage/index"><span>마이페이지</span></a>
+                    <span>></span>
+                    <span>회원정보 수정</span>
                 </p>
                 <p>회원정보 수정</p>
             </div>
@@ -63,7 +65,7 @@
                             <input type="password" id="newPwd2" name="pwd" oninput="checkPwdMatch()">
                             <span id="match-error-msg"></span>
                         </td>
-                        <td><button type="button" id="saveNewPwdBtn">비밀번호 저장</button></td>
+                        <td><button type="button" id="saveNewPwdBtn" disabled>비밀번호 저장</button></td>
                     </tr>
                     <tr class="hidden no-bottom">
                         <td></td>
@@ -75,19 +77,6 @@
                         <td>${userDto.name}</td>
                         <td></td>
                     </tr>
-<%--                    <tr class="no-bottom">--%>
-<%--                        <td>생년월일</td>--%>
-<%--                        <td>${userDto.bef_birth}</td>--%>
-<%--                        <td><button id="modify-bef-birth" onclick="showBefBirthChangeInput()">생년월일 변경</button></td>--%>
-<%--                    </tr>--%>
-<%--                    <tr class="hidden no-bottom new-bef-birth-show">--%>
-<%--                        <td>변경할 생년월일</td>--%>
-<%--                        <td>--%>
-<%--                            <input type="text" id="bef_birth" name="bef_birth" maxlength="8" oninput="checkBirthFormat(this.value)">--%>
-<%--                            <span id="birth-error-msg"></span>--%>
-<%--                        </td>--%>
-<%--                        <td><button type="button" id="saveNewBefBirthBtn" disabled>생년월일 저장</button></td>--%>
-<%--                    </tr>--%>
                     <tr class="no-bottom">
                         <td>휴대폰 번호</td>
                         <td>
@@ -103,7 +92,7 @@
                     <tr class="hidden new-mobile-num-show">
                         <td>변경할 휴대폰 번호</td>
                         <td>
-                            <input type="text" id="mobile_num" name="mobile_num" placeholder="-제외한 숫자만 입력하십시오." maxlength="11" oninput="restrictMobileNumbers(this.value)">
+                            <input type="text" id="mobile_num" name="mobile_num" placeholder="- 제외한 숫자만 입력하십시오." maxlength="11" oninput="restrictMobileNumbers(this.value)">
                             <span id="mobile-number-error-msg"></span>
                         </td>
                         <td><button type="button" id="saveNewMobileNumBtn" disabled>휴대폰 번호 저장</button></td>
@@ -155,7 +144,7 @@
         let msg = document.getElementById('pwd-length-error-msg');
 
         if (pwd.length > 0 && pwd.length < 8 || pwd.length > 20) {
-            msg.innerHTML = "비밀번호는 8자리 이상 20자리 이하로 입력해야 합니다."
+            msg.innerHTML = "비밀번호는 8-20자리 이하로 입력해야 합니다."
         } else {
             msg.innerHTML = "";
         }
@@ -185,16 +174,6 @@
         }
         pwdChangeBtn.style.display = "none";
     }
-
-    // function showBefBirthChangeInput() {
-    //     let befBirthChangeInput = document.getElementsByClassName('new-bef-birth-show');
-    //     let befBirthChangeBtn = document.getElementById('modify-bef-birth');
-    //
-    //     for(let i = 0; i < befBirthChangeInput.length; i++) {
-    //         befBirthChangeInput[i].style.display = "table-row";
-    //     }
-    //     befBirthChangeBtn.style.display= "none";
-    // }
 
     function checkBirthFormat(inputValue) {
         let pattern = new RegExp('^[0-9]+$')
@@ -260,6 +239,9 @@
 
         if(inputValue.length > 0 && !inputValue.match(pattern)) {
             msg.innerHTML = "이메일 형식이 올바르지 않습니다.";
+            sendEmailBtn.disabled = true;
+        } else if (inputValue.length === 0) {
+            msg.innerHTML = "";
             sendEmailBtn.disabled = true;
         } else {
             msg.innerHTML = "";

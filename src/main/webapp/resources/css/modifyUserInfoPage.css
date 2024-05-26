@@ -21,77 +21,78 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .mside_content ul>li:first-of-type {font-size: 18px; font-weight: bold;}
 
 .table_title {font-size: 20px; font-weight: bold; margin-bottom:15px;}
-.table_title>span {color: gray; font-size: 16px; font-weight: normal;}
+.table_title>span { font-size: 16px; font-weight: normal;}
 
 .content>table {width: 100%; height: 100px; border-top: 2px solid black; border-collapse: collapse;}
 
 tr {
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid gray;
     height: 53px;
 }
-
 tr td:first-of-type {
     font-weight: bold;
     width: 30%;
 }
 
 table button {
-    border: black 1px solid;
-    width: 110px;
-    padding: 10px 0;
-    background-color: black;
-    color: whitesmoke;
-    font-weight: bold;
-}
-
-table button:hover {
-    font-size: 13px;
-}
-
-.content > button {
     width: 120px;
     padding: 10px 0;
-    background-color: black;
-    color: whitesmoke;
-    font-weight: bold;
+    cursor: pointer;
+    box-sizing : border-box;
+    border: 1px gray solid;
+    transition: .3s;
+    background-color: white;
+    font-size: 16px;
+    float: right;
+}
+table button:hover {
+    border: 1px solid black;
+}
+.content > button {
     float: right;
     margin-top: 30px;
 }
-
-table button:disabled {
-    background-color: gray;
-    color: white;
-    border: 1px solid gray;
-    font-size: 13px;
-}
-
 .hidden {
      display: none;
 }
-
 .no-bottom {
     border-bottom: 0;
 }
 
 .content tr:nth-of-type(7) {
-    border-top: 1px solid lightgray;
+    border-top: 1px solid gray;
 }
 
 .content tr:nth-of-type(10) {
-    border-top: 1px solid lightgray;
+    border-top: 1px solid gray;
 }
 
 table {
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid gray;
 }
 
 .content input {
-    border: 1px solid lightgray;
-    width: 200px;
+    border: 1px solid gray;
+    width: 230px;
     height: 30px;
+    text-indent: 15px;
+    font-size: 16px;
 }
-
 #pwd-length-error-msg, #match-error-msg, #wrong-pwd-format-msg, #birth-error-msg, #mobile-number-error-msg, #email-error-msg {
-    font-size: 13px;
+    font-size: 16px;
     color: red;
+    margin-left: 5px;
+}
+#saveNewPwdBtn, #saveNewMobileNumBtn {
+    background-color: black;
+    color: white;
+    font-weight: bold;
+}
+#saveNewPwdBtn:hover, #saveNewMobileNumBtn:hover {
+    background-color: #3182F6;
+}
+#saveNewPwdBtn:disabled:hover, #saveNewMobileNumBtn:disabled:hover {
+    background-color: black;
+    color: white;
+    cursor: default;
 }

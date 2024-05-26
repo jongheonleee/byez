@@ -2,43 +2,48 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>[BYEZ] 회원가입 본인인증</title>
+    <title>BYEZ|회원가입 본인인증</title>
 </head>
 
 <link rel="stylesheet" href="/css/requestEmailForm.css">
 
 <body>
-<div class="logo-wrapper">
-    <a href="/">
-        <img src="/img/byez.png" alt="메인로고" class="main-logo">
-    </a>
-</div>
-<section class="wrapper">
-    <header class="header">
-        BYEZ 회원가입
-    </header>
-
-    <header class="sub-header">
-        <h2>본인 확인</h2>
-        <h3>이메일 인증 단계</h3>
-        <h4>인증번호를 받을 이메일을 입력해주세요.</h4>
-    </header>
-
-    <div class="verify-email">
-        <div class="send-email">
-            E-mail: <input type="email" id="email" name="email" oninput="checkEmailFormat(this.value)" placeholder="byez@example.com" required>
-            <button id="sendEmailBtn" disabled>전송</button>
+    <div class="wrapper">
+        <div class="title">
+            <a href="/">
+                <img src="/img/byez.png" alt="메인로고" class="main-logo">
+            </a>
         </div>
-        <div id="email-format-error-msg"></div>
+        <div class="content">
+            <div class="error-msg">
+                <p id="email-format-error-msg"></p>
+            </div>
+            <table>
+                <tr>
+                    <td>
+                        <input type="email" id="email" name="email" oninput="checkEmailFormat(this.value)"  placeholder="이메일을 입력해주세요." required>
+                    </td>
+                    <td>
+                        <button id="sendEmailBtn" disabled>전송</button>
+                    </td>
+                </tr>
+            </table>
+            <div class="input-verification-code" id="verificationDiv" onclick="showVerifyEmailForm()">
+                <table>
+                    <tr>
+                        <td>
+                            <input type="text" id="verificationCode" name="mail_key" placeholder="인증번호를 입력해주세요." required>
+                        </td>
+                        <td>
+                            <button id="verifyCodeBtn">인증</button>
+                        </td>
+                    </tr>
+                </table>
+                <p>인증번호를 받지 못하셨다면, 다시 전송 버튼을 클릭하십시오.</p>
+            </div>
 
-        <%-- 이메일 전송 후 보여주기 --%>
-        <div class="input-verification-code" id="verificationDiv" onclick="showVerifyEmailForm()">
-            <h4>인증번호를 받지 못하셨다면, 다시 전송 버튼을 클릭하십시오.</h4>
-            인증 번호: <input type="text" id="verificationCode" name="mail_key" required>
-            <button id="verifyCodeBtn">인증</button>
         </div>
     </div>
-</section>
 </body>
 
 <script>
@@ -55,7 +60,11 @@
         if (inputValue.length > 0 && !emailPattern.test(inputValue)) {
             msg.innerHTML = "잘못된 이메일 형식입니다.";
             sendEmailBtn.disabled = true;
-        } else {
+        } else if (inputValue.length === 0) {
+            msg.innerHTML = ""
+            sendEmailBtn.disabled = true;
+        }
+        else {
             msg.innerHTML = ""
             sendEmailBtn.disabled = false;
         }

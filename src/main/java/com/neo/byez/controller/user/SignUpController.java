@@ -96,6 +96,12 @@ public class SignUpController {
         }
     }
 
+//    // @SessionAttribute 활용 위해 추가
+//    @ModelAttribute("userDto")
+//    public UserDto userDto() {
+//        return new UserDto();
+//    }
+
     @GetMapping("/form")
     public String moveToRegisterForm() {
         return "/user/register";
@@ -121,7 +127,7 @@ public class SignUpController {
     // 2. 고객 기본정보 입력 후 본 Controller 로 form 전송
     // 2.1. 고객이 입력한 데이터 유효성 검증 (SignUpValidator)
     @PostMapping("/save")
-    public String saveCustInfo(@Valid UserDto userDto, BindingResult result, Model model) throws Exception {
+    public String saveCustInfo(@Valid @ModelAttribute("userDto") UserDto userDto, BindingResult result, Model model) throws Exception {
         if (result.hasErrors()) {
             List<ObjectError> errorMsgs = result.getAllErrors();
             model.addAttribute("errorMsg", errorMsgs.get(0).getCode());

@@ -2,10 +2,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>login page</title>
+    <title>BYEZ|로그인</title>
 </head>
 
-<link rel="stylesheet" href="/css/loginForm.css?after">
+<link rel="stylesheet" href="/css/loginForm.css">
 
 <body>
 
@@ -24,9 +24,15 @@
         </c:if>
     </div>
     <section class="input-class">
-        <div class="input-field">ID: <input type="text" id="id" name="id" value="${cookie['id'].value}" maxlength="20" placeholder="ID (20자리 이하의 영문 아이디)" oninput="checkIdFormat()"></div>
+        <div class="input-field">
+            <span>ID</span>
+            <input type="text" id="id" name="id" value="${cookie['id'].value}" maxlength="20" placeholder="아이디를 입력해주세요." oninput="checkIdFormat()">
+        </div>
         <div class="id-error-msg"></div><br>
-        <div class="input-field">PASSWORD: <input type="password" id="pwd" name="pwd" placeholder="PASSWORD" oninput="checkPwdLength()"></div>
+        <div class="input-field">
+            <span>PASSWORD</span>
+            <input type="password" id="pwd" name="pwd" placeholder="비밀번호를 입력해주세요." oninput="checkPwdLength()">
+        </div>
     </section>
     <div class="error-msg">
         ${errorMsg}
@@ -46,9 +52,8 @@
 <%--  회원가입  --%>
 <div class="sign-up-button">
     <span>byez 쇼핑몰의 회원이 아니신가요?</span>
-    <button onclick="location.href='/register/verify'">SIGN UP</button>
+    <button onclick="location.href='/register/verify'">Sign Up</button>
 
-    <p>간편 가입 및 로그인</p>
     <div class="simple-button-wrapper">
         <%--REST API key (=client_id): 873c82dfa901cd280c11ee222e944826--%>
         <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=873c82dfa901cd280c11ee222e944826&redirect_uri=http://localhost:8080/kakaoLogin">

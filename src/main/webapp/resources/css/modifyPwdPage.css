@@ -8,23 +8,33 @@ section {width: 100%; min-width: 1200px; height: fit-content; padding: 50px 0; b
 section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
 
 section .wrapper .input-new-pwd {
-    width: 600px;
-    height: 280px;
+    width: 500px;
+    height: 550px;
     border: 3px solid grey;
     margin: 0 auto;
     padding: 0;
 }
-
+img {
+    width: 130px;
+    height: 58px;
+}
+.title{
+    /* background-color: rgba(255, 0, 0, .1); */
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    margin: 30px 0 70px;
+}
 h1 {
-    background-color: rgba(0, 0, 0, 0.9);
-    color: whitesmoke;
+    font-size: 30px;
     height: 50px;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 20px 0;
 }
-
 h3 {
     /*background-color: rgb(255, 0, 10, .2);*/
     height: 50px;
@@ -34,58 +44,77 @@ h3 {
     align-content: center;
     justify-content: center;
     font-weight: bold;
+    margin-bottom: 10px;
 }
-
 section .wrapper .input-id-pwd {
-    height: 200px;
+    height: 230px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
 }
-
 section .wrapper .input-id-pwd li:first-of-type {
     margin-right: 75px;
     margin-bottom: 10px;
 }
-
+table {
+    background-color: white;
+    margin: 5px auto;
+    font-size: 16px;
+    width: 70%;
+}
+tr {
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid gray;
+    margin-top: 20px;
+}
+tr:last-of-type {
+    display: flex;
+    align-items: center;
+}
 section .wrapper .error-msg {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: normal;
     color: red;
+    text-align: center;
+    margin: 10px 0;
+    height: 20px;
 }
-
 input[type="text"], input[type="text"]:focus {
     width: 170px;
     height: 25px;
     border-style: none;
     outline: none;
-    /*background-color: rgb(255, 255, 255, 0);*/
     padding: 3px;
-    font-size: 15px;
+    font-size: 18px;
     font-weight: bold;
+    margin-left: 100px;
 }
-
 input[type="password"] {
     width: 170px;
     height: 25px;
-    border: 1px solid grey;
-    padding: 3px;
-    margin-left: 10px;
+    text-indent: 15px;
+    margin-left: 20px;
+    outline: none;
 }
-
-input[type="submit"] {
-    width: 110px;
-    height: 40px;
-    border: 1px solid gray;
-    border-radius: 2px;
-    font-size: 15px;
+input[type="submit"], button {
+    width: 120px;
+    height: 45px;
+    margin: 0 10px;
+    font-size: 18px;
     font-weight: bold;
-    background-color: white;
-    color: black;
-    margin: 20px;
+    cursor: pointer;
+    box-sizing: border-box;
     transition: .3s;
 }
-
-input[type="submit"]:hover { font-size: 15px; font-weight: bold; color: white; background-color: black }
+button { background-color: lightgray; border : 1px solid gray;}
+button:hover { background-color: #C8C7C7; }
+input[type="submit"] { background-color: black; color: white; }
+input[type="submit"]:hover { background-color: #3182F6; }
+.send-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}

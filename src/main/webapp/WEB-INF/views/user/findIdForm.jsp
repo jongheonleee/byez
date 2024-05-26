@@ -2,71 +2,73 @@
 <html>
 
 <head>
-    <title>[BYEZ] 아이디 찾기</title>
+    <title>BYEZ|아이디 찾기</title>
 </head>
 
-<link rel="stylesheet" href="/css/nav.css">
 <link rel="stylesheet" href="/css/findIdForm.css">
-<link rel="stylesheet" href="/css/footer.css?after?after">
-<link rel="stylesheet" href="/css/quick.css">
 <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 
 <body>
+    <div class="wrapper">
+        <div class="find-id-input-wrapper">
+            <div class="title">
+                <a href="/">
+                    <img src="/img/byez.png" alt="메인로고" class="main-logo">
+                </a>
+            </div>
+            <div class="content">
+                <div class="error-msg">
+                    <p id="wrong-email-format-msg"></p>
+                </div>
+                <table>
+                    <tr>
+                        <td>
+                            <input type="email" id="findId-email" name="email" placeholder="이메일을 입력해주세요." oninput="checkEmailFormat(this.value)" required>
+                        </td>
+                        <td>
+                            <button type="button" id="sendEmailBtn" disabled>전송</button>
+                        </td>
+                    </tr>
+                </table>
 
-    <%@include file="../../views/include/nav.jsp"%>
+                <div class="input-verification-code" id="verificationDiv">
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="text" id="verificationCode" name="mail_key" placeholder="인증번호를 입력해주세요." required>
+                            </td>
+                            <td>
+                                <button id="verifyCodeBtn">인증</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <p>인증번호를 받지 못하셨다면, 다시 전송 버튼을 클릭하십시오.</p>
+                </div>
 
-    <section>
-        <div class="wrapper">
-            <p>
-                <a href="/"><span>home</span></a>
-                <span>></span>
-                <a href="/login/form"><span>login</span></a>
-            </p>
-
-            <div class="find-id-input">
-                <h1>아이디 찾기</h1>
-                <h3>회원가입 시 등록한 아이디를 입력하십시오.</h3>
-
-                <ul class="submit-email">
-                    <li>
-                        이메일: <input type="email" id="findId-email" name="email" placeholder="byez@example.com" oninput="checkEmailFormat(this.value)" required>
-                        <button type="button" id="sendEmailBtn">인증번호 전송</button>
-                        <div id="wrong-email-format-msg"></div>
-                    </li>
-
-                </ul>
-
-                <ul id="verificationDiv">
-                    <li>
-                        <h5>이메일을 받지 못한 경우 다시 인증번호 전송 버튼을 누르십시오.</h5>
-                    </li>
-                    <li>
-                        인증번호: <input type="text" id="verificationCode" name="mail_key" required>
-                        <button type="button" id="verifyCodeBtn">인증</button>
-                    </li>
-                </ul>
             </div>
         </div>
-    </section>
-    <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
-    <jsp:include page="/WEB-INF/views/include/quick.jsp"/>
+    </div>
 </body>
 
 <script>
     function checkEmailFormat(inputValue) {
-        let pattern = new RegExp('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$')
+        let pattern = new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')
         let msg = document.getElementById('wrong-email-format-msg');
         // let sendEmailBtn = document.getElementById('sendEmailBtn');
 
         if(inputValue.length > 0 && !inputValue.match(pattern)) {
             msg.innerHTML = "이메일 형식이 올바르지 않습니다.";
-            // sendEmailBtn.disabled = true;
-        } else {
+            sendEmailBtn.disabled = true;
+        } else if (inputValue.length == 0) {
             msg.innerHTML = "";
-            // sendEmailBtn.disabled = false;
+            sendEmailBtn.disabled = true;
+        }
+        else {
+            msg.innerHTML = "";
+            sendEmailBtn.disabled = false;
         }
     }
 </script>

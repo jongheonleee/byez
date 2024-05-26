@@ -141,22 +141,6 @@ public class UserInfoController {
         }
     }
 
-//    // 생년월일 변경
-//    @PostMapping("/modifyBefBirth")
-//    @ResponseBody
-//    public ResponseEntity<String> modifyBefBirth(String id, Integer bef_birth) {
-//        try {
-//            if (userService.modifyUserBefBirth(id, bef_birth)) {
-//                return new ResponseEntity<>("생년월일 변경 성공!", HttpStatus.OK);
-//            } else {
-//                return new ResponseEntity<>("생년월일 변경 시 오류 발생", HttpStatus.INTERNAL_SERVER_ERROR);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            return new ResponseEntity<>("생년월일 변경 실패", HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
-
     // 전화번호 변경
     @PostMapping("/modifyMobileNum")
     public ResponseEntity<String> modifyUserMobileNum(String id, Integer mobile_num) {

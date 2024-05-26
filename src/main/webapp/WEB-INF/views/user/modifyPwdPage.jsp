@@ -5,11 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BYEZ</title>
-    <link rel="stylesheet" href="/css/nav.css">
+    <title>BYEZ|비밀번호 변경</title>
     <link rel="stylesheet" href="/css/modifyPwdPage.css?after">
-    <link rel="stylesheet" href="/css/footer.css?after?after">
-    <link rel="stylesheet" href="/css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,49 +14,57 @@
 </head>
 
 <body>
-
-    <%@include file="../../views/include/nav.jsp"%>
-
-    <section>
         <div class="wrapper">
-            <p>
-                <a href="/"><span>home</span></a>
-                <span>></span>
-                <a href="/login/form"><span>login</span></a>
-            </p>
-
             <form action="/find/modify" method="GET">
                 <div class="input-new-pwd">
-                    <h1>비밀번호 변경</h1>
-                    <h3>새로운 비밀번호를 설정하십시오.</h3>
-                    <ul class="input-id-pwd">
-                        <li>
-                            아이디: <input type="text" value="${id}" id="id2" name="id" readonly>
-                        </li>
-                        <li>
-                            변경할 비밀번호: <input type="password" id="pwd1" name="pwd" required>
-
-                        </li>
-                        <li>
-                            비밀번호 재확인: <input type="password" id="pwd2" name="pwd" oninput="checkPwdMatch();" required>
-                        </li>
-                        <li class="error-msg">
-                            ${incorrectPwdMsg}
-                        </li>
-                        <li>
-                            <input type="submit" value="비밀번호 변경">
-                        </li>
-                    </ul>
+                    <div class="title">
+                        <a href="/">
+                            <img src="/img/byez.png" alt="메인로고" class="main-logo">
+                        </a>
+                    </div>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>아이디</span>
+                            </td>
+                            <td>
+                                <input type="text" value="${id}" id="id2" name="id" readonly>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>변경할 비밀번호</span>
+                            </td>
+                            <td>
+                                <input type="password" id="pwd1" name="pwd" maxlength="20" required>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <span>비밀번호 재확인</span>
+                            </td>
+                            <td>
+                                <input type="password" id="pwd2" name="pwd" maxlength="20" oninput="checkPwdMatch();" required>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="error-msg">
+                        <p>${incorrectPwdMsg}</p>
+                    </div>
+                    <div class="send-button">
+                        <button onclick="location.href='/'">취소</button>
+                        <input type="submit" value="비밀번호 변경">
+                    </div>
                 </div>
             </form>
         </div>
-    </section>
-    <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
-    <jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 </body>
 
 <script src="/js/jquery-3.6.4.min.js"></script>
-<script src="/js/nav.js"></script>
 
 <script>
     function checkPwdMatch() {

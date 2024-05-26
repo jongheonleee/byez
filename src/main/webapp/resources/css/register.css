@@ -9,7 +9,7 @@ body {background-color: rgb(245, 245, 245);}
 
 .register_form_wrapper>div:first-of-type {width: 100%; height: fit-content;
     /* background-color: rgba(255, 0, 0, .1);  */
-    border-bottom: 3px solid lightgray; margin-bottom: 20px;}
+    border-bottom: 3px solid gray; margin-bottom: 20px;}
 
 .register_form_wrapper>p:first-of-type {color: red; font-weight: bold; margin: 20px 20px 20px 0; text-align: right;}
 .register_form_wrapper {width: 100%; height: fit-content;
@@ -50,11 +50,11 @@ table tr:nth-of-type(5) span {top: 7px;}
 
 table input[type="text"],
 table input[type="password"],
-table input[type="email"] {width: 200px; height: 25px; font-size: 15px; text-indent: 5px; border: 1px solid lightgray; margin-bottom: 8px;}
+table input[type="email"] {width: 200px; height: 25px; font-size: 15px; text-indent: 5px; border: 1px solid gray; margin-bottom: 8px;}
 
 table input[type="text"] ~ p ,
 table input[type="password"] ~ p ,
-table input[type="email"] ~ p {font-size: 15px;}
+table input[type="email"] ~ p {font-size: 16px; }
 
 #birth2 {width: 25px; text-align: center; text-indent: 0;}
 table input[type="radio"] {margin-right: 5px;}
@@ -70,33 +70,46 @@ table tr:nth-of-type(5) td {padding: 0 15px;}
     display: flex; justify-content: space-evenly;}
 
 #checkDuplicateBtn {
-    background-color: black;
+    background-color : white;
+    border: 1px solid gray;
     width: 100px;
     height: 30px;
-    border: 1px solid gray;
-    color: white;
-    font-size: 15px;
-    font-weight: normal;
+    font-size: 16px;
     margin-left: 10px;
-    transition: .3s;
 }
-
 #checkDuplicateBtn:hover {
-    background-color: white;
-    color: black;
+    border: 1px solid black;
+}
+button, input[type="submit"] {
+    box-sizing : border-box;
+    cursor: pointer;
+    transition : 0.3s;
+    font-size: 20px;
     font-weight: bold;
 }
-
-button, input[type="submit"] {
-    background-color: white;
-    color: black; border: 1px solid lightgray; box-sizing: border-box; width: 130px; height: 60px; font-size: 20px; font-weight: bold;
+input[type=submit] {
+    background-color : black;
+    width: 130px;
+    height: 52px;
+    color: white;
 }
-input[type="submit"]:hover {background-color: black; color: white;}
-input[type="submit"] {transition: 0.3s;}
-input[type="submit"]:hover {background-color: black; color: white; border-color: black;}
+input[type="submit"]:hover { background-color: #3182F6; }
+button {
+    background-color: lightgray;
+    border: 1px solid gray;
+    font-weight: bold;
+    width: 130px;
+    height: 52px;
+}
+button:hover {
+    background-color: #C8C7C7;
+}
 input[type="submit"]:disabled {
     background-color: gray;
     color: white;
     border: 1px solid gray;
     font-size: 20px;
+}
+#name-error-msg, #pwd-length-error-msg, #match-error-msg, #birth-error-msg, #tel-number-error-msg, #mobile-number-error-msg, #email-error-msg {
+    color: red;
 }
