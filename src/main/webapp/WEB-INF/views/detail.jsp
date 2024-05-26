@@ -338,8 +338,8 @@
         </div>
     </div>
 </section>
-<%@include file="../views/include/quick.jsp"%>
-<%@include file="../views/include/footer.jsp"%>
+<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <div class="modal_bg"></div>
 <div class="modal_box"></div>
 <script src="/js/jquery-3.6.4.min.js"></script>

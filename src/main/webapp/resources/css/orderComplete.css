@@ -37,3 +37,29 @@ section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
 
 .orderWrapper button:first-of-type {border: 1px solid lightgray; background-color: white; margin-right: 15px;}
 .orderWrapper button:last-of-type {border: 1px solid black; color: white; background-color: black;}
+
+button{
+    cursor : pointer;
+    box-sizing : border-box;
+}
+
+/* 홈으로 가기 버튼 */
+.orderWrapper>button:nth-of-type(1){
+    background-color : lightgray;
+    border : 1px solid gray;
+    transition : 0.3s;
+}
+
+.orderWrapper>button:nth-of-type(1):hover{
+    background-color : #C8C7C7;
+}
+
+/* 주문 상세 버튼 */
+.orderWrapper>button:nth-of-type(2){
+    background-color : black;
+    transition : 0.3s;
+}
+
+.orderWrapper>button:nth-of-type(2):hover{
+    background-color : #3182F6;
+}

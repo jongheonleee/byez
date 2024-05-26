@@ -149,6 +149,7 @@ public class OrderController {
     public String index(HttpSession session, BasketItemDtos basketItemDtos, Model m) throws Exception {
         String id = (String)session.getAttribute("userId");
 
+
         List<BasketItemDto> basketItemDtoList = basketItemDtos.getOrders();
         HashMap<String,Object> map = orderService.orderForm(id, basketItemDtoList);
         List<UserCouponDetails> coupons = custCouponsService.getUserCouponDetailsByUserId(id);

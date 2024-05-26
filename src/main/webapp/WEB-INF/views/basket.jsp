@@ -100,6 +100,7 @@
                                             <input type="hidden" class="eachBasketItemSeq" value="${list.get(i).seq}">
                                             <input type="hidden" class="eachBasketItemNum" value="${list.get(i).num}">
                                             <input type="hidden" class="eachBasketItemName" value="${list.get(i).name}">
+                                            <input type="hidden" class="eachBasketItemMainImg" value="${list.get(i).main_img}">
                                             <input type="hidden" class="eachBasketItemPrice" value="${list.get(i).price}">
                                             <input type="hidden" class="eachBasketItemQty" value="${list.get(i).qty}">
                                             <input type="hidden" class="eachBasketItemOpt1" value="${list.get(i).opt1}">
@@ -276,8 +277,8 @@
 <!-- 주문 form -->
 <form action="/order/orderForm" method="post" class="orderCheckedBasketItemForm">
 </form>
-<%@include file="../views/include/quick.jsp"%>
-<%@include file="../views/include/footer.jsp"%>
+<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <!-- 4. 자스 -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="/js/nav.js?after?after?after"></script>

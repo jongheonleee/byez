@@ -324,8 +324,8 @@
     </div>
 </section>
 
-<%@include file="../../views/include/footer.jsp"%>
-<%@include file="../../views/include/quick.jsp"%>
+<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 
     <%--$("#${ph.curPage}").css("color", "#f141a2");--%>
     <%--$("#${ph.curPage}").css("font-weight", "bold");--%>

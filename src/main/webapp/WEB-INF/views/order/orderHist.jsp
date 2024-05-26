@@ -1,8 +1,6 @@
-[orderHist.jsp]
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -48,14 +46,12 @@
                     <tr>
                         <td class="productTitle">
                             <p>${orderedItem.item_name}</p>
-                            <p>옵션 :
-                                <span>${orderedItem.opt1}</span>
-                                /
-                                <span>${orderedItem.opt2}</span>
+                            <p>
+                                [사이즈 : <span>${orderedItem.opt1}</span> / 컬러 : <span>${orderedItem.opt2}</span>]
                             </p>
                         </td>
                         <td>${orderedItem.item_qty}</td>
-                        <td class="price">${orderedItem.item_price}</td>
+                        <td class="price"><fmt:formatNumber value="${orderedItem.item_price}" pattern="#,###"/></td>
                         <td>0</td>
                         <td class="delivery">
                             <p>${orderResultInfoDto.dlv_corp}</p>
@@ -92,19 +88,19 @@
             <table class="dlvInfo">
                 <tr>
                     <td class="dlvTitle">상품 합계</td>
-                    <td><span></span>${orderResultInfoDto.total_price}원</td>
+                    <td><span><fmt:formatNumber value="${orderResultInfoDto.total_price}" pattern="#,###"/></span>원</td>
                 </tr>
                 <tr>
                     <td class="dlvTitle">배송비 합계</td>
-                    <td>${orderResultInfoDto.total_dlv_price}원</td>
+                    <td><span><fmt:formatNumber value="${orderResultInfoDto.total_dlv_price}" pattern="#,###"/></span>원</td>
                 </tr>
                 <tr>
                     <td class="dlvTitle">할인 합계</td>
-                    <td class="blue"><span>${orderResultInfoDto.total_disc_price}</span>원</td>
+                    <td class="blue"><span><fmt:formatNumber value="${orderResultInfoDto.total_disc_price}" pattern="#,###"/></span>원</td>
                 </tr>
                 <tr>
                     <td class="dlvTitle">최종 결제 금액</td>
-                    <td class="dlvTitleSize">${orderResultInfoDto.total_pay_price}원</td>
+                    <td class="dlvTitleSize"><fmt:formatNumber value="${orderResultInfoDto.total_pay_price}" pattern="#,###"/>원</td>
                 </tr>
                 <tr>
                     <td class="dlvTitle">결제 수단</td>
@@ -114,19 +110,8 @@
         </div>
     </div>
 </section>
-<footer>
-    <div class="wrapper">
-        <p>© 2024 spao-copymachine. All rights not reserved.</p>
-    </div>
-</footer>
-<div class="quick">
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
-        <img src="/img/quick_up.png" alt="">
-    </a>
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:$(document).height()},'slow');">
-        <img src="/img/quick_down.png" alt="">
-    </a>
-</div>
+<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
 </body>

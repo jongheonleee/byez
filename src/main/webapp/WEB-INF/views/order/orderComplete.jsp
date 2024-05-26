@@ -27,21 +27,14 @@
                 <p>결제금액<span id="amount"></span></p>
                 <p>결제수단<span>토스</span></p>
             </div>
-            <button onClick="location.href='/order/orderHist?ord_num=${param.orderId}'">주문상세확인</button>
             <button onClick="location.href='/'">홈으로 가기</button>
+            <button onClick="location.href='/order/orderHist?ord_num=${param.orderId}'">주문상세확인</button>
             <div id="response" style="white-space: initial"></div>
         </div>
     </div>
 </section>
 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
-<div class="quick">
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
-        <img src="/img/quick_up.png" alt="">
-    </a>
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:$(document).height()},'slow');">
-        <img src="/img/quick_down.png" alt="">
-    </a>
-</div>
+<jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
 <script>

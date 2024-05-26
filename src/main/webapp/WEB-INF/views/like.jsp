@@ -112,8 +112,8 @@
     <form action="/like/remove" method="get" class="removeLikeForm">
     </form>
 </section>
-<%@include file="../views/include/quick.jsp"%>
-<%@include file="../views/include/footer.jsp"%>
+<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="/js/nav.js?after?after?after"></script>
 <script src="/js/like.js?after?after"></script>

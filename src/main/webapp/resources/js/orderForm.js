@@ -4,7 +4,7 @@
     function getDeliveryItem(num){
         // 선택한 배송지 정보 조회
         let rcpr = $('#dlvInfo_rcpr_' + num).val();
-        let mobile = $('#dlvInfo_rcpr_mobile_' + num).val();
+        let mobile = $('#dlvInfo_rcpr_mobile_' + num).val().replace(/(\d{2})(\d{4})(\d{4})/, "010-$2-$3");
         let zpcd = $('#dlvInfo_zpcd_' + num).val();
         let main_addr = $('#dlvInfo_main_addr_' + num).val();
         let detail_addr = $('#dlvInfo_detail_addr_' + num).val();

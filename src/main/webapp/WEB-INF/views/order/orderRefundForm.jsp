@@ -288,39 +288,7 @@
             </p>
             <p>반품 신청</p>
         </div>
-        <div class="mside">
-            <div class="mside_wrapper">
-                <p>마이페이지</p>
-                <ul class="mside_content">
-                    <li>
-                        <ul>
-                            <li>나의 쇼핑정보</li>
-                            <li><a href="#">주문/배송</a></li>
-                            <li><a href="#">취소/반품</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <ul>
-                            <li>나의 혜택 정보</li>
-                            <li><a href="#">쿠폰</a></li>
-                            <li><a href="#">혜택 보기</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <ul>
-                            <li>나의 활동 정보</li>
-                            <li><a href="#">회원정보 수정</a></li>
-                            <li><a href="#">배송 주소록 관리</a></li>
-                            <li><a href="#">나의 게시물 관리</a></li>
-                            <li><a href="#">나의 문의</a></li>
-                            <li><a href="#">위시리스트</a></li>
-                            <li><a href="#">최근 본 상품</a></li>
-                            <li><a href="#">회원탈퇴</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <jsp:include page="/WEB-INF/views/include/aside.jsp"/>
         <div class="content">
             <p class="table_title">반품 상품 정보
             </p>
@@ -490,8 +458,8 @@
     </form>
 
 </section>
-<%@include file="../../views/include/footer.jsp"%>
-<%@include file="../../views/include/quick.jsp"%>
+<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

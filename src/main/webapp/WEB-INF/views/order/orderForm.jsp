@@ -329,14 +329,7 @@
     </div>
 </section>
 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
-<div class="quick">
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:0},'slow')">
-        <img src="/img/quick_up.png" alt="" />
-    </a>
-    <a href="#none" onclick="jQuery('html,body').animate({scrollTop:$(document).height()},'slow');">
-        <img src="/img/quick_down.png" alt="" />
-    </a>
-</div>
+<jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <div class="couponModalShadow">
     <div class="couponModal">
         <c:set var="limitDate" value="2500-01-01" />

@@ -107,12 +107,9 @@
             </div>
         </form>
     </div>
-    </div>
 </section>
-<%@include file="../views/include/footer.jsp" %>
-<%@include file="../views/include/quick.jsp" %>
-
-
+<jsp:include page="/WEB-INF/views/include/footer.jsp"/>
+<jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <%--<script src="/js/jquery-3.6.4.min.js"></script>--%>
 <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 
