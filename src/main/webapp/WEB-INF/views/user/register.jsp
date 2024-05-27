@@ -32,7 +32,7 @@
                 <span>*이름</span>
               </td>
               <td>
-                <input type="text" id="name" name="name" value="${userDto.name}" maxlength="6" required oninput="checkNameFormat()">
+                <input type="text" id="name" name="name" value="${userDto.name}" maxlength="6" oninput="checkNameFormat()" required>
                 <p id="name-error-msg"></p>
               </td>
             </tr>
@@ -90,8 +90,8 @@
                 </span>
               </td>
               <td>
-                <input type="text" id="birth1" name="bef_birth" value="${userDto.bef_birth}" maxlength="8" placeholder="8자리로 입력하세요." oninput="checkBirthFormat1()">
-                - <input type="text" id="birth2" name="af_birth" value="${userDto.af_birth}" maxlength="1" oninput="checkBirthFormat2()">
+                <input type="text" id="birth1" name="bef_birth" value="${userDto.bef_birth}" maxlength="8" placeholder="8자리로 입력하세요." oninput="checkBirthFormat1(); inputNum(this);">
+                - <input type="text" id="birth2" name="af_birth" value="${userDto.af_birth}" maxlength="1" oninput="checkBirthFormat2(); inputNum(this);">
                 <p id="birth-error-msg"></p>
               </td>
             </tr>
@@ -102,7 +102,7 @@
                 </span>
               </td>
               <td>
-                <input type="text" id="tel_num" name="tel_num" value="${userDto.tel_num}" maxlength="11" placeholder="-제외한 숫자만 입력하십시오." oninput="restrictToTelNumbers(this.value)">
+                <input type="text" id="tel_num" name="tel_num" value="${userDto.tel_num}" maxlength="11" placeholder="-제외한 숫자만 입력하십시오." oninput="restrictToTelNumbers(this.value); inputNum(this);">
                 <p id="tel-number-error-msg"></p>
               </td>
             </tr>
@@ -113,7 +113,7 @@
                 </span>
               </td>
               <td>
-                <input type="text" id="mobile_num" name="mobile_num" value="${userDto.mobile_num}" maxlength="11" placeholder="-제외한 숫자만 입력하십시오." oninput="restrictToPhoneNumbers(this.value)">
+                <input type="text" id="mobile_num" name="mobile_num" value="${userDto.mobile_num}" maxlength="11" placeholder="-제외한 숫자만 입력하십시오." oninput="restrictToPhoneNumbers(this.value); inputNum(this);">
                 <p id="mobile-number-error-msg"></p>
               </td>
             </tr>
@@ -140,6 +140,10 @@
 </body>
 
 <script>
+  function inputNum(element) {
+    element.value = element.value.replace(/[^0-9]/g, "");
+  }
+
   function checkNameFormat() {
     let id = document.getElementById('name').value;
     let msg = document.getElementById('name-error-msg');
