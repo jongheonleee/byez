@@ -2,6 +2,7 @@ $(document).ready(function() {
   let totalCnt = 0;
   let orderPrice = 0;
 
+
   // 장바구니 상품 조회
   // 수량, 가격 계산
   // 주문 예상 정보 업데이트
@@ -182,6 +183,12 @@ $(".orderBtn").on("click", function(){
           orderNumber += 1;
       }
   });
+
+  // 주문 개수 없는 경우 요청 처리하지 말기
+  if (orderNumber === 0) {
+    alert("장바구니의 담긴 상품이 없습니다.");
+    return;
+  }
 
   // form 전송
   $(".orderCheckedBasketItemForm").html(formContents);

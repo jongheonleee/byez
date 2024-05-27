@@ -136,7 +136,7 @@
           </div>
           <div class="card-body">
             <div class="registerForm">
-              <form action="/admin/item" method="post">
+              <form action="/admin/itemRegister" method="post">
                 <table>
                   <tr>
                     <td>num</td>

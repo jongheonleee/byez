@@ -8,12 +8,14 @@ import com.neo.byez.dao.item.ItemDetailDaoImpl;
 import com.neo.byez.dao.item.ItemPriceDaoImpl;
 import com.neo.byez.dao.item.ItemSizeDaoImpl;
 import com.neo.byez.dao.item.ItemStateDaoImpl;
+import com.neo.byez.domain.item.AdminItemDto;
 import com.neo.byez.domain.item.Category;
 import com.neo.byez.domain.item.ItemDetailDto;
 import com.neo.byez.domain.item.ItemDetailPageDto;
 import com.neo.byez.domain.item.ItemDto;
 import com.neo.byez.domain.item.ItemOptDto;
 import com.neo.byez.domain.item.ItemPriceDto;
+import com.neo.byez.domain.item.ItemRegisterInfo;
 import com.neo.byez.domain.item.ItemStateDto;
 import com.neo.byez.domain.item.SearchCondition;
 import java.util.List;
@@ -254,10 +256,6 @@ public class ItemServiceImpl {
 
 
 
-
-
-
-
     // 상품 수정
     @Transactional(rollbackFor = Exception.class)
     public boolean modify(ItemDto dto) throws Exception {
@@ -361,6 +359,56 @@ public class ItemServiceImpl {
         dto.setItem_type("03");
         return itemDao.selectWTop8(dto);
     }
+
+
+    // 관리자 페이지 상품 목록 조회
+    public List<AdminItemDto> readAllItemOnAdmin(SearchCondition sc) throws Exception {
+        return itemDao.selectAllItemOnAdmin(sc);
+    }
+
+    // 관리자 페이지 상품 재고 목록 조회
+    public List<AdminItemDto> readAllItemStockOnAdmin(SearchCondition sc) throws Exception {
+        return itemDao.selectAllItemStockInfoOnAdmin(sc);
+    }
+
+    // 관리자 페이지 상세 상품 조회
+    public ItemRegisterInfo readItemDetailInfoOnAdmin(String num) throws Exception {
+        // 단건 필드 조회
+        ItemRegisterInfo selected = itemDao.selectItemDetailInfoOnAdmin(num);
+
+        // 여러 필드로 구성된 것 조회
+        List<ItemOptDto> cols = itemColorDao.select(num);
+        List<ItemOptDto> sizes = itemSizeDao.select(num);
+
+        // 필드에 담기
+        sb.setLength(0);
+        cols.stream().forEach(i -> sb.append(i.getCode()).append("/"));
+        selected.setCol(sb.toString());
+
+        sb.setLength(0);
+        sizes.stream().forEach(i -> sb.append(i.getCode()).append("/"));
+        selected.setSize(sb.toString());
+
+        // dto 생성 및 반환
+        return selected;
+    }
+
+    // 관리자 페이지 재고 추가
+    public boolean increaseStockQty(String num, Integer qty) {
+        int rowCnt = 0;
+        try {
+            rowCnt = itemDao.increaseStockQty(num, qty);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return rowCnt == 1;
+    }
+
+    // 관리자 페잊 상품 업데이트(쿼리문 추가)
+
+    // 관리자 페이지 상품 삭제
+
+
 
 
 }

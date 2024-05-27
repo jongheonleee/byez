@@ -1,5 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +50,7 @@
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                     <li class="breadcrumb-item active">
-                        <a href="item.html">상품</a></li>
+                        <a href="/itemList">상품</a></li>
                     <li class="breadcrumb-item active">
                         상품 등록
                     </li>
@@ -68,51 +69,67 @@
                     </div>
                     <div class="card-body">
                         <div class="registerForm">
-                            <form action="">
+                            <form action="/admin/itemRegister" method="post">
                                 <table>
                                     <tr>
                                         <td>상품 번호</td>
-                                        <td><input type="text" placeholder="num" name="num"></td>
+                                        <td><input type="text" placeholder="num"></td>
                                     </tr>
                                     <tr>
                                         <td>상품명</td>
-                                        <td><input type="text" placeholder="name" name="name"></td>
+                                        <td><input type="text" placeholder="name"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>상품명 상세</td>
+                                        <td><input type="text" placeholder="detail_name"></td>
                                     </tr>
                                     <tr>
                                         <td>판매가</td>
-                                        <td><input type="text" placeholder="price" name="price"></td>
+                                        <td><input type="text" placeholder="price"></td>
                                     </tr>
                                     <tr>
                                         <td>할인 적용가</td>
-                                        <td><input type="text" placeholder="disc_price" name="disc_price"></td>
+                                        <td><input type="text" placeholder="disc_price"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>할인율</td>
+                                        <td><input type="text" placeholder="disc_rate"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>할인 기간</td>
+                                        <td>
+                                            <input type="text" placeholder="period">
+                                            <fieldset class="search">
+                                                <label for="date3" class="uniform-height">
+                                                    <input type="date" id="date3" class="date-input" max="2077-06-20" min="2077-06-05" value="2077-06-15">
+                                                </label>
+                                                ~
+                                                <label for="date4" class="uniform-height">
+                                                    <input type="date" id="date4" class="date-input" max="2077-06-20" min="2077-06-05" value="2077-06-15">
+                                                </label>
+                                                <!-- <input alt="조회"  class= "uniform-height 조회" type="image" src="img/조회.gif"> -->
+                                            </fieldset>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>상품 대표 이미지</td>
-                                        <td><input type="text" placeholder="main_img" name="main_img"></td>
+                                        <td><input type="file" placeholder="main_img"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>상품 상세 이미지</td>
+                                        <td><input type="file" placeholder="detail_img"></td>
                                     </tr>
                                     <tr>
                                         <td>상품 유형</td>
                                         <td>
-                                            <input type="text" placeholder="item_type (ex:010101)" name="cust_type">
+                                            <input type="text" placeholder="item_type (ex:010101)">
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>리뷰 수</td>
-                                        <td><input type="text" placeholder="review_cnt" value="0" name="review_cnt"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>좋아요 수</td>
-                                        <td><input type="text" placeholder="like_cnt" value="0" name="like_cnt"></td>
-                                    </tr>
-                                    <tr>
 
-                                        <td>평균 별점</td>
-                                        <td><input type="text" placeholder="review_rate" value="0" name="review_rate"></td>
-                                    </tr>
                                     <tr>
                                         <td>고객 유형</td>
                                         <td>
-                                            <!-- <input type="text" placeholder="cust_type"> -->
+                                            <input type="text" placeholder="cust_type">
                                             <select name="cust_type" id="cust_type">
                                                 <option value="" disabled selected>--고객 유형을 선택해주세요--</option>
                                                 <option value="f">여성</option>
@@ -121,34 +138,15 @@
                                             </select>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>할인율</td>
-                                        <td><input type="text" placeholder="disc_rate" name="disc_rate"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>할인 기간</td>
-                                        <td>
-                                            <input type="text" placeholder="period" name="period">
-<%--                                            <fieldset class="search">--%>
-<%--                                                <label for="date3" class="uniform-height">--%>
-<%--                                                    <input type="date" id="date3" class="date-input" max="2077-06-20" min="2077-06-05" value="2077-06-15">--%>
-<%--                                                </label>--%>
-<%--                                                ~--%>
-<%--                                                <label for="date4" class="uniform-height">--%>
-<%--                                                    <input type="date" id="date4" class="date-input" max="2077-06-20" min="2077-06-05" value="2077-06-15">--%>
-<%--                                                </label>--%>
-<%--                                                <!-- <input alt="조회"  class= "uniform-height 조회" type="image" src="img/조회.gif"> -->--%>
-<%--                                            </fieldset>--%>
-                                        </td>
-                                    </tr>
+
                                     <tr>
                                         <td>사이즈</td>
-                                        <td><input type="text" placeholder="size" name="size"></td>
+                                        <td><input type="text" placeholder="size"></td>
                                     </tr>
                                     <tr>
                                         <td>색상</td>
                                         <td>
-                                            <!-- <input type="text" placeholder="col"> -->
+                                            <input type="text" placeholder="col">
                                             <select id="col" name="col" multiple="multiple">
                                                 <option value="">선택</option><option value="" disabled selected>--색깔 유형을 선택해주세요--</option>
                                                 <option value="검정">#000000</option>
@@ -173,25 +171,14 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>비고</td>
-                                        <td><input type="text" placeholder="remark" name="remark"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>상품명 상세</td>
-                                        <td><input type="text" placeholder="detail_name" name="detail_name"></td>
-                                    </tr>
-                                    <tr>
                                         <td>상품 상세</td>
-                                        <td><input type="text" placeholder="comt" value="..." name="comt"></td>
+                                        <td><input type="text" placeholder="comt" value="..."></td>
                                     </tr>
-                                    <tr>
-                                        <td>상품 상세 이미지</td>
-                                        <td><input type="text" placeholder="detail_img" name="detail_img"></td>
-                                    </tr>
+
                                     <tr>
                                         <td>상품 출시일</td>
                                         <td>
-                                            <!-- <input type="text" placeholder="rel_date"> -->
+                                            <input type="text" placeholder="rel_date">
                                             <fieldset class="search">
                                                 <label for="date3" class="uniform-height">
                                                     <input type="date" id="date3" class="date-input" max="2077-06-20" min="2077-06-05" value="2077-06-15">
@@ -202,7 +189,7 @@
                                     <tr>
                                         <td>상품 입고일</td>
                                         <td>
-                                            <!-- <input type="text" placeholder="gr_date"> -->
+                                            <input type="text" placeholder="gr_date">
                                             <fieldset class="search">
                                                 <label for="date3" class="uniform-height">
                                                     <input type="date" id="date3" class="date-input" max="2077-06-20" min="2077-06-05" value="2077-06-15">
@@ -212,16 +199,16 @@
                                     </tr>
                                     <tr>
                                         <td>제조사</td>
-                                        <td><input type="text" placeholder="mfg_corp" name="mfg_corp"></td>
+                                        <td><input type="text" placeholder="mfg_corp"></td>
                                     </tr>
                                     <tr>
                                         <td>제조자</td>
-                                        <td><input type="text" placeholder="mfg_name" name="mfg_name"></td>
+                                        <td><input type="text" placeholder="mfg_name"></td>
                                     </tr>
                                     <tr>
                                         <td>제조연월</td>
                                         <td>
-                                            <!-- <input type="text" placeholder="mfg_date"> -->
+                                            <input type="text" placeholder="mfg_date">
                                             <fieldset class="search">
                                                 <label for="date3" class="uniform-height">
                                                     <input type="date" id="date3" class="date-input" max="2077-06-20" min="2077-06-05" value="2077-06-15">
@@ -230,16 +217,8 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>조회수</td>
-                                        <td><input type="text" placeholder="view_cnt" value="0"></td>
-                                    </tr>
-                                    <tr>
                                         <td>모델명</td>
                                         <td><input type="text" placeholder="model"></td>
-                                    </tr>
-                                    <tr>
-                                        <td>재고</td>
-                                        <td><input type="text" placeholder="stock_qty" value="0"></td>
                                     </tr>
                                     <tr>
                                         <td>원산지</td>
@@ -248,7 +227,7 @@
                                     <tr>
                                         <td>판매 상태</td>
                                         <td>
-                                            <!-- <input type="text" placeholder="state_code"> -->
+                                            <input type="text" placeholder="state_code">
                                             <select name="state_code" id="state_code">
                                                 <option value="" disabled selected>--판매 상태를 선택해주세요--</option>
                                                 <option value="SLA1">판매중</option>
@@ -263,19 +242,44 @@
                                         <td><input type="text" placeholder="matr"></td>
                                     </tr>
                                     <tr>
+                                        <td>주의사항</td>
+                                        <td><input type="text" placeholder="caut"></td>
+                                    </tr>
+                                    <tr>
                                         <td>코드</td>
                                         <td><input type="text" placeholder="code"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>리뷰 수</td>
+                                        <td><input type="text" placeholder="review_cnt" value="0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>좋아요 수</td>
+                                        <td><input type="text" placeholder="like_cnt" value="0"></td>
+                                    </tr>
+                                    <tr>
+
+                                        <td>평균 별점</td>
+                                        <td><input type="text" placeholder="review_rate" value="0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>조회수</td>
+                                        <td><input type="text" placeholder="view_cnt" value="0"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>재고</td>
+                                        <td><input type="text" placeholder="stock_qty" value="0"></td>
                                     </tr>
                                     <tr>
                                         <td>판매량</td>
                                         <td><input type="text" placeholder="sales_qty" value="0"></td>
                                     </tr>
                                     <tr>
-                                        <td>주의사항</td>
-                                        <td><input type="text" placeholder="caut"></td>
+                                        <td>비고</td>
+                                        <td><input type="text" placeholder="remark"></td>
                                     </tr>
                                 </table>
-                                <button type="submit" class="add-button">등록하기</button>
+                                <button type="submit" class="add-button" >등록하기</button>
                             </form>
                         </div>
                     </div>
@@ -308,3 +312,4 @@
 </script>
 </body>
 </html>
+

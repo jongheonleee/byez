@@ -150,25 +150,6 @@
     and i.price > i.disc_price
   </select>
 
-
-<!--  <select id="selectDiscountItem" parameterType="SearchCondition" resultType="ItemDto">-->
-<!--    select-->
-<!--     count(*)-->
-<!--    from item -->
-<!--    where item_type like concat(#{item_type}, '%')-->
-<!--    and i.price > i.disc_price-->
-<!--  </select>-->
-
-
-<!--  <select id="selectDiscountItem" parameterType="SearchCondition" resultType="ItemDto">-->
-<!--    select-->
-<!--     count(*)-->
-<!--    from item -->
-<!--    where item_type like concat(#{item_type}, '%')-->
-<!--    and i.price > i.disc_price-->
-<!--  </select>-->
-
-
   <select id="selectDetailItem" parameterType="string" resultType="ItemDetailPageDto">
     select
       i.num as num,
@@ -216,44 +197,6 @@
     delete
     from item
   </delete>
-  <!--  카테고리 상품 조회  -->
-  <!--  대분류  -->
-  <!--  판매량, 리뷰수, 좋아요수 순으로 정렬  -->
-  <!--  중분류  -->
-  <!--  판매량, 리뷰수, 좋아요수 순으로 정렬  -->
-  <!--  소분류  -->
-  <!--  판매량, 리뷰수, 좋아요수 순으로 정렬  -->
-  <!--  자바 객체에서 % 붙여서 넣어주기 -->
-<!--  <select id="selectItemType" parameterType="Category" resultType="ItemDto">-->
-<!--    select *-->
-<!--    from item i-->
-<!--    inner join item_state s-->
-<!--    on i.num = s.num-->
-<!--    where i.item_type like #{item_type_format}-->
-<!--    order by s.sales_qty desc, i.review_cnt desc, i.like_cnt desc-->
-<!--  </select>-->
-
-<!--    <select id="selectItemType" parameterType="Category" resultType="ItemDto">-->
-<!--      select *-->
-<!--      from item i-->
-<!--      inner join item_state s-->
-<!--      on i.num = s.num-->
-<!--      where i.item_type like #{item_type_format}-->
-<!--      order by s.sales_qty desc, i.review_cnt desc, i.like_cnt desc-->
-<!--    </select>-->
-<!--  &lt;!&ndash;  상품 상태 등록  &ndash;&gt;-->
-<!--  <insert id="insertItemState" parameterType="ItemStateDto">-->
-<!--    insert into item_state( num, sales_qty, view_cnt, stock_qty, state_code, reg_date, reg_id, up_date, up_id ) -->
-<!--    value( #{num}, #{sales_qty}, #{view_cnt}, #{stock_qty}, #{state_code}, now(), 'manager', now(), 'manager' )-->
-<!--  </insert>-->
-<!--  -->
-<!--  &lt;!&ndash;  상품 가격 등록  &ndash;&gt;-->
-<!--  <insert id="insertItemPrice" parameterType="ItemPriceDto">-->
-<!--    insert into item_price( num, disc_rate, start_date, end_date, remark, reg_date, reg_id, up_date, up_id ) -->
-<!--    value( #{num}, #{disc_rate}, now(), date_add(now(), interval #{period} month), #{remark}, now(), 'manager', now(), 'manager' )-->
-<!--  </insert>-->
-
-  <!--    메인페이지에 성별 별 top 8 띄우기-->
 
   <select id="selectWTop8" resultType="ItemDto">
     select
@@ -263,11 +206,6 @@
     and i.item_type like concat(#{item_type}, '%')
     limit 8;
   </select>
-<!--  &lt;!&ndash;  상품 상태  &ndash;&gt;-->
-<!--  <insert id="insertItemState" parameterType="ItemStateDto">-->
-<!--    insert into item_state( num, sales_qty, view_cnt, stock_qty, state_code, reg_date, reg_id, up_date, up_id )-->
-<!--    value( #{num}, #{sales_qty}, #{view_cnt}, #{stock_qty}, #{state_code}, now(), 'manager', now(), 'manager' )-->
-<!--  </insert>-->
 
   <select id="selectMTop8" resultType="ItemDto">
     select
@@ -277,11 +215,6 @@
     and i.item_type like concat(#{item_type}, '%')
     limit 8;
   </select>
-<!--  <select id="selectItemState" parameterType="string" resultType="ItemStateDto">-->
-<!--    select *-->
-<!--    from item_state-->
-<!--    where num = #{num}-->
-<!--  </select>-->
 
   <select id="selectUTop8" resultType="ItemDto">
     select
@@ -291,57 +224,97 @@
     and i.item_type like concat(#{item_type}, '%')
     limit 8;
   </select>
-<!--  <select id="selectAllItemState" resultType="ItemStateDto">-->
-<!--    select *-->
-<!--    from item_state-->
-<!--  </select>-->
 
-<!--  <update id="increaseSalesQty" parameterType="ItemStateDto">-->
-<!--    update item_state-->
-<!--    set-->
-<!--      sales_qty = sales_qty + #{qty},-->
-<!--      stock_qty = stock_qty - #{qty},-->
-<!--      up_date = now(),-->
-<!--      up_id = 'manager'-->
-<!--    where num = #{num}-->
-<!--  </update>-->
 
-<!--  <update id="increaseStockQty" parameterType="ItemStateDto">-->
-<!--    update item_state-->
-<!--    set-->
-<!--      stock_qty = stock_qty + #{qty},-->
-<!--      up_date = now(),-->
-<!--      up_id = 'manager'-->
-<!--    where num = #{num}-->
-<!--  </update>-->
+  <select id="selectAllItemOnAdmin" parameterType="SearchCondition" resultType="AdminItemDto">
+    select
+      i.num as num,
+      i.name as name,
+      i.item_type as item_type,
+      i.cust_type as cust_type,
+      s.state_code as state_code,
+      i.price as price,
+      i.price - (i.price * p.disc_rate) as disc_price,
+      p.disc_rate as disc_rate,
+      d.mfg_name as mfg_name,
+      date_format(d.rel_date, '%Y-%m-%d')  as rel_date,
+      date_format(d.reg_date, '%Y-%m-%d')  as reg_date,
+      date_format(d.up_date, '%Y-%m-%d')  as up_date
+    from item i
+    inner join item_price p
+    on i.num = p.num
+    inner join item_state s
+    on i.num = s.num
+    inner join item_detail d
+    on i.num = d.num
+    order by s.sales_qty desc, i.like_cnt desc, i.review_cnt desc
+    limit #{offset}, #{pageSize}
+  </select>
 
-<!--  <update id="increaseViewCnt" parameterType="ItemStateDto">-->
-<!--    update item_state-->
-<!--    set-->
-<!--      view_cnt = view_cnt + 1,-->
-<!--      up_date = now(),-->
-<!--      up_id = 'manager'-->
-<!--    where num = #{num}-->
-<!--  </update>-->
+  <select id="selectAllItemStockInfoOnAdmin" parameterType="SearchCondition" resultType="AdminItemDto">
+    select
+      i.num as num,
+      i.name as name,
+      s.stock_qty as stock_qty,
+      i.price as price,
+      i.price - (i.price * p.disc_rate) as disc_price,
+      d.mfg_corp as mfg_corp,
+      date_format(d.rel_date, '%Y-%m-%d')  as rel_date,
+      date_format(d.reg_date, '%Y-%m-%d')  as reg_date,
+      date_format(d.up_date, '%Y-%m-%d')  as up_date
+    from item i
+    inner join item_price p
+    on i.num = p.num
+    inner join item_state s
+    on i.num = s.num
+    inner join item_detail d
+    on i.num = d.num
+    order by s.sales_qty desc, i.like_cnt desc, i.review_cnt desc;
+  </select>
 
-<!--  <update id="updateStateCode" parameterType="ItemStateDto">-->
-<!--    update item_state-->
-<!--    set-->
-<!--      state_code = #{code},-->
-<!--      up_date = now(),-->
-<!--      up_id = 'manager'-->
-<!--    where num = #{num}-->
-<!--  </update>-->
+  <select id="selectItemDetailInfoOnAdmin" parameterType="string" resultType="ItemRegisterInfo">
+    select
+        i.num as num,
+        i.name as name,
+        i.price as price,
+        i.disc_price as disc_pirce,
+        d.mfg_name as mfg_name,
+        s.sales_qty as sales_qty,
+        i.main_img as main_img,
+        i.item_type as item_type,
+        i.review_cnt as review_cnt,
+        i.like_cnt as like_cnt,
+        i.review_rate as review_rate,
+        i.cust_type as cust_type,
+        p.disc_rate as disc_rate,
+        p.start_date as start_date,
+        p.end_date as end_date,
+        d.comt as remark,
+        d.detail_img as detail_img,
+        d.rel_date as rel_date,
+        d.gr_date as gr_date,
+        d.mfg_corp as mfg_corp,
+        d.mfg_date as mfg_date,
+        s.view_cnt as view_cnt,
+        d.model as model,
+        s.stock_qty as stock_aty,
+        d.origin as origin,
+        s.state_code as state_code,
+        d.matr as maftr,
+        d.comt as comt
+    from item i
+    inner join item_price p
+    on i.num = p.num
+    inner join item_state s
+    on i.num = s.num
+    inner join item_detail d
+    on i.num = d.num
+    where i.num = #{num}
+  </select>
 
-<!--  <delete id="deleteItemState" parameterType="string">-->
-<!--    delete-->
-<!--    from item_state-->
-<!--    where num = #{num}-->
-<!--  </delete>-->
-
-<!--  <delete id="deleteAllItemState">-->
-<!--    delete-->
-<!--    from item_state-->
-<!--  </delete>-->
-
+  <update id="increaseStockQty" parameterType="map">
+    update item_state
+    set stock_qty = stock_qty + #{qty}
+    where num = #{num};
+  </update>
 </mapper>
