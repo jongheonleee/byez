@@ -15,19 +15,19 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .content>p:nth-of-type(2) {font-size: 20px; font-weight: bold;} */
 
 
-.category {width: 100%; height: 60px; margin: 108px 0 20px 0; border: 1px solid lightgray; box-sizing: border-box; padding-left: 30px;}
+.category {width: 100%; height: 60px; margin: 108px 0 20px 0; border: 1px solid #bcbcbc; box-sizing: border-box; padding-left: 30px;}
 .category>ul:first-of-type {width: fit-content; height: 100%; display: flex; align-items: center; justify-content: space-around; float: left;}
 .category>ul:first-of-type li {margin-right: 50px;}
 .category>div:first-of-type {width: fit-content; height: 100%; float: right;}
 
 .filter_con {width: calc(100%); height: fit-content; padding-top: 6px; display: flex; flex-wrap: wrap; }
-.filter_con>li {border: 1px solid lightgray; padding: 5px 10px; margin: 0 8px 8px 0; border-radius: 5px;}
+.filter_con>li {border: 1px solid #bcbcbc; padding: 5px 10px; margin: 0 8px 8px 0; border-radius: 5px;}
 .filter_con>li:first-of-type {border: 0;}
 
 
-.item_num {width: 140px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid lightgray; box-sizing: border-box;}
-.sort {width: 140px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid lightgray; box-sizing: border-box; position: relative;}
-.order {position: absolute; top:100%; width: 100%; height: fit-content; background-color: white; border: 1px solid lightgray; display: none; z-index: 5;}
+.item_num {width: 140px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid #bcbcbc; box-sizing: border-box;}
+.sort {width: 140px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid #bcbcbc; box-sizing: border-box; position: relative;}
+.order {position: absolute; top:100%; width: 100%; height: fit-content; background-color: white; border: 1px solid #bcbcbc; display: none; z-index: 5;}
 .order>li {display: flex; justify-content: center; align-items: center; width: 100%; height: 40px;}
 
 
@@ -41,7 +41,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .sales_price {text-decoration:line-through; font-size: 17px;}
 .discounted_price {font-weight: bold; font-size: 25px;}
 .col {width: fit-content; height: 14px; margin: 15px 0;}
-.col li {width: 14px; height: 100%; border: 1px solid lightgray; box-sizing: border-box; float: left; margin-right: 3px;}
+.col li {width: 14px; height: 100%; border: 1px solid #bcbcbc; box-sizing: border-box; float: left; margin-right: 3px;}
 
 .stars {margin-bottom: 5px;}
 .review_cnt {margin: 5px 0;}
@@ -49,29 +49,28 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .sex {padding: 3px; background-color: black; width: fit-content; color: white;}
 .rank {width: 50px; height: 50px; background-color: red; display: flex; justify-content: center; align-items: center; color: white; position: absolute; top:0; left: 5px; font-size: 20px; font-weight: bold;}
 
-
-.filter_wrapper {width: 90%; min-width: 215px; height: 100%; margin: auto; border-bottom: 1px solid #e5e5e5;}
+.filter_wrapper {width: 90%; min-width: 215px; height: 100%; margin: auto; border-bottom: 1px solid #bcbcbc;}
 .filter_wrapper>p {font-size: 20px; font-weight: bold; margin-bottom: 15px;}
-.filter_con_col {width: 17px; height: 17px; border: 1px solid lightgray; box-sizing: border-box; border-radius: 50%; display: inline-block; margin-right: 5px;}
+.filter_con_col {width: 17px; height: 17px; border: 1px solid #bcbcbc; box-sizing: border-box; border-radius: 50%; display: inline-block; margin-right: 5px;}
 
 .accordion {
-  background-color: white;
-  cursor: pointer;
-  padding: 20px 0;
-  width: 100%;
-  border: none;
-  transition: 0.4s;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid #e5e5e5;
-
-}
-.panel {
-  padding:10px 0 30px 0;
-  background-color: white;
-  overflow: hidden;
-}
+    background-color: white;
+    cursor: pointer;
+    padding: 20px 0;
+    width: 100%;
+    border: none;
+    transition: 0.4s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #bcbcbc;
+    
+  }
+  .panel {
+    padding:10px 0 30px 0;
+    background-color: white;
+    overflow: hidden;
+  }
 
 .accordion:first-of-type {border-top: 2px solid black;}
 
@@ -79,23 +78,23 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 
 .filter_wrapper span {font-size: 18px;}
 
-.type {width: 32%; padding: 10px; background-color: white; border: 1px lightgray solid; box-sizing: border-box;}
-.item {width: 49%; padding: 10px 3px; background-color: white; border: 1px lightgray solid; box-sizing: border-box; margin-bottom: 5px;}
+  .type {width: 32%; padding: 10px; background-color: white; border: 1px #bcbcbc solid; box-sizing: border-box;}
+  .item {width: 49%; padding: 10px 3px; background-color: white; border: 1px #bcbcbc solid; box-sizing: border-box; margin-bottom: 5px;}
+  
+  .panel:nth-last-of-type(2)>div {justify-content: flex-start;}
 
-.panel:nth-last-of-type(2)>div {justify-content: flex-start;}
+  .color {width: 18%; height: 30px; border: 1px #bcbcbc solid; box-sizing: border-box; margin-bottom: 10px; margin-right: 2.5%;}
+  .color:nth-of-type(5n) {margin-right: 0;}
 
-.color {width: 18%; height: 30px; border: 1px lightgray solid; box-sizing: border-box; margin-bottom: 10px; margin-right: 2.5%;}
-.color:nth-of-type(5n) {margin-right: 0;}
+  .price_search {width: 100%; display: flex; justify-content: space-between; align-items: center;}
+  .price_search>input {width: 35%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
+  .price_search>button {width: 20%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box;}
 
-.price_search {width: 100%; display: flex; justify-content: space-between; align-items: center;}
-.price_search>input {width: 35%; height: 30px; border: 1px solid lightgray; box-sizing: border-box; text-indent: 5px;}
-.price_search>button {width: 20%; height: 30px; border: 1px solid lightgray; box-sizing: border-box;}
+  .detail_search {width: 100%; height: 30px;}
+  .detail_search>input {width: 80%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
+  .detail_search>button {width: 19%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box;}
 
-.detail_search {width: 100%; height: 30px;}
-.detail_search>input {width: 80%; height: 30px; border: 1px solid lightgray; box-sizing: border-box; text-indent: 5px;}
-.detail_search>button {width: 19%; height: 30px; border: 1px solid lightgray; box-sizing: border-box;}
-
-.type:hover,.item:hover,.color:hover {color:red; border: red 1px solid;}
+  .type:hover,.item:hover,.color:hover {color:black; border: black 1px solid;}
 
 .searchDiv>div {width: 75%; height: 35%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; justify-content: space-between;}
 .searchDiv>div>p:first-of-type {

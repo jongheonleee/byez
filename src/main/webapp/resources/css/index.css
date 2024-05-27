@@ -25,5 +25,4 @@ section .wrapper>p {font-size: 42px; text-align: center; font-weight: bold;}
 .sex {padding: 3px; background-color: black; width: fit-content; color: white;}
 .rank {width: 45px; height: 45px; background-color: black; display: flex; justify-content: center; align-items: center; color: white; position: absolute; top:0; left: 5px; font-size: 18px; font-weight: bold;}
 
-
 section:first-of-type {width: 100%; height: calc(100vh - 90px); background-color: rgba(255, 0, 0, .1); padding: 0;}

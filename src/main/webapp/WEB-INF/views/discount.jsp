@@ -20,17 +20,8 @@
 <body>
 <%@include file="../views/include/nav.jsp"%>
 <section>
-    <div class="wrapper">
-        <p>
-            <a href="/"><span>home</span></a>
-            <span>></span>
-            <a href="/item/discount"><span>할인 상품</span></a>
-        </p>
-        <div>
-            <p>할인 상품</p>
-        </div>
-
-    </div>
+<%--    <div class="wrapper">--%>
+<%--    </div>--%>
 </section>
 <section>
     <p>SALE</p>
@@ -38,6 +29,11 @@
 </section>
 <section>
     <div class="wrapper">
+        <p>
+            <a href="/"><span>home</span></a>
+            <span>></span>
+            <span>할인 상품</span>
+        </p>
         <ul class="remoteBtn">
             <li><a href="#sweatshirt">
                 <span>맨투맨/스웨트셔츠</span>

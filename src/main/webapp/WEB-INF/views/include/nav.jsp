@@ -95,6 +95,7 @@
                     <li><a href="/item/categories/020302">트레이닝/스웨트셔츠</a></li>
                     <li><a href="/item/categories/020303">팬츠</a></li>
                     <li><a href="/item/categories/020304">숏츠</a></li>
+                    <li><a href="/item/categories/020305">스커트</a></li>
                 </ul>
             </li>
             <li>
@@ -103,6 +104,7 @@
                     <li><a href="/item/categories/020101">운동화</a></li>
                     <li><a href="/item/categories/020102">구두</a></li>
                     <li><a href="/item/categories/020103">로퍼</a></li>
+                    <li><a href="/item/categories/020104">힐</a></li>
                     <li><a href="/item/categories/020105">부츠</a></li>
                     <li><a href="/item/categories/020106">슬리퍼</a></li>
                     <li><a href="/item/categories/020107">샌달</a></li>
@@ -110,8 +112,11 @@
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/categories/99">기타</a></li>
+                    <li><a href="/item/categories/99">액세사리</a></li>
                 </ul>
+            </li>
+            <li class="nav_img">
+                <img src="/img/woman.jpeg">
             </li>
         </ul>
     </div>
@@ -160,7 +165,6 @@
                     <li><a href="/item/categories/040101">운동화</a></li>
                     <li><a href="/item/categories/040102">구두</a></li>
                     <li><a href="/item/categories/040103">로퍼</a></li>
-                    <li><a href="/item/categories/040104">힐</a></li>
                     <li><a href="/item/categories/040105">부츠</a></li>
                     <li><a href="/item/categories/040106">슬리퍼</a></li>
                     <li><a href="/item/categories/040107">샌달</a></li>
@@ -168,8 +172,11 @@
             </li>
             <li>
                 <ul>
-                    <li><a href="/item/categories/99">기타</a></li>
+                    <li><a href="/item/categories/99">액세사리</a></li>
                 </ul>
+            </li>
+            <li class="nav_img">
+                <img src="/img/man.jpeg">
             </li>
         </ul>
     </div>
@@ -219,7 +226,6 @@
                     <li><a href="/item/categories/030401">운동화</a></li>
                     <li><a href="/item/categories/030402">구두</a></li>
                     <li><a href="/item/categories/030403">로퍼</a></li>
-                    <li><a href="/item/categories/030404">힐</a></li>
                     <li><a href="/item/categories/030405">부츠</a></li>
                     <li><a href="/item/categories/030406">슬리퍼</a></li>
                     <li><a href="/item/categories/030407">샌달</a></li>
@@ -227,8 +233,11 @@
             </li>
             <li>
                 <ul>
-                    <li><a href="categories/99">기타</a></li>
+                    <li><a href="categories/99">액세사리</a></li>
                 </ul>
+            </li>
+            <li class="nav_img">
+                <img src="/img/uni.jpeg">
             </li>
         </ul>
     </div>

@@ -5,11 +5,8 @@ a {text-decoration: none; color:black;}
 
 /* section {min-height: calc(100vh - 180px);} */
 
+footer {width: 100%; min-width: 1200px; min-height: 90px; height: fit-content; background-color: #f0f0f0; float: left; color: gray; margin-top: 50px;}
 
-
-
-
-footer {width: 100%; min-width: 1200px; min-height: 90px; height: fit-content; background-color: #f7f7f7; float: left; color: gray; margin-top: 50px;}
 
 /* footer .wrapper {display: flex; align-items: center; justify-content: space-between;} */
 .github {width: 350px; height: 40px;

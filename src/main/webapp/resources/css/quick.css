@@ -4,4 +4,4 @@ ul {list-style: none;}
 a {text-decoration: none; color:black;}
 
 .quick {width: fit-content; height: 105px; position: fixed; bottom: 30px; right: 50px; display: flex; flex-direction: column; justify-content: space-between; align-content: space-between;}
-.quick img {width: 45px;}
+.quick img {width: 45px; border: 1px solid #bcbcbc; border-radius: 50%;}

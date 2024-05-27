@@ -137,7 +137,7 @@
             <p>
                 <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="/item/categories/03"><span>혼성</span></a>
+                <span>혼성</span>
                 <!-- <span>></span>
                 <a href="category.html"><span>상의</span></a>
                 <span>></span>
@@ -150,7 +150,7 @@
                     <li><a href="/item/categories/0302">아우터</a></li>
                     <li><a href="/item/categories/0303">하의</a></li>
                     <li><a href="/item/categories/0304">신발</a></li>
-                    <li><a href="/item/categories/0305">기타</a></li>
+                    <li><a href="/item/categories/0305">액세사리</a></li>
                 </ul>
                 <div>
                     <div class="item_num">

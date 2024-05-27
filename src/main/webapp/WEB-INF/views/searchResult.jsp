@@ -159,7 +159,7 @@
         <div class="content">
             <div class="category">
                 <ul>
-                    <li><span>${searchCnt}</span> 개 의 상품이 검색되었습니다.</li>
+                    <li><span>${searchCnt}</span> 개의 상품이 검색되었습니다.</li>
                 </ul>
                 <div>
                     <div class="sort">

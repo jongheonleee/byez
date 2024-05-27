@@ -26,7 +26,7 @@
         <p>
             <a href="/"><span>HOME></span></a>
             <span></span>
-            <a href="/basket"><span> 장바구니</span></a>
+            <span>장바구니</span>
         </p>
 
         <p class="title">
