@@ -28,12 +28,12 @@
         SET title=#{title},
             content=#{content},
             score=#{score},
-            up_date=now()
+            up_date=curdate()
         WHERE review_num = #{review_num}
     </update>
 <select id="selectByItem" parameterType="String" resultType="ReviewDto">
 SELECT *
-FROM reveiw
+FROM review
     WHERE item_num=#{item_num}
 </select>
     <select id="selectById" parameterType="String" resultType="ReviewDto">

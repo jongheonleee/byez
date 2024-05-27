@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -49,8 +51,10 @@ class ReviewServiceImplTest {
         assertEquals(reviewService.getCount(), 1);
         assertTrue(reviewService.searchById("asdf").get(0).equals(reviewDto));
     }
-    @DisplayName("한줄평/내용/별점 null값 입력")
-    @Test
-    void searchReviewNum_Null(){
-    }
+//    @DisplayName("한줄평/내용/별점 null값 입력")
+//    @Test
+//    void searchReviewNum_Null(){
+//        List<ReviewDto> list = reviewService.searchByItem(113+"");
+//        System.out.println(list.get(0).toString());
+//    }
 }

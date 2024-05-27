@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%--찬빈추가--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="dateOK" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -184,6 +186,34 @@
                 <li>별점순</li>
             </ul>
             <ul class="review_list">
+                <c:forEach var="reviewList" items="${reviewList}">
+                <li>
+                    <div>
+                        <div class="wrap-star">
+                            <div class='star-rating'>
+                                <span style ="width:${20*reviewList.score}%"></span>
+                        </div>
+                        </div>
+                        <span><dateOK:formatDate value="${reviewList.reg_date}" pattern="yyyy.M.d" /></span>
+                        <p>${reviewList.title}</p>
+                        <p>${reviewList.content}</p>
+                        <ul class="review_pic">
+                            <li>
+                                <img src="/img/hello1.jpeg" alt="">
+                            </li>
+                            <li>
+                                <img src="/img/hello2.jpeg" alt="">
+                            </li>
+                            <li>
+                                <img src="/img/hello4.jpeg" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p><span>${reviewList.writer}</span>님의 리뷰입니다.</p>
+                    </div>
+                </li>
+                </c:forEach>
                 <li>
                     <div>
                         <div class="wrap-star">

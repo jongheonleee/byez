@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="dateOK" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -46,7 +47,7 @@
                         <td class="qna_title"><a
                                 href="/qna/read?seq_num=${CateJoinDto.seq_num}">${CateJoinDto.qna_title}</a></td>
                         <td class="res_state">${CateJoinDto.res_state}</td>
-                        <td class="reg_date"> <c:out value="${fn:substring(CateJoinDto.reg_date, 0, 10)}" /></td>
+                        <td class="reg_date"> <dateOK:formatDate value="${CateJoinDto.reg_date}" pattern="yyyy.M.d" /></td>
 
                     </tr>
                 </c:forEach>

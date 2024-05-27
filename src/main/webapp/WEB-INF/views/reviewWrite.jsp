@@ -46,8 +46,8 @@
                             </div>
                         </th>
                         <td class="item_info">
-                            <p class="item_name">상품명 : ${ordDetailDto.item_name}</p>
-                            <p class="item_opt">옵션 : ${ordDetailDto.opt1} ${ordDetailDto.opt2} ${ordDetailDto.opt3}</p>
+                            <p class="item_name">${ordDetailDto.item_name}</p>
+                            <p class="item_opt">[사이즈 : ${ordDetailDto.opt1} / 컬러 : ${ordDetailDto.opt2}]</p>
                         </td>
                     </tr>
                     <tr>

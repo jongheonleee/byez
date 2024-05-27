@@ -3,6 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="dateOK" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -51,7 +53,7 @@
                 </tr>
                 <tr class="put_line_class">
                     <th scope="row">입력날짜</th>
-                    <td colspan="3"> <c:out value="${fn:substring(qnaDto.reg_date, 0, 10)}" /></td>
+                    <td colspan="3"><dateOK:formatDate value="${qnaDto.reg_date}" pattern="yyyy.M.d" /></td>
                 </tr>
                 <tr>
                     <td colspan="4">${qnaDto.qna_content}</td>
@@ -87,8 +89,7 @@
                     </tr>
                     <tr class="put_line_class">
                         <th class="redred" scope="row">답변날짜</th>
-                        <td>     <c:out value="${fn:substring(qnaDto.up_date, 0, 10)}" /></td>
-
+                        <td><dateOK:formatDate value="${qnaDto.up_date}" pattern="yyyy.M.d" /></td>
                     </tr>
                     <tr class="put_detail_content">
                         <td colspan="3">

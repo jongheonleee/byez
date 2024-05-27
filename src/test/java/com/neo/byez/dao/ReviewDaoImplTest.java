@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
@@ -74,8 +76,9 @@ class ReviewDaoImplTest {
         assertEquals(reviewDao.count(), 1);
         assertTrue(reviewDao.selectById("asdf").get(0).equals(reviewDto));
     }
-    @Test
-    void delete1() {
-        reviewDao.delete(2);
-    }
+//    @Test
+//    void selectbyItemNum() {
+//       List<ReviewDto> list= reviewDao.selectByItem(113+"");
+//        System.out.println(list.get(0));
+//    }
 }

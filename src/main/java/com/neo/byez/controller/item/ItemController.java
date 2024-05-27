@@ -1,6 +1,7 @@
 package com.neo.byez.controller.item;
 
 
+import com.neo.byez.domain.ReviewDto;
 import com.neo.byez.domain.item.BasketItemDto;
 import com.neo.byez.domain.item.BasketItemDtos;
 import com.neo.byez.domain.item.ItemDetailPageDto;
@@ -8,6 +9,7 @@ import com.neo.byez.domain.item.ItemDto;
 import com.neo.byez.domain.item.ItemRegisterInfo;
 import com.neo.byez.domain.item.PageHandler;
 import com.neo.byez.domain.item.SearchCondition;
+import com.neo.byez.service.ReviewServiceImpl;
 import com.neo.byez.service.item.BasketItemServiceImpl;
 import com.neo.byez.service.item.ItemServiceImpl;
 import java.util.List;
@@ -31,12 +33,15 @@ public class ItemController {
     private BasketItemServiceImpl basketItemService;
 
 
+
     @Autowired
     public ItemController(ItemServiceImpl itemService, BasketItemServiceImpl basketItemService) {
         this.itemService = itemService;
         this.basketItemService = basketItemService;
     }
-
+    //찬빈추가
+    @Autowired
+    public ReviewServiceImpl reviewService;
 
     @GetMapping("/item/categories/{type}")
     public String categoryList(@PathVariable String type, SearchCondition sc, Model model, HttpSession session) {
@@ -193,6 +198,8 @@ public class ItemController {
     public String detail(@PathVariable String num, Model model, HttpSession session) {
         int basketCnt = 0;
         try {
+            //찬빈 추가
+            List<ReviewDto> reviewList = reviewService.searchByItem(num);
             // 세션에서 아이디 조회
             String id = (String) session.getAttribute("id");
             id = "user1";
@@ -212,7 +219,8 @@ public class ItemController {
             model.addAttribute("basketCnt", basketCnt);
             model.addAttribute("itemDto", itemDto);
             model.addAttribute("itemDetail", itemDetail);
-
+            //리뷰 내용 전송
+            model.addAttribute("reviewList",reviewList);
         } catch (Exception e) {
             model.addAttribute("errorMsg", e.getMessage());
             return "errorPage";
