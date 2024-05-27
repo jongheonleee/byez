@@ -164,7 +164,7 @@ tbody.manage_section tr.put_line_class {
     box-sizing: border-box;
     transition: 0.3s;
     background-color: white;
-    border: 1px solid gray;
+    border: 1px solid #bcbcbc;
     margin-top: 20px;
     font-size: 16px;
 }
@@ -180,7 +180,7 @@ tbody.manage_section tr.put_line_class {
     box-sizing: border-box;
     transition: 0.3s;
     background-color: lightgray;
-    border: 1px solid gray;
+    border: 1px solid #bcbcbc;
     margin-right: 10px;
     margin-top: 20px;
     font-size: 16px;
@@ -253,7 +253,7 @@ tbody.manage_section tr.put_line_class {
 .noReviewBox {
     width: 100%;
     height: 70px;
-    border: gray 1px solid;
+    border: #bcbcbc 1px solid;
     display: flex;
     align-items: center;
 }

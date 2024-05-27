@@ -24,8 +24,6 @@
                 <p>
                     <a href="/"><span>home</span></a>
                     <span>></span>
-                    <a href="/mypage/index"><span>마이페이지</span></a>
-                    <span>></span>
                     <span>회원탈퇴</span>
                 </p>
                 <p>회원탈퇴</p>

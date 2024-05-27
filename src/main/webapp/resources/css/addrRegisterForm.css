@@ -52,12 +52,12 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 }
 
 .content > form > table tr {
-  border-bottom: 1px solid gray; /* 각 테이블 행에 회색 하단 테두리 추가 */
+  border-bottom: 1px solid #bcbcbc; /* 각 테이블 행에 회색 하단 테두리 추가 */
 }
 
 .addr_search_btn {
   background-color: white;
-  border: 1px solid gray;
+  border: 1px solid #bcbcbc;
   color: black;
   margin: 2px 12px;
   padding: 6px 14px;
@@ -93,7 +93,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 
 .cancle_btn {
   background-color: lightgray;
-  border: 1px solid gray;
+  border: 1px solid #bcbcbc;
   color: black;
   padding: 18px 45px;
   text-align: center;
@@ -142,7 +142,7 @@ tbody input {
 
 .regTable input {
   box-sizing: border-box;
-  border: 1px solid gray;
+  border: 1px solid #bcbcbc;
 }
 
 input[readonly] {

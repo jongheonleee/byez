@@ -33,7 +33,7 @@
             <p>
                 <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="/mypage/index"><span>마이페이지</span></a>
+                <span>나의 게시물 관리</span>
 
 
 

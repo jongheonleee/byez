@@ -25,7 +25,7 @@
             <p>
                 <a href="/"><span>home</span></a>
                 <span>></span>
-                <span>위시리스트</span>
+                <span>위시 리스트</span>
             </p>
             <p>위시 리스트</p>
         </div>

@@ -26,7 +26,7 @@
             <p>
                 <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="/order/list"><span>마이페이지</span></a>
+                <span>주문조회</span>
             </p>
             <p>주문조회</p>
         </div>

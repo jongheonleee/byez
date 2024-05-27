@@ -46,7 +46,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;   margin-top: 90px
 .container {
     width: 100%; /* 부모 컨테이너의 고정된 너비 설정 */
     height: 150px; /* 부모 컨테이너의 고정된 높이 설정 */
-    border-bottom: 1px solid gray; /* 컨테이너의 경계선 설정 */
+    border-bottom: 1px solid #bcbcbc; /* 컨테이너의 경계선 설정 */
     white-space: nowrap; /* 줄 바꿈을 방지하여 박스들이 한 줄에 나열되도록 설정 */
     box-sizing: border-box; /* padding과 border를 포함하여 크기 계산 */
     padding: 20px 0;
@@ -140,7 +140,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;   margin-top: 90px
 
 .second button{
     float: right;
-    border-bottom: gray 1px solid;
+    border-bottom: #bcbcbc 1px solid;
     margin-left: 10px;
     background-color: white;
 }
@@ -171,11 +171,12 @@ section {width: 100%; min-width: 1200px; height: fit-content;   margin-top: 90px
 #writebtn:hover {background-color : #3182F6; color: white;}
 
 .first{
-    border-top:gray 1px solid;
+    border-top:#bcbcbc 1px solid;
     padding: 15px 0;
 }
 .second{
-    border-top: gray 1px solid;
+    border-top:#bcbcbc 1px solid;
+
     padding: 15px 0;
 }
 /*.reviewDone:first-of-type {border-color: white}*/

@@ -61,8 +61,8 @@ section {
   /*background-color: rgba(255, 0, 0, 0.1);*/
   display: flex;
   flex-wrap: wrap;
-  border-top : 2px solid gray;
-  border-bottom: 2px solid gray;
+  border-top : 2px solid #bcbcbc;
+  border-bottom: 2px solid #bcbcbc;
 }
 
 .wishList>li {

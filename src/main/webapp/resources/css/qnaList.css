@@ -153,20 +153,20 @@ section {
 }
 
 .cateopt {
-    border: 1px solid gray;
+    border: 1px solid #bcbcbc;
     width: 100px;
     height: 30px;
 }
 
 .searchopt {
-    border: 1px solid gray;
+    border: 1px solid #bcbcbc;
     width: 100px;
     height: 30px;
     margin-right: 10px;
 }
 
 .searchChang {
-    border: 1px solid gray;
+    border: 1px solid #bcbcbc;
     width: 300px;
     height: 30px;
     margin-right: 5px;
@@ -183,7 +183,7 @@ section {
 .searchbtn {
     cursor: pointer;
     background-color: lightgray;
-    border: 1px solid gray;
+    border: 1px solid #bcbcbc;
     width: 40px;
     height: 31.33px;
 }
@@ -199,7 +199,7 @@ section {
 }
 
 .tableStyle tr {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #bcbcbc;
 }
 
 .searchArea {

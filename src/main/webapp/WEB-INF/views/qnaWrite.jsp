@@ -27,9 +27,7 @@
             <p>
                 <a href="main.html"><span>home</span></a>
                 <span>></span>
-                <a href="mypage.html"><span>마이페이지</span></a>
-                <span>></span>
-                <a href="/qna/list"><span>나의문의</span></a>
+                <span>나의 문의</span>
             </p>
             <p>문의 작성</p>
         </div>
