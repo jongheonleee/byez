@@ -7,13 +7,17 @@ import com.neo.byez.dao.order.OrderDetailDao;
 
 import com.neo.byez.domain.PageHandler;
 
+import com.neo.byez.domain.order.EtcListRequestDto;
+import com.neo.byez.domain.order.EtcListResponseDto;
 import com.neo.byez.domain.order.OrderDetailDto;
 import com.neo.byez.service.order.OrderDetailService;
 import com.neo.byez.service.order.OrderDetailServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
@@ -31,8 +35,74 @@ public class OrderDetailController {
     @Autowired
     OrdEtcReqDao ordEtcReqDao;
 
-    // 아이디별 전체 주문내역 보여주기
-    @RequestMapping(value = "/list")
+    // 아이디별 전체 주문내역 보여주기(Ajax)
+    @PostMapping(value = "/listData")
+    @ResponseBody
+    public ResponseEntity<EtcListResponseDto> getOrderList(@RequestBody EtcListRequestDto requestDto, HttpSession session) throws Exception {
+
+
+        String userId = (String) session.getAttribute("userId");
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        Integer curPage = requestDto.getCurPage() != null ? requestDto.getCurPage() : 1;
+        Integer pageSize = requestDto.getPageSize() != null ? requestDto.getPageSize() : 10;
+
+        List<OrderDetailDto> orderList = orderDetailService.getOrderDetailsList(userId);
+        int totalCnt = orderDetailService.getCount(userId);
+        PageHandler ph = new PageHandler(totalCnt, curPage, pageSize);
+        List<OrderDetailDto> limitOrderList = orderDetailService.getPage(curPage, pageSize, userId);
+
+        EtcListResponseDto response = new EtcListResponseDto();
+        response.setItems(limitOrderList);
+        response.setCurrentPage(ph.getCurPage());
+        response.setTotalPages(ph.getTotalPages());
+        response.setHasNext(ph.isShowNext());
+        response.setHasPrevious(ph.isShowPrev());
+
+        return ResponseEntity.ok(response);
+    }
+    
+    //아이디별 취소반품교환내역 보여주기(Ajax)
+    @RequestMapping("/etcListData")
+    @ResponseBody
+    public ResponseEntity<EtcListResponseDto> getEtcList(@RequestBody EtcListRequestDto requestDto, HttpSession session) throws Exception {
+        // 세션에서 userId 가져오기
+        String userId = (String) session.getAttribute("userId");
+        if (userId == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();  // 또는 적절한 예외 처리
+        }
+
+        // 페이징 처리를 위한 기본값 설정
+        Integer curPage = requestDto.getCurPage() != null ? requestDto.getCurPage() : 1;
+        Integer pageSize = requestDto.getPageSize() != null ? requestDto.getPageSize() : 10;
+
+        // 데이터 조회
+        List<OrderDetailDto> etcList = orderDetailService.selectAllEtc(userId);
+        int etcTotalCnt = orderDetailService.getEtcCount(userId);
+        PageHandler phEtc = new PageHandler(etcTotalCnt, curPage, pageSize);
+        List<OrderDetailDto> limitEtcList = orderDetailService.getEtcPage(curPage, pageSize, userId);
+
+        // 응답 객체 생성 및 설정
+        EtcListResponseDto response = new EtcListResponseDto();
+        response.setItems(limitEtcList);  // 필터링 또는 전체 리스트 중 선택한 페이지의 리스트만 보내기
+        response.setCurrentPage(phEtc.getCurPage());
+        response.setTotalPages(phEtc.getTotalPages());
+        response.setHasNext(phEtc.isShowNext());
+        response.setHasPrevious(phEtc.isShowPrev());
+
+
+        // 리스트가 비어 있을 경우
+//        if (etcList.isEmpty()) {
+//            return ResponseEntity.noContent().build();
+//        }
+
+        return ResponseEntity.ok(response);
+    }
+
+    //첫 주문내역화면 띄우기
+    @GetMapping(value = "/list")
     public String orderDetailList(Model m, HttpSession session, Integer curPage, Integer pageSize) throws Exception {
 
         /*
@@ -54,7 +124,6 @@ public class OrderDetailController {
 
         try {
             List<OrderDetailDto> list = orderDetailService.getOrderDetailsList(userId);
-            List<OrderDetailDto> etcList = orderDetailService.selectAllEtc(userId);
             if (curPage == null) {
                 curPage = 1;
             }
@@ -62,22 +131,18 @@ public class OrderDetailController {
                 pageSize = 10;
             }
             int totalCnt = orderDetailService.getCount(userId);
-            int etcTotalCnt = orderDetailService.getEtcCount(userId);
 
             PageHandler ph = new PageHandler(totalCnt, curPage, 10);
-            PageHandler phEtc = new PageHandler(etcTotalCnt, curPage, 10);
 
             List<OrderDetailDto> limitList = orderDetailService.getPage(curPage, pageSize, userId);
-            List<OrderDetailDto> limitEtcList = orderDetailService.getEtcPage(curPage, pageSize, userId);
-
 
             if(limitList.isEmpty() ){
                 m.addAttribute("listMessage", "조회결과가 없습니다.");
             }
 
-                if(etcList.isEmpty()){
-                    m.addAttribute("etcMessage", "조회결과가 없습니다.");
-            }
+//                if(etcList.isEmpty()){
+//                    m.addAttribute("etcMessage", "조회결과가 없습니다.");
+//            }
 
             //페이징된것
             m.addAttribute("limitList", limitList);
@@ -86,12 +151,9 @@ public class OrderDetailController {
             m.addAttribute("list", list);
 
             m.addAttribute("ph", ph);
-            m.addAttribute("phEtc", phEtc);
 
             m.addAttribute("curPage", curPage);
             m.addAttribute("pageSize", pageSize);
-            m.addAttribute("etcList", etcList);
-            m.addAttribute("limitEtcList", limitEtcList);
 
         } catch (IndexOutOfBoundsException e) {
             return "/order/list";
@@ -99,3 +161,4 @@ public class OrderDetailController {
         return "/order/list";
     }
 }
+

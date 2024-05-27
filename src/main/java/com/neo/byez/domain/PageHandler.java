@@ -127,5 +127,7 @@ public class PageHandler {
         this.curPage = curPage;
     }
 
-
+    public int getTotalPages() {
+        return totalPage;
+    }
 }

@@ -61,7 +61,7 @@ table td{text-align: left; padding: 10px 20px;}
 .dlvCost{width:15%}
 
 /* 주문일자는 굵게/주문번호는 회색글씨 */
-.orderNum p:first-of-type {font-weight: bold;}
+/*.orderNum p:first-of-type {font-weight: bold;}*/
 /*.orderNum p:last-of-type {color: gray;}*/
 
 

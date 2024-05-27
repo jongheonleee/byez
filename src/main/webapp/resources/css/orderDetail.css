@@ -4,42 +4,33 @@ ul {list-style: none;}
 a {text-decoration: none; color:black;}
 
 section {width: 100%; min-width: 1200px; height: fit-content;
-    /*background-color: rgba(0, 255, 0, 0.1);*/
     margin-top: 90px; float: left; padding: 50px 0;}
 
 .title {width: 100%; height: fit-content;
-    /*background-color: rgba(255, 0, 0, .1);*/
     margin-bottom: 50px;}
 .title>p:first-of-type {text-align: right; margin-bottom: 50px;}
 .title>p:nth-of-type(2) {font-size: 42px; font-weight: bold; text-align: center;}
 
-
-
 .mside {width: 22%; height: 100%;
-            /*background-color: rgba(0, 0, 255, .1);*/
-            float: left;}
+    float: left;}
 .content {width: 78%; height: 100%;
-    /*background-color: rgba(255, 0, 0, 0.2);*/
     float: left; }
 
 .mside_wrapper {width: 90%; min-width: 215px; height: 100%;
-    /*background-color: rgba(255, 0, 0, .1);*/
     margin: auto;}
 .mside_wrapper>p {font-size: 20px; font-weight: bold; margin-bottom: 15px;}
-.mside_content {width: 100%; height: fit-content; border-top: 2px solid black;} 
+.mside_content {width: 100%; height: fit-content; border-top: 2px solid black;}
 .mside_content ul {margin-top: 50px;}
 .mside_content ul>li {margin-top: 15px;}
 .mside_content ul>li:first-of-type {font-size: 18px; font-weight: bold;}
 
-.fieldset.period {width: 100%; height: 100%;
-    /*background-color: rgba(0, 0, 255, .1);*/
-}
+.fieldset.period {width: 100%; height: 100%;}
 
 .uniform-height {
     height: 30px;
     display: inline-block;
     vertical-align: middle;
-    line-height: 5px; 
+    line-height: 5px;
 }
 
 .uniform-height img {
@@ -61,12 +52,10 @@ input[type="image"] {
 }
 .search {
     width: 100%; height: 100%;
-    /*background-color: rgba(0, 0, 255, .1);*/
     margin: 50px 25px;}
 
 .info {
-    width: 100%; height: 100% ;
-    /*background-color: rgba(0, 0, 255, .1);*/
+    width: 100%; height: 100%;
     margin: 30px;}
 
 .info ul {
@@ -74,7 +63,6 @@ input[type="image"] {
 
 .product-title p{
     font-weight: bold; margin-top:90px; margin-left:10px; margin-bottom: 10px;}
-
 
 .table_title {
     font-size: 20px; font-weight: bold; margin-bottom:15px;}
@@ -91,20 +79,16 @@ input[type="image"] {
 }
 
 .tab_c_arti>table {width: 100%; height: 100px;
-    /*background-color: rgba(0, 0, 255, .1);*/
     border-top: 2px solid black;
     box-shadow: aliceblue;
     border-collapse: collapse; text-align: center;}
 
 /* 탭 메뉴 영역 */
 .tab_menu {
-    /*box-sizing: border-box;*/
     width: 684px; height: 60px; display: flex; box-sizing: border-box; position: relative; z-index: 1;
     margin-top: -14px;
 }
-.tab_menu li {width: calc(100%/3); height: 100%; box-sizing: border-box;
-    /*background-color: rgba(255, 0, 0, .1);*/
-}
+.tab_menu li {width: calc(100%/3); height: 100%; box-sizing: border-box;}
 .tab_menu li a {width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; font-weight: bold; box-sizing: border-box; font-size: 20px; font-weight: normal;}
 .tab_menu li a.tab_active {
     border-bottom: 2px solid black;
@@ -113,24 +97,20 @@ input[type="image"] {
 }
 /* 탭 콘텐츠 영역 */
 .tab_container {width: 100%; height: 100%; position: relative;}
-.tab_content {width: 100%; display: flex; justify-content: center; align-items: center;
-    /*background-color: rgba(255, 0, 0, .1);*/
-}
-.tab_c_arti {width: 100%; height: 100%;
-    /*background-color: rgba(255, 0, 0, .1);*/
-}
+.tab_content {width: 100%; display: flex; justify-content: center; align-items: center;}
+.tab_c_arti {width: 100%; height: 100%;}
 
 form {
     display: inline-block; /* form 태그를 인라인 블록 요소로 만들어 수평 배열을 가능하게 함 */
     margin-right: 10px; /* 오른쪽 여백을 추가하여 버튼 사이에 간격을 제공 */
 }
 
-input[type="submit"] {
-    padding: 5px 10px; /* 버튼의 내부 패딩을 조정하여 보다 편안한 클릭 영역제공 */
-    background-color: #f8f8f8; /* 배경색 설정 */
-    border: 1px solid gray; /* 경계선 설정 */
-    cursor: pointer; /* 커서를 포인터로 설정하여 클릭 가능 요소임을 나타냄 */
-}
+/*input[type="submit"] {*/
+/*    padding: 5px 10px; !* 버튼의 내부 패딩을 조정하여 보다 편안한 클릭 영역제공 *!*/
+/*    background-color: #f8f8f8; !* 배경색 설정 *!*/
+/*    border: 1px solid gray; !* 경계선 설정 *!*/
+/*    cursor: pointer; !* 커서를 포인터로 설정하여 클릭 가능 요소임을 나타냄 *!*/
+/*}*/
 
 input[type="submit"]:hover {
     background-color: #e7e7e7; /* 호버 시 배경색 변경 */
@@ -147,15 +127,7 @@ input[type="submit"]:hover {
     margin: auto; /* 자동 마진을 이용해 가운데 정렬 */
 }
 
-/*.order_actions{*/
-/*    position : relative;*/
-/*}*/
-
-
 .confirmDiv{
-    /*position : absolute;*/
-    /*display : flex;*/
-    /*align-content: center;*/
     margin-top: 23px;
 }
 
@@ -177,14 +149,43 @@ input[type="submit"]:hover {
 .ord_num{color: #999999}
 .option {color: #999999}
 
-.paging {text-align: center; font-weight: bold;}
+.paging {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
 .paging a {
     padding: 5px 10px;
     border: 1px solid #ccc;
-    color : gray;
+    color: gray;
 }
 
-.paging a:hover {color:black}
+.paging a:hover {
+    color: black;
+}
+
+.paging a[style="font-weight:bold;"] {
+    font-weight: bold;
+}
+
+.paging a.page-link {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    color: gray;
+    margin-right: 5px; /* 링크 사이의 간격을 추가 */
+    text-decoration: none; /* 기본 링크 스타일 제거 */
+}
+
+.paging a.page-link:hover {
+    color: black;
+    font-weight: bold; /* 호버 시 볼드체로 변경 */
+}
+
+.paging a.page-link[style*="font-weight:bold;"] {
+    font-weight: bold;
+    color: black;
+}
 
 .thead {border-bottom: 1px solid gray}
 .thead th {padding : 10px 0}
