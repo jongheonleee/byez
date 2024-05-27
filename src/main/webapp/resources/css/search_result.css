@@ -142,3 +142,8 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
   transform: translateX(-50%);
   transition: .5s;
 }
+
+
+.star-rating {width:100px;}
+.star-rating,.star-rating span {display:inline-block; height:18px; overflow:hidden; background:url(/img/blackStar.jpeg)no-repeat; background-size: 100px auto;}
+.star-rating span{background-position:left bottom; line-height:0; vertical-align:top; filter :grayscale(100%)}

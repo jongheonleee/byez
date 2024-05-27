@@ -207,6 +207,16 @@ $(document).ready(function(){
         $('.order-form').html(formText);
         $('.order-form').submit();
     });
+
+    $('.more button').click(function() {
+        $('.foldImg').css({
+            'height': 'fit-content',
+            'overflow': 'visible'
+        });
+        $(this).parent().hide();
+    });
+
+
 });
 
 // 카운트

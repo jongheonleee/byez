@@ -57,12 +57,12 @@ section {
 .wishList {
   width: 100%;
   height: fit-content;
-  margin-top: 45px;
+  margin-top: 44px;
   /*background-color: rgba(255, 0, 0, 0.1);*/
   display: flex;
   flex-wrap: wrap;
-  border-top : 2px solid #bcbcbc;
-  border-bottom: 2px solid #bcbcbc;
+  border-top : 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 .wishList>li {
@@ -102,9 +102,12 @@ section {
 .btnPaging {
   width: 100%;
   height: 50px;
-  padding: 10px;
+  padding: 10px 0;
   text-align: center;
   font-size: 20px;
+  margin-bottom: 100px;
+  margin-top: 20px;
+  position: relative;
 }
 
 .btnPaging>a {
@@ -155,24 +158,28 @@ section {
   max-width: 300px;
 }
 
-.modifyBtn {
+.modifyBtn,.btnStyle {
   display: flex;
   float: left;
-  margin: 5px;
-  border: 1px solid black;
-  padding: 5px 7px;
-  border-radius: 7px;
+  margin-right: 10px;
+  border: 1px solid #bcbcbc;
+  padding: 10px 15px;
   font-weight: bold;
+  cursor: pointer;
+  transition : 0.3s;
+  background-color: white;
+  font-size: 16px;
 }
+.modifyBtn:hover, .btnStyle:hover {border : 1px solid black;}
 
 .btnStyle {
   display: none;
   float: left;
-  margin: 5px;
-  border: 1px solid black;
-  padding: 5px 7px;
-  border-radius: 7px;
-  font-weight: bold;
+  /*margin: 5px;*/
+  /*border: 1px solid black;*/
+  /*padding: 5px 7px;*/
+  /*border-radius: 7px;*/
+  /*font-weight: bold;*/
 }
 
 .textStyle {
@@ -185,3 +192,7 @@ section {
 
 #none {display: flex; align-items: center; justify-content: center;}
 #none>p {line-height: 150px;}
+
+.editBtnBox {width: 100%; height: fit-content;
+  /*background-color: rgba(255,0,0,.1);*/
+  position: absolute; top: 0;}

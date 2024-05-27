@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/detail.css?after?after?after">
-    <link rel="stylesheet" href="/css/footer.css?after?after">
-    <link rel="stylesheet" href="/css/quick.css?after">
+    <link rel="stylesheet" href="/css/detail.css?after?after?after?after?after">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link rel="stylesheet" href="/css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,8 +28,16 @@
         </p>
         <div class="info">
             <div class="infoImgWrapper">
-                <img src="/img/${itemDto.main_img}" alt="" class="detail_img">
-                <img src="/img/${itemDetail.detail_img}" alt="" class="detail_img">
+                <div class="foldImg">
+                    <img src="/img/${itemDto.main_img}" alt="" class="detail_img">
+                    <img src="/img/${itemDetail.detail_img}" alt="" class="detail_img">
+                </div>
+                <div class="more">
+                    <button>
+                        <span>상품설명 더보기</span>
+                        <i class="fa-solid fa-angle-down"></i>
+                    </button>
+                </div>
                 <p>소재 : <span class="matr">${itemDetail.matr}</span></p>
                 <p>제조국 : <span class="origin">${itemDetail.origin}</span></p>
                 <p>제조사 : <span class="mfg_corp">${itemDetail.mfg_corp}</span></p>
@@ -374,6 +382,6 @@
 <div class="modal_box"></div>
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
-<script src="/js/detail.js"></script>
+<script src="/js/detail.js?after"></script>
 </body>
 </html>

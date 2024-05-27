@@ -233,7 +233,7 @@
             </li>
             <li>
                 <ul>
-                    <li><a href="categories/99">액세사리</a></li>
+                    <li><a href="/item/categories/99">액세사리</a></li>
                 </ul>
             </li>
             <li class="nav_img">

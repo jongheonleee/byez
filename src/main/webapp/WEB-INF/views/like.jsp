@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css?after">
-    <link rel="stylesheet" href="/css/like.css?after?after?after?after?after">
+    <link rel="stylesheet" href="/css/like.css?after?after?after?after?after?after">
     <link rel="stylesheet" href="/css/footer.css?after?after">
     <link rel="stylesheet" href="/css/quick.css">
     <link rel="stylesheet" href="/css/aside.css?after">
@@ -71,6 +71,13 @@
 
             <!-- 버튼 및 페이징 -->
             <div class="btnPaging">
+                <div class="editBtnBox">
+                    <c:if test="${list.size() > 0}">
+                        <button class="modifyBtn">편집</button>
+                        <button class="btnStyle deleteBtn" style="display: none">삭제</button>
+                        <button class="btnStyle cancelBtn" style="display: none">취소</button>
+                    </c:if>
+                </div>
                 <!-- 이전 페이지 버튼 -->
                 <c:if test="${ph.showPrev}">
                     <a href="<c:url value='/like${ph.getQueryString(ph.beginPage-1)}' />">&lt;</a>
@@ -85,13 +92,14 @@
                 <c:if test="${ph.showNext}">
                     <a href="<c:url value='/like${type}${ph.getQueryString(ph.endPage+1)}' />">&gt;</a>
                 </c:if>
-
-                <c:if test="${list.size() > 0}">
-                    <button class="modifyBtn">편집</button>
-                    <button class="btnStyle deleteBtn" style="display: none">삭제</button>
-                    <button class="btnStyle cancelBtn" style="display: none">취소</button>
-                </c:if>
             </div>
+<%--            <div class="editBtnBox">--%>
+<%--                <c:if test="${list.size() > 0}">--%>
+<%--                    <button class="modifyBtn">편집</button>--%>
+<%--                    <button class="btnStyle deleteBtn" style="display: none">삭제</button>--%>
+<%--                    <button class="btnStyle cancelBtn" style="display: none">취소</button>--%>
+<%--                </c:if>--%>
+<%--            </div>--%>
         </div>
         <hr>
     </div>

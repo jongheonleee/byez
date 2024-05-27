@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="css/nav.css?after">
-    <link rel="stylesheet" href="css/basket.css?after?after?after?after?after">
+    <link rel="stylesheet" href="css/basket.css?after?after?after?after?after?after">
     <link rel="stylesheet" href="/css/footer.css?after?after">
     <link rel="stylesheet" href="css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -24,8 +24,8 @@
     <div class="wrapper">
         <!-- 2-1. 타이틀 : 장바구니 -->
         <p>
-            <a href="/"><span>HOME></span></a>
-            <span></span>
+            <a href="/"><span>home</span></a>
+            <span>></span>
             <span>장바구니</span>
         </p>
 
@@ -60,7 +60,7 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td colspan="6">
+                                <td colspan="6" class="noItem">
                                     장바구니에 담긴 상품이 없습니다.
                                 </td>
                             </tr>
@@ -160,15 +160,18 @@
                                                                     <label>
                                                                         <b>수량</b>
                                                                     </label>
-                                                                    <div class="modalQty">
-                                                                        <div class="count_box">
-                                                                            <div class="count-wrap _count">
-                                                                                <button type="button" class="minus">-</button>
-                                                                                <input type="text" class="inp qty" value="${list.get(i).qty}" readonly/>
-                                                                                <button type="button" class="plus">+</button>
+                                                                    <div class="counting">
+                                                                        <div class="modalQty">
+                                                                            <div class="count_box">
+                                                                                <div class="count-wrap _count">
+                                                                                    <button type="button" class="minus">-</button>
+                                                                                    <input type="text" class="inp qty" value="${list.get(i).qty}" readonly/>
+                                                                                    <button type="button" class="plus">+</button>
+                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
+
                                                                 </li>
 
                                                                 <li>
@@ -198,8 +201,8 @@
                                                                 </li>
                                                             </ul>
 
-                                                            <button class="modalBtn sendModalBtn">수정</button>
-                                                            <button class="modalBtn closeModalBtn">취소</button>
+                                                            <button class="modalBtn closeModalBtn"><p>취소</p></button>
+                                                            <button class="modalBtn sendModalBtn"><p>수정</p></button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -212,7 +215,7 @@
 
                     <div class="deleteBtnArea">
                         <!-- margin-left : 10px -->
-                        <button class="deleteAllBtn btnStyle" data-id="${list.get(i).id}">모두삭제</button>
+                        <button class="deleteAllBtn btnStyle" data-id="${list.get(i).id}">모두 삭제</button>
                         <button class="deleteSeveralBtn btnStyle" data-id="${list.get(i).id}">선택된 상품 삭제</button>
                     </div>
                 </c:if>

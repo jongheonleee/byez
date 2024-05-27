@@ -216,3 +216,25 @@ section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
 
 
 
+
+
+
+
+.foldImg {width: 100%;
+    /* height: fit-content;  */
+    height: 1500px;
+    /*background-color: rgba(255, 0, 0, 0.1); */
+    margin-bottom: 35px;
+    overflow: hidden;
+    float: left;
+}
+.foldImg img:first-of-type {width: 100%;}
+
+.more {width: 100%; height: fit-content;
+    /* background-color: rgba(255, 0, 0, 0.1); */
+    display: flex; justify-content: center; margin-bottom: 200px;}
+.more button {padding: 20px 40px; border: 1px solid black; background-color: white; font-size: 20px; margin: auto; cursor: pointer;}
+
+
+
+
