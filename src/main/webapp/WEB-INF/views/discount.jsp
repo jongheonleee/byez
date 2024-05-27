@@ -18,7 +18,7 @@
 
 </head>
 <body>
-<%@include file="../views/include/nav.jsp"%>
+<jsp:include page="/WEB-INF/views/include/nav.jsp"/>
 <section>
 <%--    <div class="wrapper">--%>
 <%--    </div>--%>

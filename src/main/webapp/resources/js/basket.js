@@ -163,6 +163,7 @@ $(".orderBtn").on("click", function(){
           const qty = parseInt($(e).find('.eachBasketItemQty').val());
           const opt1 = $(e).find('.eachBasketItemOpt1').val();
           const opt2 = $(e).find('.eachBasketItemOpt2').val();
+          const opt3 = $(e).find('.eachBasketItemOpt3').val();
 
 
 
@@ -177,6 +178,7 @@ $(".orderBtn").on("click", function(){
           formContents += "<input name='orders[" + orderNumber + "].qty' type='hidden' value='" + qty + "'>";
           formContents += "<input name='orders[" + orderNumber + "].opt1' type='hidden' value='" + opt1 + "'>";
           formContents += "<input name='orders[" + orderNumber + "].opt2' type='hidden' value='" + opt2 + "'>";
+          formContents += "<input name='orders[" + orderNumber + "].opt3' type='hidden' value='" + opt3 + "'>";
 
 
           // 주문 번호 증가

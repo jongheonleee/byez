@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<%@include file="../views/include/nav.jsp"%>
+<jsp:include page="/WEB-INF/views/include/nav.jsp"/>
 <section>
     <div class="wrapper">
         <div class="searchDiv">

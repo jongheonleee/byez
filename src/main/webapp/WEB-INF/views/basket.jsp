@@ -16,8 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-<%@include file="../views/include/nav.jsp"%>
-
+<jsp:include page="/WEB-INF/views/include/nav.jsp"/>
 <!-- 2. section : 장바구니 타이틀, 장바구니 상품 목록, 모두삭제/선택삭제 버튼, 주문 정보-->
 <section>
 <%--    </c:forEach>--%>
