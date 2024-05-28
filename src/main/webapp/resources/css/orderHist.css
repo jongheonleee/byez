@@ -15,18 +15,18 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 
 
 
-.mside {width: 22%; height: 100%; 
+.mside {width: 22%; height: 100%;
     /* background-color: rgba(0, 0, 255, .1); */
      float: left;}
-.content {width: 78%; height: 100%; 
+.content {width: 78%; height: 100%;
     /* background-color: rgba(255, 0, 0, 0.2); */
      float: left; margin-top: 11px;}
 
-.mside_wrapper {width: 90%; min-width: 215px; height: 100%; 
+.mside_wrapper {width: 90%; min-width: 215px; height: 100%;
     /* background-color: rgba(255, 0, 0, .1); */
      margin: auto;}
 .mside_wrapper>p {font-size: 20px; font-weight: bold; margin-bottom: 15px;}
-.mside_content {width: 100%; height: fit-content; border-top: 2px solid black;} 
+.mside_content {width: 100%; height: fit-content; border-top: 2px solid black;}
 .mside_content ul {margin-top: 50px;}
 .mside_content ul>li {margin-top: 15px;}
 .mside_content ul>li:first-of-type {font-size: 18px; font-weight: bold;}
@@ -36,7 +36,7 @@ table {margin-bottom: 40px;}
 .table_title {font-size: 20px; font-weight: bold; margin-bottom:15px;}
 .table_title>span {color: gray; font-size: 16px; font-weight: normal;}
 
-.content>table {width: 100%; height: 100px; 
+.content>table {width: 100%; height: 100px;
     /* background-color: rgba(255, 0, 0, 0.1);  */
     border-collapse: collapse;
 }
@@ -55,18 +55,98 @@ table {margin-bottom: 40px;}
 .price {width: 15%;}
 .delivery { width: 10%;}
 
-button {border: 1px solid lightgray; background-color: white; padding: 5px 10px;}
+button {border: 1px solid gray; background-color: white; padding: 5px 10px;}
 
-.product td {padding: 15px; border-bottom: 1px solid lightgray; text-align: center;}
+.product td {padding: 15px; border-bottom: 1px solid gray; text-align: center;}
 .product th {padding: 10px 0; border-bottom: 1px solid black;}
 
 .orderState {padding: 0;}
+.orderState > p{
+    margin-bottom: 8px;
+}
 
 .dlvTitle {width: 20%;}
 
 .dlvInfo {border-top: 1px solid black;}
-.dlvInfo td {padding: 15px; border-bottom: 1px solid lightgray;}
+.dlvInfo td {padding: 15px; border-bottom: 1px solid gray;}
 
 .titleBold {font-weight: bold; font-size: 18px;}
 .blue {color: blue;}
 .dlvTitleSize {font-size: 20px; font-weight: bold;}
+
+button{
+    cursor : pointer;
+    box-sizing : border-box;
+}
+
+/* 주문취소 버튼*/
+#orderCancelBtn{
+    width: 90px;
+    background-color : white;
+    border : 1px solid gray;
+    transition : 0.3s;
+}
+
+#orderCancelBtn:hover{
+    border : 1px solid black
+}
+
+/* 배송지 변경 버튼 */
+#changeDeliveryBtn{
+    width: 90px;
+    background-color : white;
+    border : 1px solid gray;
+    transition : 0.3s;
+}
+
+#changeDeliveryBtn:hover{
+    border : 1px solid black
+}
+
+/* 장바구니 상품 이미지 스타일 가져옴 */
+
+.itemImgWrap{
+    float: left;
+    width: 13%;
+    height: 100%;
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+.itemImgWrap img {
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.eachBasketInfo {
+    float: left;
+    width: 75%;
+    height: 100%;
+    /*background-color: yellow;*/
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+}
+
+.eachBasketInfo>p {
+    text-align: left;
+}
+
+.eachBasketInfo>div {
+    background-color: black;
+    color: white;
+    font-size : 12px;
+    padding: 5px;
+    height: fit-content;
+    width: fit-content;
+}
+
+/*.tb1 {*/
+/*    padding: 15px 0;*/
+/*    height: 160px;*/
+/*    width: 60%;*/
+/*    !*background-color: rgba(255, 0, 0, 0.1);*!*/
+/*}*/

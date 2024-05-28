@@ -94,7 +94,7 @@ $(document).ready(function(){
         }
 
         // 장바구니 상품 조회
-            // num, name, price(disc_price), qty, opt1(size), opt2(color), opt3(cust_type), opt4(item_type), coupon_chk
+            // num, name, price(disc_price), qty, opt1(color), opt2(size), opt3(cust_type), opt4(item_type), coupon_chk
         const num = $('.item-info').find('.num').val();
         const name = $('.item-info').find('.name').val();
         const main_img = $('.item-info').find('.name').val();
@@ -157,12 +157,12 @@ $(document).ready(function(){
 
     const checkOpt = function () {
         // 상품 옵션 확인
-        // 사이즈 확인
+        // 컬러 확인
         if ($('.opt1').val() === undefined || $('.opt1').val() == null || $('.opt1').val() === '') {
             return false;
         }
 
-        // 컬러 확인
+        // 사이즈 확인
         if ($('.opt2').val() === undefined || $('.opt2').val() == null || $('.opt2').val() === '') {
             return false;
         }

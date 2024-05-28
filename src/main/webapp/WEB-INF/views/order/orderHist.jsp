@@ -23,9 +23,9 @@
     <div class="wrapper">
         <div class="title">
             <p>
-                <a href="main.html"><span>home</span></a>
+                <a href="/"><span>home</span></a>
                 <span>></span>
-                <a href="orderHist.html"><span>주문 상세 내역</span></a>
+                <span>주문 상세 내역</span>
             </p>
             <p>주문 상세 내역</p>
         </div>
@@ -45,10 +45,24 @@
                 <c:forEach var="orderedItem" items="${orderResultInfoDtoList}">
                     <tr>
                         <td class="productTitle">
-                            <p>${orderedItem.item_name}</p>
-                            <p>
-                                [사이즈 : <span>${orderedItem.opt1}</span> / 컬러 : <span>${orderedItem.opt2}</span>]
-                            </p>
+                            <div class="itemImgWrap">
+                                <a href="/goods/${orderedItem.item_num}">
+                                    <img src="/img/${orderedItem.main_img}">
+                                </a>
+                            </div>
+                            <div class="eachBasketInfo">
+                                <p>
+                                    <a href="/goods/${orderedItem.item_num}">
+                                        <strong>${orderedItem.item_name}</strong>
+                                    </a>
+                                </p>
+                                <p>
+                                    [컬러 : ${orderedItem.opt1} / 사이즈 : ${orderedItem.opt2}]
+                                </p>
+                                <div>
+                                    ${orderedItem.opt3}
+                                </div>
+                            </div>
                         </td>
                         <td>${orderedItem.item_qty}</td>
                         <td class="price"><fmt:formatNumber value="${orderedItem.item_price}" pattern="#,###"/></td>
@@ -59,8 +73,12 @@
                         </td>
                         <td class="orderState">
                             <p>${orderedItem.ord_state}</p>
-                            <button>주문 취소</button>
-                            <button>배송지 변경</button>
+                            <c:if test="${orderedItem.ord_state == '주문대기'|| orderedItem.ord_state == '주문완료'}">
+                                <button id="orderCancelBtn" onclick="location.href='/cancel?ord_num=${orderResultInfoDto.ord_num}'" >주문취소</button>
+                            </c:if>
+                            <c:if test="${orderedItem.ord_state == '주문대기'|| orderedItem.ord_state == '주문완료'}">
+                                <button id="changeDeliveryBtn">배송지변경</button>
+                            </c:if>
                         </td>
                     </tr>
                 </c:forEach>
@@ -114,5 +132,6 @@
 <jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
+<script src="/js/aside.js"></script>
 </body>
 </html>

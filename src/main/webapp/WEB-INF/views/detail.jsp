@@ -67,8 +67,8 @@
                 <div class="optionBox">
                     <p>Color</p>
                     <ul class="col">
-                        <input type="hidden" class="opt2" name="opt2" >
-                        <select class="changeOpt2" onchange="selectOpt2(this.value);">
+                        <input type="hidden" class="opt1" name="opt1" >
+                        <select class="changeOpt1" onchange="selectOpt1(this.value);">
                             <option value="" disabled selected>--색상을 선택해주세요--</option>
                             <c:forEach var="color" items="${itemDetail.colors}">
                                 <option value=${color}>${color}</option>
@@ -81,8 +81,8 @@
 <%--                    </p>--%>
                     <p>Size</p>
                     <ul class="size">
-                        <input type="hidden" class="opt1" name="opt1">
-                        <select class="changeOpt1" onchange="selectOpt1(this.value);">
+                        <input type="hidden" class="opt2" name="opt2">
+                        <select class="changeOpt2" onchange="selectOpt2(this.value);">
                             <option value="" disabled selected>--사이즈 유형을 선택해주세요--</option>
                             <c:forEach var="size" items="${itemDetail.sizes}">
                                 <option value=${size}>${size}</option>

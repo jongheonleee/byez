@@ -1,8 +1,5 @@
 package com.neo.byez.domain.order;
 
-import com.neo.byez.domain.order.OrderDetailDto;
-
-import java.util.List;
 
 public class OrderResultInfoDto {
     /*
@@ -33,12 +30,14 @@ public class OrderResultInfoDto {
     private String ord_state;           // 주문 상태
 
     // ord_detail 테이블 컬럼
+    private String item_num;
     private String item_name;           // 상품명
+    private String main_img;
     private String opt1;                // 사이즈
     private String opt2;                // 색상
+    private String opt3;                // 여성, 남성, 혼성
     private Integer item_qty;           // 상품수량
     private Integer item_price;         // 주문상품 가격
-//    private String ord_state;           // 주문진행상태
 
     // dlv 테이블 컬럼
     private Integer waybill_num;        // 운송장번호
@@ -59,42 +58,11 @@ public class OrderResultInfoDto {
 
     // 주문내역 조회
 
-    // 주문번호, 주문일자, 주문금액, 배송비, 배송정보, 배송지 정보(ALL), 최종 결제 정보(ALL)
-    public OrderResultInfoDto(String ord_num, Integer total_price, Integer total_dlv_price, Integer total_disc_price,
-                              Integer total_pay_price, String ord_date, Integer waybill_num, String dlv_corp, String dlv_state,
-                              String rcpr, String rcpr_mobile, String main_addr, String detail_addr, String msg, String pay_num,
-                              String pay_state, Integer card_appv_num, Integer card_cncl_num, String mtd_code) {
-        this.ord_num = ord_num;
-        this.total_price = total_price;
-        this.total_dlv_price = total_dlv_price;
-        this.total_disc_price = total_disc_price;
-        this.total_pay_price = total_pay_price;
-        this.ord_date = ord_date;
-        this.waybill_num = waybill_num;
-        this.dlv_corp = dlv_corp;
-        this.dlv_state = dlv_state;
-        this.rcpr = rcpr;
-        this.rcpr_mobile = rcpr_mobile;
-        this.main_addr = main_addr;
-        this.detail_addr = detail_addr;
-        this.msg = msg;
-        this.pay_num = pay_num;
-        this.pay_state = pay_state;
-        this.card_appv_num = card_appv_num;
-        this.card_cncl_num = card_cncl_num;
-        this.mtd_code = mtd_code;
-    }
 
-    public OrderResultInfoDto(String ord_num, String ord_date, String ord_state, String item_name, String opt1, String opt2, Integer item_qty, Integer item_price) {
-        this.ord_num = ord_num;
-        this.ord_date = ord_date;
-        this.ord_state = ord_state;
-        this.item_name = item_name;
-        this.opt1 = opt1;
-        this.opt2 = opt2;
-        this.item_qty = item_qty;
-        this.item_price = item_price;
-    }
+    public OrderResultInfoDto() {}
+
+    // 주문번호, 주문일자, 주문금액, 배송비, 배송정보, 배송지 정보(ALL), 최종 결제 정보(ALL)
+
 
     public String getOrd_num() {
         return ord_num;
@@ -144,12 +112,36 @@ public class OrderResultInfoDto {
         this.ord_date = ord_date;
     }
 
+    public String getOrd_state() {
+        return ord_state;
+    }
+
+    public void setOrd_state(String ord_state) {
+        this.ord_state = ord_state;
+    }
+
+    public String getItem_num() {
+        return item_num;
+    }
+
+    public void setItem_num(String item_num) {
+        this.item_num = item_num;
+    }
+
     public String getItem_name() {
         return item_name;
     }
 
     public void setItem_name(String item_name) {
         this.item_name = item_name;
+    }
+
+    public String getMain_img() {
+        return main_img;
+    }
+
+    public void setMain_img(String main_img) {
+        this.main_img = main_img;
     }
 
     public String getOpt1() {
@@ -168,6 +160,14 @@ public class OrderResultInfoDto {
         this.opt2 = opt2;
     }
 
+    public String getOpt3() {
+        return opt3;
+    }
+
+    public void setOpt3(String opt3) {
+        this.opt3 = opt3;
+    }
+
     public Integer getItem_qty() {
         return item_qty;
     }
@@ -182,14 +182,6 @@ public class OrderResultInfoDto {
 
     public void setItem_price(Integer item_price) {
         this.item_price = item_price;
-    }
-
-    public String getOrd_state() {
-        return ord_state;
-    }
-
-    public void setOrd_state(String ord_state) {
-        this.ord_state = ord_state;
     }
 
     public Integer getWaybill_num() {
@@ -305,12 +297,15 @@ public class OrderResultInfoDto {
                 ", total_disc_price=" + total_disc_price +
                 ", total_pay_price=" + total_pay_price +
                 ", ord_date='" + ord_date + '\'' +
+                ", ord_state='" + ord_state + '\'' +
+                ", item_num='" + item_num + '\'' +
                 ", item_name='" + item_name + '\'' +
+                ", main_img='" + main_img + '\'' +
                 ", opt1='" + opt1 + '\'' +
                 ", opt2='" + opt2 + '\'' +
+                ", opt3='" + opt3 + '\'' +
                 ", item_qty=" + item_qty +
                 ", item_price=" + item_price +
-                ", ord_state='" + ord_state + '\'' +
                 ", waybill_num=" + waybill_num +
                 ", dlv_corp='" + dlv_corp + '\'' +
                 ", dlv_state='" + dlv_state + '\'' +

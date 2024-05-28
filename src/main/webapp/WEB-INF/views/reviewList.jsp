@@ -1,7 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="dateOK" %>
 <!DOCTYPE html>
@@ -120,17 +119,9 @@
     </div>
 </section>
 </body>
-</div>
-</div>
-</section>
 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 <jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
 </body>
-
 </html>
-
-
-<%@include file="../views/include/footer.jsp" %>
-<%@include file="../views/include/quick.jsp" %>

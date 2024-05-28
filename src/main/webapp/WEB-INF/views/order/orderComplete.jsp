@@ -79,8 +79,9 @@
     const amountElement = document.getElementById("amount");
 
     orderIdElement.textContent = urlParams.get("orderId");
-    amountElement.textContent = urlParams.get("amount") + "원";
+    amountElement.textContent = urlParams.get("amount").replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",") + "원";
     paymentKeyElement.textContent = urlParams.get("paymentKey");
+
 </script>
 </body>
 </html>

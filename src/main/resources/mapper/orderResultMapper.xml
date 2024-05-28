@@ -21,7 +21,7 @@
     <!-- List 로 저장-->
     <select id="selectOrderedItemInfo" resultType="OrderResultInfoDto" parameterType="string">
         --      SELECT od.ord_num, od.ord_date, od.item_name, od.opt1, od.opt2, od.item_qty, od.item_price, od.ord_state
-        SELECT o.ord_num, o.ord_date, o.ord_state, od.item_name, od.opt1, od.opt2, od.item_qty, od.item_price
+        SELECT o.ord_num, o.ord_date, o.ord_state, od.item_num, od.main_img, od.item_name, od.opt1, od.opt2, od.opt3, od.item_qty, od.item_price
         FROM neo.ord_detail od
         JOIN neo.ord o ON o.ord_num = od.ord_num
         WHERE o.ord_num = #{ord_num}

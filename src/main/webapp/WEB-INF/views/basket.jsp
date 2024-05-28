@@ -120,7 +120,7 @@
                                                     <strong>${list.get(i).name}</strong>
                                                 </p>
                                                 <p>
-                                                    [사이즈 : ${list.get(i).opt1} / 컬러 : ${list.get(i).opt2}]
+                                                    [컬러 : ${list.get(i).opt1} / 사이즈 : ${list.get(i).opt2}]
                                                 </p>
                                                 <div>
                                                         ${list.get(i).opt3}
@@ -175,26 +175,26 @@
 
                                                                 <li>
                                                                     <label>
-                                                                        <b>사이즈</b>
+                                                                        <b>색상</b>
                                                                     </label>
-                                                                    <input type="hidden" class="opt1" name="opt1" value="${list.get(i).opt1}" placeholder="${list.get(i).opt1}">
+                                                                    <input type="hidden" class="opt1" name="opt1" value="${list.get(i).opt1}" placeholder="${list.get(i).opt1}" >
                                                                     <select class="changeOpt1" onchange="selectOpt1(this.value);">
-                                                                        <option value="" disabled selected>--사이즈 유형을 선택해주세요--</option>
-                                                                        <c:forEach var="size" items="${list2.get(i).sizes}">
-                                                                            <option value=${size}>${size}</option>
+                                                                        <option value="" disabled selected>--색상을 선택해주세요--</option>
+                                                                        <c:forEach var="color" items="${list2.get(i).colors}">
+                                                                            <option value=${color}>${color}</option>
                                                                         </c:forEach>
                                                                     </select>
                                                                 </li>
 
                                                                 <li>
                                                                     <label>
-                                                                        <b>색상</b>
+                                                                        <b>사이즈</b>
                                                                     </label>
-                                                                    <input type="hidden" class="opt2" name="opt2" value="${list.get(i).opt2}" placeholder="${list.get(i).opt2}" >
+                                                                    <input type="hidden" class="opt2" name="opt2" value="${list.get(i).opt2}" placeholder="${list.get(i).opt2}">
                                                                     <select class="changeOpt2" onchange="selectOpt2(this.value);">
-                                                                        <option value="" disabled selected>--색상을 선택해주세요--</option>
-                                                                        <c:forEach var="color" items="${list2.get(i).colors}">
-                                                                            <option value=${color}>${color}</option>
+                                                                        <option value="" disabled selected>--사이즈 유형을 선택해주세요--</option>
+                                                                        <c:forEach var="size" items="${list2.get(i).sizes}">
+                                                                            <option value=${size}>${size}</option>
                                                                         </c:forEach>
                                                                     </select>
                                                                 </li>
