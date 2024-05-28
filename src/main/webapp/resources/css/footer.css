@@ -5,7 +5,7 @@ a {text-decoration: none; color:black;}
 
 /* section {min-height: calc(100vh - 180px);} */
 
-footer {width: 100%; min-width: 1200px; min-height: 90px; height: fit-content; background-color: #f0f0f0; float: left; color: gray; margin-top: 50px;}
+footer {width: 100%; min-width: 1200px; min-height: 90px; height: fit-content; background-color: #f0f0f0; float: left; color: gray; margin-top: 100px;}
 
 
 /* footer .wrapper {display: flex; align-items: center; justify-content: space-between;} */
@@ -25,16 +25,16 @@ footer .wrapper>div:nth-of-type(2) {
   display: flex; justify-content: space-between;
 }
 
-.notice,.info {width: 40%; height: 100%;
+.notice,.footer_info {width: 40%; height: 100%;
   /* background-color: rgba(255, 0, 0, .1); */
   font-size: 14px; line-height: 25px;}
-.info {width: fit-content;}
+.footer_info {width: fit-content;}
 footer a {color: gray;}
-.info>li {width: fit-content; height: 100%;
+.footer_info>li {width: fit-content; height: 100%;
   /* background-color: rgba(255, 0, 0, .1); */
   float: left; margin-left: 100px;}
 
-.notice>li:first-of-type,.info>li>ul>li:first-of-type {
+.notice>li:first-of-type,.footer_info>li>ul>li:first-of-type {
   font-weight: bold;
   margin-bottom: 5px;
 }

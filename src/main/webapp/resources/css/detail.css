@@ -93,8 +93,8 @@ section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
     /* background-color: rgba(255, 0, 0, .1); */
     margin-top: 30px; display: flex; justify-content: space-between;}
 
-.work_btn>button {border: 1px solid black; width: calc(50% - 50px); height: 100%; font-size: 20px; background-color: white;}
-.work_btn>button:first-of-type {width: 60px; box-sizing: border-box; border: 1px solid #bcbcbc; color: gray; transition: border .3s;}
+.work_btn>button {border: 1px solid black; width: calc(50% - 50px); height: 100%; font-size: 20px; background-color: white; cursor: pointer;}
+.work_btn>button:first-of-type {width: 60px; box-sizing: border-box; border: 1px solid #bcbcbc; color: gray; transition: border .3s; cursor: pointer;}
 .work_btn>button:first-of-type:hover {border: 1px solid black;}
 .work_btn>button:last-of-type {background-color: black; color: white; transition: background-color .3s, color .3s;}
 .work_btn>button:last-of-type:hover {background-color: white;
@@ -196,7 +196,7 @@ section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
 
 
 .col ,.size {margin-bottom: 20px;}
-.col select,.size select {width: 250px; height: 40px; font-size: 16px; text-indent: 5px; border: 1px solid #bcbcbc;}
+.col select,.size select {width: 250px; height: 40px; font-size: 16px; text-indent: 5px; border: 1px solid #bcbcbc; }
 .optionBox>p {margin-bottom: 5px;}
 .optionBox>p:nth-of-type(2) {
     color: black;

@@ -129,7 +129,7 @@ public class ItemController {
     public String bestList() {
         // 베스트 상품들 조회
         // 페이지에 뿌리기
-        return "index";
+        return "best";
     }
 
     @GetMapping("/item/discount")

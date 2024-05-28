@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BYEZ|아이디 조회결과</title>
 
-  <link rel="stylesheet" href="/css/findIdResult.css?after">
+  <link rel="stylesheet" href="/css/findIdResult.css?after?after">
   <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,12 +16,13 @@
 </head>
 
 <body>
+
     <div class="wrapper">
 
       <div class="result-wrapper">
         <div class="title">
           <a href="/">
-            <img src="/img/byez.png" alt="메인로고" class="main-logo">
+            <img src="/img/logo1.png" alt="메인로고" class="main-logo">
           </a>
         </div>
         <div class="content">

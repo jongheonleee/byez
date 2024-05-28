@@ -72,7 +72,6 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 
 .edit_address_btn {
   background-color: black;
-  border: 1px solid;
   color: white;
   padding: 18px 45px;
   text-align: center;
@@ -85,6 +84,8 @@ section {width: 100%; min-width: 1200px; height: fit-content;
   box-sizing: border-box;
   font-weight: bold;
   transition: background-color .3s;
+  width: 124px;
+  height: 59px;
 }
 
 .edit_address_btn:hover {
@@ -109,6 +110,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;
   margin-right: 7px;
   font-weight: bold;
   transition: background-color .3s;
+  box-sizing: border-box;
 }
 
 .cancle_btn:hover {
@@ -125,6 +127,7 @@ tbody input {
 .mobileNumInput {
   width: 202px;
   height: 36px;
+  font-size: 16px;
 }
 
 .zpcdInput {
@@ -143,6 +146,7 @@ tbody input {
 .regTable input {
   box-sizing: border-box;
   border: 1px solid #bcbcbc;
+  font-size: 16px;
 }
 
 input[readonly] {

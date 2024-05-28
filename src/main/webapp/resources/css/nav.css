@@ -49,17 +49,27 @@ nav {width: 100%; min-width: 1320px; height: 90px; background-color: white; posi
 
 .nav_woman>ul, .nav_man>ul, .nav_unisex>ul {width: 100%; height: fit-content; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); display: flex; justify-content: center;
     /*opacity: 0;*/
-    /*transition: 0.3s;*/
+    /*transition: opacity 0.3s;*/
 }
+
+
+/*.nav_woman>ul:hover, .nav_man>ul:hover, .nav_unisex>ul:hover {*/
+/*    opacity: 1;*/
+/*}*/
+
+
 /*.nav_menu>li:nth-of-type(3):hover {opacity: 1;}*/
 /*.nav_menu>li:nth-of-type(4):hover {opacity: 1;}*/
 /*.nav_menu>li:last-of-type:hover {opacity: 1;}*/
 
 .nav_woman>ul>li:not(:last-of-type), .nav_man>ul>li:not(:last-of-type), .nav_unisex>ul>li:not(:last-of-type) {margin-right: 80px;}
 .nav_woman>ul>li:first-of-type, .nav_man>ul>li:first-of-type, .nav_unisex>ul>li:first-of-type {border-right: 1px solid #bcbcbc; padding-right: 70px; color: #bcbcbc;}
-.nav_woman>ul>li li, .nav_man>ul>li li, .nav_unisex>ul>li li{margin-bottom: 7px; color: red; transition: 0.3s;}
-.nav_woman>ul>li li:hover, .nav_man>ul>li li:hover, .nav_unisex>ul>li li:hover {color: black;}
+.nav_woman>ul>li li, .nav_man>ul>li li, .nav_unisex>ul>li li {margin-bottom: 7px;}
+.nav_woman>ul>li li a, .nav_man>ul>li li a, .nav_unisex>ul>li li a {color: gray; transition: 0.3s}
+.nav_woman>ul>li li:first-of-type a,.nav_man>ul>li li:first-of-type a,.nav_unisex>ul>li li:first-of-type a {color:black;}
+.nav_woman>ul>li li a:hover, .nav_man>ul>li li a:hover, .nav_unisex>ul>li li a:hover {color: black;}
 .nav_woman>ul>li li:first-of-type, .nav_man>ul>li li:first-of-type, .nav_unisex>ul>li li:first-of-type {font-weight: bold; color: black;}
+.nav_woman>ul>li:first-of-type>ul>li,.nav_man>ul>li:first-of-type>ul>li,.nav_unisex>ul>li:first-of-type>ul>li {color: gray;}
 .search_div {display: none; z-index: 101;}
 .search_div>div {width: 80%; height: 70%; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; justify-content: space-between;}
 .search_div>div>p:first-of-type {width: 100%; height: fit-content; display: flex; justify-content: space-between; font-size: 35px;}
@@ -76,3 +86,5 @@ section {min-height: calc(100vh - 180px);}
 
 .nav_img {width: 180px; height: 240px; background-color: rgba(255,0,0,.1); overflow: hidden;}
 .nav_img img {width: 100%; object-fit: cover; object-position: top;}
+
+.nav_search_btn {cursor: pointer;}

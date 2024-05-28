@@ -2,6 +2,7 @@
 * {margin: 0; padding: 0; border: 0;}
 ul {list-style: none;}
 a {text-decoration: none; color:black;}
+body {font-family: "Noto Sans KR", sans-serif;}
 
 .find-pwd-input-wrapper {
     /*background-color: rgba(255, 0, 0, .1);*/
@@ -17,7 +18,7 @@ a {text-decoration: none; color:black;}
 }
 img {
     width: 130px;
-    height: 58px;
+    height: 40px;
 }
 .title{
     /* background-color: rgba(255, 0, 0, .1); */

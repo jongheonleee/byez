@@ -325,7 +325,7 @@ section>.wrapper>p:nth-of-type(2) {font-size: 42px; font-weight: bold; text-alig
   background-color: lightgray;
 
 }
-.modalBtn:first-of-type:hover {background-color: gray;}
+.modalBtn:first-of-type:hover {background-color: #c8c7c7;}
 
 .modalBtn:nth-of-type(2) {
   left: 65%;

@@ -3,6 +3,8 @@
 ul {list-style: none;}
 a {text-decoration: none; color:black;}
 
+body {font-family: "Noto Sans KR", sans-serif;}
+
 .result-wrapper {
     /*background-color: rgba(255, 0, 0, .1);*/
     width: 500px;
@@ -28,11 +30,11 @@ a {text-decoration: none; color:black;}
     align-items: center;
     justify-content: center;
     /*margin-bottom: 50px;*/
-    margin: 30px 0 80px;
+    margin: 30px 0 100px;
 }
 img {
     width: 130px;
-    height: 58px;
+    height: 40px;
 }
 .content {
     /* background-color: rgba(0, 255, 0, .1); */

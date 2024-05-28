@@ -7,11 +7,11 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 
 .filter {width: 22%; height: 100%; float: left; padding-top: 65px;}
 .content {width: 78%; height: 100%; float: left;}
-.content>p:first-of-type {text-align: right; margin-bottom: 50px;}
+.content>p:first-of-type {text-align: right; margin-bottom: 44px;}
 .content>p:nth-of-type(2) {font-size: 20px; font-weight: bold;}
 
 
-.category {width: 100%; height: 60px; margin: 10px 0 20px 0; border: 1px solid #bcbcbc; box-sizing: border-box; padding-left: 30px;}
+.category {width: 100%; height: 60px; margin: 13px 0 20px 0; border: 1px solid #bcbcbc; box-sizing: border-box; padding-left: 30px;}
 .category>ul:first-of-type {width: fit-content; height: 100%; display: flex; align-items: center; justify-content: space-around; float: left;}
 .category>ul:first-of-type li {margin-right: 50px;}
 .category>div:first-of-type {width: fit-content; height: 100%; float: right;}
@@ -78,21 +78,28 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .filter_wrapper span {font-size: 18px;}
 
 
-.type {width: 32%; padding: 10px; background-color: white; border: 1px #bcbcbc solid; box-sizing: border-box;}
-.item {width: 49%; padding: 10px 3px; background-color: white; border: 1px #bcbcbc solid; box-sizing: border-box; margin-bottom: 5px; color: gray;}
+.type {width: 32%; padding: 10px; background-color: white; border: 1px #bcbcbc solid; box-sizing: border-box; transition: 0.3s;}
+.item {    width: 49%;
+  padding: 10px 0;
+  background-color: white;
+  border: 1px #bcbcbc solid;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: gray; transition: 0.3s; cursor: pointer;}
 
 .panel:nth-last-of-type(2)>div {justify-content: flex-start;}
 
-.color {width: 18%; height: 30px; border: 1px #bcbcbc solid; box-sizing: border-box; margin-bottom: 10px; margin-right: 2.5%;}
+.color {width: 18%; height: 30px; border: 1px #bcbcbc solid; box-sizing: border-box; margin-bottom: 10px; margin-right: 2.5%; transition: 0.3s; cursor: pointer;}
 .color:nth-of-type(5n) {margin-right: 0;}
 
 .price_search {width: 100%; display: flex; justify-content: space-between; align-items: center;}
 .price_search>input {width: 35%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
-.price_search>button {width: 20%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; cursor: pointer;}
+.price_search>button {width: 20%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; cursor: pointer; font-size: 14px; background-color: lightgray;}
 
 .detail_search {width: 100%; height: 30px;}
 .detail_search>input {width: 80%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
-.detail_search>button {width: 19%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; cursor: pointer;}
+.detail_search>button {width: 19%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; cursor: pointer; font-size: 14px; background-color: lightgray;}
 
 .type:hover,.item:hover,.color:hover {color:black; border: black 1px solid;}
 .paging {
@@ -121,6 +128,6 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 }
 
 .star-rating {width:100px;}
-.star-rating,.star-rating span {display:inline-block; height:18px; overflow:hidden; background:url(/img/blackStar.jpeg)no-repeat; background-size: 100px auto;}
+.star-rating,.star-rating span {display:inline-block; height:18px; overflow:hidden; background:url(/img/newStar.jpeg)no-repeat; background-size: 100px auto;}
 .star-rating span{background-position:left bottom; line-height:0; vertical-align:top; filter :grayscale(100%)}
 

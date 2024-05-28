@@ -21,7 +21,7 @@
                 <li><a href="#">NEO 구매확정 기준 정책 변경 안내 (시행일 : 2024년 4월 1일)</a></li>
                 <li><a href="#">[개인 식별 정보(CI) 수집을 위한 본인인증 서비스 시행 안내</a></li>
             </ul>
-            <ul class="info">
+            <ul class="footer_info">
                 <li>
                     <ul>
                         <li>MY ORDER</li>

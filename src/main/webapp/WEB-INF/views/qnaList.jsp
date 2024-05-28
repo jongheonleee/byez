@@ -10,9 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/qnaList.css?after?after?after?after">
-    <link rel="stylesheet" href="/css/aside.css?after">
-    <link rel="stylesheet" href="../css/footer.css?after">
+    <link rel="stylesheet" href="../css/qnaList.css?after?after?after?after?after">
+    <link rel="stylesheet" href="/css/aside.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +25,7 @@
     <div class="wrapper">
         <div class="title">
             <p>
-                <a href="main.html"><span>home</span></a>
+                <a href="/"><span>home</span></a>
                 <span>></span>
                 <span>나의 문의</span>
 

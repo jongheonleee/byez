@@ -55,9 +55,11 @@ table {margin-bottom: 40px;}
 .price {width: 15%;}
 .delivery { width: 10%;}
 
-button {border: 1px solid gray; background-color: white; padding: 5px 10px;}
+.orderState>button {border: 1px solid #bcbcbc; background-color: white; padding: 5px 10px; transition: 0.3s;}
+.orderState>button:hover {border: 1px solid black;}
 
-.product td {padding: 15px; border-bottom: 1px solid gray; text-align: center;}
+.product td {padding: 15px; border-bottom: 1px solid #bcbcbc; text-align: center;}
+
 .product th {padding: 10px 0; border-bottom: 1px solid black;}
 
 .orderState {padding: 0;}
@@ -68,7 +70,7 @@ button {border: 1px solid gray; background-color: white; padding: 5px 10px;}
 .dlvTitle {width: 20%;}
 
 .dlvInfo {border-top: 1px solid black;}
-.dlvInfo td {padding: 15px; border-bottom: 1px solid gray;}
+.dlvInfo td {padding: 15px; border-bottom: 1px solid #bcbcbc;}
 
 .titleBold {font-weight: bold; font-size: 18px;}
 .blue {color: blue;}

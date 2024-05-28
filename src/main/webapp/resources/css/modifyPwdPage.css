@@ -3,6 +3,7 @@
 * {margin: 0; padding: 0; border: 0;}
 ul {list-style: none;}
 a {text-decoration: none; color:black;}
+body {font-family: "Noto Sans KR", sans-serif;}
 section {width: 100%; min-width: 1200px; height: fit-content; padding: 50px 0; box-sizing: border-box; margin-top: 90px;}
 /*section .wrapper {background-color: rgba(0, 255, 0, 0.1);}*/
 section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
@@ -16,7 +17,7 @@ section .wrapper .input-new-pwd {
 }
 img {
     width: 130px;
-    height: 58px;
+    height: 40px;
 }
 .title{
     /* background-color: rgba(255, 0, 0, .1); */
@@ -65,13 +66,14 @@ table {
 }
 tr {
     box-sizing: border-box;
-    padding: 10px;
+    padding: 0 10px;
     border: 1px solid gray;
     margin-top: 20px;
 }
 tr:last-of-type {
     display: flex;
     align-items: center;
+    height: 47px;
 }
 section .wrapper .error-msg {
     font-size: 16px;
@@ -93,10 +95,11 @@ input[type="text"], input[type="text"]:focus {
 }
 input[type="password"] {
     width: 170px;
-    height: 25px;
+    height: 40px;
     text-indent: 15px;
     margin-left: 20px;
     outline: none;
+    font-size: 16px;
 }
 input[type="submit"], button {
     width: 120px;

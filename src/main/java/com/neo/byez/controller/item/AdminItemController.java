@@ -41,6 +41,7 @@ public class AdminItemController {
 
     @PostMapping("/admin/itemRegister")
     public String doRegisterForm(ItemRegisterInfo info) {
+        System.out.println(info);
         // 필요한 DTO 생성
         ItemDto itemDto = info.getItemDto();
         ItemDetailDto itemDetailDto = info.getItemDetailDto();

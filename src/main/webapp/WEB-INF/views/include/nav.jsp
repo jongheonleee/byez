@@ -5,12 +5,12 @@
     <div class="wrapper">
         <div class="nav_logo">
             <a href="/">
-                <img src="/img/logo3.png" alt="">
+                <img src="/img/logo1.png" alt="">
             </a>
         </div>
         <ul class="nav_menu">
             <li><a href="/item/discount">할인 상품</a></li>
-            <li><a href="#">베스트</a></li>
+            <li><a href="/item/best">베스트</a></li>
             <li><a href="/item/categories/02">여성</a></li>
             <li><a href="/item/categories/01">남성</a></li>
             <li><a href="/item/categories/03">혼성</a></li>
@@ -47,7 +47,7 @@
                     </c:if>
                 </ul>
             </li>
-            <li><a><img src="/img/top_search.png"></a></li>
+            <li class="nav_search_btn"><a><img src="/img/top_search.png"></a></li>
             <li><a href="/like"><img src="/img/top_wish.png"></a></li>
             <li><a href="/basket" class="cart_cnt">
                 <img src="/img/top_cart_pc.png">

@@ -3,20 +3,19 @@
 
 <head>
     <title>BYEZ|아이디 찾기</title>
+    <link rel="stylesheet" href="/css/findIdForm.css?after?after">
+    <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
-
-<link rel="stylesheet" href="/css/findIdForm.css">
-<script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 
 <body>
     <div class="wrapper">
         <div class="find-id-input-wrapper">
             <div class="title">
                 <a href="/">
-                    <img src="/img/byez.png" alt="메인로고" class="main-logo">
+                    <img src="/img/logo1.png" alt="메인로고" class="main-logo">
                 </a>
             </div>
             <div class="content">

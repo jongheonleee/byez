@@ -1,13 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
-<title>BYEZ|비밀번호 찾기</title>
-
-<link rel="stylesheet" href="/css/findPwdForm.css">
+<head>
+<title>BYEZ | 비밀번호 찾기</title>
+<link rel="stylesheet" href="/css/findPwdForm.css?after?after">
 <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+</head>
 
 <body>
 
@@ -16,7 +17,7 @@
     <div class="find-pwd-input-wrapper">
         <div class="title">
             <a href="/">
-                <img src="/img/byez.png" alt="메인로고" class="main-logo">
+                <img src="/img/logo1.png" alt="메인로고" class="main-logo">
             </a>
         </div>
         <div class="content">

@@ -3,16 +3,18 @@
 <html>
 <head>
     <title>BYEZ|로그인</title>
+    <link rel="stylesheet" href="/css/loginForm.css?after?after">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
-
-<link rel="stylesheet" href="/css/loginForm.css">
 
 <body>
 
 <form action="/login/in?prevPage=${prevPage}" method="POST">
     <div class="title">
         <a href="/">
-            <img src="/img/byez.png" alt="메인로고" class="main-logo">
+            <img src="/img/logo1.png" alt="메인로고" class="main-logo">
         </a>
     </div>
     <div class="login-msg">

@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
-    <link rel="stylesheet" href="/css/nav.css?after">
-    <link rel="stylesheet" href="/css/like.css?after?after?after?after?after?after">
-    <link rel="stylesheet" href="/css/footer.css?after?after">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/like.css">
+    <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/quick.css">
-    <link rel="stylesheet" href="/css/aside.css?after">
+    <link rel="stylesheet" href="/css/aside.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,13 +71,13 @@
 
             <!-- 버튼 및 페이징 -->
             <div class="btnPaging">
-                <div class="editBtnBox">
-                    <c:if test="${list.size() > 0}">
-                        <button class="modifyBtn">편집</button>
-                        <button class="btnStyle deleteBtn" style="display: none">삭제</button>
-                        <button class="btnStyle cancelBtn" style="display: none">취소</button>
-                    </c:if>
-                </div>
+<%--                                <div class="editBtnBox">--%>
+                                    <c:if test="${list.size() > 0}">
+                                        <button class="modifyBtn">편집</button>
+                                        <button class="btnStyle deleteBtn" style="display: none">삭제</button>
+                                        <button class="btnStyle cancelBtn" style="display: none">취소</button>
+                                    </c:if>
+<%--                                </div>--%>
                 <!-- 이전 페이지 버튼 -->
                 <c:if test="${ph.showPrev}">
                     <a href="<c:url value='/like${ph.getQueryString(ph.beginPage-1)}' />">&lt;</a>
@@ -123,8 +123,8 @@
 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>
 <jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="/js/nav.js?after?after?after"></script>
-<script src="/js/like.js?after?after"></script>
+<script src="/js/nav.js"></script>
+<script src="/js/like.js"></script>
 <script src="/js/aside.js"></script>
 </body>
 </html>

@@ -87,6 +87,10 @@ table {
     background-color: black;
     color: white;
     font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: 0;
 }
 #saveNewPwdBtn:hover, #saveNewMobileNumBtn:hover {
     background-color: #3182F6;

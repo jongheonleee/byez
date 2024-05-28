@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BYEZ|비밀번호 변경</title>
-    <link rel="stylesheet" href="/css/modifyPwdPage.css?after">
+    <title>BYEZ | 비밀번호 변경</title>
+    <link rel="stylesheet" href="/css/modifyPwdPage.css?after?after?after?after?after">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,12 +14,13 @@
 </head>
 
 <body>
+    <section>
         <div class="wrapper">
             <form action="/find/modify" method="GET">
                 <div class="input-new-pwd">
                     <div class="title">
                         <a href="/">
-                            <img src="/img/byez.png" alt="메인로고" class="main-logo">
+                            <img src="/img/logo1.png" alt="메인로고" class="main-logo">
                         </a>
                     </div>
                     <table>
@@ -62,6 +63,7 @@
                 </div>
             </form>
         </div>
+    </section>
 </body>
 
 <script src="/js/jquery-3.6.4.min.js"></script>

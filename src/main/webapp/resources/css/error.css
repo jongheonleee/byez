@@ -1,0 +1,13 @@
+@charset "utf-8";
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none; color:black;}
+
+body {font-family: "Noto Sans KR", sans-serif;}
+
+.wrapper {width: fit-content; height: fit-content;
+    /* background-color: rgba(255, 0, 0, .1);  */
+    position: absolute; top: 40%; left: 50%; transform: translate(-50%,-50%); text-align: center; font-size: 40px; color: gray;}
+i {font-size: 70px;}
+.wrapper>p {margin: 20px 0 50px;}
+button {background-color: white; padding: 10px 15px; font-size: 25px; color: gray; border: 1px solid #bcbcbc; border-radius: 5px; cursor: pointer;}

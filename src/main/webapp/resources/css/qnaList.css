@@ -122,7 +122,8 @@ section {
 }
 
 .search input {
-    border: black 1px solid;
+    border: #bcbcbc 1px solid;
+    font-size: 16px;
 }
 
 .reg_date {
@@ -156,6 +157,7 @@ section {
     border: 1px solid #bcbcbc;
     width: 100px;
     height: 30px;
+    font-size: 16px;
 }
 
 .searchopt {
@@ -163,6 +165,7 @@ section {
     width: 100px;
     height: 30px;
     margin-right: 10px;
+    font-size: 16px;
 }
 
 .searchChang {
@@ -184,8 +187,9 @@ section {
     cursor: pointer;
     background-color: lightgray;
     border: 1px solid #bcbcbc;
-    width: 40px;
+    width: 45px;
     height: 31.33px;
+    font-size: 16px;
 }
 
 .searchbtn:hover {

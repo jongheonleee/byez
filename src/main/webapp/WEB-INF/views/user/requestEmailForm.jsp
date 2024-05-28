@@ -3,15 +3,18 @@
 <html>
 <head>
     <title>BYEZ|회원가입 본인인증</title>
+    <link rel="stylesheet" href="/css/requestEmailForm.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 </head>
 
-<link rel="stylesheet" href="/css/requestEmailForm.css">
 
 <body>
     <div class="wrapper">
         <div class="title">
             <a href="/">
-                <img src="/img/byez.png" alt="메인로고" class="main-logo">
+                <img src="/img/logo1.png" alt="메인로고" class="main-logo">
             </a>
         </div>
         <div class="content">

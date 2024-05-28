@@ -69,6 +69,6 @@ $(function(){
     $('.search_div p img').click(function() {
         $('.search_div, .shadow').hide();
     });
-    
+
 
 });
