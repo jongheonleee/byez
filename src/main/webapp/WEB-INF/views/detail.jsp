@@ -203,7 +203,7 @@
                                 <div class='star-rating'>
                                     <span style="width:${20*reviewList.score}%"></span>
                                 </div>
-                                <span><dateOK:formatDate value="${reviewList.reg_date}" pattern="yyyy.M.d"/></span>
+                                <span><dateOK:formatDate value="${  reviewList.reg_date}" pattern="yyyy.M.d"/></span>
                             </div>
                             <p>${reviewList.title}</p>
                             <p>${reviewList.content}</p>
