@@ -209,8 +209,9 @@
                             <p>${reviewList.content}</p>
                             <ul class="review_pic">
                                 <li>
-                                    <img src="/img/302review5.jpeg" alt="">
+                                    <img src="/img/review1.jpg" alt="">
                                 </li>
+
                             </ul>
                         </div>
                         <div>

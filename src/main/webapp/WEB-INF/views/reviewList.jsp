@@ -35,7 +35,6 @@
                 <span>나의 게시물 관리</span>
 
 
-
             </p>
             <p>나의 게시물 관리</p>
         </div>
@@ -77,26 +76,32 @@
             <div id="tab1-2" class="tab_content">
                 <div class="content">
                     <ul>
-                        <c:forEach var="onList" items="${reviewOnList}">
+                        <c:forEach var="onList" items="${reviewOnList}" varStatus="status">
                             <li class="reviewDone">
                                 <div class="allList">
                                     <div class="first">
                                         <div class="first_image"><img src="/img/${onList.main_img}"></div>
                                         <div class="first_info">
-                                            <p class="item_name"> <a href="/goods/${onList.item_num}">${onList.item_name}</a></p>
+                                            <p class="item_name"><a
+                                                    href="/goods/${onList.item_num}">${onList.item_name}</a></p>
                                             <div class="wrap-star">
                                                 <div class='star-rating'>
                                                     <span style="width: ${20 * onList.score}%"></span>
                                                 </div>
                                             </div>
-<%--                                            <p class="item_score"> 별점 : ${onList.score}점</p>--%>
+                                            <ul class="imgUL">
+                                                <li>
+                                                    <img style="width: 100px; height: 100px; border-radius: 5px; margin-top: 7px;object-fit: cover;object-position: center;border-radius: 10px;overflow: hidden;" src="/img/review${status.count}.jpg">
+                                                </li>
+                                            </ul>
                                             <p class="item_title"> 한줄평 : ${onList.title}</p>
                                             <p>${onList.content}</p>
+
                                         </div>
                                     </div>
                                     <div class="second">
-<%--                                        <p><c:out value="${fn:substring(onList.reg_date, 0, 10)}"/></p>--%>
-                                        <p><dateOK:formatDate value="${onList.reg_date}" pattern="yyyy.M.d" /></p>
+                                            <%--                                        <p><c:out value="${fn:substring(onList.reg_date, 0, 10)}"/></p>--%>
+                                        <p><dateOK:formatDate value="${onList.reg_date}" pattern="yyyy.M.d"/></p>
                                         <a href="/review/delete?review_num=${onList.review_num}"
                                            onclick="return confirm('삭제하시겠습니까?')">
                                             <button id="deletebtn">삭제</button>
