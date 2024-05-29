@@ -18,6 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon-32x32.png">
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp"/>
@@ -27,27 +28,37 @@
             <ul id="main_slide" class="slick">
                 <li class="slider_item">
                     <figure class="toms_menu_slide_img">
-                        <img src="img/qwerty.jpeg">
+                        <img src="/img/10001.jpeg">
                     </figure>
                 </li>
                 <li class="slider_item">
                     <figure class="toms_menu_slide_img">
-                        <img src="img/qwerty2.jpeg">
+                        <img src="/img/10006.jpeg">
                     </figure>
                 </li>
                 <li class="slider_item">
                     <figure class="toms_menu_slide_img">
-                        <img src="img/qwerty3.jpeg">
+                        <img src="/img/10003.jpeg">
                     </figure>
                 </li>
                 <li class="slider_item">
                     <figure class="toms_menu_slide_img">
-                        <img src="img/qwerty4.jpeg">
+                        <img src="/img/10002.jpeg">
                     </figure>
                 </li>
                 <li class="slider_item">
                     <figure class="toms_menu_slide_img">
-                        <img src="img/qwerty5.jpeg">
+                        <img src="/img/10005.jpeg">
+                    </figure>
+                </li>
+                <li class="slider_item">
+                    <figure class="toms_menu_slide_img">
+                        <img src="/img/10004.jpeg">
+                    </figure>
+                </li>
+                <li class="slider_item">
+                    <figure class="toms_menu_slide_img">
+                        <img src="/img/10000.jpeg">
                     </figure>
                 </li>
             </ul>

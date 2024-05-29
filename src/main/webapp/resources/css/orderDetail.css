@@ -187,9 +187,9 @@ input[type="submit"]:hover {
     color: black;
 }
 
-.thead {border-bottom: 1px solid #bcbcbc}
+.thead {border-bottom: 1px solid #bcbcbc;}
 .thead th {padding : 10px 0}
 
-.order_status {border: 1px solid lightgray; height: 30px; font-size: 14px;}
+.order_status {border: 1px solid #bcbcbc; height: 30px; font-size: 14px;}
 .img {float: left; width:80px; height:100px; object-fit: cover}
 .item_name{margin-top:20px;}

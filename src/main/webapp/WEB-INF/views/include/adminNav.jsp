@@ -5,7 +5,7 @@
             <div class="nav">
 
                 <div class="sb-sidenav-menu-heading">Core</div>
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/adminDashBoard">
                     <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                     대시보드
                 </a>
@@ -30,7 +30,7 @@
                 </a>
                 <div class="collapse" id="collapseOrder" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="item.html">주문 대시보드</a>
+                        <a class="nav-link" href="/adminOrderDashBoard">주문 대시보드</a>
                         <a class="nav-link" href="layout-sidenav-light.html">전체 주문 조회</a>
                         <a class="nav-link" href="layout-sidenav-light.html">배송 관리</a>
                         <a class="nav-link" href="layout-sidenav-light.html">입금전 관리</a>
@@ -54,7 +54,7 @@
                 </a>
                 <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="#">상품 대시보드</a>
+                        <a class="nav-link" href="/adminItemDashBoard">상품 대시보드</a>
                         <a class="nav-link" href="/admin/item">상품 목록</a>
                         <a class="nav-link" href="/admin/itemRegister">상품 등록</a>
                         <a class="nav-link" href="#">상품 관리</a>
@@ -72,9 +72,7 @@
                 </a>
                 <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="" aria-expanded="false" aria-controls="">
-                            고객 대시보드
-                        </a>
+                        <a class="nav-link" href="/adminCustDashBoard">고객 대시보드</a>
 
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
                             회원 조회
@@ -109,7 +107,7 @@
                 </a>
                 <div class="collapse" id="collapseCoupon" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="item.html">프로모션 대시보드</a>
+                        <a class="nav-link" href="/adminCouponDashBoard">프로모션 대시보드</a>
                         <a class="nav-link" href="layout-sidenav-light.html">쿠폰 만들기</a>
                         <a class="nav-link" href="layout-sidenav-light.html">쿠폰 발급/조회</a>
                     </nav>
@@ -123,7 +121,7 @@
                 </a>
                 <div class="collapse" id="collapseBoard" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
-                        <a class="nav-link" href="item.html">게시판 대시보드</a>
+                        <a class="nav-link" href="/adminBoardDashBoard">게시판 대시보드</a>
                         <a class="nav-link" href="layout-sidenav-light.html">게시판 관리</a>
                         <a class="nav-link" href="layout-sidenav-light.html">게시물 관리</a>
                     </nav>
@@ -146,9 +144,7 @@
 
                 <div class="collapse" id="collapseStatics" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPagesStatics">
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="" aria-expanded="false" aria-controls="">
-                            통계 대시보드
-                        </a>
+                        <a class="nav-link" href="/adminStaticDashBoard">통계 대시보드</a>
 
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuthSales" aria-expanded="false" aria-controls="pagesCollapseAuthSales">
                             매출 분석

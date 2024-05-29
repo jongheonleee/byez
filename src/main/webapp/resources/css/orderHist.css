@@ -85,7 +85,7 @@ button{
 #orderCancelBtn{
     width: 90px;
     background-color : white;
-    border : 1px solid gray;
+    border : 1px solid #bcbcbc;
     transition : 0.3s;
 }
 
@@ -97,12 +97,12 @@ button{
 #changeDeliveryBtn{
     width: 90px;
     background-color : white;
-    border : 1px solid gray;
+    border : 1px solid #bcbcbc;
     transition : 0.3s;
 }
 
 #changeDeliveryBtn:hover{
-    border : 1px solid black
+    border : 1px solid black;
 }
 
 /* 장바구니 상품 이미지 스타일 가져옴 */

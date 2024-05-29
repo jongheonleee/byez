@@ -14,9 +14,10 @@ import java.util.List;
 public class HomeController {
     @Autowired
     ItemServiceImpl itemService;
+
     @RequestMapping("/")
     public String index(Model model) {
-        ItemDto dto =new ItemDto();
+        ItemDto dto = new ItemDto();
         try {
             List<ItemDto> boardList;
             List<ItemDto> boardList2;
@@ -36,4 +37,41 @@ public class HomeController {
         }
         return "index2";
     }
+
+
+    @RequestMapping("/adminOrderDashBoard")
+    public String adminOrderDashBoard() {
+        return "adminOrderDashBoard";
+    }
+
+    @RequestMapping("/adminBoardDashBoard")
+    public String adminBoardDashBoard() {
+        return "adminBoardDashBoard";
+    }
+
+    @RequestMapping("/adminItemDashBoard")
+    public String adminItemDashBoard() {
+        return "adminItemDashBoard";
+    }
+
+    @RequestMapping("/adminCustDashBoard")
+    public String adminCustDashBoard() {
+        return "adminCustDashBoard";
+    }
+
+    @RequestMapping("/adminStaticDashBoard")
+    public String adminStaticDashBoard() {
+        return "adminStaticDashBoard";
+    }
+
+    @RequestMapping("/adminCouponDashBoard")
+    public String adminCouponDashBoard() {
+        return "adminCouponDashBoard";
+    }
+
+    @RequestMapping("/adminDashBoard")
+    public String adminDashBoard() {
+        return "adminDashBoard";
+    }
+
 }
