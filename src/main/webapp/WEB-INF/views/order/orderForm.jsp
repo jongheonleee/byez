@@ -58,7 +58,7 @@
             <input type="hidden" class="order_info" name="total_dlv_price" value="0">
             <input type="hidden" class="order_info" name="total_disc_price" value="0">
             <input type="hidden" class="order_info" name="total_pay_price" value="${orderDto.total_price}">
-            <input type="hidden" class="order_info" name="ord_state" value="주문대기">
+            <input type="hidden" class="order_info" name="ord_state" value="주문완료">
             <!--// 전송용 태그 - 주문 -->
 
             <!-- 전송용 태그 - 쿠폰 -->
@@ -303,7 +303,7 @@
                     <tr>
                         <td>최종결제금액</td>
                         <td></td>
-                        <td><span id="payment_view_payPrice">0</span>원</td>
+                        <td><span id="payment_view_payPrice"><fmt:formatNumber value="${orderDto.total_price}" pattern="#,###"/></span>원</td>
                     </tr>
                     </tbody>
                 </table>

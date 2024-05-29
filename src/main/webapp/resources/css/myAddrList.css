@@ -93,7 +93,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;
 }
 
 .add_address_btn:hover {
-    background-color: blue;
+    background-color: #3182F6;
 }
 
 .message {

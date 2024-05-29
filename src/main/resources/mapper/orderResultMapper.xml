@@ -14,6 +14,8 @@
         JOIN neo.dlv d ON o.ord_num = d.ord_num
         JOIN neo.pay p ON o.ord_num = p.ord_num
         WHERE o.ord_num = #{ord_num}
+        order by d.dlv_num desc
+        limit 1;
     </select>
 
     <!-- 주문내역 조회 SELECT 문-->
@@ -26,5 +28,4 @@
         JOIN neo.ord o ON o.ord_num = od.ord_num
         WHERE o.ord_num = #{ord_num}
     </select>
-
 </mapper>

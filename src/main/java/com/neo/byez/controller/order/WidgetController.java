@@ -108,7 +108,6 @@ public class WidgetController {
         Reader reader = new InputStreamReader(responseStream, StandardCharsets.UTF_8);
         JSONObject jsonObject = (JSONObject) parser.parse(reader);
         responseStream.close();
-        System.out.println(id);
 
         if(isSuccess){
             try {

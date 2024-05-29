@@ -76,9 +76,9 @@
                             <c:if test="${orderedItem.ord_state == '주문대기'|| orderedItem.ord_state == '주문완료'}">
                                 <button id="orderCancelBtn" onclick="location.href='/cancel?ord_num=${orderResultInfoDto.ord_num}'" >주문취소</button>
                             </c:if>
-                            <c:if test="${orderedItem.ord_state == '주문대기'|| orderedItem.ord_state == '주문완료'}">
-                                <button id="changeDeliveryBtn">배송지변경</button>
-                            </c:if>
+<%--                            <c:if test="${orderedItem.ord_state == '주문대기'|| orderedItem.ord_state == '주문완료'}">--%>
+<%--                                <button id="changeDeliveryBtn">배송지변경</button>--%>
+<%--                            </c:if>--%>
                         </td>
                     </tr>
                 </c:forEach>

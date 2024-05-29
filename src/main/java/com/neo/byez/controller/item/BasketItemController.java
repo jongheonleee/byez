@@ -54,8 +54,6 @@ public class BasketItemController {
         try {
             // 해당 유저의 장바구니 상품 목록 조회
             List<BasketItemDto> list = basketService.getBasketItem(dto);
-            System.out.println(list);
-            System.out.println(list.size());
 
             // 해당 유저의 장바구니 상품의 옵션 목록 생성
             List<ItemDetailPageDto> list2 = new ArrayList<>();

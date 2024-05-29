@@ -106,7 +106,6 @@ public class ItemServiceImpl {
 
             // 널이 아님
                 // 조회된 dto 반환
-        System.out.println(num);
         try {
             ItemDto dto = itemDao.select(num);
             if (dto == null) {

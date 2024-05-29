@@ -147,7 +147,6 @@ public class OrderServiceImpl implements OrderService {
                 int seq = orderDetailDto.getSeq();
                 basketItemDto.setId(id);
                 basketItemDto.setSeq(seq);
-                System.out.println(basketItemDto);
 
                 // 장바구니 상품 삭제
                 basketItemDao.delete(basketItemDto);
@@ -175,7 +174,7 @@ public class OrderServiceImpl implements OrderService {
 //        }
 
         // 주문 정보 초기화
-        orderReadyInfo.initOrderReadyInfo(id, "주문대기", "결제대기");
+        orderReadyInfo.initOrderReadyInfo(id, "주문완료", "결제대기");
 
         // 성공 결과를 판단하기 위한 변수
         int result = 0;

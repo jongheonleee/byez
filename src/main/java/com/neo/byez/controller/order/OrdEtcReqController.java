@@ -204,7 +204,6 @@ public class OrdEtcReqController {
         m.addAttribute("ord_num",ord_num);
         m.addAttribute("orderDetailDto",orderDetailDto);
         m.addAttribute("deliveryDto", deliveryDto);
-        System.out.println(orderDetailDto);
 
 //        return "/order/orderExchangeForm2_forRefund";
             return "/order/orderRefundForm";
