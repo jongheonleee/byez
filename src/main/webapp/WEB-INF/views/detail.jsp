@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--찬빈추가--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="dateOK" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -10,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/detail.css">
+    <link rel="stylesheet" href="/css/detail.css?after">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/quick.css">
     <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
@@ -42,8 +43,8 @@
                 <p>제조국 : <span class="origin">${itemDetail.origin}</span></p>
                 <p>제조사 : <span class="mfg_corp">${itemDetail.mfg_corp}</span></p>
                 <p>제조자 : <span class="mfg_name">${itemDetail.mfg_name}</span></p>
-                <p>제조일자 : <span class="mfg_date">${itemDetail.mfg_date}</span></p>
-                <p>상품출시일자 : <span class="rel_date"></span></p>
+                <p>제조일자 : <span class="mfg_date"><fmt:parseDate value="${itemDetail.mfg_date}" pattern="yyyy-MM-dd" var="parsedDate" />
+                        <fmt:formatDate value="${parsedDate}" pattern="yyyy년 MM월 dd일" /></span></p>
                 <p>모델명 : <span class="model">${itemDetail.model}</span></p>
                 <p>취급 시 주의사항 :
                     <span class="caut">${itemDetail.caut}</span>
@@ -138,15 +139,15 @@
             </div>
         </div>
         <div class="review">
-            <p>REVIEW (<span>12,345</span>)</p>
+            <p>REVIEW (<span>25727</span>)</p>
             <div class="avg_star">
                 <div>
                     <p>
                         <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
-                        <span>4.5</span>
+                        <span>4.9</span>
                     </p>
                     <p>
-                        <span>100</span>%의 구매자가 이 상품을 좋아합니다.
+                        <span>96</span>%의 구매자가 이 상품을 좋아합니다.
                     </p>
                 </div>
                 <div>
@@ -154,37 +155,37 @@
                         <li>
                             <span>아주 좋아요</span>
                             <div>
-                                <div style="width: 50%;"></div>
+                                <div style="width: 87%;"></div>
                             </div>
-                            <span>10000</span>
+                            <span>23828</span>
                         </li>
                         <li>
                             <span>맘에 들어요</span>
                             <div>
-                                <div style="width: 0%;"></div>
+                                <div style="width: 9%;"></div>
                             </div>
-                            <span>10000</span>
+                            <span>938</span>
                         </li>
                         <li>
                             <span>보통이에요</span>
                             <div>
-                                <div style="width: 90%;"></div>
+                                <div style="width: 3%;"></div>
                             </div>
-                            <span>10000</span>
+                            <span>785</span>
                         </li>
                         <li>
                             <span>그냥 그래요</span>
                             <div>
-                                <div style="width: 9%;"></div>
+                                <div style="width: 0%;"></div>
                             </div>
-                            <span>10000</span>
+                            <span>56</span>
                         </li>
                         <li>
                             <span>별로에요</span>
                             <div>
-                                <div style="width: 70%;"></div>
+                                <div style="width: 1%;"></div>
                             </div>
-                            <span>10000</span>
+                            <span>120</span>
                         </li>
                     </ul>
                 </div>
@@ -207,13 +208,7 @@
                             <p>${reviewList.content}</p>
                             <ul class="review_pic">
                                 <li>
-                                    <img src="/img/re1.jpeg" alt="">
-                                </li>
-                                <li>
-                                    <img src="/img/re2.jpeg" alt="">
-                                </li>
-                                <li>
-                                    <img src="/img/re3.jpeg" alt="">
+                                    <img src="/img/302review5.jpeg" alt="">
                                 </li>
                             </ul>
                         </div>
@@ -225,23 +220,18 @@
                     <div>
                         <div class="wrap-star">
                             <div class='star-rating'>
-                                <span style="width:80%"></span>
+                                <span style="width:100%"></span>
                             </div>
-                            <span>2021.6.10</span>
+                            <span>2024.5.28</span>
                         </div>
-                        <p>사이즈는 일단 너무 만족해요!!!</p>
-                        <p>체격이 있는 편인데 XL도 큰 느낌은 아니어서 XXL가 딱 적당해요! 더운 봄 날씨 와중에 냉방병이나 비온 뒤 급 쌀쌀한 날씨 커버 해주기에는 부족함이 딱히 없어요.
-                            엄청 가볍고 얇은데다 어느 정도 방수도 되기 때문에 작은 비 정도는 원 마일 웨어로 문제 없습니다! 접을 수 있도록 스트랩과 주머니 뒷 부분이 잘 되어 있어서 평상시
-                            휴대하기에도 너무 만족스러워요. 다만 지퍼가 잘 집혀서 지퍼 마감만 좋은 지퍼로 바꿔주면 더 좋을 것 같아요.</p>
+                        <p>사이즈는 만족해요!</p>
+                        <p>길이는 살짝 짧은기장이고 기모라 따뜻해요 프린팅도 예뻐서 요즘 자주 입게됩니당 굳굳</p>
                         <ul class="review_pic">
                             <li>
-                                <img src="/img/re4.jpeg" alt="">
+                                <img src="/img/302review7_1.jpeg" alt="">
                             </li>
                             <li>
-                                <img src="/img/re5.jpeg" alt="">
-                            </li>
-                            <li>
-                                <img src="/img/re6.jpeg" alt="">
+                                <img src="/img/302review7_2.jpeg" alt="">
                             </li>
                         </ul>
                     </div>
@@ -253,19 +243,15 @@
                     <div>
                         <div class="wrap-star">
                             <div class='star-rating'>
-                                <span style="width:40%"></span>
+                                <span style="width:100%"></span>
                             </div>
-                            <span>2021.6.10</span>
+                            <span>2024.5.28</span>
                         </div>
-                        <p>옷은 이쁜데 사이즈가 좀;</p>
-                        <p>옷은 상품이미지에서 본것처럼 굉장히 이쁘고 색감도 너무 좋아요!!근데 보시다시피 사이즈가 원래 XL사이즈가 아닌것같아요ㅠ XL사이즈만 입고 다녔는데 이 제품은 XL이
-                            아니라 XXL로 사야 할것같습니다. 기본사이즈보다 한 사이즈 정도 작게 나와요</p>
+                        <p>옷은 이쁜데 사이즈가 아쉬워요</p>
+                        <p>원래 L사이즈 입는데 크게 나온거 같아요. 한 사이즈 다운해서 구매하시는걸 추천드릴게요...</p>
                         <ul class="review_pic">
                             <li>
-                                <img src="/img/re7.jpeg" alt="">
-                            </li>
-                            <li>
-                                <img src="/img/re8.jpeg" alt="">
+                                <img src="/img/302review6.jpeg" alt="">
                             </li>
                         </ul>
                     </div>
@@ -277,9 +263,9 @@
                     <div>
                         <div class="wrap-star">
                             <div class='star-rating'>
-                                <span style="width:20%"></span>
+                                <span style="width:100%"></span>
                             </div>
-                            <span>2021.6.10</span>
+                            <span>2024.5.28</span>
                         </div>
                         <p>옷에서 뭔 냄새가 이렇게 많이 나는겁니까</p>
                         <p>옷에서 냄새가 너무 많이 나는것같은데요;;;; 분명 받자마자 4번 정도 빨아서 섬유유연제 한 통 다 쓴 것같은데도 냄새가 아직도 안 빠져요;;; 저만 이런건지 다른
@@ -287,7 +273,7 @@
                             주의해주세요!!!</p>
                         <ul class="review_pic">
                             <li>
-                                <img src="/img/re9.jpeg" alt="">
+                                <img src="/img/302review4.jpeg" alt="">
                             </li>
                         </ul>
                     </div>
@@ -299,22 +285,16 @@
                     <div>
                         <div class="wrap-star">
                             <div class='star-rating'>
-                                <span style="width:80%"></span>
+                                <span style="width:100%"></span>
                             </div>
-                            <span>2021.6.10</span>
+                            <span>2024.5.28</span>
                         </div>
                         <p>만족합니다. 최근에 삿던 옷중에 꽤 맘에 듭니다. </p>
                         <p>한번 입어보고 나서 너무 맘에 들어서 저는 3장 바로 연속해서 샀어요!!! 옷이 튼튼해서 거칠게 다뤄도 옷이 찌그러지거나 헐거워지지도 않아서 밖에서나 안에서나 불편함
                             없이 막 입기 너무 좋은것같아요!!!!</p>
                         <ul class="review_pic">
                             <li>
-                                <img src="/img/re10.jpeg" alt="">
-                            </li>
-                            <li>
-                                <img src="/img/re11.jpeg" alt="">
-                            </li>
-                            <li>
-                                <img src="/img/re12.jpeg" alt="">
+                                <img src="/img/302review3.jpeg" alt="">
                             </li>
                         </ul>
                     </div>
@@ -328,20 +308,14 @@
                             <div class='star-rating'>
                                 <span style="width:100%"></span>
                             </div>
-                            <span>2021.6.10</span>
+                            <span>2024.5.28</span>
                         </div>
                         <p>친구 선물로 사줬는데 진짜 최고인것같습니다.</p>
                         <p>최근에 친구가 생일이었어서 줄 거 없어서 그냥 이거 사다줬는데 좋아죽더라구요 ㅋㅋㅋ 사이즈도 좀 넉넉하게 나오고 호불호 있는 옷이 아니라서 친구 취향 모를 때, 선물로
                             주기 최고인것같네요 ㅋㅋ가격도 부담스럽지 않고 선물해주고 더 크게 받을 수 있을 것 같습니닼ㅋ 재구매 의사 아주 많이 있어요!!</p>
                         <ul class="review_pic">
                             <li>
-                                <img src="/img/re13.jpeg" alt="">
-                            </li>
-                            <li>
-                                <img src="/img/re14.jpeg" alt="">
-                            </li>
-                            <li>
-                                <img src="/img/re15.jpeg" alt="">
+                                <img src="/img/302review2.jpeg" alt="">
                             </li>
                         </ul>
                     </div>
@@ -355,19 +329,13 @@
                             <div class='star-rating'>
                                 <span style="width:80%"></span>
                             </div>
-                            <span>2021.6.10</span>
+                            <span>2024.5.28</span>
                         </div>
                         <p>멀리서 누가 입은 걸 보고 찾아서 사버렸는데...최고</p>
                         <p>홍대 근처에서 어떤 분이 입고 있는 모습을 보고 너무 이뻐서 한참 웹사이트 돌아다니다가 상품 찾고 나서 환호성 지르면서 바로 사버렸습니다. ㅋㅋㅋ 역시나 제 눈은 틀리지 않았어욬ㅋㅋ 입는 동안 너무 행복합니다. 옷이 너무 이쁜 것같아요 ㅠ 나중에 옷 사라질것같아서 5장정도 사서 옷장에다가 보관해놔야겠어요 ㅋ</p>
                         <ul class="review_pic">
                             <li>
-                                <img src="/img/re16.jpeg" alt="">
-                            </li>
-                            <li>
-                                <img src="/img/re17.jpeg" alt="">
-                            </li>
-                            <li>
-                                <img src="/img/re18.jpeg" alt="">
+                                <img src="/img/302review1.jpeg" alt="">
                             </li>
                         </ul>
                     </div>
@@ -377,7 +345,7 @@
                 </li>
             </ul>
             <div class="paging_box">
-                <p>1</p>
+                <p class="reviewIndex"><&nbsp;&nbsp;1&nbsp;&nbsp;2&nbsp;&nbsp;3&nbsp;&nbsp;4&nbsp;&nbsp;5&nbsp;&nbsp;></p>
             </div>
         </div>
     </div>
