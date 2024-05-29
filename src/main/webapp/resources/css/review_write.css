@@ -137,14 +137,14 @@ section {
     width: 70px;
     height: 20px;
     margin-right: 10px;
-    border: 1px lightgray solid;
+    border: 1px #bcbcbc solid;
 
 }
 
 .content input {
     width: 600px;
     height: 20px;
-    border: 1px lightgray solid;
+    border: 1px #bcbcbc solid;
 }
 
 .btn_area a button {
