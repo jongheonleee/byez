@@ -67,11 +67,9 @@
                         <table id="datatablesSimple">
                             <thead>
                             <tr>
-                                <th>
-                                    삭제
-                                    <!-- <input type="checkbox"> -->
-                                </th>
+                                <th>삭제</th>
                                 <th>상품번호</th>
+                                <th>상품이미지</th>
                                 <th>상품명</th>
                                 <th>상품유형</th>
                                 <th>고객유형</th>
@@ -88,23 +86,28 @@
                             <tbody>
                             <c:forEach var="item" items="${list}">
                                 <tr>
-                                    <td><input type="checkbox"></td>
+                                    <td><input class="item-checkbox" type="checkbox"></td>
                                     <td>
-                                        ${item.num}
+                                            ${item.num}
                                     </td>
                                     <td>
                                         <a href="/admin/item/${item.num}">
-                                            ${item.name}
+                                            <img src="/img/${item.main_img}" alt="">
                                         </a>
                                     </td>
                                     <td>
-                                        ${item.item_type}
+                                        <a href="/admin/item/${item.num}">
+                                                ${item.name}
+                                        </a>
                                     </td>
                                     <td>
-                                        ${item.cust_type}
+                                            ${item.item_type}
                                     </td>
                                     <td>
-                                        ${item.state_code}
+                                            ${item.cust_type}
+                                    </td>
+                                    <td>
+                                            ${item.state_code}
                                     </td>
                                     <td>
                                         <p><fmt:formatNumber value="${item.price}" pattern="#,###"/></p>
@@ -132,7 +135,7 @@
 
                             <!-- 네비 숫자 -->
                             <c:forEach var="i" begin="${ph.beginPage}" end="${ph.endPage}">
-                                <a class="page ${i==ph.sc.page? "paging-active" : ""}" href="<c:url value="/admin/item?page=${ph.sc.page}&pageSize=${ph.sc.pageSize}"/>">${i}</a>
+                                <a class="page ${i==ph.sc.page? "paging-active" : ""}" href="<c:url value="/admin/item?page=${i}&pageSize=${ph.sc.pageSize}"/>">${i}</a>
                             </c:forEach>
 
                             <!-- 이후 페이지 버튼 -->
@@ -141,8 +144,8 @@
                             </c:if>
 
                         </div>
-                        <button class="register">선택 삭제</button>
-                        <button class="register">전체 삭제</button>
+                        <button class="register deleteSeveralBtn">선택 삭제</button>
+                        <button class="register deleteAllBtn">전체 삭제</button>
                         <button class="register" onclick="location.href='/itemRegister' ">상품 등록</button>
                     </div>
                 </div>
@@ -164,6 +167,7 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 <script src="/js/scripts.js"></script>
+<script src="/js/adminItemList.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="/js/datatables-simple-demo.js"></script>
 </body>

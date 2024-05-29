@@ -4,6 +4,7 @@ public class AdminItemDto {
 
     private String num;
     private String name;
+    private String main_img;
     private String item_type;
     private String cust_type;
     private String state_code;
@@ -21,12 +22,13 @@ public class AdminItemDto {
     public AdminItemDto() {
     }
 
-    public AdminItemDto(String num, String name, String item_type, String cust_type,
+    public AdminItemDto(String num, String name, String main_img, String item_type, String cust_type,
             String state_code,
             int price, int disc_price, double disc_rate, int stock_qty, String mfg_corp,
             String mfg_name, String rel_date, String reg_date, String up_date) {
         this.num = num;
         this.name = name;
+        this.main_img = main_img;
         this.item_type = item_type;
         this.cust_type = cust_type;
         this.state_code = state_code;
@@ -55,6 +57,14 @@ public class AdminItemDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getMain_img() {
+        return main_img;
+    }
+
+    public void setMain_img(String main_img) {
+        this.main_img = main_img;
     }
 
     public String getItem_type() {

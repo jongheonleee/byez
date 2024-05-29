@@ -18,7 +18,7 @@ public class AdminItemController {
     @GetMapping("/admin/item")
     public String list(SearchCondition sc, Model model) {
         try {
-            sc.setPageSize(15);
+            sc.setPageSize(10);
             List<AdminItemDto> list = itemService.readAllItemOnAdmin(sc);
             int totalCnt = itemService.getCount();
 
@@ -41,7 +41,7 @@ public class AdminItemController {
 
     @PostMapping("/admin/itemRegister")
     public String doRegisterForm(ItemRegisterInfo info) {
-        System.out.println(info);
+        System.out.println(info.getMain_img());
         // 필요한 DTO 생성
         ItemDto itemDto = info.getItemDto();
         ItemDetailDto itemDetailDto = info.getItemDetailDto();

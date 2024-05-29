@@ -17,28 +17,6 @@
 
   <select id="selectAll" parameterType="map" resultType="ItemDto">
     select
-        i.num as num,
-        i.name as name,
-        i.item_type as item_type,
-        i.cust_type as cust_type,
-        i.price as price,
-        i.disc_price as disc_price,
-        i.main_img as main_img,
-        i.review_cnt as review_cnt,
-        i.review_rate as review_rate,
-        i.like_cnt as like_cnt,
-        i.col as col
-    from item i
-    inner join item_state s
-    on i.num = s.num
-    inner join item_detail d
-    on i.num = d.num
-    order by d.rel_date desc, s.sales_qty desc, i.review_cnt desc, i.like_cnt desc
-    limit #{offset}, #{pageSize}
-  </select>
-
-  <select id="selectBySearchCondition" parameterType="SearchCondition" resultType="ItemDto">
-    select
       i.num as num,
       i.name as name,
       i.item_type as item_type,
@@ -51,36 +29,58 @@
       i.like_cnt as like_cnt,
       i.col as col
     from item i
+           inner join item_state s
+                      on i.num = s.num
+           inner join item_detail d
+                      on i.num = d.num
+    order by d.rel_date desc, s.sales_qty desc, i.review_cnt desc, i.like_cnt desc
+      limit #{offset}, #{pageSize}
+  </select>
+
+  <select id="selectBySearchCondition" parameterType="SearchCondition" resultType="ItemDto">
+    select
+    i.num as num,
+    i.name as name,
+    i.item_type as item_type,
+    i.cust_type as cust_type,
+    i.price as price,
+    i.disc_price as disc_price,
+    i.main_img as main_img,
+    i.review_cnt as review_cnt,
+    i.review_rate as review_rate,
+    i.like_cnt as like_cnt,
+    i.col as col
+    from item i
     inner join item_state s
     on i.num = s.num
     inner join item_detail d
     on i.num = d.num
     where true
-      <choose>
-        <when test='option=="NT"'>
-          AND i.name LIKE concat('%', #{nameKeyword}, '%')
-          AND i.item_type LIKE concat('%', #{typeKeyword}, '%')
-        </when>
-        <when test='option=="NC"'>
-          AND i.name LIKE concat('%', #{nameKeyword}, '%')
-          AND i.cust_type =  #{custKeyword}
-        </when>
-        <when test='option=="TC"'>
-          AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
-          AND i.cust_type =  #{custKeyword}
-        </when>
-        <when test='option=="T"'>
-          AND i.item_type LIKE concat(#{typeKeyword}, '%')
-        </when>
-        <when test='option=="N"'>
-          AND i.name LIKE concat('%', #{nameKeyword}, '%')
-        </when>
-        <otherwise>
-          AND i.name LIKE concat('%', #{nameKeyword}, '%')
-          AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
-          AND i.cust_type =  #{custKeyword}
-        </otherwise>
-      </choose>
+    <choose>
+      <when test='option=="NT"'>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.item_type LIKE concat('%', #{typeKeyword}, '%')
+      </when>
+      <when test='option=="NC"'>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </when>
+      <when test='option=="TC"'>
+        AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </when>
+      <when test='option=="T"'>
+        AND i.item_type LIKE concat(#{typeKeyword}, '%')
+      </when>
+      <when test='option=="N"'>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+      </when>
+      <otherwise>
+        AND i.name LIKE concat('%', #{nameKeyword}, '%')
+        AND i.item_type LIKE concat('__', #{typeKeyword}, '%')
+        AND i.cust_type =  #{custKeyword}
+      </otherwise>
+    </choose>
     order by d.rel_date desc, s.sales_qty desc, i.review_cnt desc, i.like_cnt desc
     limit #{offset}, #{pageSize}
   </select>
@@ -131,23 +131,23 @@
       i.like_cnt as like_cnt,
       i.col as col
     from item i
-    inner join item_state s
-    on i.num = s.num
-    inner join item_detail d
-    on i.num = d.num
+           inner join item_state s
+                      on i.num = s.num
+           inner join item_detail d
+                      on i.num = d.num
     where i.item_type LIKE concat('__', #{typeKeyword}, '%')
-    and i.price > i.disc_price
+      and i.price > i.disc_price
     order by d.rel_date desc, s.sales_qty desc, i.review_cnt desc, i.like_cnt desc
-    limit #{offset}, #{pageSize}
+      limit #{offset}, #{pageSize}
   </select>
 
 
   <select id="countDiscountItem" parameterType="SearchCondition" resultType="int">
     select
-    count(*)
+      count(*)
     from item i
     where i.item_type LIKE concat('__', #{typeKeyword}, '%')
-    and i.price > i.disc_price
+      and i.price > i.disc_price
   </select>
 
   <select id="selectDetailItem" parameterType="string" resultType="ItemDetailPageDto">
@@ -168,10 +168,10 @@
       d.matr as matr,
       d.caut as caut
     from item i
-    inner join item_detail d
-    on i.num = d.num
-    inner join item_price p
-    on i.num = p.num
+           inner join item_detail d
+                      on i.num = d.num
+           inner join item_price p
+                      on i.num = p.num
     where i.num = #{num}
   </select>
 
@@ -200,29 +200,29 @@
 
   <select id="selectWTop8" resultType="ItemDto">
     select
-    i.*, row_number() over (order by s.sales_qty desc) as rankk
+      i.*, row_number() over (order by s.sales_qty desc) as rankk
     from item i, item_state s
     where i.num = s.num
-    and i.item_type like concat(#{item_type}, '%')
-    limit 8;
+      and i.item_type like concat(#{item_type}, '%')
+      limit 8;
   </select>
 
   <select id="selectMTop8" resultType="ItemDto">
     select
-    i.*, row_number() over (order by s.sales_qty desc) as rankk
+      i.*, row_number() over (order by s.sales_qty desc) as rankk
     from item i, item_state s
     where i.num = s.num
-    and i.item_type like concat(#{item_type}, '%')
-    limit 8;
+      and i.item_type like concat(#{item_type}, '%')
+      limit 8;
   </select>
 
   <select id="selectUTop8" resultType="ItemDto">
     select
-    i.*, row_number() over (order by s.sales_qty desc) as rankk
+      i.*, row_number() over (order by s.sales_qty desc) as rankk
     from item i, item_state s
     where i.num = s.num
-    and i.item_type like concat(#{item_type}, '%')
-    limit 8;
+      and i.item_type like concat(#{item_type}, '%')
+      limit 8;
   </select>
 
 
@@ -230,6 +230,7 @@
     select
       i.num as num,
       i.name as name,
+      i.main_img as main_img,
       i.item_type as item_type,
       i.cust_type as cust_type,
       s.state_code as state_code,
@@ -241,20 +242,21 @@
       date_format(d.reg_date, '%Y-%m-%d')  as reg_date,
       date_format(d.up_date, '%Y-%m-%d')  as up_date
     from item i
-    inner join item_price p
-    on i.num = p.num
-    inner join item_state s
-    on i.num = s.num
-    inner join item_detail d
-    on i.num = d.num
+           inner join item_price p
+                      on i.num = p.num
+           inner join item_state s
+                      on i.num = s.num
+           inner join item_detail d
+                      on i.num = d.num
     order by s.sales_qty desc, i.like_cnt desc, i.review_cnt desc
-    limit #{offset}, #{pageSize}
+      limit #{offset}, #{pageSize}
   </select>
 
   <select id="selectAllItemStockInfoOnAdmin" parameterType="SearchCondition" resultType="AdminItemDto">
     select
       i.num as num,
       i.name as name,
+      i.main_img as main_img,
       s.stock_qty as stock_qty,
       i.price as price,
       i.price - (i.price * p.disc_rate) as disc_price,
@@ -263,52 +265,52 @@
       date_format(d.reg_date, '%Y-%m-%d')  as reg_date,
       date_format(d.up_date, '%Y-%m-%d')  as up_date
     from item i
-    inner join item_price p
-    on i.num = p.num
-    inner join item_state s
-    on i.num = s.num
-    inner join item_detail d
-    on i.num = d.num
+           inner join item_price p
+                      on i.num = p.num
+           inner join item_state s
+                      on i.num = s.num
+           inner join item_detail d
+                      on i.num = d.num
     order by s.sales_qty desc, i.like_cnt desc, i.review_cnt desc;
   </select>
 
   <select id="selectItemDetailInfoOnAdmin" parameterType="string" resultType="ItemRegisterInfo">
     select
-        i.num as num,
-        i.name as name,
-        i.price as price,
-        i.disc_price as disc_pirce,
-        d.mfg_name as mfg_name,
-        s.sales_qty as sales_qty,
-        i.main_img as main_img,
-        i.item_type as item_type,
-        i.review_cnt as review_cnt,
-        i.like_cnt as like_cnt,
-        i.review_rate as review_rate,
-        i.cust_type as cust_type,
-        p.disc_rate as disc_rate,
-        p.start_date as start_date,
-        p.end_date as end_date,
-        d.comt as remark,
-        d.detail_img as detail_img,
-        d.rel_date as rel_date,
-        d.gr_date as gr_date,
-        d.mfg_corp as mfg_corp,
-        d.mfg_date as mfg_date,
-        s.view_cnt as view_cnt,
-        d.model as model,
-        s.stock_qty as stock_aty,
-        d.origin as origin,
-        s.state_code as state_code,
-        d.matr as maftr,
-        d.comt as comt
+      i.num as num,
+      i.name as name,
+      i.price as price,
+      i.disc_price as disc_pirce,
+      d.mfg_name as mfg_name,
+      s.sales_qty as sales_qty,
+      i.main_img as main_img,
+      i.item_type as item_type,
+      i.review_cnt as review_cnt,
+      i.like_cnt as like_cnt,
+      i.review_rate as review_rate,
+      i.cust_type as cust_type,
+      p.disc_rate as disc_rate,
+      p.start_date as start_date,
+      p.end_date as end_date,
+      d.comt as remark,
+      d.detail_img as detail_img,
+      d.rel_date as rel_date,
+      d.gr_date as gr_date,
+      d.mfg_corp as mfg_corp,
+      d.mfg_date as mfg_date,
+      s.view_cnt as view_cnt,
+      d.model as model,
+      s.stock_qty as stock_aty,
+      d.origin as origin,
+      s.state_code as state_code,
+      d.matr as maftr,
+      d.comt as comt
     from item i
-    inner join item_price p
-    on i.num = p.num
-    inner join item_state s
-    on i.num = s.num
-    inner join item_detail d
-    on i.num = d.num
+           inner join item_price p
+                      on i.num = p.num
+           inner join item_state s
+                      on i.num = s.num
+           inner join item_detail d
+                      on i.num = d.num
     where i.num = #{num}
   </select>
 
