@@ -72,7 +72,7 @@
                                 <table>
                                     <tr>
                                         <td>상품 번호</td>
-                                        <td><input type="text" placeholder="num"></td>
+                                        <td><input type="text"></td>
                                     </tr>
                                     <tr>
                                         <td>상품명</td>

@@ -72,47 +72,46 @@
                                 <table>
                                     <tr>
                                         <td>상품 번호</td>
-                                        <td><input type="text" placeholder="num" name="num"></td>
+                                        <td><input type="text" name="num"></td>
                                     </tr>
                                     <tr>
                                         <td>상품명</td>
-                                        <td><input type="text" placeholder="name" name="name"></td>
+                                        <td><input type="text" name="name"></td>
                                     </tr>
                                     <tr>
                                         <td>판매가</td>
-                                        <td><input type="text" placeholder="price" name="price"></td>
+                                        <td><input type="text" name="price"></td>
                                     </tr>
                                     <tr>
                                         <td>할인 적용가</td>
-                                        <td><input type="text" placeholder="disc_price" name="disc_price"></td>
+                                        <td><input type="text" name="disc_price"></td>
                                     </tr>
                                     <tr>
                                         <td>상품 대표 이미지</td>
-                                        <td><input type="text" placeholder="main_img" name="main_img"></td>
+                                        <td><input type="text" name="main_img"></td>
                                     </tr>
                                     <tr>
                                         <td>상품 유형</td>
                                         <td>
-                                            <input type="text" placeholder="item_type (ex:010101)" name="cust_type">
+                                            <input type="text" placeholder="(ex:010101)" name="cust_type">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>리뷰 수</td>
-                                        <td><input type="text" placeholder="review_cnt" value="0" name="review_cnt"></td>
+                                        <td><input type="text" value="0" name="review_cnt"></td>
                                     </tr>
                                     <tr>
                                         <td>좋아요 수</td>
-                                        <td><input type="text" placeholder="like_cnt" value="0" name="like_cnt"></td>
+                                        <td><input type="text" value="0" name="like_cnt"></td>
                                     </tr>
                                     <tr>
 
                                         <td>평균 별점</td>
-                                        <td><input type="text" placeholder="review_rate" value="0" name="review_rate"></td>
+                                        <td><input type="text" value="0" name="review_rate"></td>
                                     </tr>
                                     <tr>
                                         <td>고객 유형</td>
                                         <td>
-                                            <!-- <input type="text" placeholder="cust_type"> -->
                                             <select name="cust_type" id="cust_type">
                                                 <option value="" disabled selected>--고객 유형을 선택해주세요--</option>
                                                 <option value="f">여성</option>
@@ -123,12 +122,12 @@
                                     </tr>
                                     <tr>
                                         <td>할인율</td>
-                                        <td><input type="text" placeholder="disc_rate" name="disc_rate"></td>
+                                        <td><input type="text" name="disc_rate"></td>
                                     </tr>
                                     <tr>
                                         <td>할인 기간</td>
                                         <td>
-                                            <input type="text" placeholder="period" name="period">
+                                            <input type="text" name="period">
 <%--                                            <fieldset class="search">--%>
 <%--                                                <label for="date3" class="uniform-height">--%>
 <%--                                                    <input type="date" id="date3" class="date-input" max="2077-06-20" min="2077-06-05" value="2077-06-15">--%>
@@ -143,7 +142,7 @@
                                     </tr>
                                     <tr>
                                         <td>사이즈</td>
-                                        <td><input type="text" placeholder="size" name="size"></td>
+                                        <td><input type="text" name="size"></td>
                                     </tr>
                                     <tr>
                                         <td>색상</td>
@@ -174,7 +173,7 @@
                                     </tr>
                                     <tr>
                                         <td>비고</td>
-                                        <td><input type="text" placeholder="remark" name="remark"></td>
+                                        <td><input type="text" name="remark"></td>
                                     </tr>
                                     <tr>
                                         <td>상품명 상세</td>

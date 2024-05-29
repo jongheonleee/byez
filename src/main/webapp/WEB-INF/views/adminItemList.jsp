@@ -92,7 +92,7 @@
                                     </td>
                                     <td>
                                         <a href="/admin/item/${item.num}">
-                                            <img src="/img/${item.main_img}" alt="">
+                                            <img src="/img/${item.main_img}" style="width: 50px; height: 50px; object-fit: cover; object-position: top;">
                                         </a>
                                     </td>
                                     <td>
@@ -146,7 +146,7 @@
                         </div>
                         <button class="register deleteSeveralBtn">선택 삭제</button>
                         <button class="register deleteAllBtn">전체 삭제</button>
-                        <button class="register" onclick="location.href='/itemRegister' ">상품 등록</button>
+                        <button class="register" onclick="location.href='/admin/itemRegister' ">상품 등록</button>
                     </div>
                 </div>
             </div>
