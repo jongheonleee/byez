@@ -213,7 +213,7 @@ table textarea {
 }
 
 table input[type="text"] {
-    border: gray solid 1px;
+    border: #bcbcbc solid 1px;
     margin-top: 10px
 }
 
@@ -335,3 +335,8 @@ border: 1px solid gray;
     margin-bottom: 10px;
 }
 #title{text-indent: 5px;}
+
+.addImg {position: relative;}
+.addImg>span {position: absolute; top: 27px;}
+
+.imgFile {border: 1px dashed #bcbcbc; padding: 10px;}

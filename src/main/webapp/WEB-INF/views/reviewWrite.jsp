@@ -77,6 +77,26 @@
                                    value="${reviewDto.title}">
                         </td>
                     </tr>
+                    <%--                    사진 이미지 넣는 기능--%>
+                    <tr>
+                        <th class="addImg">
+                            <span>사진 첨부</span>
+                        </th>
+                        <td>
+                            <label>이미지 파일 첨부</label>
+                            <input type="file" name="file" onchange="readURL(this);"/><br>
+<%--                            <img id="preview" src="#" width=200 height=150 alt="선택된 이미지가 없습니다" style="align-content: flex-end; ">--%>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="addImg">
+                            <span></span>
+                        </th>
+                        <td class="imgFile">
+                            <img id="preview" src="#" width=200 height=150 alt="선택된 이미지가 없습니다" style="align-content: flex-end;
+                            /*display: none;*/" >
+                        </td>
+                    </tr>
                     <tr>
                         <th colspan="3">
                             <div><p class="detailReview">자세한 리뷰</p></div>
@@ -171,6 +191,20 @@
         $('#content').val(a);
     }
 </script>
+<%--<script>--%>
+<%--    function readURL(input) {--%>
+<%--        if (input.files && input.files[0]) {--%>
+<%--            var reader = new FileReader();--%>
+
+<%--            reader.onload = function(e) {--%>
+<%--                $('#preview').attr('src', e.target.result);--%>
+<%--                $('#preview').css('display', 'block'); // 이미지를 선택하면 이미지 미리보기를 표시합니다.--%>
+<%--            }--%>
+
+<%--            reader.readAsDataURL(input.files[0]);--%>
+<%--        }--%>
+<%--    }--%>
+<%--</script>--%>
 </body>
 </html>
 

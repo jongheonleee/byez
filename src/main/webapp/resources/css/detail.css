@@ -30,6 +30,8 @@ section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
 .infoImgWrapper>p {font-weight: bold; color:gray; margin-bottom: 3px;}
 .infoImgWrapper>p>span {font-weight: normal;}
 
+
+
 .detail_name,.disc_price {font-size: 23px; font-weight: bold;}
 .type {background-color: black; color: white; width: fit-content; height: fit-content; padding: 4px 6px; font-size:13px; margin: 10px 0 20px 0;}
 .infoWrapper>p:nth-of-type(2)>span {margin-right: 8px;}
@@ -228,7 +230,18 @@ section .wrapper>p:first-of-type {text-align: right; margin-bottom: 50px;}
     overflow: hidden;
     float: left;
 }
-.foldImg img:first-of-type {width: 100%;}
+.foldImg img:first-of-type {
+    width: 100%;
+    height: 580px;
+    object-fit: contain;
+    border-bottom: #bcbcbc 1px solid;
+    padding-bottom: 50px;
+    margin-bottom: 25px;
+}
+
+.foldImg>p {color: gray;
+    font-size: 25px;
+    margin-bottom: 25px;}
 
 .more {width: 100%; height: fit-content;
     /* background-color: rgba(255, 0, 0, 0.1); */

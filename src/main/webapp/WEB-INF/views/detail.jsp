@@ -31,6 +31,7 @@
             <div class="infoImgWrapper">
                 <div class="foldImg">
                     <img src="/img/${itemDto.main_img}" alt="" class="detail_img">
+                    <p>Info</p>
                     <img src="/img/${itemDetail.detail_img}" alt="" class="detail_img">
                 </div>
                 <div class="more">

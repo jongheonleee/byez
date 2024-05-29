@@ -37,7 +37,7 @@
             <div>
                 <div class="item_num">
                     <p>
-                        <span>59</span> 개
+                        <span>7</span> 개
                     </p>
                 </div>
                 <div class="sort">
