@@ -49,8 +49,7 @@ public class ItemController {
         int basketCnt = 0;
         try {
             // 세션에서 아이디 조회
-            String id = (String) session.getAttribute("id");
-            id = "user1";
+            String id = (String) session.getAttribute("userId");
             if (id != null) {
                 BasketItemDto dto = new BasketItemDto();
                 dto.setId(id);
@@ -94,7 +93,7 @@ public class ItemController {
         int basketCnt = 0;
         try {
             // 세션에서 아이디 조회
-            String id = (String) session.getAttribute("id");
+            String id = (String) session.getAttribute("userId");
             if (id != null) {
                 BasketItemDto dto = new BasketItemDto();
                 dto.setId(id);
@@ -138,8 +137,7 @@ public class ItemController {
         int basketCnt = 0;
         try {
             // 세션에서 아이디 조회
-            String id = (String) session.getAttribute("id");
-            id = "user1";
+            String id = (String) session.getAttribute("userId");
             if (id != null) {
                 BasketItemDto dto = new BasketItemDto();
                 dto.setId(id);
@@ -201,8 +199,7 @@ public class ItemController {
             //찬빈 추가
             List<ReviewDto> reviewList = reviewService.searchByItem(num);
             // 세션에서 아이디 조회
-            String id = (String) session.getAttribute("id");
-            id = "user1";
+            String id = (String) session.getAttribute("userId");
             if (id != null) {
                 BasketItemDto dto = new BasketItemDto();
                 dto.setId(id);
@@ -239,12 +236,10 @@ public class ItemController {
         try {
             dto.setNum(itemNum);
             // 세션에서 아이디 조회
-            String id = (String) session.getAttribute("id");
+            String id = (String) session.getAttribute("userId");
 //            if (id == null) {
 //                return "forward:/order";
 //            }
-
-            id = "user1";
             // 장바구니 상품 등록
             dto.setId(id);
             // 해당 상품 이미지 조회
