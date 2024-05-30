@@ -39,8 +39,8 @@
             <tr>
               <td>성별</td>
               <td>
-                <input type="radio" name="sex" value="M" <c:if test="${userDto.sex == 'M'}">checked</c:if>> M
-                <input type="radio" name="sex" value="F" <c:if test="${userDto.sex == 'F'}">checked</c:if>> F
+                <label><input type="radio" name="sex" value="M" <c:if test="${userDto.sex == 'M'}">checked</c:if>> M </label>
+                <label><input type="radio" name="sex" value="F" <c:if test="${userDto.sex == 'F'}">checked</c:if>> F </label>
               </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
               </td>
               <td>
                 <input type="text" id="id" name="id" maxlength="20" value="${userDto.id}" placeholder="3자리 이상 입력하세요." oninput="checkIdFormat()" required>
-                <button id="checkDuplicateBtn">중복확인</button>
+                <button type="button" id="checkDuplicateBtn">중복확인</button>
                 <p id="id-msg"></p>
               </td>
             </tr>
@@ -64,7 +64,8 @@
                     *비밀번호
                 </span>
               </td>
-              <td><input type="password" id="pwd1" name="pwd" maxlength="20" oninput="checkPwdLength()" required>
+              <td>
+                <input type="password" id="pwd1" name="pwd" maxlength="20" oninput="checkPwdLength()" required>
                 <p id="pwd-length-error-msg"></p>
                 <p>
                   <c:if test="${not empty wrongPwdMsg}">

@@ -96,12 +96,6 @@ public class SignUpController {
         }
     }
 
-//    // @SessionAttribute 활용 위해 추가
-//    @ModelAttribute("userDto")
-//    public UserDto userDto() {
-//        return new UserDto();
-//    }
-
     @GetMapping("/form")
     public String moveToRegisterForm() {
         return "/user/register";
@@ -133,13 +127,6 @@ public class SignUpController {
             model.addAttribute("errorMsg", errorMsgs.get(0).getCode());
             return "/user/register";
         }
-
-          // ajax 로 처리 완료
-          // 입력된 아이디가 이미 DB에 저장된 아이디인 경우, 중복된 아이디임을 메세지로 출력
-//        if (userService.checkDuplicatedId(userDto.getId()) != null) {
-//            model.addAttribute("errorMsg", DUPLICATED_ID.getMessage());
-//            return "/user/register";
-//        }
 
         // 입력란에서 비밀번호 및 비밀번호 확인용으로 2개 받아옴.
         // split() 메서드로 , 기준으로 나눠서 저장
