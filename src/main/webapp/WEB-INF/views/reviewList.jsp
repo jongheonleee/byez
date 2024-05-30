@@ -60,7 +60,7 @@
                         <!-- 상품상세 -->
                         <div class="box box2">
                             <p class="mainP"><a href="/goods/${offList.item_num}">${offList.item_name}</a></p>
-                            <p class="subP">컬러 : ${offList.opt1} / 사이즈 : ${offList.opt2}]</p>
+                            <p class="subP">[컬러 : ${offList.opt1} / 사이즈 : ${offList.opt2}]</p>
                             <p class="subP"><c:out value="${fn:substring(offList.reg_date, 0, 10)}"/></p>
                         </div>
                         <!-- 리뷰버튼 -->

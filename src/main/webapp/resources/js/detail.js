@@ -23,7 +23,7 @@ $(document).ready(function(){
 
             // 가격 조회
             let totalPrice = 0;
-            const price = parseInt($('.item-info').find('.price').val());
+            const price = parseInt($('.item-info').find('.disc_price').val());
 
             // 가격 계산
             totalPrice = price * currCnt;

@@ -324,7 +324,7 @@ public class ItemRegisterInfo {
 
     public List<ItemOptDto> getColorList() {
         List<ItemOptDto> list = new ArrayList<>();
-        String[] cols = col.split("/");
+        String[] cols = col.split(",");
 
         for (String parsedCol : cols) {
             list.add(new ItemOptDto(num, parsedCol));
@@ -335,7 +335,7 @@ public class ItemRegisterInfo {
 
     public List<ItemOptDto> getSizeList() {
         List<ItemOptDto> list = new ArrayList<>();
-        String[] sizes = size.split("/");
+        String[] sizes = size.split(",");
 
         for (String parsedSize : sizes) {
             list.add(new ItemOptDto(num, parsedSize));

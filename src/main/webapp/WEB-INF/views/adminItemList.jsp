@@ -89,7 +89,7 @@
                                 <tr>
                                     <td><input class="item-checkbox" type="checkbox"></td>
                                     <td>
-                                            ${item.num}
+                                        ${item.num}
                                     </td>
                                     <td>
                                         <a href="/admin/item/${item.num}">
