@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>아이디 및 비밀번호 찾기</title>
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 <body>
     <form action="/find/findIdForm" method="GET">

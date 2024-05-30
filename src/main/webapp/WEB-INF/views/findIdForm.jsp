@@ -4,16 +4,16 @@
 
 <head>
     <title>[BYEZ] 아이디 찾기</title>
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/findIdForm.css">
+    <link rel="stylesheet" href="/css/footer.css?after?after">
+    <link rel="stylesheet" href="/css/quick.css">
+    <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
-
-<link rel="stylesheet" href="/css/nav.css">
-<link rel="stylesheet" href="/css/findIdForm.css">
-<link rel="stylesheet" href="/css/footer.css?after?after">
-<link rel="stylesheet" href="/css/quick.css">
-<script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
 
 <body>
     <jsp:include page="/WEB-INF/views/include/nav.jsp"/>

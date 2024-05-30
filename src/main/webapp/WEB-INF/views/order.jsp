@@ -4,6 +4,7 @@
 <%@ page session="true"%><html>
 <head>
     <title>Title</title>
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 <body>
 

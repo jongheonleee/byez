@@ -112,9 +112,9 @@ form {
 /*    cursor: pointer; !* 커서를 포인터로 설정하여 클릭 가능 요소임을 나타냄 *!*/
 /*}*/
 
-input[type="submit"]:hover {
-    background-color: #e7e7e7; /* 호버 시 배경색 변경 */
-}
+/*input[type="submit"]:hover {*/
+/*    background-color: #e7e7e7; !* 호버 시 배경색 변경 *!*/
+/*}*/
 
 /* 버튼을 포함하는 <td> 태그에 대한 스타일 */
 .order_actions {
@@ -138,11 +138,12 @@ input[type="submit"] {
     border: 1px solid #bcbcbc;
     cursor: pointer;
     box-sizing: border-box;
+    font-size: 13px;
+    transition: 0.3s;
 }
 
 input[type="submit"]:hover {
-    background-color:  lightgray; /* 호버 시 배경색 변경 */
-    transition: background-color 0.3s; /* 배경색과 그림자 변화에 애니메이션 효과 적용 */
+    border: 1px solid black; /* 호버 시 배경색 변경 */
 }
 
 .noneOrderMsg {text-align: center; font-size: 16px; font-weight: bold;}

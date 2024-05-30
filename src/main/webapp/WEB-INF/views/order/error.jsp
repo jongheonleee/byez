@@ -9,6 +9,7 @@
 <html>
 <head>
     <title>error</title>
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 <body>
  ${msg}

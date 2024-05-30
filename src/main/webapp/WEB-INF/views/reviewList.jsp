@@ -22,6 +22,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 
 <body>
@@ -59,7 +60,7 @@
                         <!-- 상품상세 -->
                         <div class="box box2">
                             <p class="mainP"><a href="/goods/${offList.item_num}">${offList.item_name}</a></p>
-                            <p class="subP">[사이즈 : ${offList.opt1} / 컬러 : ${offList.opt2}]</p>
+                            <p class="subP">컬러 : ${offList.opt1} / 사이즈 : ${offList.opt2}]</p>
                             <p class="subP"><c:out value="${fn:substring(offList.reg_date, 0, 10)}"/></p>
                         </div>
                         <!-- 리뷰버튼 -->

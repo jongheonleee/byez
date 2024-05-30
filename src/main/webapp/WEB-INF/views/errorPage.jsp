@@ -6,15 +6,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BYEZ</title>
-  <link rel="stylesheet" href="/css/error.css">
+  <link rel="stylesheet" href="/css/error.css?after">
   <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+  <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 <body>
 <div class="wrapper">
-  <i class="fa-solid fa-circle-exclamation"></i>
+<%--  <i class="fa-solid fa-circle-exclamation"></i>--%>
+  <img src="/img/alert.png" alt="">
   <p>요청하신 페이지를 찾을 수 없습니다.</p>
   <button onclick="location.href='/'";>메인 페이지로 가기</button>
 </div>

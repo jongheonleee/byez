@@ -24,6 +24,7 @@
 
     <!-- 결제위젯 SDK 추가 -->
     <script src="https://js.tosspayments.com/v1/payment-widget"></script>
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp"/>

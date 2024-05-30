@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 
 <body>
@@ -47,7 +48,7 @@
                         </th>
                         <td class="item_info">
                             <p class="item_name">${ordDetailDto.item_name}</p>
-                            <p class="item_opt">[사이즈 : ${ordDetailDto.opt1} / 컬러 : ${ordDetailDto.opt2}]</p>
+                            <p class="item_opt">[컬러 : ${ordDetailDto.opt1} / 사이즈 : ${ordDetailDto.opt2}]</p>
                         </td>
                     </tr>
                     <tr>

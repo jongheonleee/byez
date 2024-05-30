@@ -87,7 +87,7 @@ button{
     background-color : white;
     border : 1px solid #bcbcbc;
     transition : 0.3s;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 #orderCancelBtn:hover{
@@ -100,7 +100,7 @@ button{
     background-color : white;
     border : 1px solid #bcbcbc;
     transition : 0.3s;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 #changeDeliveryBtn:hover{

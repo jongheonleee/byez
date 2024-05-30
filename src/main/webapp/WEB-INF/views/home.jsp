@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 <div id="basketList"></div>
 <button id="basketBtn">장바구니</button>

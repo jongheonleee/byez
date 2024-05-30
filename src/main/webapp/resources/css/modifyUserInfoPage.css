@@ -35,7 +35,7 @@ tr td:first-of-type {
 }
 
 table button {
-    width: 120px;
+    width: 130px;
     padding: 10px 0;
     cursor: pointer;
     box-sizing : border-box;
@@ -75,7 +75,7 @@ table {
     border: 1px solid #bcbcbc;
     width: 230px;
     height: 30px;
-    text-indent: 15px;
+    text-indent: 5px;
     font-size: 16px;
 }
 #pwd-length-error-msg, #match-error-msg, #wrong-pwd-format-msg, #birth-error-msg, #mobile-number-error-msg, #email-error-msg {

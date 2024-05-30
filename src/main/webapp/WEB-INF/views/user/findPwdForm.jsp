@@ -2,12 +2,13 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <html>
 <head>
-<title>BYEZ | 비밀번호 찾기</title>
-<link rel="stylesheet" href="/css/findPwdForm.css?after?after">
-<script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <title>BYEZ | 비밀번호 찾기</title>
+    <link rel="stylesheet" href="/css/findPwdForm.css?after?after">
+    <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 
 <body>

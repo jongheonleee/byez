@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>고객 정보</title>
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 <body>
 <div class="user-info">

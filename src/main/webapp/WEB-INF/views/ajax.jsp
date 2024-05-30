@@ -3,6 +3,7 @@
 <head>
     <title>Title</title>
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 <body>
 <h2>{name:"abc", age:10}</h2>

@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>인증번호 확인</title>
+    <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 <body>
 
