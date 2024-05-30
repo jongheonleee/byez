@@ -340,3 +340,8 @@ border: 1px solid gray;
 .addImg>span {position: absolute; top: 27px;}
 
 .imgFile {border: 1px dashed #bcbcbc; padding: 10px;}
+
+#preview {
+    width: 150px;
+    height: 200px;
+}

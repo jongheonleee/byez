@@ -140,7 +140,7 @@
             </div>
         </div>
         <div class="review">
-            <p>REVIEW (<span>25727</span>)</p>
+            <p>REVIEW (<span>830</span>)</p>
             <div class="avg_star">
                 <div>
                     <p>
@@ -148,7 +148,7 @@
                         <span>4.9</span>
                     </p>
                     <p>
-                        <span>96</span>%의 구매자가 이 상품을 좋아합니다.
+                        <span>99</span>%의 구매자가 이 상품을 좋아합니다.
                     </p>
                 </div>
                 <div>
@@ -156,37 +156,37 @@
                         <li>
                             <span>아주 좋아요</span>
                             <div>
-                                <div style="width: 87%;"></div>
+                                <div style="width: 95%;"></div>
                             </div>
-                            <span>23828</span>
+                            <span>782</span>
                         </li>
                         <li>
                             <span>맘에 들어요</span>
                             <div>
-                                <div style="width: 9%;"></div>
+                                <div style="width: 5%;"></div>
                             </div>
-                            <span>938</span>
+                            <span>36</span>
                         </li>
                         <li>
                             <span>보통이에요</span>
                             <div>
-                                <div style="width: 3%;"></div>
+                                <div style="width: 0;"></div>
                             </div>
-                            <span>785</span>
+                            <span>3</span>
                         </li>
                         <li>
                             <span>그냥 그래요</span>
                             <div>
-                                <div style="width: 0%;"></div>
+                                <div style="width: 0;"></div>
                             </div>
-                            <span>56</span>
+                            <span>4</span>
                         </li>
                         <li>
                             <span>별로에요</span>
                             <div>
-                                <div style="width: 1%;"></div>
+                                <div style="width: 0;"></div>
                             </div>
-                            <span>120</span>
+                            <span>5</span>
                         </li>
                     </ul>
                 </div>
