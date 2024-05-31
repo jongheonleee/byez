@@ -97,7 +97,7 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="/admin/item/${item.num}">
+                                        <a href="/admin/item/${item.num}" style="text-decoration:none;">
                                                 ${item.name}
                                         </a>
                                     </td>
@@ -173,4 +173,3 @@
 <script src="/js/datatables-simple-demo.js"></script>
 </body>
 </html>
-

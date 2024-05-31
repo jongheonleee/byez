@@ -8,7 +8,7 @@ body {font-family: "Noto Sans KR", sans-serif;}
 nav {width: 100%; min-width: 1320px; height: 90px; background-color: white; position: fixed; top: 0; z-index: 100; float: left; border-bottom: 1px solid #bcbcbc; box-sizing: border-box; }
 .wrapper {max-width:1740px; min-width: 1200px; width: 90%; height: 100%; margin: auto;}
 
-.nav_logo {width: 130px; height: 100%; display: flex; align-items: center; float: left;}
+.nav_logo {width: 140px; height: 100%; display: flex; align-items: center; float: left;}
 
 .nav_logo a {width: 100%;}
 .nav_logo a img {width: 100%;}
@@ -16,10 +16,11 @@ nav {width: 100%; min-width: 1320px; height: 90px; background-color: white; posi
 .nav_menu {width: fit-content; height: 100%; float: left; margin-left: 35px; font-weight: bold;}
 
 .nav_menu > li {
-    width: 90px;
+    width: 111px;
     height: 100%;
     position: relative;
     float: left;
+    font-size: 20px;
 }
 .nav_menu > li a {
     width: auto;
@@ -28,9 +29,9 @@ nav {width: 100%; min-width: 1320px; height: 90px; background-color: white; posi
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.nav_menu>li a::after {content: ""; display: block; width: 0; height: 2px; background-color: black; position: absolute; left: 50%; top: 54px; transform: translateX(-50%); transition: .3s;}
+.nav_menu>li a::after {content: ""; display: block; width: 0; height: 2px; background-color: black; position: absolute; left: 50%; top: 57px; transform: translateX(-50%); transition: .3s;}
 .nav_menu>li a:hover::after {width: 100%;}
-.nav_menu>li:first-of-type  {width: 127px;}
+.nav_menu>li:first-of-type  {width: 159px;}
 /* .nav_menu>li:first-of-type a  {color: #c41e20;} */
 
 

@@ -20,8 +20,8 @@
 <body>
 <jsp:include page="/WEB-INF/views/include/nav.jsp"/>
 <section>
-<%--    <div class="wrapper">--%>
-<%--    </div>--%>
+    <%--    <div class="wrapper">--%>
+    <%--    </div>--%>
 </section>
 <section>
     <p>SALE</p>
@@ -62,34 +62,34 @@
         </ul>
         <div class="items" id="sweatshirt">
             <p>맨투맨/스웨트셔츠</p>
-                <ul class="weekly_best">
-                    <c:forEach var="itemDto" items="${list1}">
-                        <li>
-                            <a href="/goods/${itemDto.num}">
-                                <img src="/img/${itemDto.main_img}" alt="">
-                            </a>
-                            <p class="item_name">
-                                <span>${itemDto.name}</span>
-                            </p>
-                            <p class="sales_price"><fmt:formatNumber value="${itemDto.price}" pattern="#,###"/></p>
-                            <p class="discounted_price"><fmt:formatNumber value="${itemDto.disc_price}" pattern="#,###"/></p>
-                                <ul class="col">
-                                    <c:forEach var="color" items="${itemDto.colors}">
-                                        <li style="background-color: ${color}; display: inline"></li>
-                                    </c:forEach>
-                                </ul>
-                            <div class="wrap-star">
-                                <div class='star-rating'>
-                                    <span style="width: ${20 * itemDto.review_rate}%"></span>
-                                </div>
+            <ul class="weekly_best">
+                <c:forEach var="itemDto" items="${list1}">
+                    <li>
+                        <a href="/goods/${itemDto.num}">
+                            <img src="/img/${itemDto.main_img}" alt="">
+                        </a>
+                        <p class="item_name">
+                            <span>${itemDto.name}</span>
+                        </p>
+                        <p class="sales_price"><fmt:formatNumber value="${itemDto.price}" pattern="#,###"/></p>
+                        <p class="discounted_price"><fmt:formatNumber value="${itemDto.disc_price}" pattern="#,###"/></p>
+                        <ul class="col">
+                            <c:forEach var="color" items="${itemDto.colors}">
+                                <li style="background-color: ${color}; display: inline"></li>
+                            </c:forEach>
+                        </ul>
+                        <div class="wrap-star">
+                            <div class='star-rating'>
+                                <span style="width: ${20 * itemDto.review_rate}%"></span>
                             </div>
-                            <i class="fa-solid fa-heart" style="color: red;"></i>
-                            <span class="like_cnt">${itemDto.like_cnt}</span>
-                            <p class="review_cnt">리뷰수 <span>${itemDto.review_cnt}</span></p>
-                            <div class="sex">${itemDto.cust_type}</div>
-                        </li>
-                    </c:forEach>
-                </ul>
+                        </div>
+                        <i class="fa-solid fa-heart" style="color: red;"></i>
+                        <span class="like_cnt">${itemDto.like_cnt}</span>
+                        <p class="review_cnt">리뷰수 <span>${itemDto.review_cnt}</span></p>
+                        <div class="sex">${itemDto.cust_type}</div>
+                    </li>
+                </c:forEach>
+            </ul>
         </div>
         <div class="items" id="hood">
             <p>후드/집업</p>
@@ -104,11 +104,11 @@
                         </p>
                         <p class="sales_price"><fmt:formatNumber value="${itemDto.price}" pattern="#,###"/></p>
                         <p class="discounted_price"><fmt:formatNumber value="${itemDto.disc_price}" pattern="#,###"/></p>
-                            <ul class="col">
-                                <c:forEach var="color" items="${itemDto.colors}">
-                                    <li style="background-color: ${color}; display: inline"></li>
-                                </c:forEach>
-                            </ul>
+                        <ul class="col">
+                            <c:forEach var="color" items="${itemDto.colors}">
+                                <li style="background-color: ${color}; display: inline"></li>
+                            </c:forEach>
+                        </ul>
                         <div class="wrap-star">
                             <div class='star-rating'>
                                 <span style="width: ${20 * itemDto.review_rate}%"></span>
@@ -135,11 +135,11 @@
                         </p>
                         <p class="sales_price"><fmt:formatNumber value="${itemDto.price}" pattern="#,###"/></p>
                         <p class="discounted_price"><fmt:formatNumber value="${itemDto.disc_price}" pattern="#,###"/></p>
-                            <ul class="col">
-                                <c:forEach var="color" items="${itemDto.colors}">
-                                    <li style="background-color: ${color}; display: inline"></li>
-                                </c:forEach>
-                            </ul>
+                        <ul class="col">
+                            <c:forEach var="color" items="${itemDto.colors}">
+                                <li style="background-color: ${color}; display: inline"></li>
+                            </c:forEach>
+                        </ul>
                         <div class="wrap-star">
                             <div class='star-rating'>
                                 <span style="width: ${20 * itemDto.review_rate}%"></span>
@@ -166,11 +166,11 @@
                         </p>
                         <p class="sales_price"><fmt:formatNumber value="${itemDto.price}" pattern="#,###"/></p>
                         <p class="discounted_price"><fmt:formatNumber value="${itemDto.disc_price}" pattern="#,###"/></p>
-                            <ul class="col">
-                                <c:forEach var="color" items="${itemDto.colors}">
-                                    <li style="background-color: ${color}; display: inline"></li>
-                                </c:forEach>
-                            </ul>
+                        <ul class="col">
+                            <c:forEach var="color" items="${itemDto.colors}">
+                                <li style="background-color: ${color}; display: inline"></li>
+                            </c:forEach>
+                        </ul>
                         <div class="wrap-star">
                             <div class='star-rating'>
                                 <span style="width: ${20 * itemDto.review_rate}%"></span>
@@ -197,11 +197,11 @@
                         </p>
                         <p class="sales_price"><fmt:formatNumber value="${itemDto.price}" pattern="#,###"/></p>
                         <p class="discounted_price"><fmt:formatNumber value="${itemDto.disc_price}" pattern="#,###"/></p>
-                            <ul class="col">
-                                <c:forEach var="color" items="${itemDto.colors}">
-                                    <li style="background-color: ${color}; display: inline"></li>
-                                </c:forEach>
-                            </ul>
+                        <ul class="col">
+                            <c:forEach var="color" items="${itemDto.colors}">
+                                <li style="background-color: ${color}; display: inline"></li>
+                            </c:forEach>
+                        </ul>
                         <div class="wrap-star">
                             <div class='star-rating'>
                                 <span style="width: ${20 * itemDto.review_rate}%"></span>
@@ -228,11 +228,11 @@
                         </p>
                         <p class="sales_price"><fmt:formatNumber value="${itemDto.price}" pattern="#,###"/></p>
                         <p class="discounted_price"><fmt:formatNumber value="${itemDto.disc_price}" pattern="#,###"/></p>
-                            <ul class="col">
-                                <c:forEach var="color" items="${itemDto.colors}">
-                                    <li style="background-color: ${color}; display: inline"></li>
-                                </c:forEach>
-                            </ul>
+                        <ul class="col">
+                            <c:forEach var="color" items="${itemDto.colors}">
+                                <li style="background-color: ${color}; display: inline"></li>
+                            </c:forEach>
+                        </ul>
                         <div class="wrap-star">
                             <div class='star-rating'>
                                 <span style="width: ${20 * itemDto.review_rate}%"></span>
@@ -252,5 +252,21 @@
 <jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js?after?after"></script>
+<script>
+    $(document).ready(function() {
+        $('a[href^="#"]').on('click', function(event) {
+            event.preventDefault(); // 기본 동작 방지
+
+            var target = this.hash; // 클릭된 링크의 해시 값(타겟 섹션 ID)
+            var $target = $(target); // 타겟 섹션을 jQuery 객체로 저장
+
+            $('html, body').animate({
+                scrollTop: $target.offset().top // 타겟 섹션의 세로 위치로 스크롤
+            }, 'slow', function() {
+                window.location.hash = target; // 스크롤 완료 후 URL 해시 값 업데이트
+            });
+        });
+    });
+</script>
 </body>
 </html>
