@@ -87,6 +87,8 @@ public class LikeItemController {
             model.addAttribute("ph", ph);
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
             model.addAttribute("errorMsg", e.getMessage());
             return "errorPage";
         }

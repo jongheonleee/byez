@@ -150,8 +150,8 @@
 <%--                                            <input type="text" placeholder="col">--%>
                                             <select id="col" name="col" multiple="multiple" style="height: 200px;">
         <option value="" disabled selected>--색깔 유형을 선택해주세요--</option>
-        <option value="#000000">black</option>
-        <option value="#ffffff">white</option>
+        <option value="black">black</option>
+        <option value="white">white</option>
         <option value="#000080">navy</option>
         <option value="#9c9c9c">gray</option>
         <option value="#dfdfdf">lightgray</option>

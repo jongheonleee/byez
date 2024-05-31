@@ -181,7 +181,9 @@ public class ItemServiceImpl {
         }
 
         // 할인가 계산
-        int discountPrice = (int)(target.getPrice() * discountRate);
+        int discountAmount = (int)(target.getPrice() * discountRate);
+        int price = target.getPrice();
+        int discountPrice = price - discountAmount;
         target.setDisc_price(discountPrice); // 할인가 적용해서 저장
         target.setCol(sb.toString()); // 색상 정보 저장
         rowCnt += itemDao.update(target); // 테이블 변경

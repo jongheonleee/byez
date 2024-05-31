@@ -10,6 +10,8 @@ public class LikeItemDto {
     private String type;
     private int price;
     private Integer disc_price;
+
+    private double disc_rate;
     private String item_comt;
     private String main_img;
     private int review_cnt;
@@ -22,6 +24,29 @@ public class LikeItemDto {
     private String up_id;
 
     public LikeItemDto() {}
+
+    public LikeItemDto(String id, String num, String name, String type, int price,
+            Integer disc_price,
+            String item_comt, String main_img, int review_cnt, int like_cnt, String state_code,
+            String comt, Date reg_date, String reg_id, Date up_date, String up_id, double disc_rate) {
+        this.id = id;
+        this.num = num;
+        this.name = name;
+        this.type = type;
+        this.price = price;
+        this.disc_price = disc_price;
+        this.disc_rate = disc_rate;
+        this.item_comt = item_comt;
+        this.main_img = main_img;
+        this.review_cnt = review_cnt;
+        this.like_cnt = like_cnt;
+        this.state_code = state_code;
+        this.comt = comt;
+        this.reg_date = reg_date;
+        this.reg_id = reg_id;
+        this.up_date = up_date;
+        this.up_id = up_id;
+    }
 
     public LikeItemDto(String id, String num, String name, String type, int price,
             Integer disc_price,
@@ -171,6 +196,14 @@ public class LikeItemDto {
 
     public void setUp_id(String up_id) {
         this.up_id = up_id;
+    }
+
+    public double getDisc_rate() {
+        return disc_rate;
+    }
+
+    public void setDisc_rate(double disc_rate) {
+        this.disc_rate = disc_rate;
     }
 
     @Override

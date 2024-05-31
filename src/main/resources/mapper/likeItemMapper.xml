@@ -62,6 +62,7 @@
       l.type as item_type,
       l.price as price,
       l.disc_price as disc_price,
+      p.disc_rate as disc_rate,
       l.main_img as main_img,
       l.item_comt as item_comt,
       l.review_cnt as review_cnt,
@@ -75,6 +76,8 @@
     from item_like l
     inner join cust c
     on l.id = c.id
+    inner join item_price p
+    on l.num = p.num
     where c.id = #{id}
     order by reg_date desc, like_cnt desc, review_cnt desc
     limit #{offset}, #{pageSize};

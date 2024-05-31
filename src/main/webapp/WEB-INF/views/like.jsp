@@ -55,7 +55,7 @@
                                 <li>
                                     <del class="sales_price"><fmt:formatNumber value="${likeItemDto.price}" pattern="#,###"/>원</del>
                                     <span class="sales_price"><fmt:formatNumber value="${likeItemDto.disc_price}" pattern="#,###"/>원</span>
-                                    <em class="textStyle">30%</em>
+                                    <span class="textStyle"><fmt:formatNumber value="${likeItemDto.disc_rate * 100}" pattern="#,###"/>%</span>
                                 </li>
                                 <li class="textStyle">
                                     <i class="fa-solid fa-heart"></i>
