@@ -37,7 +37,7 @@ public class CustCouponsController {
 
         custCouponsService.grantCouponToUser(userId, couponName);
 
-        return "redirect: /home";
+        return "redirect: /adminGrantCoupon?grantSuccess=true";
     }
 
 }

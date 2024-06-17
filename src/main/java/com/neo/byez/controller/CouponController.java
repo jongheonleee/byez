@@ -8,7 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -54,15 +56,17 @@ public class CouponController {
 
         couponService.createCouponType(couponDto);
 
-        return "redirect: /manageCoupons";
+        return "redirect: /adminCreateCoupon";
     }
 
     @RequestMapping("/deleteCouponType")
     public String deleteCouponType(String name) throws Exception {
 
+        System.out.println(name);
+
         couponService.removeCouponTypeByName(name);
 
-        return "redirect: /manageCoupons";
+        return "redirect: /adminGrantCoupon";
     }
 
 }

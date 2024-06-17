@@ -108,8 +108,8 @@
                 <div class="collapse" id="collapseCoupon" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                     <nav class="sb-sidenav-menu-nested nav">
                         <a class="nav-link" href="/adminCouponDashBoard">프로모션 대시보드</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">쿠폰 만들기</a>
-                        <a class="nav-link" href="layout-sidenav-light.html">쿠폰 발급/조회</a>
+                        <a class="nav-link" href="/adminCreateCoupon">쿠폰 만들기</a>
+                        <a class="nav-link" href="/adminGrantCoupon">쿠폰 발급/조회</a>
                     </nav>
                 </div>
 
