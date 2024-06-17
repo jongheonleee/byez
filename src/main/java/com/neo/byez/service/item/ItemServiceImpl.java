@@ -37,7 +37,7 @@ public class ItemServiceImpl {
 
     // # 추후에 재고 테이블도 따로 만들어야함
 
-    private static final StringBuilder sb = new StringBuilder();
+    private static final StringBuffer sb = new StringBuffer();
 
     private ItemDaoImpl itemDao;
     private ItemStateDaoImpl itemStateDao;
@@ -229,6 +229,9 @@ public class ItemServiceImpl {
     }
 
     public List<ItemDto> readDiscountItem(SearchCondition sc) throws Exception {
+        // 카테고리 읽어옴
+
+
         return itemDao.selectDiscountItem(sc);
     }
 

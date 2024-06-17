@@ -29,27 +29,27 @@
       i.like_cnt as like_cnt,
       i.col as col
     from item i
-           inner join item_state s
-                      on i.num = s.num
-           inner join item_detail d
-                      on i.num = d.num
+    inner join item_state s
+    on i.num = s.num
+    inner join item_detail d
+    on i.num = d.num
     order by d.rel_date desc, s.sales_qty desc, i.review_cnt desc, i.like_cnt desc
-      limit #{offset}, #{pageSize}
+    limit #{offset}, #{pageSize}
   </select>
 
   <select id="selectBySearchCondition" parameterType="SearchCondition" resultType="ItemDto">
     select
-    i.num as num,
-    i.name as name,
-    i.item_type as item_type,
-    i.cust_type as cust_type,
-    i.price as price,
-    i.disc_price as disc_price,
-    i.main_img as main_img,
-    i.review_cnt as review_cnt,
-    i.review_rate as review_rate,
-    i.like_cnt as like_cnt,
-    i.col as col
+      i.num as num,
+      i.name as name,
+      i.item_type as item_type,
+      i.cust_type as cust_type,
+      i.price as price,
+      i.disc_price as disc_price,
+      i.main_img as main_img,
+      i.review_cnt as review_cnt,
+      i.review_rate as review_rate,
+      i.like_cnt as like_cnt,
+      i.col as col
     from item i
     inner join item_state s
     on i.num = s.num

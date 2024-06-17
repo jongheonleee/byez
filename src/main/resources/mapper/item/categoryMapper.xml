@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.item.ItemColorDao">
+  <insert id="insert" parameterType="Category" >
+    insert into category(cate_num, cate_name, col1, col2, reg_date, reg_id, up_date, up_id)
+    values( #{cate_num}, #{cate_name}, #{col1}, #{col2}, now(), 'manager', now(), 'manager')
+  </insert>
+
+  <select id="select" parameterType="string" resultType="Category">
+    select *
+    from category
+    where cate_num = #{cate_num}
+  </select>
+
+  <select id="selectAll" resultType="Category">
+    select *
+    from category
+  </select>
+
+  <select id="countAll" resultType="Category">
+    select count(*)
+    from category
+  </select>
+
+  <update id="update" parameterType="Category">
+    update category
+    set cate_num = #{cate_num}, cate_name = #{cate_name}, col1 = #{col1}, col2 = #{col2}
+    where cate_num = #{cate_num}
+  </update>
+
+  <delete id="delete" parameterType="Category">
+    delete from category
+    where cate_num = #{cate_num}
+  </delete>
+
+  <delete id="deleteAll">
+    delete from category
+  </delete>
+</mapper>

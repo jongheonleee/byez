@@ -246,6 +246,38 @@
                 </c:forEach>
             </ul>
         </div>
+
+        <c:forEach var="itemDto" items="${list}">
+        <div class="items" id="pants">
+            <p>${itemDto.item_type}</p>
+                <ul class="weekly_best">
+                    <li>
+                        <a href="/goods/${itemDto.num}">
+                            <img src="/img/${itemDto.main_img}" alt="">
+                        </a>
+                        <p class="item_name">
+                            <span>${itemDto.name}</span>
+                        </p>
+                        <p class="sales_price"><fmt:formatNumber value="${itemDto.price}" pattern="#,###"/></p>
+                        <p class="discounted_price"><fmt:formatNumber value="${itemDto.disc_price}" pattern="#,###"/></p>
+                        <ul class="col">
+                            <c:forEach var="color" items="${itemDto.colors}">
+                                <li style="background-color: ${color}; display: inline"></li>
+                            </c:forEach>
+                        </ul>
+                        <div class="wrap-star">
+                            <div class='star-rating'>
+                                <span style="width: ${20 * itemDto.review_rate}%"></span>
+                            </div>
+                        </div>
+                        <i class="fa-solid fa-heart" style="color: red;"></i>
+                        <span class="like_cnt">${itemDto.like_cnt}</span>
+                        <p class="review_cnt">리뷰수 <span>${itemDto.review_cnt}</span></p>
+                        <div class="sex">${itemDto.cust_type}</div>
+                    </li>
+                </ul>
+            </div>
+        </c:forEach>
     </div>
 </section>
 <jsp:include page="/WEB-INF/views/include/footer.jsp"/>

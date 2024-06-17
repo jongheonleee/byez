@@ -2,29 +2,48 @@ package com.neo.byez.domain.item;
 
 public class Category {
 
-    private String item_type;
-    private String item_type_format;
-
+    private String cate_num;
+    private String cate_name;
+    private String col1;
+    private String col2;
     public Category() {}
 
-    public Category(String item_type) {
-        this.item_type = item_type;
+    public Category(String cate_num, String cate_name, String col1, String col2) {
+        this.cate_num = cate_num;
+        this.cate_name = cate_name;
+        this.col1 = col1;
+        this.col2 = col2;
     }
 
-    public String getItem_type() {
-        return item_type;
+    public String getCate_num() {
+        return cate_num;
     }
 
-    public void setItem_type(String item_type) {
-        this.item_type = item_type;
+    public void setCate_num(String cate_num) {
+        this.cate_num = cate_num;
     }
 
-    public String getItem_type_format() {
-        return item_type_format != null ? item_type_format : generateFormat();
+    public String getCate_name() {
+        return cate_name;
     }
 
-    private String generateFormat() {
-        item_type_format = item_type + "%";
-        return item_type_format;
+    public void setCate_name(String cate_name) {
+        this.cate_name = cate_name;
+    }
+
+    public String getCol1() {
+        return col1;
+    }
+
+    public void setCol1(String col1) {
+        this.col1 = col1;
+    }
+
+    public String getCol2() {
+        return col2;
+    }
+
+    public void setCol2(String col2) {
+        this.col2 = col2;
     }
 }

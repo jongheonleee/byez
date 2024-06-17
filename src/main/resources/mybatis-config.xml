@@ -23,6 +23,8 @@
         <typeAlias alias="SearchCondition" type="com.neo.byez.domain.item.SearchCondition"/>
         <typeAlias alias="AdminItemDto" type="com.neo.byez.domain.item.AdminItemDto"/>
         <typeAlias alias="ItemRegisterInfo" type="com.neo.byez.domain.item.ItemRegisterInfo"/>
+        <typeAlias alias="Category" type="com.neo.byez.domain.item.Category"/>
+
         <!-- 상품 관련 : 종헌 - 끝 -->
 
         <!-- 주문 관련 : 진우 - 시작 -->
