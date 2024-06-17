@@ -166,7 +166,6 @@ public class BasketItemController {
     @PostMapping("/order")
     public String order(BasketItemDtos dtos, Model model) {
         List<BasketItemDto> list = dtos.getOrders();
-
         model.addAttribute("list", list);
         return "order";
     }
