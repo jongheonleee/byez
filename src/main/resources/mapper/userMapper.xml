@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neo.byez.dao.UserDao">
+
+    <!-- 현재 시간 반환하는 SQL 문 -->
+    <select id="selectNow" resultType="java.sql.Timestamp">
+        SELECT CURRENT_TIMESTAMP();
+    </select>
+
+    <!-- Test 용 데이터 삭제 코드 시작 -->
+    <!-- 특정 아이디를 가진 고객 데이터 삭제 -->
+    <delete id="deleteTestUser" parameterType="string">
+        DELETE FROM cust
+        WHERE id = #{id}
+    </delete>
+
+    <!-- 전체 고객 데이터 삭제 -->
+    <delete id="deleteAllTestUser">
+        DELETE FROM cust
+    </delete>
+    <!-- Test 용 데이터 삭제 코드 종료 -->
+
+    <!-- 회원가입한 전체 고객의 수 -->
+    <select id="countUser" resultType="int">
+        SELECT count(*) FROM cust
+    </select>
+
+    <!-- 탈퇴회원을 제외한 전체 고객의 수 -->
+    <select id="countActiveUser" resultType="int">
+        SELECT count(*)
+        FROM cust
+        WHERE join_state = 'Y'
+    </select>
+
+    <!-- 현재 가입 상태인 전체 고객 정보 조회 -->
+    <select id="selectUserAll" resultType="UserDto">
+        SELECT * FROM cust
+        WHERE join_state = 'Y'
+        ORDER BY id
+    </select>
+
+    <!-- Login -->
+    <!-- 주어진 id 값을 사용하여 특정 회원 아이디(id), 비밀번호(pwd), 이름(name) 등의 정보 조회 -->
+    <!-- join_state N 이면 탈퇴회원이므로 조회 불가 -->
+    <select id="selectUser" parameterType="string" resultType="UserDto">
+        SELECT id, pwd, name, email, mail_key, join_state, recent_login
+        FROM cust
+        WHERE id = #{id}
+        AND join_state = 'Y'
+        AND mail_auth = 'Y'
+    </select>
+
+    <!-- 로그인 성공 시 최근 접속일시 업데이트 -->
+    <update id="updateRecentLoginDatetime" parameterType="string">
+        UPDATE cust
+        SET recent_login = NOW(), up_date = NOW(), up_id = #{id}
+        WHERE id = #{id}
+          AND join_state = 'Y'
+    </update>
+
+    <!-- 로그인 테스트용 : 회원가입 메일인증 상태 Y에서 N으로 변경 -->
+    <update id="updateMailAuth">
+        UPDATE cust
+        SET mail_auth = 'N'
+        WHERE id = #{id}
+    </update>
+
+    <!-- Sign Up (회원가입) -->
+    <!-- 회원가입 페이지에서 입력한 데이터를 저장하기 위한 insert 문 -->
+    <!-- 고객이 회원가입을 하는 주체이기 때문에 최초등록자, 최종수정자 모두 user id 로 설정 -->
+    <!-- 회원가입 완료 시점에 메일 인증 상태 Y 됨 -->
+    <insert id="insertUser" parameterType="UserDto">
+        INSERT INTO cust(id, pwd, name, bef_birth, af_birth, sex, tel_num, mobile_num, email,
+                         mail_auth, join_date, join_state, reg_date, reg_id, up_date, up_id)
+
+        VALUES (#{id}, #{pwd}, #{name}, #{bef_birth}, #{af_birth}, #{sex}, #{tel_num}, #{mobile_num}, #{email},
+                'Y', now(), 'Y', now(), #{id}, now(), #{id})
+    </insert>
+
+    <!-- 아이디 찾기 : 이메일 인증 시 작성하는 고객명 및 이메일을 조회하여 특정 고객의 아이디 및 인증번호 조회 -->
+    <select id="selectUserId" parameterType="UserDto" resultType="UserDto">
+        SELECT id, mail_key
+        FROM cust
+        WHERE email = #{email}
+          AND join_state = 'Y'
+    </select>
+
+    <!-- 비밀번호 찾기 : 새로운 비밀번호 업데이트하고 최종 수정일시 및 수정자 업데이트 -->
+    <update id="updateUserPwd" parameterType="map">
+        UPDATE cust
+        SET pwd = #{pwd}, up_date = now(), up_id = #{id}
+        WHERE id = #{id}
+          AND join_state = 'Y'
+    </update>
+
+    <!-- 이메일 인증 : 특정 사용자 식별하여 인증번호 업데이트 -->
+    <update id="updateMailKey" parameterType="UserDto">
+        UPDATE cust
+        SET mail_key = #{mail_key}, up_date = NOW(), up_id = #{id}
+        WHERE email = #{email}
+    </update>
+
+    <!-- 이메일 변경 -->
+    <update id="updateUserEmail" parameterType="string">
+        UPDATE cust
+        SET email = #{email}, up_date = now(), up_id = #{id}
+        WHERE id = #{id}
+          AND join_state = 'Y'
+    </update>
+
+    <!-- 회원탈퇴 : 가입상태를 N으로 업데이트하고 최종 수정일시 및 수정자 업데이트 -->
+    <update id="updateUserState" parameterType="string">
+        UPDATE cust
+        SET join_state = 'N', up_date = now(), up_id = #{id}
+        WHERE id = #{id};
+    </update>
+
+</mapper>
+
