@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.neo.byez.dao.item.ItemColorDao">
+<mapper namespace="com.neo.byez.dao.item.CategoryDao">
   <insert id="insert" parameterType="Category" >
     insert into category(cate_num, cate_name, col1, col2, reg_date, reg_id, up_date, up_id)
     values( #{cate_num}, #{cate_name}, #{col1}, #{col2}, now(), 'manager', now(), 'manager')

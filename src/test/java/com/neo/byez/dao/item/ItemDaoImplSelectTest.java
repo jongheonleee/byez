@@ -149,8 +149,8 @@ class ItemDaoImplSelectTest {
 
     @Test
     void selectDiscountItem() throws Exception {
-        Category category = new Category();
-        category.setItem_type("01010140");
+//        Category category = new Category();
+//        category.setItem_type("01010140");
 //        List<ItemDto> result = itemDao.selectByCategory(category);
 //        assertEquals(1, result.size());
 //        result.stream().forEach(System.out::println);
