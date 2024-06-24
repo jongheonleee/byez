@@ -93,7 +93,7 @@
               </td>
               <td>
                 <input type="text" id="birth1" name="bef_birth" value="${userDto.bef_birth}" maxlength="8" placeholder="8자리로 입력하세요." oninput="checkBirthFormat1(); inputNum(this);">
-                - <input type="text" id="birth2" name="af_birth" value="${userDto.af_birth}" maxlength="1" oninput="checkBirthFormat2(); inputNum(this);">
+                - <input type="text" id="birth2" name="af_birth" value="${userDto.af_birth}" maxlength="1" oninput="checkBirthFormat2(); inputNum(this);"> <span>******</span>
                 <p id="birth-error-msg"></p>
               </td>
             </tr>
@@ -132,7 +132,7 @@
             </tr>
           </table>
           <div class="button_wrapper">
-            <button onclick="location.href='/'">가입취소</button>
+            <button type="button" onclick="location.href='/'">가입취소</button>
             <input type="submit" id="sendUserInfoBtn" value="제출">
           </div>
         </form>
@@ -265,10 +265,10 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function () {
+
+    // 아이디 중복 확인
     $("#checkDuplicateBtn").click(function () {
-
       let id = $("#id").val();
-
       $.ajax({
         url: "/register/checkDuplicatedId",
         type: "POST",
@@ -282,6 +282,23 @@
           $("#id-msg").text(xhr.responseText); // 오류 메시지를 id-msg에 표시
           $("#id-msg").removeClass('success-msg').addClass('duplicate-msg'); // 오류 시 error-msg 클래스를 추가
           $("#sendUserInfoBtn").prop("disabled", true); // 실패 시 제출 버튼 비활성화
+        }
+      });
+    });
+
+    $("#checkNicknameBtn").click(function () {
+      window.location.href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=873c82dfa901cd280c11ee222e944826&redirect_uri=http://localhost:8080/kakaoSignUp";
+      // URL에서 인가 코드를 확인하고 서버에 전달
+      $.ajax({
+        url: "/kakaoSignUp",
+        type: "POST",
+        data: { code: code },
+        success: function (response) {
+
+          alert(response);
+        },
+        error: function (xhr, status, error) {
+          alert(response);
         }
       });
     });

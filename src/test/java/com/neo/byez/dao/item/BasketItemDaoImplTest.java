@@ -68,7 +68,7 @@ public class BasketItemDaoImplTest {
         itemDao.deleteAll();
 
         // 유저 지우기
-        userDao.deleteAllTestUser();
+        userDao.deleteAllUser();
 
     }
 

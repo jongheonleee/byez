@@ -14,25 +14,17 @@ import java.sql.Timestamp;
 
 @Service
 public class UserServiceImpl implements UserService {
-    // 인증메일에 포함되는 내용들 상수로 관리
-    private final String subject = "[EZBY 인증메일 입니다.]";
-    private final String title = "<h1>EZBY 메일인증</h1>";
-    private final String content = "<br>EZBY를 찾아주셔서 감사합니다!"
-            + "<br>인증번호는 다음과 같습니다.<br>";
-    private final String senderName = "EZBY";
-    private final String senderEmail = "parksuuuun@gmail.com";
-
     private UserDaoImpl userDao;
-    private MailService mailService;
+//    private MailService mailService;
     private BCryptPasswordEncoder passwordEncoder;
     private UserInfoHistDaoImpl userInfoHistDao;
     private BasketDaoImpl basketDao;
 
     @Autowired
-    public UserServiceImpl(UserDaoImpl userDao, MailService mailService, BCryptPasswordEncoder passwordEncoder,
+    public UserServiceImpl(UserDaoImpl userDao, BCryptPasswordEncoder passwordEncoder,
                            UserInfoHistDaoImpl userInfoHistDao, BasketDaoImpl basketDao) {
         this.userDao = userDao;
-        this.mailService = mailService;
+//        this.mailService = mailService;
         this.passwordEncoder = passwordEncoder;
         this.userInfoHistDao = userInfoHistDao;
         this.basketDao = basketDao;
@@ -61,6 +53,7 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    // 아이디 조회여부 확인
     @Override
     public boolean checkExistOfId(String id) {
         try {
@@ -164,6 +157,64 @@ public class UserServiceImpl implements UserService {
         return pwdUpdateSuccess && historyInsertSuccess;
     }
 
+    // 카카오 간편 로그인
+
+    // SNS 계정(카카오) 연동 성공 시 닉네임 저장
+    // 세션에 저장된 아이디로 카카오 계정 연동 여부 조회 시
+    // 연동 안되어 있으면 카카오 닉네임 저장 및 연동여부 Y로 업데이트 함
+    // 연동 되어 있으면 카카오 닉네임 및 연동여부 업데이트 안함
+    @Override
+    public boolean saveKakaoNickname(String id, String nickname) {
+        boolean saveKakaoNickname;
+        try {
+            if (userDao.selectUser(id).getKakao_conn().equals("N")) {
+                userDao.updateKakaoNickname(id, nickname);
+                saveKakaoNickname = true;
+            } else {
+                saveKakaoNickname = false;
+            }
+        } catch (Exception e) {
+            saveKakaoNickname = false;
+        }
+
+        return saveKakaoNickname;
+    }
+
+    // SNS 계정(네이버) 연동 성공 시 닉네임 저장
+    // 세션에 저장된 아이디로 네이버 계정 연동 여부 조회 시
+    // 연동 안되어 있으면 네이버 닉네임 저장 및 연동여부 Y로 업데이트 함
+    // 연동 되어 있으면 네이버 닉네임 및 연동여부 업데이트 안함
+    @Override
+    public boolean saveNaverNickname(String id, String nickname) {
+        boolean saveNaverNickname;
+        try {
+            if (userDao.selectUser(id).getNaver_conn().equals("N")) {
+                userDao.updateNaverNickname(id, nickname);
+                saveNaverNickname = true;
+            } else {
+                saveNaverNickname = false;
+            }
+        } catch (Exception e) {
+            saveNaverNickname = false;
+        }
+
+        return saveNaverNickname;
+    }
+
+    // 닉네임으로 아이디 조회하여 특정 아이디 반환
+    @Override
+    public String getCustIdBySnsNickname(String nickname) {
+        String userId ="";
+        try {
+            if (userDao.selectUserIdByNickname(nickname) != null) {
+                userId = userDao.selectUserIdByNickname(nickname);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return userId;
+    }
+
     // 2. 회원가입
     // 2.1. 회원가입 시 추가된 새로운 데이터 전체 추가
     // 2.2. 회원가입 시 본인 인증(by 이메일)
@@ -248,67 +299,6 @@ public class UserServiceImpl implements UserService {
         // 이메일 변경 성공 및 변경 이력 추가 성공 시 true 반환
         return emailUpdateSuccess && historyInsertSuccess;
     }
-
-//    // 4.2. 생년월일 변경
-//    // 4.2.1. 생년월일 변경이력 저장
-//    @Override
-//    public boolean modifyUserBefBirth(String id, Integer bef_birth) {
-//
-//        // 생년월일 변경 코드 : CHG0003
-//        String chg_code = "CHG0003";
-//        // 변경 전 생년월일 저장 위한 변수 선언 및 초기화
-//        Integer befBirthInfo = null;
-//
-//        // 생년월일 변경 성공 여부
-//        // 생년월일 변경 성공 시 true 반환
-//        // 생년월일 변경 실패 시 false 반환
-//        boolean befBirthUpdateSuccess = false;
-//
-//        // 우선 가입회원인지 확인 후 생년월일 변경 시도
-//        // 가입회원이 아닌 경우 생년월일 변경 실패
-//        try {
-//             if (getCustLoginInfo(id) != null) {
-//                 if (getCustLoginInfo(id).getBef_birth() == null) {
-//                     userDao.updateUserBefBirth(id, bef_birth);
-//                     befBirthUpdateSuccess = true;
-//                 } else {
-//                     befBirthInfo = getCustLoginInfo(id).getBef_birth();
-//                     userDao.updateUserBefBirth(id, bef_birth);
-//                     befBirthUpdateSuccess = true;
-//                 }
-//            } else {
-//                befBirthUpdateSuccess = false;
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            befBirthUpdateSuccess = false;
-//        }
-//
-//        // 변경이력 추가 성공 여부
-//        // 변경이력 추가 성공 시 true 반환
-//        // 변경이력 추가 실패 시 false 반환
-//        boolean historyInsertSuccess = false;
-//        try {
-//            if (befBirthUpdateSuccess) {
-//                // 변경 전 생년월일
-//                String bef_info = (befBirthInfo != null) ? befBirthInfo.toString() : "NULL";
-//                // 변경 후 생년월일
-//                String af_info = String.valueOf(getCustLoginInfo(id).getBef_birth());
-//                UserInfoHistDto userInfoHistDto = new UserInfoHistDto(id, chg_code, bef_info, af_info, id, id);
-//
-//                userInfoHistDao.insertUserInfoHist(userInfoHistDto);
-//                historyInsertSuccess = true;
-//            } else {
-//                historyInsertSuccess = false;
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            historyInsertSuccess = false;
-//        }
-//
-//        // 생년월일 변경 성공 및 변경 이력 추가 성공 시 true 반환
-//        return befBirthUpdateSuccess && historyInsertSuccess;
-//    }
 
     // 4.3. 휴대폰 번호 변경
     // 4.2.1. 휴대폰 번호 변경이력 저장

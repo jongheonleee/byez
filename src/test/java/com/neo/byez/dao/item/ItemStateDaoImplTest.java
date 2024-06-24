@@ -54,7 +54,7 @@ class ItemStateDaoImplTest {
     public void 초기화() throws Exception {
         itemStateDao.deleteAll();
         itemDao.deleteAll();
-        userDao.deleteAllTestUser();
+        userDao.deleteAllUser();
     }
 
     @ParameterizedTest

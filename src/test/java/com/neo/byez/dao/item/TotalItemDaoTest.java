@@ -82,7 +82,7 @@ public class TotalItemDaoTest {
         basketItemDao.deleteAll(dto);
         likeItemDao.deleteAll("1");
         basketDao.deleteAll();
-        userDao.deleteAllTestUser();
+        userDao.deleteAllUser();
         itemDao.deleteAll();
     }
 

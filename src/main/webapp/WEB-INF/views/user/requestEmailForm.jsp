@@ -10,7 +10,6 @@
     <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 
-
 <body>
     <div class="wrapper">
         <div class="title">
@@ -51,6 +50,14 @@
 </body>
 
 <script>
+    window.onload = function() {
+        // showAlert가 true인 경우에만 알림창 뜸
+        let showAlert = "<%= request.getAttribute("showAlert") %>";
+        if (showAlert === "true") {
+            alert('연결된 SNS 계정이 없습니다. 회원가입을 진행해 주세요.');
+        }
+    }
+
     function showVerifyEmailForm() {
         let verificationCodeInput = document.getElementById("verificationDiv");
         verificationCodeInput.style.display = "block"; // 인증번호 입력란 보이도록 변경

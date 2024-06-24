@@ -7,6 +7,9 @@ public class UserDto {
     private String id;
     private String pwd;
     private String name;
+    private String nickname;
+    private String kakao_conn;
+    private String naver_conn;
     private Integer bef_birth;
     private Integer af_birth;
     private String sex;
@@ -101,6 +104,30 @@ public class UserDto {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getKakao_conn() {
+        return kakao_conn;
+    }
+
+    public void setKakao_conn(String kakao_conn) {
+        this.kakao_conn = kakao_conn;
+    }
+
+    public String getNaver_conn() {
+        return naver_conn;
+    }
+
+    public void setNaver_conn(String naver_conn) {
+        this.naver_conn = naver_conn;
     }
 
     public Integer getBef_birth() {
@@ -253,33 +280,5 @@ public class UserDto {
 
     public void setUp_id(String up_id) {
         this.up_id = up_id;
-    }
-
-    @Override
-    public String toString() {
-        return "UserDto{" +
-                "id='" + id + '\'' +
-                ", pwd='" + pwd + '\'' +
-                ", name='" + name + '\'' +
-                ", bef_birth=" + bef_birth +
-                ", af_birth=" + af_birth +
-                ", sex='" + sex + '\'' +
-                ", tel_num='" + tel_num + '\'' +
-                ", mobile_num='" + mobile_num + '\'' +
-                ", email='" + email + '\'' +
-                ", card_corp='" + card_corp + '\'' +
-                ", card_num='" + card_num + '\'' +
-                ", join_Date='" + join_date + '\'' +
-                ", quit_date='" + quit_date + '\'' +
-                ", join_state='" + join_state + '\'' +
-                ", recent_login='" + recent_login + '\'' +
-                ", remark='" + remark + '\'' +
-                ", reg_date='" + reg_date + '\'' +
-                ", reg_id='" + reg_id + '\'' +
-                ", up_date='" + up_date + '\'' +
-                ", up_id='" + up_id + '\'' +
-                ", mail_auth='" + mail_auth + '\'' +
-                ", mail_key='" + mail_key + '\'' +
-                '}';
     }
 }

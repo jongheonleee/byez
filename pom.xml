@@ -78,29 +78,6 @@
       <version>${org.aspectj-version}</version>
     </dependency>
 
-    <!--    &lt;!&ndash; Logging &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.slf4j</groupId>-->
-    <!--      <artifactId>slf4j-api</artifactId>-->
-    <!--      <version>${org.slf4j-version}</version>-->
-    <!--    </dependency>-->
-
-    <!--    <dependency>-->
-    <!--      <groupId>org.slf4j</groupId>-->
-    <!--      <artifactId>jcl-over-slf4j</artifactId>-->
-    <!--      <version>${org.slf4j-version}</version>-->
-    <!--      <scope>runtime</scope>-->
-    <!--    </dependency>-->
-
-    <!--    <dependency>-->
-    <!--      <groupId>org.slf4j</groupId>-->
-    <!--      <artifactId>slf4j-log4j12</artifactId>-->
-    <!--      <version>${org.slf4j-version}</version>-->
-    <!--      <scope>runtime</scope>-->
-    <!--    </dependency>-->
-
-
-
     <!-- slf4j API -->
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -119,13 +96,6 @@
       <artifactId>log4j-api</artifactId>
       <version>${log4j2.version}</version>
     </dependency>
-
-    <!--  SLF4J to Log4j2 bridge  -->
-    <!--    <dependency>-->
-    <!--      <groupId>org.apache.logging.log4j</groupId>-->
-    <!--      <artifactId>log4j-slf4j2-impl</artifactId>-->
-    <!--      <version>${log4j2.version}</version>-->
-    <!--    </dependency>-->
 
     <!-- @Inject -->
     <dependency>
@@ -296,92 +266,6 @@
       <artifactId>spring-security-config</artifactId>
       <version>5.8.12</version>
     </dependency>
-    <!--    &lt;!&ndash; 고객 정보 파트 시작 : 수인 &ndash;&gt;-->
-    <!--    &lt;!&ndash; Java 이메일 인증 API &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>javax.mail</groupId>-->
-    <!--      <artifactId>mail</artifactId>-->
-    <!--      <version>1.4.7</version>-->
-    <!--    </dependency>-->
-
-    <!--    <dependency>-->
-    <!--      <groupId>javax.mail</groupId>-->
-    <!--      <artifactId>javax.mail-api</artifactId>-->
-    <!--      <version>1.5.5</version>-->
-    <!--    </dependency>-->
-
-    <!--    &lt;!&ndash; 비밀번호 암호화를 위한 Maven dependency &ndash;&gt;-->
-    <!--    &lt;!&ndash; Java 11이면 spring security 5.x 버전 사용해야 함. &ndash;&gt;-->
-    <!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.security/spring-security-web &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.security</groupId>-->
-    <!--      <artifactId>spring-security-web</artifactId>-->
-    <!--      <version>5.8.12</version>-->
-    <!--    </dependency>-->
-
-    <!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.security/spring-security-core &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.security</groupId>-->
-    <!--      <artifactId>spring-security-core</artifactId>-->
-    <!--      <version>5.8.12</version>-->
-    <!--    </dependency>-->
-
-    <!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.security/spring-security-config &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.security</groupId>-->
-    <!--      <artifactId>spring-security-config</artifactId>-->
-    <!--      <version>5.8.12</version>-->
-    <!--    </dependency>-->
-    <!--  &lt;!&ndash; 고객 정보 파트 끝 : 수인 &ndash;&gt;-->
-
-    <!-- Java 이메일 인증 API -->
-    <!--    <dependency>-->
-    <!--      <groupId>javax.mail</groupId>-->
-    <!--      <artifactId>mail</artifactId>-->
-    <!--      <version>1.4.3</version>-->
-    <!--    </dependency>-->
-
-    <!-- smtp -->
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.boot</groupId>-->
-    <!--      <artifactId>spring-boot-starter-mail</artifactId>-->
-    <!--      <version>2.0.1.RELEASE</version>-->
-    <!--    </dependency>-->
-
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework</groupId>-->
-    <!--      <artifactId>spring-context-support</artifactId>-->
-    <!--      <version>${org.springframework-version}</version>-->
-    <!--    </dependency>-->
-
-    <!--    <dependency>-->
-    <!--      <groupId>javax.mail</groupId>-->
-    <!--      <artifactId>mail</artifactId>-->
-    <!--      <version>1.4.7</version>-->
-    <!--    </dependency>-->
-
-    <!-- 비밀번호 암호화를 위한 Maven dependency -->
-    <!-- Java 11이면 spring security 5.x 버전 사용해야 함. -->
-    <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.security</groupId>-->
-    <!--      <artifactId>spring-security-web</artifactId>-->
-    <!--      <version>5.8.12</version>-->
-    <!--    </dependency>-->
-
-    <!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.security/spring-security-core &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.security</groupId>-->
-    <!--      <artifactId>spring-security-core</artifactId>-->
-    <!--      <version>5.8.12</version>-->
-    <!--    </dependency>-->
-
-    <!--    &lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.security/spring-security-config &ndash;&gt;-->
-    <!--    <dependency>-->
-    <!--      <groupId>org.springframework.security</groupId>-->
-    <!--      <artifactId>spring-security-config</artifactId>-->
-    <!--      <version>5.8.12</version>-->
-    <!--    </dependency>-->
 
     <!-- @Valid 사용하기 위한 라이브러리 -->
     <dependency>
@@ -389,7 +273,6 @@
       <artifactId>hibernate-validator</artifactId>
       <version>6.2.0.Final</version>
     </dependency>
-
 
   </dependencies>
 
