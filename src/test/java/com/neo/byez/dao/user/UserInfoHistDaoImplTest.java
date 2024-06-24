@@ -43,7 +43,7 @@ public class UserInfoHistDaoImplTest {
     public void addData() throws Exception {
         // clean DB
         userInfoHistDao.deleteAllUserInfoHist();
-        userDao.deleteAllTestUser();
+        userDao.deleteAllUser();
 
         // initialize DB
         for (int i = 1; i <= 50; i++) {

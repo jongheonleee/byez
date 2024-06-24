@@ -12,8 +12,8 @@ public interface UserDao {
     Timestamp selectNow() throws Exception;
 
     // 테스트용 delete 문에 대한 메서드
-    int deleteTestUser(String id) throws Exception;
-    int deleteAllTestUser() throws Exception;
+    int deleteUser(String id) throws Exception;
+    int deleteAllUser() throws Exception;
 
     // *** INSERT, UPDATE 문에 시스템 컬럼 필수로 넣어줄 것
 
@@ -25,6 +25,16 @@ public interface UserDao {
 
     // 회원가입한 전체 고객 조회
     List<UserDto> selectUserAll() throws Exception;
+
+    // UPDATE
+    // SNS 계정 연동 성공 시 닉네임 저장
+    int updateKakaoNickname(String id, String nickname) throws Exception;
+
+    // UPDATE
+    // SNS 계정(네이버) 연동 성공 시 닉네임 저장
+    int updateNaverNickname(String id, String nickname) throws Exception;
+
+    String selectUserIdByNickname(String nickname) throws Exception;
 
     // 1. SELECT (=READ; 조회 기능)
     // 1.1. 로그인
@@ -73,6 +83,6 @@ public interface UserDao {
     // 3.5.2. 생년월일 변경
     // 3.5.3. 핸드폰 번호 변경
     int updateUserEmail(String id, String email) throws Exception;
-    int updateUserBefBirth(String id, Integer bef_birth) throws Exception;
+//    int updateUserBefBirth(String id, Integer bef_birth) throws Exception;
     int updateUserMobileNum(String id, Integer mobile_num) throws Exception;
 }

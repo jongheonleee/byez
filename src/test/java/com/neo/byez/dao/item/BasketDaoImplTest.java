@@ -41,7 +41,7 @@ class BasketDaoImplTest {
     @BeforeEach
     public void 초기화() throws Exception {
         basketDao.deleteAll();
-        userDao.deleteAllTestUser();
+        userDao.deleteAllUser();
     }
 
     @Test

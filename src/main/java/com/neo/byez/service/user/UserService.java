@@ -27,6 +27,21 @@ public interface UserService {
     boolean modifyUserPwd(String id, String pwd) throws Exception;
 //    int modifyUserPwd(String id, String email, String pwd) throws Exception;
 
+    // SNS 계정(카카오) 연동 성공 시 닉네임 저장
+    // 세션에 저장된 아이디로 카카오 계정 연동 여부 조회 시
+    // 연동 안되어 있으면 카카오 닉네임 저장 및 연동여부 Y로 업데이트 함
+    // 연동 되어 있으면 카카오 닉네임 및 연동여부 업데이트 안함
+    boolean saveKakaoNickname(String id, String nickname);
+
+    // SNS 계정(네이버) 연동 성공 시 닉네임 저장
+    // 세션에 저장된 아이디로 네이버 계정 연동 여부 조회 시
+    // 연동 안되어 있으면 네이버 닉네임 저장 및 연동여부 Y로 업데이트 함
+    // 연동 되어 있으면 네이버 닉네임 및 연동여부 업데이트 안함
+    boolean saveNaverNickname(String id, String nickname);
+
+    // Kakao 간편 로그인
+    String getCustIdBySnsNickname(String nickname);
+
     // 2. 회원가입
     // 2.1. 회원가입 시 추가된 새로운 데이터 전체 추가
     // 2.2. 회원가입 시 본인 인증(by 이메일)

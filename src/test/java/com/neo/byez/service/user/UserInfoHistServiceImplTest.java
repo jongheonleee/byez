@@ -29,7 +29,7 @@ public class UserInfoHistServiceImplTest {
     @Before
     public void reset() throws Exception {
         userInfoHistDao.deleteAllUserInfoHist();
-        userDao.deleteAllTestUser();
+        userDao.deleteAllUser();
 
         // initialize DB
         for (int i = 1; i <= 50; i++) {

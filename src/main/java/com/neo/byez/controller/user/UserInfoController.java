@@ -26,14 +26,14 @@ public class UserInfoController {
     private MailService mailService;
     private BCryptPasswordEncoder passwordEncoder; // for PWD 암호화
     private DataValidator dataValidator;
-    private UserInfoHistServiceImpl userInfoHistService;
+//    private UserInfoHistServiceImpl userInfoHistService;
 
     @Autowired
-    public UserInfoController(UserServiceImpl userService, MailService mailService, UserInfoHistServiceImpl userInfoHistService,
+    public UserInfoController(UserServiceImpl userService, MailService mailService,
                               BCryptPasswordEncoder passwordEncoder, DataValidator dataValidator) {
         this.userService = userService;
         this.mailService = mailService;
-        this.userInfoHistService = userInfoHistService;
+//        this.userInfoHistService = userInfoHistService;
         this.passwordEncoder = passwordEncoder;
         this.dataValidator = dataValidator;
     }

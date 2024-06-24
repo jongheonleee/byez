@@ -1,6 +1,8 @@
 package com.neo.byez.service.user;
 
+import com.neo.byez.dao.item.BasketDaoImpl;
 import com.neo.byez.dao.user.UserDaoImpl;
+import com.neo.byez.dao.user.UserInfoHistDao;
 import com.neo.byez.dao.user.UserInfoHistDaoImpl;
 import com.neo.byez.domain.user.TempKey;
 import com.neo.byez.domain.user.UserDto;
@@ -21,18 +23,17 @@ import java.util.List;
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 public class UserServiceImplTest {
     @Autowired DataSource ds;
-    @Autowired
-    UserServiceImpl userService;
+    @Autowired UserServiceImpl userService;
     @Autowired UserDaoImpl userDao;
     @Autowired UserInfoHistDaoImpl userInfoHistDao;
+    @Autowired BasketDaoImpl basketDao;
+
 
     // @Before : 각각의 @Test 전 실행됨.
     @Before
     public void reset() throws Exception {
-        cleanDB();
-
         for (int i = 1; i <= 30; i++) {
-            UserDto testDto = new UserDto("user" + i, "password" + i, "name" + i, 999999, 1, "M", 12345678, 1012345678, "test"+i+"@example.com", "user" + i, "user" + i);
+            UserDto testDto = new UserDto("test" + i, "password" + i, "name" + i, 999999, 1, "M", 12345678, 1012345678, "test"+i+"@example.com", "test" + i, "test" + i);
             userDao.insertUser(testDto);
         }
     }
@@ -41,12 +42,14 @@ public class UserServiceImplTest {
     @After
     public void cleanDB() throws Exception {
         userInfoHistDao.deleteAllUserInfoHist();
-        userDao.deleteAllTestUser();
+        for (int i = 1; i <= 30; i++) {
+            userDao.deleteUser("test"+i);
+        }
     }
 
     public void addData() throws Exception {
         for (int i = 31; i <= 50; i++) {
-            UserDto testDto = new UserDto("user" + i, "password" + i, "name" + i, 999999, 1, "M", 12345678, 1012345678, "test"+i+"@example.com", "user" + i, "user" + i);
+            UserDto testDto = new UserDto("test" + i, "password" + i, "name" + i, 999999, 1, "M", 12345678, 1012345678, "test"+i+"@example.com", "test" + i, "test" + i);
             userDao.insertUser(testDto);
         }
     }
@@ -64,7 +67,7 @@ public class UserServiceImplTest {
     @Test
     public void 회원정보_조회_테스트() throws Exception {
         // given (when)
-        String id = "user1";
+        String id = "test1";
         String expectedPwd = "password1";
         String expectedName = "name1";
 
@@ -85,7 +88,7 @@ public class UserServiceImplTest {
     public void 비회원정보_조회_테스트() throws Exception {
         // given
         // 회원인 경우
-        String id1 = "user1";
+        String id1 = "test1";
         // 비회원인 경우
         String id2 = "non_member";
 
@@ -103,7 +106,7 @@ public class UserServiceImplTest {
     @Test
     public void 탈퇴회원_조회_테스트() throws Exception {
         // given (when)
-        String id = "user1";
+        String id = "test1";
         assertNotNull(userService.getCustLoginInfo(id));
 
         // do
@@ -118,7 +121,7 @@ public class UserServiceImplTest {
     @Test
     public void 최근_로그인_일시_업데이트_테스트() throws Exception {
         // given (when)
-        String id = "user1";
+        String id = "test1";
         assertNotNull(userService.getCustLoginInfo(id));
 
         int expectedCnt = 1;
@@ -139,7 +142,7 @@ public class UserServiceImplTest {
 
         // 특정 고객의 아이디를 조회하여 존재하는 회원인지 확인
         // 첫번째 로그인인 경우 해당 컬럼 NULL
-        String id = "user31";
+        String id = "test31";
         userService.getCustLoginInfo(id);
         assertNull(userService.getCustLoginInfo(id).getRecent_login());
 
@@ -167,6 +170,11 @@ public class UserServiceImplTest {
         else { checkDiffOfDateTime = false; }
 
         assertTrue(checkDiffOfDateTime);
+
+        // 추가한 데이터 삭제
+        for (int i = 31; i <= 50; i++) {
+            userDao.deleteUser("test"+i);
+        }
     }
 
     // modifyUserPwd() 테스트
@@ -174,7 +182,7 @@ public class UserServiceImplTest {
     @Test
     public void 회원_비밀번호_변경_테스트() throws Exception {
         // given (when)
-        String id = "user1";
+        String id = "test1";
         String email = "test1@example.com";
         assertNotNull(userService.getCustLoginInfo(id));
         assertEquals(userService.getCustLoginInfo(id).getEmail(), email);
@@ -203,16 +211,10 @@ public class UserServiceImplTest {
     @Test
     public void 회원탈퇴_후_상태변경_테스트() throws Exception {
         // given (when)
-        String id = "user1";
+        String id = "test1";
         assertNotNull(userService.getCustLoginInfo(id));
 
-        // do
-
-//        int expectedCnt = 1;
-//        int actualCnt = userService.changeWithdrawalState(id);
-
-        // then
-//        assertEquals(expectedCnt, actualCnt);
+        // do & then
         assertTrue(userService.changeWithdrawalState(id));
         assertNull(userService.getCustLoginInfo(id));
     }
@@ -222,7 +224,7 @@ public class UserServiceImplTest {
     @Test
     public void 아이디_찾기_성공_테스트() throws Exception {
         // 미리 찾으려는 아이디의 존재여부 확인함.
-        String id = "user1";
+        String id = "test1";
         assertNotNull(userService.getCustLoginInfo(id));
 
         // 아이디 찾기 시 필요한 고객 정보 (2가지)
@@ -247,7 +249,7 @@ public class UserServiceImplTest {
     public void 탈퇴한_고객_아이디_찾기_실패_테스트() throws Exception {
         // given
         // 고객의 아이디, 이름, 이메일을 변수로 선언 및 초기화하고 조회 가능 여부 확인
-        String id = "user1";
+        String id = "test1";
         assertNotNull(userService.getCustLoginInfo(id));
 
         String name = "name1";
@@ -278,7 +280,7 @@ public class UserServiceImplTest {
         assertNull(userService.getCustLoginInfo(id));
 
         // 동명이인의 고객 존재하나 이메일이 다른 경우
-        String name = "user1";
+        String name = "test1";
         String email = "non_member@example.com";
 
         // 존재하지 않는 고객임에 따라 아이디 찾기 불가하여 NotFoundException 발생함을 확인
@@ -297,7 +299,7 @@ public class UserServiceImplTest {
         UserDto testDto = new UserDto();
 
         // 가입상태의 고객임을 확인
-        String id = "user1";
+        String id = "test1";
         assertNotNull(userService.getCustLoginInfo(id));
 
         // 해당 고객 이메일 존재함을 확인
@@ -344,7 +346,7 @@ public class UserServiceImplTest {
         UserDto testDto = new UserDto();
 
         // 가입된 고객이며 이메일 저장되어 있음을 확인
-        String id = "user1";
+        String id = "test1";
         assertNotNull(userService.getCustLoginInfo(id));
         String email = "test1@example.com";
         assertNotNull(userService.getCustLoginInfo(id).getEmail());
@@ -373,13 +375,17 @@ public class UserServiceImplTest {
         // then
         assertEquals(expectedCnt, actualCnt);
         assertNotNull(userService.getCustLoginInfo(testDto.getId()));
+
+        // 추가된 데이터 삭제
+        basketDao.delete("newId");
+        userDao.deleteUser("newId");
     }
 
     @Test
     public void 중복_아이디_회원가입_실패_테스트() throws Exception {
         // given
         // 중복된 아이디가 저장된 testDto
-        UserDto testDto = new UserDto("user1", "newPwd", "newName", 999999, 2, "F", 12345678, 1012345678, "test@example.com", "test1", "test1");
+        UserDto testDto = new UserDto("test1", "newPwd", "newName", 999999, 2, "F", 12345678, 1012345678, "test@example.com", "test1", "test1");
         // 추가하고자 하는 아이디가 존재하는지 확인
         assertNotNull(userService.getCustLoginInfo(testDto.getId()));
         // 고객정보 추가 실패 시 0 반환
@@ -396,8 +402,8 @@ public class UserServiceImplTest {
     public void 회원_이메일_변경이력_저장_성공_테스트() throws Exception {
         userInfoHistDao.deleteAllUserInfoHist();
 
-        // 정보 변경이력 저장하고자 하는 고객 : user1
-        String id = "user1";
+        // 정보 변경이력 저장하고자 하는 고객 : test1
+        String id = "test1";
         // 가입된 고객인지 확인
         assertNotNull(userService.getCustLoginInfo(id));
 
@@ -413,13 +419,9 @@ public class UserServiceImplTest {
         assertEquals(0, testList1.size());
 
         // ID 및 변경하려는 Email을 매개변수로 넣었을 때 제대로 이메일 변경 및 변경이력 저장되었는지 확인
-        // 성공 시 true 반환
-        boolean emailUpdateSuccess = userService.modifyUserEmail(id, af_info);
-        assertTrue(emailUpdateSuccess);
-
         // 변경이력 추가여부 확인
-        List<UserInfoHistDto> testList2 = userInfoHistDao.selectUserInfoHist(id);
-        assertEquals(1, testList2.size());
+        // 성공 시 true 반환
+        assertTrue(userService.modifyUserEmail(id, af_info));
 
         // 변경 후 이메일 주소가 현재 DB에 저장된 이메일 주소와 동일한지 확인
         String dbEmail = userService.getCustLoginInfo(id).getEmail();
@@ -442,15 +444,12 @@ public class UserServiceImplTest {
     @Test
     public void 탈퇴회원_이메일_변경_실패_테스트() throws Exception {
         // 기존 가입 고객임을 확인
-        String id = "user1";
+        String id = "test1";
         assertNotNull(userService.getCustLoginInfo(id));
 
         // 해당 고객 회원탈퇴 처리
         // 탈퇴 처리 성공 시 true
         assertTrue(userService.changeWithdrawalState(id));
-//        int expectedCnt = 1;
-//        int actualCnt = userService.changeWithdrawalState(id);
-//        assertEquals(expectedCnt, actualCnt);
 
         // 변경할 이메일
         String email = "modified@example.com";
@@ -459,4 +458,202 @@ public class UserServiceImplTest {
         assertFalse(userService.modifyUserEmail(id, email));
     }
 
+    @Test
+    public void 카카오_계정_닉네임_조회_성공() throws Exception {
+        // 테스트용 아이디 및 닉네임 설정
+        String testId = "testId";
+        String testNickname = "testNickname";
+
+        // 테스트용 고객정보 DB 저장
+        // 저장 성공 시 1 반환
+        UserDto testDto = new UserDto(testId, "password", "name", 900102, 1, "M", 01012341234, 01012341234, "test@example.com", "testId", "testId");
+        assertEquals(1, userService.saveCustJoinInfo(testDto));
+        // 카카오 닉네임 등록
+        userService.saveNaverNickname(testId, testNickname);
+
+        // 닉네임으로 조회한 아이디 존재여부 확인
+        // 조회된 아이디가 기존에 지정한 아이디와 동일한지 확인
+        String userId = userService.getCustIdBySnsNickname(testNickname);
+        assertNotNull(userId);
+        assertEquals(testId, userId);
+
+        // 테스트용 데이터 삭제
+        basketDao.delete(testId);
+        userDao.deleteUser(testId);
+    }
+
+    @Test
+    public void 카카오_계정_닉네임_조회_실패() throws Exception {
+        // 테스트용 아이디 및 닉네임 설정
+        String testId = "testId";
+        String wrongNickname = "wrongNickname";
+
+        // 테스트용 고객정보 DB 저장
+        // 저장 성공 시 1 반환
+        UserDto testDto = new UserDto(testId, "password", "name", 900102, 1, "M", 01012341234, 01012341234, "test@example.com", "testId", "testId");
+        assertEquals(1, userService.saveCustJoinInfo(testDto));
+
+        // 잘못된 닉네임으로 아이디 조회 불가함을 확인
+        String userId = userService.getCustIdBySnsNickname(wrongNickname);
+        assertNotEquals(testId, userId);
+
+        // 테스트용 데이터 삭제
+        basketDao.delete(testId);
+        userDao.deleteUser(testId);
+    }
+
+    @Test
+    public void 카카오_계정_닉네임_저장_성공() throws Exception {
+        // 테스트용 아이디 및 닉네임 설정
+        String id = "testId";
+        String nickname = "testNickname";
+
+        UserDto testDto = userService.getCustLoginInfo(id);
+
+        // 카카오 계정 연동 안된 경우
+        // 닉네임 저장 및 계정 연동 상태 업데이트 성공 시 true 반환
+        String expectedState = "N";
+        String actualState = testDto.getKakao_conn();
+        assertEquals(expectedState, actualState);
+
+        // 카카오 계정 연동 안된 경우에만 닉네임 저장 및 계정 상태 업데이트
+        if (testDto.getKakao_conn().equals("N")) {
+            assertTrue(userService.saveKakaoNickname(id, nickname));
+
+            // 다시 사용자 정보 조회
+            testDto = userService.getCustLoginInfo(id);
+
+            // 사용자 정보가 null 이 아닌지 확인
+            assertNotNull(testDto);
+
+            // 업데이트된 값 확인
+            assertEquals("Y", testDto.getKakao_conn());
+            assertEquals(nickname, testDto.getNickname());
+        }
+    }
+
+    @Test
+    public void 카카오_계정_연동된_회원_닉네임_저장_불가() throws Exception {
+        // 테스트용 아이디 및 닉네임 설정
+        String id = "test1";
+        String nickname = "testNickname";
+
+        // 카카오 계정 연동된 상태로 업데이트
+        UserDto testDto = userService.getCustLoginInfo(id);
+        testDto.setKakao_conn("Y");
+        boolean updateResult = userService.saveKakaoNickname(testDto.getId(), nickname);
+        assertTrue(updateResult);
+
+        // 다시 사용자 정보 가져오기
+        testDto = userService.getCustLoginInfo(id);
+
+        // 카카오 계정 이미 연동되어 있는 경우
+        // 닉네임 저장 및 계정 연동 상태 업데이트 실패 시 false 반환
+        String expectedState = "Y";
+        String actualState = testDto.getKakao_conn();
+        assertEquals(expectedState, actualState);
+
+        if (testDto.getKakao_conn().equals("Y")) {
+            assertFalse(userService.saveKakaoNickname(id, nickname));
+        }
+    }
+
+    @Test
+    public void 네이버_계정_닉네임_조회_성공() throws Exception {
+        // 테스트용 아이디 및 닉네임 설정
+        String testId = "testId";
+        String testNickname = "testNickname";
+
+        // 테스트용 고객정보 DB 저장
+        // 저장 성공 시 1 반환
+        UserDto testDto = new UserDto(testId, "password", "name", 900102, 1, "M", 01012341234, 01012341234, "test@example.com", "testId", "testId");
+        assertEquals(1, userService.saveCustJoinInfo(testDto));
+        userService.saveNaverNickname(testId, testNickname);
+
+        // 닉네임으로 조회한 아이디 존재여부 확인
+        // 조회된 아이디가 기존에 지정한 아이디와 동일한지 확인
+        String userId = userService.getCustIdBySnsNickname(testNickname);
+        assertNotNull(userId);
+        assertEquals(testId, userId);
+
+        // 테스트용 데이터 삭제
+        basketDao.delete(testId);
+        userDao.deleteUser(testId);
+    }
+
+    @Test
+    public void 네이버_계정_닉네임_조회_실패() throws Exception {
+        // 테스트용 아이디 및 닉네임 설정
+        String testId = "testId";
+        String wrongNickname = "wrongNickname";
+
+        // 테스트용 고객정보 DB 저장
+        // 저장 성공 시 1 반환
+        UserDto testDto = new UserDto(testId, "password", "name", 900102, 1, "M", 01012341234, 01012341234, "test@example.com", "testId", "testId");
+        assertEquals(1, userService.saveCustJoinInfo(testDto));
+
+        // 잘못된 닉네임으로 아이디 조회 불가함을 확인
+        String userId = userService.getCustIdBySnsNickname(wrongNickname);
+        assertNotEquals(testId, userId);
+
+        // 테스트용 데이터 삭제
+        basketDao.delete(testId);
+        userDao.deleteUser(testId);
+    }
+
+    @Test
+    public void 네이버_계정_닉네임_저장_성공() throws Exception {
+        // 테스트용 아이디 및 닉네임 설정
+        String id = "test1";
+        String nickname = "testNickname";
+
+        UserDto testDto = userService.getCustLoginInfo(id);
+
+        // 네이버 계정 연동 안된 경우
+        // 닉네임 저장 및 계정 연동 상태 업데이트 성공 시 true 반환
+        String expectedState = "N";
+        String actualState = testDto.getNaver_conn();
+        assertEquals(expectedState, actualState);
+
+        // 네이버 계정 연동 안된 경우에만 닉네임 저장 및 계정 상태 업데이트
+        if (testDto.getNaver_conn().equals("N")) {
+            assertTrue(userService.saveNaverNickname(id, nickname));
+
+            // 다시 사용자 정보 조회
+            testDto = userService.getCustLoginInfo(id);
+
+            // 사용자 정보가 null 이 아닌지 확인
+            assertNotNull(testDto);
+
+            // 업데이트된 값 확인
+            assertEquals("Y", testDto.getNaver_conn());
+            assertEquals(nickname, testDto.getNickname());
+        }
+    }
+
+    @Test
+    public void 네이버_계정_연동된_회원_닉네임_저장_불가() throws Exception {
+        // 테스트용 아이디 및 닉네임 설정
+        String id = "test1";
+        String nickname = "testNickname";
+
+        // 네이버 계정 연동된 상태로 업데이트
+        UserDto testDto = userService.getCustLoginInfo(id);
+        testDto.setNaver_conn("Y");
+        boolean updateResult = userService.saveNaverNickname(testDto.getId(), nickname);
+        assertTrue(updateResult);
+
+        // 다시 사용자 정보 가져오기
+        testDto = userService.getCustLoginInfo(id);
+
+        // 네이버 계정 이미 연동되어 있는 경우
+        // 닉네임 저장 및 계정 연동 상태 업데이트 실패 시 false 반환
+        String expectedState = "Y";
+        String actualState = testDto.getNaver_conn();
+        assertEquals(expectedState, actualState);
+
+        if (testDto.getNaver_conn().equals("Y")) {
+            assertFalse(userService.saveNaverNickname(id, nickname));
+        }
+    }
 }

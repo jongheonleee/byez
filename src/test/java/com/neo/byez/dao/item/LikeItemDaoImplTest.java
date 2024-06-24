@@ -64,7 +64,7 @@ class LikeItemDaoImplTest {
             likeDao.deleteAll(user.getId());
         }
 
-        userDao.deleteAllTestUser();
+        userDao.deleteAllUser();
         itemDao.deleteAll();
 
         // 유저 1명 생성

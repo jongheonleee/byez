@@ -6,7 +6,7 @@
 
     <!-- 현재 시간 반환하는 SQL 문 -->
     <select id="selectNow" resultType="java.sql.Timestamp">
-        SELECT CURRENT_TIMESTAMP();
+        SELECT CURRENT_TIMESTAMP()
     </select>
 
     <!-- Test 용 데이터 삭제 코드 시작 -->
@@ -51,7 +51,7 @@
     <!-- 주어진 id 값을 사용하여 특정 회원 아이디(id), 비밀번호(pwd), 이름(name) 등의 정보 조회 -->
     <!-- join_state N 이면 탈퇴회원이므로 조회 불가 -->
     <select id="selectUser" parameterType="string" resultType="UserDto">
-        SELECT id, pwd, name, email, bef_birth, mobile_num, mail_key, join_state, recent_login
+        SELECT id, pwd, name, nickname, kakao_conn, naver_conn, email, bef_birth, mobile_num, mail_key, join_state, recent_login
         FROM cust
         WHERE id = #{id}
         AND join_state = 'Y'
@@ -85,6 +85,27 @@
                 'Y', NOW(), 'Y', NOW(), #{id}, NOW(), #{id})
     </insert>
 
+    <!-- SNS 계정(카카오) 인증 시 전달 받은 닉네임 저장 -->
+    <update id="updateKakaoNickname" parameterType="map">
+        UPDATE cust
+        SET nickname = #{nickname}, kakao_conn = 'Y'
+        WHERE id = #{id};
+    </update>
+
+    <!-- SNS 계정(네이버) 인증 시 전달 받은 닉네임 저장 -->
+    <update id="updateNaverNickname" parameterType="map">
+        UPDATE cust
+        SET nickname = #{nickname}, naver_conn = 'Y'
+        WHERE id = #{id};
+    </update>
+
+    <!-- SNS 로그인 시 닉네임으로 고객 아이디 조회 -->
+    <select id="selectUserIdByNickname" parameterType="string" resultType="string">
+        SELECT id
+        FROM cust
+        WHERE nickname = #{nickname}
+    </select>
+
     <!-- 아이디 찾기 : 이메일 인증 시 작성하는 고객명 및 이메일을 조회하여 특정 고객의 아이디 및 인증번호 조회 -->
     <select id="selectUserId" parameterType="UserDto" resultType="UserDto">
         SELECT id, mail_key
@@ -98,7 +119,7 @@
         UPDATE cust
         SET pwd = #{pwd}, up_date = NOW(), up_id = #{id}
         WHERE id = #{id}
-          AND join_state = 'Y'
+        AND join_state = 'Y'
     </update>
 
     <!-- 이메일 인증 : 특정 사용자 식별하여 인증번호 업데이트 -->

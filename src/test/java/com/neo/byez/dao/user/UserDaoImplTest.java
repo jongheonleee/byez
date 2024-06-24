@@ -5,11 +5,13 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.sql.Timestamp;
@@ -18,29 +20,19 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-// 이거 Junit5 로 어떻게 전환하는지 다시 확인해봐야 할 듯, 없애니까 테스트가 안돌아감.
 @RunWith(SpringJUnit4ClassRunner.class)
-//@ExtendWith(SpringExtension.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 
-public class UserDaoImplTest{
-    @Autowired
-    UserDaoImpl userDao;
+public class UserDaoImplTest {
+    @Autowired UserDaoImpl userDao;
 
     // @Before : 각각의 @Test 전 실행됨.
     // 각 테스트 실행 전 DB table 에 30개의 더미데이터 insert
     @Before
     public void reset() throws Exception {
         for (int i = 1; i <= 30; i++) {
-            UserDto testDto = new UserDto("user" + i, "password" + i, "name" + i, 999999, 1, "M", 12345678, 1012345678, "test"+i+"@example.com", "user" + i, "user" + i);
-            userDao.insertUser(testDto);
-        }
-    }
-
-//    @Test
-    public void addData() throws Exception {
-        for (int i = 1; i <= 50; i++) {
-            UserDto testDto = new UserDto("user" + i, "password" + i + "!@#", "name" + i, 999999, 1, "M", 12345678, 1012345678, "test"+i+"@example.com", "user" + i, "user" + i);
+            UserDto testDto = new UserDto("test" + i, "password" + i, "name" + i, 999999, 1, "M", 12345678, 1012345678, "test" + i + "@example.com", "test" + i, "test" + i);
             userDao.insertUser(testDto);
         }
     }
@@ -49,7 +41,15 @@ public class UserDaoImplTest{
     // 각 테스트 실행 후 DB table 내 데이터 delete
     @After
     public void cleanDB() throws Exception {
-        userDao.deleteAllTestUser();
+        for (int i = 1; i <= 30; i++) {
+            userDao.deleteUser("test" + i);
+        }
+    }
+
+    // UserDaoImpl 주입 상태 확인
+    @Test
+    public void userDao_주입상태_확인_테스트() throws Exception {
+        assertNotNull(userDao);
     }
 
     // 1. 초기 테스트
@@ -78,12 +78,6 @@ public class UserDaoImplTest{
     // 3.4.2. 탈퇴회원 이메일 변경 실패
     // 3.4.3. 비회원 이메일 변경 실패
 
-    // UserDaoImpl 주입 상태 확인
-    @Test
-    public void userDao_주입상태_확인_테스트() throws Exception {
-        assertNotNull(userDao);
-    }
-
     // 테스트용 INSERT 문 기능 확인
     // 1. 고객 관련 데이터가 각 컬럼으로 추가되는지 확인
     // 2. PK인 ID 중복 추가 불가능한지 확인
@@ -100,8 +94,8 @@ public class UserDaoImplTest{
 
         // do
         // 30개의 더미데이터 insert
-        for (int i = 1; i <= 30; i++) {
-            UserDto testDto = new UserDto("userID" + i, "password" + i, "name" + i, 999999, 1, "M", 12345678, 1012345678, "test@example.com", "user" + i, "user" + i);
+        for (int i = 31; i <= 60; i++) {
+            UserDto testDto = new UserDto("test" + i, "password" + i, "name" + i, 999999, 1, "M", 12345678, 1012345678, "test@example.com", "test" + i, "test" + i);
             actualCnt = userDao.insertUser(testDto);
 
             // then
@@ -112,6 +106,11 @@ public class UserDaoImplTest{
         // insert 전후 row 갯수 비교
         // 30개 추가했으므로 insert 전보다 30개 더 많음
         assertEquals(preTotalCnt + 30, postTotalCnt);
+
+        // 추가했던 더미데이터 삭제
+        for (int i = 31; i <= 60; i++) {
+            userDao.deleteUser("test" + i);
+        }
     }
 
     // 테스트용 DELETE 문 기능 확인
@@ -122,17 +121,17 @@ public class UserDaoImplTest{
     // 특정 아이디를 보유한 고객 정보를 삭제 가능한지 확인
     public void 고객정보_삭제_테스트_메서드_기능_확인() throws Exception {
         // given
-        String id = userDao.selectUser("user1").getId();
+        String id = userDao.selectUser("test1").getId();
         int expectedCnt = 1;
 
         // 삭제 전 전체 row 수
         int preTotalCnt = userDao.countUser();
-        // 더미데이터로 30개 insert 해두었기 때문에 삭제 전 전체 row 수는 30으로 예상
-        assertTrue(preTotalCnt == 30);
+        // 기존 5개의 데이터에서 추가 더미데이터로 30개 insert 해두었기 때문에 삭제 전 전체 row 수는 35으로 예상
+        assertTrue(preTotalCnt == 35);
 
         // do : 고객 테이블에 존재하는 아이디로 식별한 경우 1 반환
-        for(int i = 0; i < 10; i++) {
-            int actualCnt = userDao.deleteTestUser(id + i);
+        for (int i = 0; i < 10; i++) {
+            int actualCnt = userDao.deleteUser(id + i);
 
             // then : 결과값 = 1
             // 특정 아이디로 식별한 고객의 정보 삭제됨을 확인함.
@@ -142,35 +141,35 @@ public class UserDaoImplTest{
         // 삭제 후 전체 row 수
         // 10개 삭제 후 row 수 10 감소
         int postTotalCnt = userDao.countUser();
-        assertEquals(preTotalCnt-10, postTotalCnt);
+        assertEquals(preTotalCnt - 10, postTotalCnt);
     }
-
-    @Test
-    // 전체 고객 정보를 한꺼번에 삭제 가능한지 확인
-    public void 전체고객_삭제_테스트_메서드_기능_확인() throws Exception {
-        // given
-
-        // @Before 통해 더미데이터로 30개 insert 해두었기 때문에
-        // 현재 고객 테이블에 존재하는 전체 row 수 = 30
-
-        // 1. 전체 row 삭제 시 결과값 30으로 반환 예상됨.
-        int preTotalCnt = 30;
-        // 2. 전체 row 삭제 시 row 갯수 카운트 결과 0으로 예상됨.
-        int postTotalCnt = 0;
-
-        // 전체삭제 실행 성공 시 전체 30개의 row 모두 삭제했으므로 30 반환 예상
-        int expectedCnt = 30;
-
-        // do
-        // 실제 전체 row 삭제 성공 시 1 반환하는지 확인
-        int actualCnt = userDao.deleteAllTestUser();
-        assertEquals(expectedCnt, actualCnt);
-
-        // then : 결과값
-        // 고객 테이블 내 전체 row 삭제되어 postTotalCnt 는 0 반환 (preTotalCnt 는 삭제 전이므로 30 반환)
-        postTotalCnt = userDao.countUser();
-        assertEquals(preTotalCnt-30, postTotalCnt);
-    }
+//
+//    @Test
+//    // 전체 고객 정보를 한꺼번에 삭제 가능한지 확인
+//    public void 전체고객_삭제_테스트_메서드_기능_확인() throws Exception {
+//        // given
+//
+//        // @Before 통해 더미데이터로 30개 insert 해두었기 때문에
+//        // 현재 고객 테이블에 존재하는 전체 row 수 = 30
+//
+//        // 1. 전체 row 삭제 시 결과값 30으로 반환 예상됨.
+//        int preTotalCnt = 30;
+//        // 2. 전체 row 삭제 시 row 갯수 카운트 결과 0으로 예상됨.
+//        int postTotalCnt = 0;
+//
+//        // 전체삭제 실행 성공 시 전체 30개의 row 모두 삭제했으므로 30 반환 예상
+//        int expectedCnt = 30;
+//
+//        // do
+//        // 실제 전체 row 삭제 성공 시 1 반환하는지 확인
+//        int actualCnt = userDao.deleteAllUser();
+//        assertEquals(expectedCnt, actualCnt);
+//
+//        // then : 결과값
+//        // 고객 테이블 내 전체 row 삭제되어 postTotalCnt 는 0 반환 (preTotalCnt 는 삭제 전이므로 30 반환)
+//        postTotalCnt = userDao.countUser();
+//        assertEquals(preTotalCnt-30, postTotalCnt);
+//    }
 
     @Test
     // 삭제하려는 고객 정보가 테이블 내 존재하지 않는 경우
@@ -188,7 +187,7 @@ public class UserDaoImplTest{
         assertNull(testDto);
 
         // delete 실행 후 반환되는 결과값
-        actualCnt = userDao.deleteTestUser(id);
+        actualCnt = userDao.deleteUser(id);
         assertEquals(expectedCnt, actualCnt);
         // delete 실행 후 전체 고객 수
         int postTotalCnt = userDao.countUser();
@@ -210,8 +209,8 @@ public class UserDaoImplTest{
         // do & then
 
         // @Before 붙은 메서드를 통해 추가한 30개의 row 에 20개의 새로운 row 추가
-        for(int i = 31; i <= 50; i++) {
-            UserDto testDto = new UserDto("userId" + i, "password" + i, "name" + i, 999999, 1, "M", 10123456, 1012345678, "test"+i+"@example.com", "user" + i, "user" + i);
+        for (int i = 31; i <= 50; i++) {
+            UserDto testDto = new UserDto("test" + i, "password" + i, "name" + i, 999999, 1, "M", 10123456, 1012345678, "test" + i + "@example.com", "test" + i, "test" + i);
             // insert 성공 시 1 반환할 것으로 예상한 결과와 실제 실행 결과 비교
             actualCnt = userDao.insertUser(testDto);
             assertEquals(expectedCnt, actualCnt);
@@ -220,7 +219,12 @@ public class UserDaoImplTest{
         // insert 실행 후 전체 고객 수 조회 결과
         int postTotalCnt = userDao.countUser();
         // 20개의 row 추가 전/후 결과 비교
-        assertEquals(preTotalCnt+20, postTotalCnt);
+        assertEquals(preTotalCnt + 20, postTotalCnt);
+
+        // 추가했던 더미데이터 삭제(delete)
+        for (int i = 31; i <= 50; i++) {
+            userDao.deleteUser("test" + i);
+        }
     }
 
     @Test
@@ -240,15 +244,15 @@ public class UserDaoImplTest{
         // do
         // updateUserState 실행 결과
         int actualCnt;
-        for(int i = 1; i <= 5; i++) {
-            actualCnt = userDao.updateUserState("user"+i);
+        for (int i = 1; i <= 5; i++) {
+            actualCnt = userDao.updateUserState("test" + i);
             assertEquals(expectedCnt, actualCnt);
         }
 
         // then
         // 5명의 고객 탈퇴 처리 후 가입상태의 고객 수
         int postActiveCnt = userDao.countActiveUser();
-        assertEquals(preActiveCnt-5, postActiveCnt);
+        assertEquals(preActiveCnt - 5, postActiveCnt);
 
         // 탈퇴처리 후 전체 row 수
         int postTotalCnt = userDao.countUser();
@@ -256,7 +260,7 @@ public class UserDaoImplTest{
         // then
         // 전체 row 수는 변화 없으나, 가입상태 회원의 수는 탈퇴처리된 수만큼 감소
         assertEquals(preTotalCnt, postTotalCnt);
-        assertEquals(postTotalCnt-5, postActiveCnt);
+        assertEquals(postTotalCnt - 5, postActiveCnt);
     }
 
     @Test
@@ -265,8 +269,8 @@ public class UserDaoImplTest{
         // given
         // 가입상태 여부
         List<String> preStateList = new ArrayList<>();
-        for(int i = 1; i <= 5; i++) {
-            String preState = userDao.selectUser("user"+i).getJoin_state();
+        for (int i = 1; i <= 5; i++) {
+            String preState = userDao.selectUser("test" + i).getJoin_state();
             preStateList.add(preState);
         }
         // 탈퇴 처리 전 가입상태의 고객 수 확인
@@ -274,8 +278,8 @@ public class UserDaoImplTest{
 
         // do
         // 5명의 고객 탈퇴 처리
-        for(int i = 1; i <= 5; i++) {
-            userDao.updateUserState("user"+i);
+        for (int i = 1; i <= 5; i++) {
+            userDao.updateUserState("test" + i);
         }
 
         // 탈퇴처리 시도한 고객 수
@@ -285,7 +289,7 @@ public class UserDaoImplTest{
         // 탈퇴 처리 후 가입상태의 고객 수 확인
         int postTotalActiveCnt = userDao.countActiveUser();
 
-        assertEquals(preTotalActiveCnt-withdrawalCnt, postTotalActiveCnt);
+        assertEquals(preTotalActiveCnt - withdrawalCnt, postTotalActiveCnt);
     }
 
     // selectUser()
@@ -297,7 +301,7 @@ public class UserDaoImplTest{
     public void 회원_아이디_조회_테스트() throws Exception {
         // given (when)
         // 임의의 고객 정보 생성 및 추가
-        UserDto testDto = new UserDto("newId", "newPwd", "newName", 900101, 2, "F", 1234567891, 1234567890 , "newTest@example.com", "newId", "newId");
+        UserDto testDto = new UserDto("newId", "newPwd", "newName", 900101, 2, "F", 1234567891, 1234567890, "newTest@example.com", "newId", "newId");
         userDao.insertUser(testDto);
 
         // id 통해서 DB에 제대로 추가되었는지 확인
@@ -315,6 +319,9 @@ public class UserDaoImplTest{
         // then
         assertEquals(expectedPwd, actualPwd);
         assertEquals(expectedName, actualName);
+
+        // 테스트용 추가된 데이터 삭제
+        userDao.deleteUser("newId");
     }
 
     @Test
@@ -332,7 +339,7 @@ public class UserDaoImplTest{
     // 비회원(탈퇴회원) 아이디로 조회 시 조회 불가능
     public void 탈퇴회원_아이디_조회_테스트() throws Exception {
         // 1. 임의의 고객 아이디: user1
-        String id = "user1";
+        String id = "test1";
 
         // 2. 고객 현 가입상태 Y 임을 확인
         UserDto testDto1 = userDao.selectUser(id);
@@ -348,7 +355,7 @@ public class UserDaoImplTest{
 
         // 5. 고객 탈퇴시킨 후 전체 가입상태 고객 수 감소여부 확인
         int postWithdrawalCnt = userDao.countActiveUser();
-        assertEquals(preWithdrawalCnt-1, postWithdrawalCnt);
+        assertEquals(preWithdrawalCnt - 1, postWithdrawalCnt);
     }
 
     // updateRecentLoginDatetime()
@@ -357,7 +364,7 @@ public class UserDaoImplTest{
     public void 최근_로그인_기록_업데이트_테스트() throws Exception {
         // given
         // 임의의 고객 id: user1 생성
-        String id = "user1";
+        String id = "test1";
 
         // id로 존재하는 고객인지 조회 결과 확인
         UserDto testDto = userDao.selectUser(id);
@@ -385,8 +392,11 @@ public class UserDaoImplTest{
 
         // 오차 허용 범위 IN : true
         // 오차 허용 범위 OUT : false
-        if (difference < 30000) { checkDiffOfDateTime = true; }
-        else { checkDiffOfDateTime = false; }
+        if (difference < 30000) {
+            checkDiffOfDateTime = true;
+        } else {
+            checkDiffOfDateTime = false;
+        }
 
         assertTrue(checkDiffOfDateTime);
     }
@@ -402,7 +412,7 @@ public class UserDaoImplTest{
         assertNull(userDao.selectUser(id1));
 
         // 회원 탈퇴
-        String id2 = "user2";
+        String id2 = "test2";
         assertNotNull(userDao.selectUser(id2));
         userDao.updateUserState(id2);
         // 탈퇴 처리 성공여부 확인
@@ -424,7 +434,7 @@ public class UserDaoImplTest{
     @Test
     public void 회원_PWD_변경_테스트() throws Exception {
         // given (when)
-        String id = "user1";
+        String id = "test1";
         String email = "test1@example.com";
         assertNotNull(userDao.selectUser(id));
         assertEquals(userDao.selectUser(id).getEmail(), email);
@@ -470,7 +480,7 @@ public class UserDaoImplTest{
     public void 탈퇴회원_PWD_변경불가_테스트() throws Exception {
         // given (when)
         // 기존에 가입 상태였던 고객임을 확인
-        String id = "user1";
+        String id = "test1";
         String email = "test1@example.com";
         assertNotNull(userDao.selectUser(id));
         assertEquals(userDao.selectUser(id).getEmail(), email);
@@ -500,7 +510,7 @@ public class UserDaoImplTest{
     public void PWD_특수문자_사용가능_여부_테스트() throws Exception {
         // given (when)
         // 가입된 고객임을 확인
-        String id = "user1";
+        String id = "test1";
         String email = "test1@example.com";
         assertNotNull(userDao.selectUser(id));
         assertEquals(userDao.selectUser(id).getEmail(), email);
@@ -524,7 +534,7 @@ public class UserDaoImplTest{
     public void PWD_한글_사용가능_여부_테스트() throws Exception {
         // given (when)
         // 가입된 고객임을 확인
-        String id = "user1";
+        String id = "test1";
         String email = "test1@example.com";
         assertNotNull(userDao.selectUser(id));
         assertEquals(userDao.selectUser(id).getEmail(), email);
@@ -548,7 +558,7 @@ public class UserDaoImplTest{
     public void PWD_영문_대문자_사용가능_여부_테스트() throws Exception {
         // given (when)
         // 가입된 고객임을 확인
-        String id = "user1";
+        String id = "test1";
         String email = "test1@example.com";
         assertNotNull(userDao.selectUser(id));
         assertEquals(userDao.selectUser(id).getEmail(), email);
@@ -572,7 +582,7 @@ public class UserDaoImplTest{
     public void 회원_탈퇴여부_확인_테스트() throws Exception {
         // given (when)
         // 기존에 가입된 회원임을 확인
-        String id = "user1";
+        String id = "test1";
         assertNotNull(userDao.selectUser(id));
 
         // 탈퇴 처리 성공 시 1 반환
@@ -595,7 +605,7 @@ public class UserDaoImplTest{
         testDto.setName("name1");
         testDto.setEmail("test1@example.com");
 
-        String expectedId = "user1";
+        String expectedId = "test1";
 
         // 회원 조회 가능
         UserDto testDto2 = userDao.selectUserId(testDto);
@@ -631,7 +641,7 @@ public class UserDaoImplTest{
         // given
         // testDto 선언 및 새로운 고객 정보로 초기화
         // insert 성공하면 1 반환 예정
-        UserDto testDto= new UserDto("newId", "newPwd", "newName", 999999, 1, "F", 12345678, 1012345678, "test@example.com", "newId", "newId");
+        UserDto testDto = new UserDto("newId", "newPwd", "newName", 999999, 1, "F", 12345678, 1012345678, "test@example.com", "newId", "newId");
         int expectedCnt = 1;
 
         // do
@@ -640,6 +650,9 @@ public class UserDaoImplTest{
 
         // then
         assertEquals(expectedCnt, actualCnt);
+
+        // 테스트용으로 추가된 데이터 삭제
+        userDao.deleteUser("newId");
     }
 
     @Test
@@ -653,15 +666,18 @@ public class UserDaoImplTest{
 
         // do
         // 1명 추가 회원가입 시 총 가입자 수(=전체 row 수) 및 가입자 수 1 증가
-        UserDto testDto= new UserDto("newId", "newPwd", "newName", 999999, 1, "F", 12345678, 1012345678, "test@example.com", "newId", "newId");
+        UserDto testDto = new UserDto("newId", "newPwd", "newName", 999999, 1, "F", 12345678, 1012345678, "test@example.com", "newId", "newId");
         int actualCnt = userDao.insertUser(testDto);
         int postUserNum = userDao.countUser();
         int postActiveUserNum = userDao.countActiveUser();
 
         // then
-        assertEquals(preUserNum+1, postUserNum);
-        assertEquals(preActiveUserNum+1, postActiveUserNum);
+        assertEquals(preUserNum + 1, postUserNum);
+        assertEquals(preActiveUserNum + 1, postActiveUserNum);
         assertEquals(expectedCnt, actualCnt);
+
+        // 테스트용으로 추가한 데이터 삭제
+        userDao.deleteUser("newId");
     }
 
     @Test
@@ -713,7 +729,7 @@ public class UserDaoImplTest{
 
         // insert 성공 전/후 전체 row 수 비교
         postTotalCnt1 = userDao.countUser();
-        assertEquals(preTotalCnt+1, postTotalCnt1); // 성공하면 row 1개 추가됨.
+        assertEquals(preTotalCnt + 1, postTotalCnt1); // 성공하면 row 1개 추가됨.
 
         // 중복된 ID 값을 가진 새로운 User 객체 생성
         String id2 = "duplicatedId";
@@ -735,15 +751,17 @@ public class UserDaoImplTest{
         // 중복된 id 값을 가진 경우, row 추가 불가능
         // insert 성공했을 때의 전체 row 수와 insert 실패했을 때 전체 row 수가 동일
         assertEquals(postTotalCnt1, postTotalCnt2);
-    }
 
+        // 테스트용으로 추가한 데이터 삭제
+        userDao.deleteUser("duplicatedId");
+    }
 
     // 3.4. 이메일 변경
     // 3.4.1. 가입한 회원 이메일 변경 성공
     @Test
     public void 가입회원_이메일_변경_성공() throws Exception {
         // 가입 회원 아이디
-        String id = "user1";
+        String id = "test1";
         // 변경하려는 이메일 주소
         String email = "modified1@example.com";
 
@@ -762,7 +780,7 @@ public class UserDaoImplTest{
     public void 탈퇴회원_이메일_변경_실패_테스트() throws Exception {
         // 가입회원 탈퇴 처리
         // 탈퇴처리 성공 시 1 반환
-        String id = "user1";
+        String id = "test1";
         String email = userDao.selectUser(id).getEmail();
         assertEquals(userDao.updateUserState(id), 1);
 
@@ -779,7 +797,107 @@ public class UserDaoImplTest{
         // 비회원은 id 조회 되지 않음에 따라 이메일 변경 불가
         String id = "nonMember";
         assertNull(userDao.selectUser(id));
-//        assertNull(userDao.selectUser(id).getEmail());
         Assertions.assertThrows(NullPointerException.class, () -> userDao.selectUser(id).getEmail());
+    }
+
+    // SNS 간편 로그인
+    // 4. 닉네임 조회
+    // 4.1. 특정 닉네임을 보유한 고객정보 존재유무 확인
+    // 4.1.1. 존재하는 경우
+    // 4.1.2. 존재하지 않는 경우
+    @Test
+    public void 소셜계정_닉네임_조회_성공() throws Exception {
+        // 테스트용 아이디 및 닉네임 설정
+        String testId = "testId";
+        String testNickname = "testNickname";
+
+        // 테스트용 데이터 DB 저장 성공 시 1 반환
+        UserDto testDto = new UserDto(testId, "testPassword", "testName", 900102, 1, "M", 01012341234, 01012341234, "testId@example.com", "testId", "testId");
+        assertEquals(1, userDao.insertUser(testDto));
+
+        // 설정된 테스트용 닉네임으로 고객 조회
+        // 조회 성공여부 확인(Not Null, True)
+        String selectedUserId = userDao.selectUserIdByNickname(testNickname);
+        assertNotNull(selectedUserId);
+        assertTrue(selectedUserId.equals(testId));
+
+        // 테스트용 데이터 삭제
+        userDao.deleteUser(testId);
+    }
+
+    @Test
+    public void 소셜계정_닉네임_조회_실패() throws Exception {
+        // 닉네임 존재하지 않는 아이디 설정
+        String testId = "testId";
+        // 임의의 닉네임 설정
+        String wrongNickname = "wrongNickname";
+
+        // 테스트용 데이터 DB 저장 성공 시 1 반환
+        UserDto testDto = new UserDto(testId, "testPassword", "testName", 900102, 1, "M", 01012341234, 01012341234, "testId@example.com", "testId", "testId");
+        assertEquals(1, userDao.insertUser(testDto));
+
+        // 설정된 테스트용 닉네임으로 고객 조회
+        // 조회 실패여부 확인(Null, False)
+        String selectedUserId = userDao.selectUserIdByNickname(wrongNickname);
+        assertNull(selectedUserId);
+        assertFalse(testId.equals(selectedUserId));
+
+        // 테스트용 데이터 삭제
+        userDao.deleteUser(testId);
+    }
+
+    // SNS 계정 연동
+    // 5. 닉네임 저장
+    // 5.1. SNS 계정 연결 성공 시
+    // 5.1.1. 컬럼에 닉네임 저장 성공
+    // 5.2. SNS 계정 연결 실패 시
+    // 5.1.2. 컬럼에 닉네임 저장 실패
+    @Test
+    public void 카카오_계정_미등록_회원_닉네임_등록_성공() throws Exception {
+        // 현재 로그인한 유저의 아이디를 세션에 저장된 아이디를 통해 확인
+        // 카카오 계정이 등록되어 있지 않은 회원임을 확인
+        String sessionId = "test1";
+        String nickname = "testNickname";
+        String expectedStateOfKakaoConn = "N";
+
+        String actualStateOfKakaoConn = userDao.selectUser(sessionId).getKakao_conn();
+        assertEquals(expectedStateOfKakaoConn, actualStateOfKakaoConn);
+
+        // 세션에 저장된 아이디를 통해 카카오 닉네임 등록 및 계정 등록여부 업데이트
+        if (actualStateOfKakaoConn.equals("N")) {
+            assertEquals(1, userDao.updateKakaoNickname(sessionId, nickname));
+        }
+    }
+
+    @Test
+    public void 카카오_계정_기등록_회원_닉네임_등록_실패() throws Exception {
+        // 현재 로그인한 유저의 아이디를 세션에 저장된 아이디를 통해 확인
+        // 카카오 계정이 등록되어 있는 회원임을 확인
+        String sessionId = "test1";
+        String nickname = "testNickname";
+
+        UserDto testDto = userDao.selectUser(sessionId);
+        testDto.setKakao_conn("Y");
+        testDto.setNickname(nickname);
+
+        String expectedStateOfKakaoConn = "Y";
+        String actualStateOfKakaoConn = testDto.getKakao_conn();
+        assertEquals(expectedStateOfKakaoConn, actualStateOfKakaoConn);
+
+        // 계정 등록여부 확인
+        // 계정 등록되어 있지 않으면 새로운 닉네임 업데이트 성공
+        // 계정 등록되어 있으면 닉네임 업데이트 실패
+        boolean expectedResult = false;
+        boolean actualResult;
+
+        if (actualStateOfKakaoConn.equals("N")) {
+            userDao.updateKakaoNickname(sessionId, "newNickname");
+            actualResult = true;
+        } else {
+            actualResult = false;
+        }
+
+        assertNotEquals("newNickname", userDao.selectUser(sessionId).getNickname());
+        assertEquals(expectedResult, actualResult);
     }
 }

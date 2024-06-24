@@ -33,7 +33,21 @@ tr td:first-of-type {
     font-weight: bold;
     width: 30%;
 }
-
+.sns-kakao td:nth-of-type(3), .sns-naver td:nth-of-type(3) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 53px;
+}
+.kakao-connect, .naver-connect {
+    display: flex;
+    align-items: center;
+}
+.kakao-connect img, .naver-connect img {
+    width: 30px;
+    border-radius: 15px;
+    margin-right: 15px;
+}
 table button {
     width: 130px;
     padding: 10px 0;
@@ -58,12 +72,13 @@ table button:hover {
 .no-bottom {
     border-bottom: 0;
 }
-
-.content tr:nth-of-type(7) {
+.content tr:nth-of-type(5) {
     border-top: 1px solid #bcbcbc;
 }
-
-.content tr:nth-of-type(10) {
+.content tr:nth-of-type(9) {
+    border-top: 1px solid #bcbcbc;
+}
+.content tr:nth-of-type(12) {
     border-top: 1px solid #bcbcbc;
 }
 

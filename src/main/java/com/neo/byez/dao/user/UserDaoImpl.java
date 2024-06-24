@@ -23,13 +23,13 @@ public class UserDaoImpl implements UserDao {
 
     // 테스트용 delete 문
     @Override
-    public int deleteTestUser(String id) throws Exception {
+    public int deleteUser(String id) throws Exception {
         return session.delete(namespace + "deleteTestUser", id);
     }
 
     // 테스트용 deleteAll 문
     @Override
-    public int deleteAllTestUser() throws Exception {
+    public int deleteAllUser() throws Exception {
         return session.delete(namespace + "deleteAllTestUser");
     }
 
@@ -63,7 +63,33 @@ public class UserDaoImpl implements UserDao {
         return session.selectList(namespace + "selectUserAll");
     }
 
+    // UPDATE
+    // SNS 계정(카카오) 연동 성공 시 닉네임 저장
+    @Override
+    public int updateKakaoNickname(String id, String nickname) throws Exception {
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id);
+        map.put("nickname", nickname);
+        return session.update(namespace +"updateKakaoNickname", map);
+    }
+
+    // UPDATE
+    // SNS 계정(네이버) 연동 성공 시 닉네임 저장
+    @Override
+    public int updateNaverNickname(String id, String nickname) throws Exception {
+        Map<String, String> map = new HashMap<>();
+        map.put("id", id);
+        map.put("nickname", nickname);
+        return session.update(namespace +"updateNaverNickname", map);
+    }
+
     // SELECT
+    // 닉네임으로 아이디 조회하여 특정 아이디 반환
+    @Override
+    public String selectUserIdByNickname(String nickname) throws Exception {
+        return session.selectOne(namespace + "selectUserIdByNickname", nickname);
+    }
+
     // 1. 로그인
     // 1.1. 아이디로 식별된 특정 고객 조회
     // 1.1.1. view 에서 입력한 id 를 매개변수로 받고 UserDto 인스턴스에 고객 정보 담아서 반환
@@ -136,14 +162,14 @@ public class UserDaoImpl implements UserDao {
         return session.update(namespace + "updateUserEmail", map);
     }
 
-    // 5.2. 생년월일 변경
-    @Override
-    public int updateUserBefBirth(String id, Integer bef_birth) throws Exception {
-        Map<String, Object> map = new HashMap<>();
-        map.put("id", id);
-        map.put("bef_birth", bef_birth);
-        return session.update(namespace + "updateUserBefBirth", map);
-    }
+//    // 5.2. 생년월일 변경
+//    @Override
+//    public int updateUserBefBirth(String id, Integer bef_birth) throws Exception {
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("id", id);
+//        map.put("bef_birth", bef_birth);
+//        return session.update(namespace + "updateUserBefBirth", map);
+//    }
 
     // 5.3. 핸드폰 번호 변경
     @Override

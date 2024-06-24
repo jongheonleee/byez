@@ -81,7 +81,7 @@ public class SignUpController {
 
     // 1.1.2. 인증 번호 비교하여 본인 인증 성공/실패 확인
     // 1.1.2.1. 본인 인증 실패 시 다시 시도
-    // 1.1.2.2. 본인 인증 성공 시 register_old.jsp (회원가입 정보 입력 페이지) 로 이동
+    // 1.1.2.2. 본인 인증 성공 시 register.jsp 페이지 로 이동
     @PostMapping("/verifyEmail")
     public ResponseEntity<String> verifyEmailAuthCode(String verificationCode) {
         try {

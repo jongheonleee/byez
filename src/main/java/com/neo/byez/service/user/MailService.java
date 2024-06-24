@@ -10,10 +10,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MailService {
-    private final String subject = "[EZBY 인증메일 입니다.]";
-    private final String title = "<h1>EZBY 메일인증</h1>";
-    private final String content = "<br>EZBY를 찾아주셔서 감사합니다!" + "<br>인증번호: ";
-    private final String senderName = "EZBY";
+    // 인증메일에 포함되는 내용들 상수로 관리
+    private final String subject = "[BYEZ] 인증메일 입니다.";
+    private final String title = "<h1>BYEZ 메일인증</h1>";
+    private final String content = "<br>BYEZ를 찾아주셔서 감사합니다." + "<br>인증번호: ";
+    private final String senderName = "BYEZ";
     private final String senderEmail = "parksuuuun@gmail.com";
 
     @Autowired UserDaoImpl userDao;

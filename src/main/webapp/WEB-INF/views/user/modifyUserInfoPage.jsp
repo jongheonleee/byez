@@ -41,6 +41,31 @@
                         <td></td>
                     </tr>
                     <tr class="no-bottom">
+                        <td>닉네임</td>
+                        <td>${userDto.nickname}</td>
+                        <td><button type="button" id="sns-connect" onclick="showSNSList()">계정 연결</button></td>
+                    </tr>
+                    <tr class="hidden no-bottom sns-kakao">
+                        <td></td>
+                        <td>Kakao</td>
+                        <td>
+                            <a class="kakao-connect" href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=873c82dfa901cd280c11ee222e944826&redirect_uri=http://localhost:8080/kakaoConnection">
+                                <img src="/img/kakao.png" alt="Kakao 로그인" class="login-logo">
+                                <span>카카오 연동</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="hidden sns-naver">
+                        <td></td>
+                        <td>Naver</td>
+                        <td >
+                            <a class="naver-connect" href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=nV14togkwJUZVzs2_YnF&state=STATE_STRING&redirect_uri=http://localhost:8080/naverConnection">
+                                <img src="/img/naver.png" alt="Naver 로그인">
+                                <span>네이버 연동</span>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr class="no-bottom">
                         <td>비밀번호</td>
                         <td>********</td>
                         <td><button id="modify-pwd-btn" onclick="showPwdChangeInput()">비밀번호 변경</button></td>
@@ -58,7 +83,7 @@
                         <td><input type="password" id="newPwd1" name="pwd"></td>
                         <td></td>
                     </tr>
-                    <tr class="hidden no-bottom new-pwd-show">
+                    <tr class="hidden new-pwd-show">
                         <td>비밀번호 확인</td>
                         <td>
                             <input type="password" id="newPwd2" name="pwd" oninput="checkPwdMatch()">
@@ -66,7 +91,7 @@
                         </td>
                         <td><button type="button" id="saveNewPwdBtn" disabled>비밀번호 저장</button></td>
                     </tr>
-                    <tr class="hidden no-bottom">
+                    <tr class="hidden">
                         <td></td>
                         <td id="wrong-pwd-format-msg">${wrongFormat}</td>
                         <td></td>
@@ -134,10 +159,17 @@
     <jsp:include page="/WEB-INF/views/include/quick.jsp"/>
 </body>
 
-<script src="/js/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/js/nav.js"></script>
 <script src="/js/aside.js"></script>
 <script>
+    window.onload = function() {
+        let msg = "${param.msg}";
+        if (msg !== null && msg !== "") {
+            alert(msg);
+        }
+    }
+
     function inputNum(element) {
         element.value = element.value.replace(/[^0-9]/g, "");
     }
@@ -165,6 +197,19 @@
         } else {
             msg.innerHTML = "";
             saveBtn.disabled = false;
+        }
+    }
+
+    function showSNSList() {
+        let snsKakao = document.getElementsByClassName("sns-kakao");
+        let snsNaver = document.getElementsByClassName("sns-naver");
+
+        for (let i = 0; i < snsKakao.length; i++) {
+            snsKakao[i].style.display = snsKakao[i].style.display === "table-row" ? "none" : "table-row";
+        }
+
+        for (let i = 0; i < snsNaver.length; i++) {
+            snsNaver[i].style.display = snsNaver[i].style.display === "table-row" ? "none" : "table-row";
         }
     }
 
@@ -254,8 +299,6 @@
 
 </script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script type="text/javascript">
     var userDto = {
         id: "${userDto.id}",
@@ -279,7 +322,7 @@
             // 1.1.3. 현재 비밀번호 잘못 입력한 경우
             // 1.1.3.1. 기존 화면에서 오류메세지 출력
             $.ajax({
-                url: "<c:url value='/mypage/modifyPwd'/>",
+                url: "/mypage/modifyPwd",
                 type: "POST",
                 data: { id: id, pwd: pwd, newPwd: newPwd },
                 success: function (response) {
@@ -345,25 +388,6 @@
                 }
             });
         });
-        //
-        // // 3. 생년월일 변경
-        // $("#saveNewBefBirthBtn").click(function() {
-        //     let id = userDto.id;
-        //     let bef_birth = $("#bef_birth").val();
-        //
-        //     $.ajax({
-        //         url: "/mypage/modifyBefBirth",
-        //         type: "POST",
-        //         data: { id: id, bef_birth: bef_birth },
-        //         success: function (response) {
-        //             alert("생년월일 변경 성공!");
-        //             window.location.href = "/mypage/modifyPage";
-        //         },
-        //         error: function (xhr, status, error) {
-        //             alert(xhr.responseText);
-        //         }
-        //     });
-        // });
 
         // 4. 휴대폰 번호 변경
         $("#saveNewMobileNumBtn").click(function() {

@@ -1,8 +1,11 @@
+<%@ page import="java.math.BigInteger" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.net.URLEncoder" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>BYEZ|로그인</title>
+    <title>로그인</title>
     <link rel="stylesheet" href="/css/loginForm.css?after?after">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,10 +66,18 @@
         <a href="https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=873c82dfa901cd280c11ee222e944826&redirect_uri=http://localhost:8080/kakaoLogin">
             <img src="/img/kakao.png" alt="Kakao 로그인" class="login-logo">
         </a>
-        <a href="#">
+        <%--REST API key (=client_id): nV14togkwJUZVzs2_YnF--%>
+            <%
+                String clientId = "nV14togkwJUZVzs2_YnF";
+                String redirectURI = URLEncoder.encode("http://localhost:8080/naverLogin", "UTF-8");
+                SecureRandom random = new SecureRandom();
+                String state = new BigInteger(130, random).toString();
+                session.setAttribute("naverState", state);  // Save state in session
+            %>
+            <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=<%=clientId%>&state=<%=state%>&redirect_uri=<%=redirectURI%>">
             <img src="/img/naver.png" alt="Naver 로그인" class="login-logo">
         </a>
-        <a href="#">
+            <a href="#">
             <img src="/img/google.png" alt="Google 로그인" class="login-logo">
         </a>
         <a href="#">
