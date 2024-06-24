@@ -2,15 +2,16 @@ package com.neo.byez.service.order;
 
 import com.neo.byez.dao.*;
 import com.neo.byez.dao.item.BasketItemDaoImpl;
+import com.neo.byez.dao.item.ItemDaoImpl;
 import com.neo.byez.dao.order.*;
 import com.neo.byez.domain.*;
 import com.neo.byez.domain.item.BasketItemDto;
+import com.neo.byez.domain.item.ItemDto;
 import com.neo.byez.domain.order.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -34,8 +35,10 @@ public class OrderServiceImpl implements OrderService {
     // 배송지목록 Dao
     private AddrListDaoImpl addrListDao;
     private CustCouponsDaoImpl custCouponsDao;
+    private ItemDaoImpl itemDao;
+
     @Autowired
-    public OrderServiceImpl(OrderDaoImpl orderDao, OrderDetailDaoImpl orderDetailDao, OrderStateDaoImpl orderStateDao, PayDaoImpl payDao, PayStateDaoImpl payStateDao, PayHistoryDaoImpl payHistoryDao, DeliveryDaoImpl deliveryDao, BasketItemDaoImpl basketItemDao, AddrListDaoImpl addrListDao, CustCouponsDaoImpl custCouponsDao) {
+    public OrderServiceImpl(OrderDaoImpl orderDao, OrderDetailDaoImpl orderDetailDao, OrderStateDaoImpl orderStateDao, PayDaoImpl payDao, PayStateDaoImpl payStateDao, PayHistoryDaoImpl payHistoryDao, DeliveryDaoImpl deliveryDao, BasketItemDaoImpl basketItemDao, AddrListDaoImpl addrListDao, CustCouponsDaoImpl custCouponsDao, ItemDaoImpl itemDao) {
         this.orderDao = orderDao;
         this.orderDetailDao = orderDetailDao;
         this.orderStateDao = orderStateDao;
@@ -46,6 +49,7 @@ public class OrderServiceImpl implements OrderService {
         this.basketItemDao = basketItemDao;
         this.addrListDao = addrListDao;
         this.custCouponsDao = custCouponsDao;
+        this.itemDao = itemDao;
     }
 
     // 주문 폼 페이지 정보 생성
@@ -169,9 +173,9 @@ public class OrderServiceImpl implements OrderService {
     @Transactional(rollbackFor = {Exception.class})
     public void saveOrderInfo(OrderReadyInfo orderReadyInfo, String id) throws Exception {
         // 주문 정보 검증
-//        if(!validateOrderInfo(orderReadyInfo)){
-//            throw new Exception("Failed Validate Order Info");
-//        }
+        if(!validateOrderInfo(orderReadyInfo)){
+            throw new Exception("Failed Validate Order Info");
+        }
 
         // 주문 정보 초기화
         orderReadyInfo.initOrderReadyInfo(id, "주문완료", "결제대기");
@@ -239,58 +243,30 @@ public class OrderServiceImpl implements OrderService {
                 1. 상품번호로 (상품단가 * 수량) 주문상품 금액 도출
                 2. 주문 상품목록의 총 주문상품금액 도출
                 3. 입력 받은 총 주문상품금액과 비교
-            #. 할인금액 유효성
-                1. 쿠폰번호(고객아이디 + seq)로 쿠폰 조회  사용여부 - 유효한지
-                2. 할인금액을 계산
-                3. 입력 받은 할인금액과 비교
             #. 결제금액 유효성
-                1. (총 주문상품금액 - 총 할인금액 = 결제금액)
+                1. 총 주문상품금액 == 결제금액
                 2. 입력 받은 결제금액과 비교
      */
-    public boolean validateOrderInfo(OrderReadyInfo orderReadyInfo){
+    public boolean validateOrderInfo(OrderReadyInfo orderReadyInfo) throws Exception {
         // 검증할 데이터(입력 받은 데이터)
         // 주문 Dto
         OrderDto orderDto = orderReadyInfo.getOrderDto();
         // 주문상품 Dto 리스트
         List<OrderDetailDto> orderDetailDtoList = orderReadyInfo.getOrderDetailDtoList();
-        // 총 결제금액
-        int totalPayPrice = orderDto.getTotal_pay_price();
-
+        // 총 주문상품금액
+        int totalPayPrice = orderDto.getTotal_price();
         // 검증 결과 반환
         return validateTotalPayPrice(orderDto, orderDetailDtoList, totalPayPrice);
     }
 
     // 총 결제금액 유효성 검증
     // 총 결제금액이 계산한 값과 일치하는가
-    public boolean validateTotalPayPrice(OrderDto orderDto, List<OrderDetailDto> orderDetailDtoList, int totalPayPrice){
+    public boolean validateTotalPayPrice(OrderDto orderDto, List<OrderDetailDto> orderDetailDtoList, int totalPayPrice) throws Exception {
         // 주문상품 금액 유효성 검증
         int totalPrice = validateTotalPrice(orderDto, orderDetailDtoList);
-        // 할인금액 유효성 검증
-        int totalDiscountPrice = validateDiscountPrice();
+
         // 계산한 값과 일치하는가
-        return (totalPrice-totalDiscountPrice) == totalPayPrice;
-    }
-
-    // 할인금액 유효성 검증
-        /*
-            무엇을 검증하는가.
-                1. 쿠폰이 사용가능한가.
-                2. 최소주문금액 조건을 만족하는가
-                3. 최대 할인 금액을 넘지 않는가.
-                4. 입력받은 할인금액과 일치하는가
-
-            1. 주문에서 총 주문상품금액을 구한다.
-            2. 쿠폰번호로 쿠폰Dto를 구한다.
-            3. 쿠폰Dto의 상태, 최소주문금액, 할인율을 구한다.
-            4. 쿠폰 Dto의 상태가 사용가능한지 확인.
-            5. 총 주문상품금액이 최소주문금액보다 큰지 확인
-            6. 입력 받은 할인금액이 최대 할인금액이 넘지 않는지 확인
-            7. (총 주문상품금액 * 0.할인율) 할인금액 계산
-            8. 입력받은 할인금액과 계산한 값이 일치하는가
-         */
-    // 쿠폰 파트에서 구현 예정
-    public int validateDiscountPrice(){
-        return 0;
+        return totalPrice == totalPayPrice;
     }
 
     // 총 주문금액 유효성 검증
@@ -305,24 +281,24 @@ public class OrderServiceImpl implements OrderService {
                 7-1. 같으면 성공
                 7-2. 다르면 실패
          */
-    public int validateTotalPrice(OrderDto orderDto, List<OrderDetailDto> orderDetailDtoList){
+    public int validateTotalPrice(OrderDto orderDto, List<OrderDetailDto> orderDetailDtoList) throws Exception {
         // 주문에서 총 주문상품금액을 구한다.
         int total_price = orderDto.getTotal_price();
         int sum = 0;
 
         for(OrderDetailDto orderDetailDto : orderDetailDtoList){
             // 주문상품에서 상품번호를 구한다.
-//            int item_num = orderDetailDto.getItem_num();
+            String item_num = orderDetailDto.getItem_num();
 
             // 주문상품에서 수량을 구한다.
             int qty = orderDetailDto.getItem_qty();
 
             // 상품번호로 상품Dto를 얻는다.
             // ProductDto productDto = productDao.select(item_num);
+            ItemDto itemDto = itemDao.select(item_num);
 
             // 상품Dto에서 상품단가를 구한다.
-            int price = orderDetailDto.getPrice();
-            // price = productDto.getPrice();
+            int price = itemDto.getPrice();
 
             // sum에 (상품단가 * qty)를 더하여 저장
             sum += (price * qty);
