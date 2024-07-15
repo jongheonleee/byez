@@ -1,19 +1,16 @@
 package com.neo.byez.dao.item;
 
-import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import com.neo.byez.domain.item.ItemDto;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
@@ -712,6 +709,21 @@ class ItemDaoImplTest {
 //        }
 //        assertTrue(dao.count()==n);
 //    }
+
+    @Test
+    public void test() throws Exception {
+        QueryTest t = new QueryTest();
+        t.append("num").append("=").append("111");
+        System.out.println(t.getTarget());
+        System.out.println(t.getOp());
+        System.out.println(t.getVal());
+
+        ItemDto itemDto = itemDao.selectTest(t);
+//        assertNotNull(itemDto);
+
+        ItemDto select = itemDao.select("111");
+        assertNotNull(select);
+    }
 
 
 }

@@ -74,16 +74,20 @@ public class ItemController {
             model.addAttribute("type", type);
 
             // 해당하는 카테고리 페이지로 전달
-            if (type.length() >= 2 && type.charAt(0) == '0' && type.charAt(1) == '1') {
-                return "category01";
-            } else if (type.length() >= 2 && type.charAt(0) == '0' && type.charAt(1) == '2') {
-                return "category02";
-            } else {
-                return "category03";
-            }
+            return getPage(type);
         } catch (Exception e) {
             model.addAttribute("errorMsg", e.getMessage());
             return "errorPage";
+        }
+    }
+
+    private String getPage(String type) {
+        if (type.length() >= 2 && type.charAt(0) == '0' && type.charAt(1) == '1') {
+            return "category01";
+        } else if (type.length() >= 2 && type.charAt(0) == '0' && type.charAt(1) == '2') {
+            return "category02";
+        } else {
+            return "category03";
         }
     }
 

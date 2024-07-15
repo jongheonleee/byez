@@ -319,4 +319,7 @@
     set stock_qty = stock_qty + #{qty}
     where num = #{num};
   </update>
+
+
+
 </mapper>
