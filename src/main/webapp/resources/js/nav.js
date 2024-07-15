@@ -70,5 +70,13 @@ $(function(){
         $('.search_div, .shadow').hide();
     });
 
+    // 로그아웃 상태에서 order 클릭 시 로그인 페이지로 이동
+    $(document).ready(function () {
+        $(".alert-and-redirect").click(function(event) {
+            event.preventDefault(); // 기존 링크로의 이동 막음
+            alert("로그인이 필요합니다."); // alert 창 띄움
+            window.location.href = "/login/form"; // 해당 링크로 이동
+        })
+    })
 
 });

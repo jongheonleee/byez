@@ -4,9 +4,7 @@ import com.neo.byez.common.validator.LoginValidator;
 import com.neo.byez.domain.user.UserDto;
 import com.neo.byez.service.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.WebDataBinder;
@@ -28,10 +26,10 @@ import java.util.List;
 @RequestMapping("/login")
 public class LoginController {
 
-    UserServiceImpl userService;
+    private UserServiceImpl userService;
 
     @Autowired
-    public LoginController(UserServiceImpl service, BCryptPasswordEncoder encoder) {
+    public LoginController(UserServiceImpl service) {
         this.userService = service;
     }
 
@@ -44,14 +42,13 @@ public class LoginController {
     }
 
     @GetMapping("/form")
-    public String moveToLoginForm(HttpServletRequest request, Model model) {
-        model.addAttribute("prevPage", request.getParameter("prevPage"));
+    public String moveToLoginForm() {
         return "/user/loginForm";
     }
 
     // 유저가 입력한 데이터가 /login/in 으로 전송됨.
     @PostMapping("/in")
-    public String save(@Valid UserDto userDto, BindingResult result, String prevPage, boolean rememberId, HttpServletResponse response, HttpServletRequest request, RedirectAttributes ra) throws Exception {
+    public String save(@Valid UserDto userDto, BindingResult result, boolean rememberId, HttpServletResponse response, HttpServletRequest request, RedirectAttributes ra) throws Exception {
 
         // UserValidator 를 통해 확인한 에러를 메세지로 출력
         // result 객체에 error 가 있다면
@@ -111,9 +108,26 @@ public class LoginController {
             session.setAttribute("userId", userId);
             session.setAttribute("userName", userName);
 
+            Cookie[] cookies = request.getCookies();
+            String prevPage = "";
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if ("prevPage".equals(cookie.getName())) {
+                        prevPage = cookie.getValue();
+                        // 쿠키 삭제
+                        cookie.setMaxAge(0);
+                        cookie.setPath("/"); // 쿠키를 설정했던 경로로 맞춰야 함
+                        response.addCookie(cookie);
+                        break;
+                    }
+                }
+            }
+
             // prevPage 이동
-            if (prevPage != null && !prevPage.isEmpty()) {
-                return "redirect:" + prevPage;
+            // prevPage 에서 JS 통해 PostMapping 실행
+            if (prevPage != null && !prevPage.isBlank()) {
+                request.setAttribute("itemNum", prevPage.split("/")[2]);
+                return "forward:" + prevPage;
             }
 
             return "redirect:/";

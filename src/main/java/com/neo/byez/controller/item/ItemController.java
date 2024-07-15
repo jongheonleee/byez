@@ -1,6 +1,7 @@
 package com.neo.byez.controller.item;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.neo.byez.domain.ReviewDto;
 import com.neo.byez.domain.item.BasketItemDto;
 import com.neo.byez.domain.item.BasketItemDtos;
@@ -12,9 +13,18 @@ import com.neo.byez.domain.item.SearchCondition;
 import com.neo.byez.service.ReviewServiceImpl;
 import com.neo.byez.service.item.BasketItemServiceImpl;
 import com.neo.byez.service.item.ItemServiceImpl;
+
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+import java.net.http.HttpResponse;
 import java.util.List;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
+import com.neo.byez.service.user.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,13 +41,15 @@ public class ItemController {
 
     private ItemServiceImpl itemService;
     private BasketItemServiceImpl basketItemService;
-
-
+    // 수인 추가
+    private UserServiceImpl userService;
 
     @Autowired
-    public ItemController(ItemServiceImpl itemService, BasketItemServiceImpl basketItemService) {
+    public ItemController(ItemServiceImpl itemService, BasketItemServiceImpl basketItemService, UserServiceImpl userService) {
         this.itemService = itemService;
         this.basketItemService = basketItemService;
+        // 수인 추가
+        this.userService = userService;
     }
     //찬빈추가
     @Autowired
@@ -226,20 +238,33 @@ public class ItemController {
     }
 
     @PostMapping("/goods/{itemNum}")
-    public String order(@PathVariable String itemNum, BasketItemDto dto, RedirectAttributes ratt, HttpSession session, Model model) {
+    public String order(@PathVariable String itemNum, BasketItemDto dto, RedirectAttributes ratt, HttpSession session, HttpServletRequest request, HttpServletResponse response, Model model) {
         // 로그인 확인
-            // o, 장바구니 상품 등록
-            // x, 주문 페이지 보내기
+        // o, 장바구니 상품 등록
+        // x, 주문 페이지 보내기
         // 추가적으로 페이징 핸들러 처리
 
-
         try {
-            dto.setNum(itemNum);
+            // ===== Start (수인) =====
             // 세션에서 아이디 조회
             String id = (String) session.getAttribute("userId");
-//            if (id == null) {
-//                return "forward:/order";
-//            }
+
+            if (id == null) {
+                return userService.checkLoginStateAndSaveURL(itemNum, dto, response);
+            }
+
+            // 쿠키에서 상품 정보 복원
+            BasketItemDto selectedItem = userService.getSelectedItemFromCookies(request, response);
+
+            if (selectedItem != null) {
+                dto = selectedItem;
+            } else {
+                dto.setNum(itemNum);
+            }
+            // ===== End (수인) =====
+
+//            dto.setNum(itemNum);
+
             // 장바구니 상품 등록
             dto.setId(id);
             // 해당 상품 이미지 조회

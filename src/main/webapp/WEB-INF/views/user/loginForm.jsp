@@ -15,7 +15,7 @@
 
 <body>
 
-<form action="/login/in?prevPage=${prevPage}" method="POST">
+<form action="/login/in" method="POST">
     <div class="title">
         <a href="/">
             <img src="/img/logo1.png" alt="메인로고" class="main-logo">
@@ -89,6 +89,12 @@
 </body>
 
 <script>
+    window.onload = function () {
+        if (document.cookie.includes("prevPage")) {
+            alert("로그인이 필요합니다.");
+        }
+    }
+
     function checkIdFormat() {
         let id = document.getElementById('id').value;
         let msg = document.getElementById('id-error-msg');

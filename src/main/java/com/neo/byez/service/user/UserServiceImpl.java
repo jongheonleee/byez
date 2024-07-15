@@ -1,21 +1,28 @@
 package com.neo.byez.service.user;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.neo.byez.dao.item.BasketDaoImpl;
 import com.neo.byez.dao.user.UserDaoImpl;
 import com.neo.byez.dao.user.UserInfoHistDaoImpl;
 import com.neo.byez.domain.item.BasketDto;
+import com.neo.byez.domain.item.BasketItemDto;
 import com.neo.byez.domain.user.UserDto;
 import com.neo.byez.domain.user.UserInfoHistDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.sql.Timestamp;
 
 @Service
 public class UserServiceImpl implements UserService {
     private UserDaoImpl userDao;
-//    private MailService mailService;
     private BCryptPasswordEncoder passwordEncoder;
     private UserInfoHistDaoImpl userInfoHistDao;
     private BasketDaoImpl basketDao;
@@ -24,7 +31,6 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserDaoImpl userDao, BCryptPasswordEncoder passwordEncoder,
                            UserInfoHistDaoImpl userInfoHistDao, BasketDaoImpl basketDao) {
         this.userDao = userDao;
-//        this.mailService = mailService;
         this.passwordEncoder = passwordEncoder;
         this.userInfoHistDao = userInfoHistDao;
         this.basketDao = basketDao;
@@ -402,5 +408,57 @@ public class UserServiceImpl implements UserService {
     public boolean authenticatePwd(String rawPwd, String encodedPwd) {
         return passwordEncoder.matches(rawPwd, encodedPwd);
     }
-}
 
+    // 1. 로그아웃 상태에서 특정 상품 주문 시도 시
+    // 1.1. 현재 경로 쿠키에 저장
+    public String checkLoginStateAndSaveURL(String itemNum, BasketItemDto dto, HttpServletResponse response) {
+        String redirectURL = "";
+        try {
+            String currentUrl = "/goods/" + itemNum;
+            Cookie prevPageCookie = new Cookie("prevPage", currentUrl);
+            prevPageCookie.setPath("/"); // 경로를 루트로 설정
+            response.addCookie(prevPageCookie);
+
+            // 쿠키값은 문자열로만 저장 가능함을 주의
+            // 선택 상품 정보가 저장된 dto 객체를 JSON 문자열로 변환하여 쿠키에 저장
+            ObjectMapper objectMapper = new ObjectMapper();
+            String itemJson = objectMapper.writeValueAsString(dto);
+            Cookie itemCookie = new Cookie("selectedItem", URLEncoder.encode(itemJson, "UTF-8"));
+            itemCookie.setPath("/"); // 경로를 루트로 설정
+            response.addCookie(itemCookie);
+
+            redirectURL = "redirect:/login/form";
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return redirectURL;
+    }
+
+    // 1.2. 쿠키에서 상품 정보 복원
+    public BasketItemDto getSelectedItemFromCookies(HttpServletRequest request, HttpServletResponse response) {
+        BasketItemDto selectedItem = null;
+        try {
+            Cookie[] cookies = request.getCookies();
+            if (cookies != null) {
+                for (Cookie cookie : cookies) {
+                    if ("selectedItem".equals(cookie.getName())) {
+                        String itemJson = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                        ObjectMapper objectMapper = new ObjectMapper();
+                        selectedItem = objectMapper.readValue(itemJson, BasketItemDto.class);
+
+                        // 쿠키 삭제
+                        cookie.setMaxAge(0);
+                        cookie.setPath("/"); // 쿠키를 설정했던 경로로 맞춰야 함
+                        response.addCookie(cookie);
+                        break;
+                    }
+                }
+            }
+            return selectedItem;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return selectedItem;
+    }
+}

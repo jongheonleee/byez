@@ -17,22 +17,19 @@
         </ul>
         <ul class="nav_member">
             <li class="hover">
-            <c:if test="${sessionScope.loginState != null}">
-                <a href="/mypage/index">
-            </c:if>
-            <c:if test="${sessionScope.loginState == null}">
-                <a href="/login/form">
-            </c:if>
-                    <img src="/img/top_mypage.png">
-                </a>
+                <c:if test="${sessionScope.loginState != null}">
+                    <a href="/mypage/index">
+                </c:if>
+                <c:if test="${sessionScope.loginState == null}">
+                    <a href="/login/form">
+                </c:if>
+                        <img src="/img/top_mypage.png">
+                    </a>
                 <ul class="sub_menu">
-
                     <%-- 로그인 상태 --%>
                     <c:if test="${sessionScope.loginState != null}">
                         <li><a href="/login/out">LOGOUT</a>
                         </li>
-<%--                        <li><a href="mypage.html">MYPAGE</a>--%>
-                        <%-- 수인 테스트용 MYPAGE INDEX --%>
                         <li><a href="/order/list">MYPAGE</a>
                         </li>
                         <li><a href="/order/list">ORDER</a>
@@ -42,19 +39,32 @@
                     <c:if test="${sessionScope.loginState == null}">
                         <li><a href="/login/form">LOGIN</a>
                         </li>
-                        <li><a href="/order/list">ORDER</a>
+                        <li><a href="/login/form" class="alert-and-redirect">ORDER</a>
                         </li>
                     </c:if>
                 </ul>
             </li>
             <li class="nav_search_btn"><a><img src="/img/top_search.png"></a></li>
-            <li><a href="/like"><img src="/img/top_wish.png"></a></li>
-            <li><a href="/basket" class="cart_cnt">
-                <img src="/img/top_cart_pc.png">
-                <div>
-<%--                    <span>${basketCnt}</span>--%>
-                </div>
-            </a></li>
+
+            <%-- 로그인 상태 --%>
+            <c:if test="${sessionScope.loginState != null}">
+                <li><a href="/like"><img src="/img/top_wish.png"></a></li>
+                <li><a href="/basket" class="cart_cnt">
+                    <img src="/img/top_cart_pc.png">
+                    <div>
+                        <%--<span>${basketCnt}</span>--%>
+                    </div>
+                </a></li>
+            </c:if>
+
+            <%-- 로그아웃 상태 --%>
+            <c:if test="${sessionScope.loginState == null}">
+                <li><a href="/login/form" class="alert-and-redirect"><img src="/img/top_wish.png"></a></li>
+                <li><a href="/login/form" class="alert-and-redirect">
+                    <img src="/img/top_cart_pc.png">
+                    <div> <%--<span>${basketCnt}</span>--%> </div>
+                </a></li>
+            </c:if>
 
         </ul>
     </div>
