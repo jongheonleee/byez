@@ -74,5 +74,13 @@ public class HomeController {
         return "adminDashBoard";
     }
 
+    @RequestMapping("/privacyPolicy")
+    public String privacyPolicy() {
+        return "privacyPolicy";
+    }
 
+    @RequestMapping("/joinAgreement")
+    public String joinAgreement() {
+        return "joinAgreement";
+    }
 }

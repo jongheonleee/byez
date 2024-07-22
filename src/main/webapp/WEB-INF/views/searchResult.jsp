@@ -8,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYEZ</title>
     <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/search_result.css?after">
+    <link rel="stylesheet" href="/css/search_result.css?after?after">
     <link rel="stylesheet" href="/css/footer.css">
     <link rel="stylesheet" href="/css/quick.css">
-    <script src="https://kit.fontawesome.com/f0e73cfa04.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
             </c:if>
         </div>
         <div class="filter">
-            <div class="filter_wrapper">
+            <form class="filter_wrapper">
                 <p>FILTER</p>
                 <button class="accordion">
                     <span>구분</span>
@@ -65,10 +65,10 @@
                 </button>
                 <div class="panel">
                     <div class="price_search">
-                        <input type="text">
+                        <input type="text" id="priceMin">
                         <span>~</span>
-                        <input type="text">
-                        <button type="submit">검색</button>
+                        <input type="text" id="priceMax">
+                        <!-- <button type="submit">검색</button> -->
                     </div>
                 </div>
 
@@ -152,10 +152,11 @@
                 <div class="panel">
                     <div class="detail_search">
                         <input type="text">
-                        <button type="submit">검색</button>
+                        <!-- <button type="submit">검색</button> -->
                     </div>
                 </div>
-            </div>
+                <button type="submit">검색</button>
+            </form>
         </div>
         <div class="content">
             <div class="category">
@@ -170,7 +171,7 @@
                             <li><a href="#">상품명</a></li>
                             <li><a href="#">낮은가격</a></li>
                             <li><a href="#">높은가격</a></li>
-                            <li><a href="#">제조사</a></li>
+<%--                            <li><a href="#">제조사</a></li>--%>
                             <li><a href="#">인기상품</a></li>
                             <li><a href="#">사용후기</a></li>
                             <li><a href="#">조회수</a></li>
@@ -303,6 +304,6 @@
 <script src="/js/jquery-3.6.4.min.js"></script>
 <script src="/js/nav.js"></script>
 <script src="/js/sort.js"></script>
-<script src="/js/accordion.js"></script>
+<script src="/js/accordion.js?after"></script>
 </body>
 </html>

@@ -87,7 +87,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
   .color:nth-of-type(5n) {margin-right: 0;}
 
   .price_search {width: 100%; display: flex; justify-content: space-between; align-items: center;}
-  .price_search>input {width: 35%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
+  .price_search>input {width: 45%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
   .price_search>button {
     width: 20%;
     height: 30px;
@@ -99,7 +99,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
   }
 
   .detail_search {width: 100%; height: 30px;}
-  .detail_search>input {width: 80%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
+  .detail_search>input {width: 100%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
   .detail_search>button {
     width: 19%;
     height: 30px;
@@ -163,3 +163,8 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .star-rating {width:100px;}
 .star-rating,.star-rating span {display:inline-block; height:18px; overflow:hidden; background:url(/img/blackStar.jpeg)no-repeat; background-size: 100px auto;}
 .star-rating span{background-position:left bottom; line-height:0; vertical-align:top; filter :grayscale(100%)}
+
+.filter button[type="submit"] {padding: 8px 15px;
+  border: 1px solid #bcbcbc;
+  background-color: lightgray;
+  float: right; margin-top: 10px; font-size: 18px; cursor: pointer;}

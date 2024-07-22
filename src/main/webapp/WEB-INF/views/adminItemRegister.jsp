@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="/css/styles.css" rel="stylesheet" />
     <link rel="stylesheet" href="/css/form.css">
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="/img/favicon-32x32_2.png">
 </head>
 <body class="sb-nav-fixed">
@@ -150,8 +150,8 @@
 <%--                                            <input type="text" placeholder="col">--%>
                                             <select id="col" name="col" multiple="multiple" style="height: 200px;">
         <option value="" disabled selected>--색깔 유형을 선택해주세요--</option>
-        <option value="black">black</option>
-        <option value="white">white</option>
+        <option value="#000000">black</option>
+        <option value="#ffffff">white</option>
         <option value="#000080">navy</option>
         <option value="#9c9c9c">gray</option>
         <option value="#dfdfdf">lightgray</option>

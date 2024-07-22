@@ -24,7 +24,7 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 
 .item_num {width: 115px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid #bcbcbc; box-sizing: border-box;}
 .sort {width: 115px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid #bcbcbc; box-sizing: border-box; position: relative;}
-.order {position: absolute; top:100%; width: 100%; height: fit-content; background-color: white; border: 1px solid #bcbcbc; display: none; z-index: 5;}
+.order {position: absolute; top:100%; width: 100%; height: fit-content; background-color: white; border: 1px solid #bcbcbc; display: none; z-index: 5; padding: 5px 0;}
 
 .order>li {display: flex; justify-content: center; align-items: center; width: 100%; height: 40px;}
 
@@ -94,11 +94,11 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .color:nth-of-type(5n) {margin-right: 0;}
 
 .price_search {width: 100%; display: flex; justify-content: space-between; align-items: center;}
-.price_search>input {width: 35%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
+.price_search>input {width: 45%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
 .price_search>button {width: 20%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; cursor: pointer; font-size: 14px; background-color: lightgray;}
 
 .detail_search {width: 100%; height: 30px;}
-.detail_search>input {width: 80%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
+.detail_search>input {width: 100%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; text-indent: 5px;}
 .detail_search>button {width: 19%; height: 30px; border: 1px solid #bcbcbc; box-sizing: border-box; cursor: pointer; font-size: 14px; background-color: lightgray;}
 
 .type:hover,.item:hover,.color:hover {color:black; border: black 1px solid;}
@@ -130,4 +130,9 @@ section {width: 100%; min-width: 1200px; height: fit-content;  margin-top: 90px;
 .star-rating {width:100px;}
 .star-rating,.star-rating span {display:inline-block; height:18px; overflow:hidden; background:url(/img/newStar.jpeg)no-repeat; background-size: 100px auto;}
 .star-rating span{background-position:left bottom; line-height:0; vertical-align:top; filter :grayscale(100%)}
+
+.filter button[type="submit"] {padding: 8px 15px;
+  border: 1px solid #bcbcbc;
+  background-color: lightgray;
+  float: right; margin-top: 10px; font-size: 18px; cursor: pointer;}
 

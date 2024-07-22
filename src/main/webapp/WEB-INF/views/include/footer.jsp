@@ -51,8 +51,8 @@
         </div>
         <div>
             <p>
-                <span><a href="#">개인정보처리방침</a></span> |
-                <span><a href="#">이용약관</a></span>
+                <span><a href="/privacyPolicy">개인정보처리방침</a></span> |
+                <span><a href="/joinAgreement">이용약관</a></span>
             </p>
             <p>상호명주식회사 NEO (NEO Co., Ltd.)서울 강남구 강남대로 364, 10층 (역삼동 826-21)팩스070-8622-7737 사업자등록번호 2024-05-23 통신판매업신고2024-서울강남-0524</p>
             <p>(주)NEO</p>

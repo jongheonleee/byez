@@ -319,4 +319,65 @@
     set stock_qty = stock_qty + #{qty}
     where num = #{num};
   </update>
+
+
+
+
+
+
+
+
+<!--베스트 페이지 url에서 gender, sort 값 매개변수로 받아옴, 각 정렬기준별 top 50개의 상품 select-->
+  <select id="selectBest50" resultType="ItemDto" parameterType="map">
+    SELECT a.*
+    FROM item a
+    <if test="sort == 1 or sort == 5 or sort == 7">
+      JOIN item_state b ON a.num = b.num
+    </if>
+    <where>
+      <if test="gender == 1">
+        a.cust_type = '여성용'
+      </if>
+      <if test="gender == 2">
+        a.cust_type = '남성용'
+      </if>
+      <if test="gender == 3">
+        a.cust_type = '혼성'
+      </if>
+    </where>
+    ORDER BY
+    <choose>
+      <when test="sort == 1">
+        b.reg_date DESC
+      </when>
+      <when test="sort == 2">
+        a.name ASC
+      </when>
+      <when test="sort == 3">
+        a.disc_price ASC
+      </when>
+      <when test="sort == 4">
+        a.disc_price DESC
+      </when>
+      <when test="sort == 5">
+        b.sales_qty DESC
+      </when>
+      <when test="sort == 6">
+        a.review_cnt DESC
+      </when>
+      <when test="sort == 7">
+        b.view_cnt DESC
+      </when>
+      <when test="sort == 8">
+        a.like_cnt DESC
+      </when>
+      <otherwise>
+        b.reg_date DESC
+      </otherwise>
+    </choose>
+    LIMIT 50
+  </select>
+
+
+
 </mapper>

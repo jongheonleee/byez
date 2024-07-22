@@ -10,7 +10,7 @@
         </div>
         <ul class="nav_menu">
             <li><a href="/item/discount">할인 상품</a></li>
-            <li><a href="/item/best">베스트</a></li>
+            <li><a href="/item/best?gender=0&sort=1">베스트</a></li>
             <li><a href="/item/categories/02">여성</a></li>
             <li><a href="/item/categories/01">남성</a></li>
             <li><a href="/item/categories/03">혼성</a></li>

@@ -17,10 +17,8 @@ section .wrapper>p:nth-of-type(2) {font-size: 20px; font-weight: bold;}
 .category>div:first-of-type {width: fit-content; height: 100%; float: right;}
 .item_num {width: 140px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid #bcbcbc; box-sizing: border-box;}
 .sort {width: 140px; height: 100%; float: left; display: flex; justify-content: center; align-items: center; border-left: 1px solid #bcbcbc; box-sizing: border-box; position: relative;}
-.order {position: absolute; top:100%; width: 100%; height: 350px;border: 1px solid #bcbcbc; display: none;
-    z-index: 5; 
-}
-.order>li {display: flex; justify-content: center; align-items: center; width: 100%; height: calc(100%/9); background-color: white;}
+.order {position: absolute; top:100%; width: 100%; height: fit-content; border: 1px solid #bcbcbc; display: none; z-index: 5; padding: 5px 0; background-color: white;}
+.order>li {display: flex; justify-content: center; align-items: center; width: 100%; height: 40px;}
 
 
 .weekly_best {width: 100%; height: fit-content; margin-top: 50px; display: flex; flex-wrap: wrap; justify-content: flex-start; align-content: space-between;}
