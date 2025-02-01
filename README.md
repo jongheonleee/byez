@@ -14,13 +14,21 @@ _벤치마킹 사이트: SPAO, MUSINSA, CAFE24_
 
 <br>
 
+## 프로젝트 시연 영상 
+
+<a href="https://www.youtube.com/watch?v=vDaQIIW6VsM">
+    <img width="1310" alt="스크린샷 2025-02-02 오전 12 37 50" src="https://github.com/user-attachments/assets/7efc9e8d-98be-441a-8f71-ecc959e45d89" />
+</a>
+
+
+<br>
+<br>
+
 ### :runner: 프로젝트 기간 (54 days)
 > **전체 개발 기간: 2024.04.08 ~ 2024.05.31 (8 Weeks | 53.3 %)**
 > > 기능 구현 기간: 2024.04.15 ~ 2024.05.19 (6 Weeks | 40 %) <br>
 > > UI 구현 기간: 2024.05.20 ~ 2024.05.28 (1 Week | 6.7 %) <br>
 > > 리팩토링 및 발표 준비 기간: 2024.05.29 ~ 2024.05.30 <br>
-
-#### 3차 개발: 2024.06.01 ~ 현재
 
 <br>
 
